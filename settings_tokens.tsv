@@ -1,0 +1,54 @@
+DATA_FOLDER_NOT_CHANGED	Data Folder Not Changed	数据文件夹未更改
+INTERNAL_RESOLUTION	Internal Resolution	内部分辨率
+SHADOW_RESOLUTION	Shadow Resolution	阴影分辨率
+OUTPUT_RESAMPLING	Output Resampling	输出重采样
+BLOOM	Bloom	泛光
+BLOOM_BRIGHTNESS	Bloom Brightness	泛光亮度
+DEPTH_OF_FIELD	Depth of Field	景深
+ENABLE_TEXTURE_REPLACEMENTS	Enable Texture Replacements	启用纹理替换
+RESTART_BY_HAND	Restart by hand	请手动重启
+BENCHMARK_NOT_STARTED	Benchmark not started	基准测试未启动
+PROFILE_MATRIX_NOT_STARTED	Profile matrix not started	性能矩阵未启动
+SHADER_PREP_NOT_STARTED	Shader preparation not started	着色器准备未启动
+PERF_TOUR_NOT_STARTED	Performance tour not started	性能巡览未启动
+CHECK_TOUR_NOT_STARTED	Check tour not started	检查巡览未启动
+TRAILER_NOT_STARTED	Trailer takes not started	预告片镜头未启动
+DRS_STRESS_NOT_STARTED	DRS stress not started	动态分辨率压力测试未启动
+WARMING_SHADERS	Warming every shader	正在预热所有着色器
+RESET_TO_DEFAULT	Reset to Default	恢复默认
+RESTART_NOW	Restart now	立即重启
+CHECK_NOW	Check now	立即检查
+DOWNLOAD_AND_INSTALL	Download and install	下载并安装
+NEXT_START_NO_MODS	Next Start Without Mods	下次启动禁用模组
+EXECUTABLE_MEMORY	Executable Memory	可执行内存
+PATCH_OWN_CODE	Patch Own Code	修补自身代码
+RUN_BENCHMARK	Run Benchmark	运行基准测试
+RUN_PROFILE_MATRIX	Run Profile Matrix	运行性能矩阵
+PREPARE_SHADERS	Prepare Shaders	准备着色器
+RUN_PERF_TOUR	Run Performance Tour	运行性能巡览
+RUN_CHECK_TOUR	Run Check Tour	运行检查巡览
+PLAY_TRAILER	Play trailer takes	播放预告片镜头
+RUN_DRS_STRESS	Run DRS Stress	运行动态分辨率压力测试
+WARM_ALL_SHADERS	Warm All Shaders	预热所有着色器
+CONFIGURE_INPUTS	Configure Inputs	配置输入
+CUSTOMIZE_LAYOUT	Customize Layout	自定义布局
+RECENTER_SENSORS	Recenter Motion Sensors	校准运动传感器
+ACHIEVEMENTS	Achievements	成就
+MISSING_DEVICE	Missing Device	缺少设备
+BACKEND_AUTO	Auto	自动
+NONE	(none)	(无)
+UNKNOWN	Unknown	未知
+AUTO_TIGHT	Auto (only when the GPU is tight)	仅在 GPU 紧张时自动
+OFF	Off	关闭
+ON	On	开启
+DUAL_LAYOUT_NORMAL	Normal	常规
+CARD_IMAGE	Card Image	存储卡镜像
+GCI_FOLDER	GCI Folder	GCI 文件夹
+FPS_CORNER_TL	Top Left	左上
+FPS_CORNER_TR	Top Right	右上
+FPS_CORNER_BL	Bottom Left	左下
+FPS_CORNER_BR	Bottom Right	右下
+FPS_CORNER_COMPANION	Companion Screen	副屏
+DUAL_HUD_WIIU	Wii U Style	Wii U 风格
+DUAL_HUD_3DS	3DS Style	3DS 风格
+DUAL_LAYOUT_FLIP	Flip Grip	翻转握持

@@ -83,32 +83,32 @@ namespace dusk::ui {
 namespace {
 
 constexpr std::array kCardFileTypes = {
-    "Card Image",
-    "GCI Folder",
+    "[CARD_IMAGE]",
+    "[GCI_FOLDER]",
 };
 
 constexpr std::array kFpsOverlayCornerNames = {
-    "Top Left",
-    "Top Right",
-    "Bottom Left",
-    "Bottom Right",
+    "[FPS_CORNER_TL]",
+    "[FPS_CORNER_TR]",
+    "[FPS_CORNER_BL]",
+    "[FPS_CORNER_BR]",
     // aleks2 (companion): index 4 == dusk::kFpsCornerCompanion.
-    "Companion Screen",
+    "[FPS_CORNER_COMPANION]",
 };
 static_assert(kFpsOverlayCornerNames.size() == dusk::kFpsCornerCompanion + 1);
 
 // aleks2 (companion): from the Aleks settings UI, unchanged wording.
 constexpr std::array kDualScreenHudModeNames = {
-    "Wii U Style",
-    "3DS Style",
+    "[DUAL_HUD_WIIU]",
+    "[DUAL_HUD_3DS]",
 };
 
 // How the Switch's single panel is split. Deliberately only two: there is no
 // horizontal dual mode. Flip Grip needs the console physically turned, so it is
 // handheld-only and falls back to Normal while docked.
 constexpr std::array kDualScreenLayoutNames = {
-    "Normal",
-    "Flip Grip",
+    "[DUAL_LAYOUT_NORMAL]",
+    "[DUAL_LAYOUT_FLIP]",
 };
 
 // Shared by every dual-screen button: turning the feature on points the FPS
@@ -157,7 +157,7 @@ int detectPerfPreset() {
 }
 
 constexpr std::array kInterpolationModes = {
-    "Off",
+    "[OFF]",
     "Capped",
     "Unlimited",
 };
@@ -172,8 +172,8 @@ constexpr std::array kAudioOutputModeNames = {
 };
 
 constexpr std::array kLetterboxModes = {
-    "Off",
-    "On",
+    "[OFF]",
+    "[ON]",
     "Only During Gameplay",
     "Only During Cutscenes",
 };
@@ -207,13 +207,13 @@ constexpr std::array kWiiSwordHands = {
 };
 
 constexpr std::array kAlwaysGreatspinModes = {
-    "Off",
+    "[OFF]",
     "After Learning Skill",
     "Always",
 };
 
 constexpr std::array kMagicArmorModes = {
-    "Normal",
+    "[DUAL_LAYOUT_NORMAL]",
     "On Damage",
     "Double Defense",
     "Invincible",
@@ -269,7 +269,7 @@ bool try_parse_backend(std::string_view backend, AuroraBackend& outBackend) {
 std::string_view backend_name(AuroraBackend backend) {
     switch (backend) {
     default:
-        return "Auto";
+        return "[BACKEND_AUTO]";
     case BACKEND_D3D12:
         return "D3D12";
     case BACKEND_D3D11:
@@ -355,7 +355,7 @@ Rml::String graphics_backend_display_name() {
 Rml::String configured_data_path_display_name() {
     const auto path = data::abbreviated_path_string(data::configured_data_path());
     if (path.empty()) {
-        return "(none)";
+        return "[NONE]";
     }
 
     auto display = borealis::io::display_name(path);
@@ -393,7 +393,7 @@ void show_data_folder_error_modal(std::string_view message) {
         modal.pop();
     };
     push_document(std::make_unique<Modal>(Modal::Props{
-        .title = "Data Folder Not Changed",
+        .title = "[DATA_FOLDER_NOT_CHANGED]",
         .bodyText = Rml::String{message},
         .actions =
             {
@@ -469,7 +469,7 @@ bool gyro_enabled() {
 Rml::String touch_targeting_label(TouchTargeting targeting) {
     const auto index = static_cast<size_t>(targeting);
     if (index >= kTouchTargetingLabels.size()) {
-        return "Unknown";
+        return "[UNKNOWN]";
     }
     return kTouchTargetingLabels[index];
 }
@@ -643,7 +643,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                                 const auto& path = prelaunch_state().configuredDiscPath;
                                 std::string display;
                                 if (path.empty()) {
-                                    display = "(none)";
+                                    display = "[NONE]";
                                 } else {
                                     display = borealis::io::display_name(path);
                                     if (display.empty()) {
@@ -704,7 +704,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
 #endif
                         pane.add_button(
                                 {
-                                    .text = "Reset to Default",
+                                    .text = "[RESET_TO_DEFAULT]",
                                     .isDisabled = [] { return data::is_default_data_path(); },
                                 })
                             .on_pressed([] {
@@ -782,12 +782,12 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                     }
 #ifdef __SWITCH__
                     // aleks2 (deko3d rc12): the restart the backend change (and deko3d's prompts) ask for
-                    pane.add_button({.text = "Restart now"}).on_pressed([] {
+                    pane.add_button({.text = "[RESTART_NOW]"}).on_pressed([] {
                         mDoAud_seStartMenu(kSoundClick);
                         if (aleks2_relaunch_on_exit()) {
                             IsRunning = false;
                         } else {
-                            dusk::ui::push_toast({.title = "Restart by hand",
+                            dusk::ui::push_toast({.title = "[RESTART_BY_HAND]",
                                 .content = "Quit Dusklight and open it again to apply the change.",
                                 .duration = std::chrono::seconds(6)});
                         }
@@ -889,7 +889,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                 .getValue =
                     [] {
                         if (!getSettings().video.enableFpsOverlay.getValue()) {
-                            return Rml::String{"Off"};
+                            return Rml::String{"[OFF]"};
                         }
                         int idx = getSettings().video.fpsOverlayCorner.getValue();
                         if (idx < 0 || idx >= static_cast<int>(kFpsOverlayCornerNames.size())) {
@@ -908,7 +908,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
             rightPane, [](Pane& pane) {
                 pane.add_button(
                         {
-                            .text = "Off",
+                            .text = "[OFF]",
                             .isSelected =
                                 [] { return !getSettings().video.enableFpsOverlay.getValue(); },
                         })
@@ -963,19 +963,19 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
         graphics_tuner_control(*this, leftPane, rightPane,
             GraphicsTunerProps{
                 .option = GraphicsOption::InternalResolution,
-                .title = "Internal Resolution",
+                .title = "[INTERNAL_RESOLUTION]",
                 .helpText = kInternalResolutionHelpText,
             });
         graphics_tuner_control(*this, leftPane, rightPane,
             GraphicsTunerProps{
                 .option = GraphicsOption::ShadowResolution,
-                .title = "Shadow Resolution",
+                .title = "[SHADOW_RESOLUTION]",
                 .helpText = kShadowResolutionHelpText,
             });
         graphics_tuner_control(*this, leftPane, rightPane,
             GraphicsTunerProps{
                 .option = GraphicsOption::Resampler,
-                .title = "Output Resampling",
+                .title = "[OUTPUT_RESAMPLING]",
                 .helpText = kResamplerHelpText,
             });
 
@@ -987,19 +987,19 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
         graphics_tuner_control(*this, leftPane, rightPane,
             GraphicsTunerProps{
                 .option = GraphicsOption::BloomMode,
-                .title = "Bloom",
+                .title = "[BLOOM]",
                 .helpText = kBloomHelpText,
             });
         graphics_tuner_control(*this, leftPane, rightPane,
             GraphicsTunerProps{
                 .option = GraphicsOption::BloomMultiplier,
-                .title = "Bloom Brightness",
+                .title = "[BLOOM_BRIGHTNESS]",
                 .helpText = kBloomBrightnessHelpText,
             });
         graphics_tuner_control(*this, leftPane, rightPane,
             GraphicsTunerProps{
                 .option = GraphicsOption::DepthOfFieldMode,
-                .title = "Depth of Field",
+                .title = "[DEPTH_OF_FIELD]",
                 .helpText = kDepthOfFieldHelpText,
             });
 
@@ -1007,7 +1007,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
         graphics_tuner_control(*this, leftPane, rightPane,
             GraphicsTunerProps{
                 .option = GraphicsOption::TextureReplacements,
-                .title = "Enable Texture Replacements",
+                .title = "[ENABLE_TEXTURE_REPLACEMENTS]",
                 .helpText = kTextureReplacementHelpText,
             });
         leftPane.register_control(
@@ -1126,15 +1126,15 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                 .getValue = [] { return Rml::String{dusk::self_update::status_value()}; },
             }),
             rightPane, [](Pane& pane) {
-                pane.add_button({.text = "Check now"}).on_pressed([] {
+                pane.add_button({.text = "[CHECK_NOW]"}).on_pressed([] {
                     mDoAud_seStartMenu(kSoundClick);
                     dusk::self_update::check_now();
                 });
-                pane.add_button({.text = "Download and install"}).on_pressed([] {
+                pane.add_button({.text = "[DOWNLOAD_AND_INSTALL]"}).on_pressed([] {
                     mDoAud_seStartMenu(kSoundClick);
                     dusk::self_update::install();
                 });
-                pane.add_button({.text = "Restart now"}).on_pressed([] {
+                pane.add_button({.text = "[RESTART_NOW]"}).on_pressed([] {
                     mDoAud_seStartMenu(kSoundClick);
                     dusk::self_update::restart_now();
                 });
@@ -1222,15 +1222,15 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                 .getValue =
                     [] {
                         return Rml::String{getSettings().game.dynamicResolution.getValue()
-                                               ? "Auto (only when the GPU is tight)"
-                                               : "Off"};
+                                               ? "[AUTO_TIGHT]"
+                                               : "[OFF]"};
                     },
                 .isModified = [] { return getSettings().game.dynamicResolution.getValue(); },
             }),
             rightPane, [](Pane& pane) {
                 for (const bool on : {false, true}) {
                     pane.add_button({
-                            .text = on ? "Auto (only when the GPU is tight)" : "Off",
+                            .text = on ? "[AUTO_TIGHT]" : "[OFF]",
                             .isSelected = [on] { return getSettings().game.dynamicResolution.getValue() == on; },
                         })
                         .on_pressed([on] {
@@ -1263,7 +1263,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                 .getValue =
                     [] {
                         if (!getSettings().game.dualScreen.getValue()) {
-                            return Rml::String{"Off"};
+                            return Rml::String{"[OFF]"};
                         }
                         int idx = getSettings().game.dualScreenHudMode.getValue();
                         if (idx < 0 || idx >= static_cast<int>(kDualScreenHudModeNames.size())) {
@@ -1276,7 +1276,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
             rightPane, [](Pane& pane) {
                 pane.add_button(
                         {
-                            .text = "Off",
+                            .text = "[OFF]",
                             .isSelected = [] { return !getSettings().game.dualScreen.getValue(); },
                         })
                     .on_pressed([] {
@@ -1329,7 +1329,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                 .getValue =
                     [] {
                         if (!getSettings().game.dualScreen.getValue()) {
-                            return Rml::String{"Off"};
+                            return Rml::String{"[OFF]"};
                         }
                         int idx = getSettings().game.dualScreenLayout.getValue();
                         if (idx < 0 || idx >= static_cast<int>(kDualScreenLayoutNames.size())) {
@@ -1463,12 +1463,12 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                         });
                 }
                 // V1-rc4: the mode applies to mods loaded after the change; restart from here to apply it now.
-                pane.add_button({.text = "Restart now"}).on_pressed([] {
+                pane.add_button({.text = "[RESTART_NOW]"}).on_pressed([] {
                     mDoAud_seStartMenu(kSoundClick);
                     if (aleks2_relaunch_on_exit()) {
                         IsRunning = false;
                     } else {
-                        dusk::ui::push_toast({.title = "Restart by hand",
+                        dusk::ui::push_toast({.title = "[RESTART_BY_HAND]",
                             .content = "Quit Dusklight and open it again to apply the change.",
                             .duration = std::chrono::seconds(6)});
                     }
@@ -1516,7 +1516,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                 pane.add_rml(Rml::String{status});
             });
         leftPane.register_control(
-            leftPane.add_group_button({.text = "Next Start Without Mods"}).on_pressed([] {
+            leftPane.add_group_button({.text = "[NEXT_START_NO_MODS]"}).on_pressed([] {
                 mDoAud_seStartMenu(kSoundItemChange);
                 if (auto* bootGuard = dusk::switchelf::boot_guard()) {
                     bootGuard->request_boot_without_mods();
@@ -1537,13 +1537,13 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
         leftPane.register_control(
             leftPane.add_select_button({
                 .key = "Mods: Listen on the Local Network",
-                .getValue = [] { return Rml::String{dusk::switchnet::lan_listen_allowed() ? "On" : "Off"}; },
+                .getValue = [] { return Rml::String{dusk::switchnet::lan_listen_allowed() ? "[ON]" : "[OFF]"}; },
                 .isModified = [] { return dusk::switchnet::lan_listen_allowed(); },
             }),
             rightPane, [](Pane& pane) {
                 for (const bool on : {false, true}) {
                     pane.add_button({
-                                  .text = on ? "On" : "Off",
+                                  .text = on ? "[ON]" : "[OFF]",
                                   .isSelected = [on] { return dusk::switchnet::lan_listen_allowed() == on; },
                               })
                         .on_pressed([on] {
@@ -1610,7 +1610,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                 "instead, which is a different piece of work.");
         };
         leftPane.register_control(
-            leftPane.add_group_button({.text = "Executable Memory"})
+            leftPane.add_group_button({.text = "[EXECUTABLE_MEMORY]"})
                 .on_pressed([&rightPane, describeJit] {
                     mDoAud_seStartMenu(kSoundItemChange);
                     dusk::switchjit::run_self_test();
@@ -1618,7 +1618,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                 }),
             rightPane, describeJit);
         leftPane.register_control(
-            leftPane.add_group_button({.text = "Patch Own Code"}), rightPane, describePatch);
+            leftPane.add_group_button({.text = "[PATCH_OWN_CODE]"}), rightPane, describePatch);
 
         // aleks2 (H31): a diagnostic switch, here and not under graphics because it
         // changes nothing on screen -- it only decides whether the draw path
@@ -1634,7 +1634,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
 
         // aleks2 (H35): uniform block reuse, the same kind of A/B switch as the memo above, but
         // runtime only: it is never written to the configuration and every launch starts Off.
-        static constexpr std::array<const char*, 3> kUniformReuseNames{"Off", "Verify", "On"};
+        static constexpr std::array<const char*, 3> kUniformReuseNames{"[OFF]", "Verify", "[ON]"};
         leftPane.register_control(
             leftPane.add_select_button({
                 .key = "Uniform Reuse (H35)",
@@ -1701,7 +1701,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
         };
         leftPane.register_control(
             leftPane.add_group_button({
-                         .text = "Run Benchmark",
+                         .text = "[RUN_BENCHMARK]",
                          .isDisabled =
                              [] {
                                  std::string why;
@@ -1714,7 +1714,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                         mDoAud_seStartMenu(kSoundPlay);
                     } else {
                         mDoAud_seStartMenu(kSoundWarning);
-                        push_toast({.title = "Benchmark not started",
+                        push_toast({.title = "[BENCHMARK_NOT_STARTED]",
                             .content = Rml::String{error},
                             .duration = std::chrono::seconds(4)});
                     }
@@ -1743,7 +1743,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
         };
         leftPane.register_control(
             leftPane.add_group_button({
-                         .text = "Run Profile Matrix",
+                         .text = "[RUN_PROFILE_MATRIX]",
                          .isDisabled =
                              [] {
                                  std::string why;
@@ -1756,7 +1756,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                         mDoAud_seStartMenu(kSoundPlay);
                     } else {
                         mDoAud_seStartMenu(kSoundWarning);
-                        push_toast({.title = "Profile matrix not started",
+                        push_toast({.title = "[PROFILE_MATRIX_NOT_STARTED]",
                             .content = Rml::String{error},
                             .duration = std::chrono::seconds(6)});
                     }
@@ -1784,7 +1784,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
         };
         leftPane.register_control(
             leftPane.add_group_button({
-                         .text = "Prepare Shaders",
+                         .text = "[PREPARE_SHADERS]",
                          .isDisabled =
                              [] {
                                  std::string why;
@@ -1797,7 +1797,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                         mDoAud_seStartMenu(kSoundPlay);
                     } else {
                         mDoAud_seStartMenu(kSoundWarning);
-                        push_toast({.title = "Shader preparation not started",
+                        push_toast({.title = "[SHADER_PREP_NOT_STARTED]",
                             .content = Rml::String{error},
                             .duration = std::chrono::seconds(4)});
                     }
@@ -1830,7 +1830,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
         };
         leftPane.register_control(
             leftPane.add_group_button({
-                         .text = "Run Performance Tour",
+                         .text = "[RUN_PERF_TOUR]",
                          .isDisabled =
                              [] {
                                  std::string why;
@@ -1843,7 +1843,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                         mDoAud_seStartMenu(kSoundPlay);
                     } else {
                         mDoAud_seStartMenu(kSoundWarning);
-                        push_toast({.title = "Performance tour not started",
+                        push_toast({.title = "[PERF_TOUR_NOT_STARTED]",
                             .content = Rml::String{error},
                             .duration = std::chrono::seconds(4)});
                     }
@@ -1862,7 +1862,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
         };
         leftPane.register_control(
             leftPane.add_group_button({
-                         .text = "Run Check Tour",
+                         .text = "[RUN_CHECK_TOUR]",
                          .isDisabled =
                              [] {
                                  std::string why;
@@ -1875,7 +1875,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                         mDoAud_seStartMenu(kSoundPlay);
                     } else {
                         mDoAud_seStartMenu(kSoundWarning);
-                        push_toast({.title = "Check tour not started",
+                        push_toast({.title = "[CHECK_TOUR_NOT_STARTED]",
                             .content = Rml::String{error},
                             .duration = std::chrono::seconds(4)});
                     }
@@ -1896,7 +1896,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
             };
             leftPane.register_control(
                 leftPane.add_group_button({
-                             .text = "Play trailer takes",
+                             .text = "[PLAY_TRAILER]",
                              .isDisabled =
                                  [] {
                                      std::string why;
@@ -1909,7 +1909,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                             mDoAud_seStartMenu(kSoundPlay);
                         } else {
                             mDoAud_seStartMenu(kSoundWarning);
-                            push_toast({.title = "Trailer takes not started",
+                            push_toast({.title = "[TRAILER_NOT_STARTED]",
                                 .content = Rml::String{error},
                                 .duration = std::chrono::seconds(4)});
                         }
@@ -1939,7 +1939,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
         };
         leftPane.register_control(
             leftPane.add_group_button({
-                         .text = "Run DRS Stress",
+                         .text = "[RUN_DRS_STRESS]",
                          .isDisabled =
                              [] {
                                  std::string why;
@@ -1957,17 +1957,17 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                         mDoAud_seStartMenu(kSoundPlay);
                     } else {
                         mDoAud_seStartMenu(kSoundWarning);
-                        push_toast({.title = "DRS stress not started",
+                        push_toast({.title = "[DRS_STRESS_NOT_STARTED]",
                             .content = Rml::String{error},
                             .duration = std::chrono::seconds(4)});
                     }
                 }),
             rightPane, describeDrsStress);
         // V1-rc5: normal starts warm only the current scene's shaders; this queues the whole list.
-        leftPane.register_control(leftPane.add_group_button({.text = "Warm All Shaders"}).on_pressed([] {
+        leftPane.register_control(leftPane.add_group_button({.text = "[WARM_ALL_SHADERS]"}).on_pressed([] {
             aurora_warm_all_shaders();
             mDoAud_seStartMenu(kSoundPlay);
-            push_toast({.title = "Warming every shader",
+            push_toast({.title = "[WARMING_SHADERS]",
                 .content = "The whole list is queued in the background.",
                 .duration = std::chrono::seconds(3)});
         }),
@@ -1995,7 +1995,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
 
         leftPane.add_section("Inputs");
         leftPane.register_control(
-            leftPane.add_group_button({.text = "Configure Inputs"}).on_pressed([this] {
+            leftPane.add_group_button({.text = "[CONFIGURE_INPUTS]"}).on_pressed([this] {
                 push(std::make_unique<ControllerConfigWindow>());
             }),
             rightPane, [](Pane& pane) {
@@ -2017,7 +2017,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
             "Enables controls overlay for touch screens.<br/><br/>Press and drag on the left side "
             "of the screen to move, and on the right side of the screen to control the camera.");
         auto& customizeTouchLayout = leftPane.add_group_button(GroupButton::Props{
-            .text = "Customize Layout",
+            .text = "[CUSTOMIZE_LAYOUT]",
             .isDisabled = [] { return !getSettings().game.enableTouchControls; },
         });
         leftPane.register_control(customizeTouchLayout.on_pressed(
@@ -2191,7 +2191,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
             "Mirror Mode (turning on both cancels out).",
             [] { return !getSettings().game.enableWiiMotion || !getSettings().game.wiiMotionSwingCuts; });
         leftPane.register_control(
-            leftPane.add_group_button({.text = "Recenter Motion Sensors"}).on_pressed([] {
+            leftPane.add_group_button({.text = "[RECENTER_SENSORS]"}).on_pressed([] {
                 mDoAud_seStartMenu(kSoundItemChange);
                 dusk::wii::recalibrate();
             }),
@@ -2645,7 +2645,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                     const bool ach = getSettings().game.enableAchievementToasts.getValue();
                     const bool ctl = getSettings().game.enableControllerToasts.getValue();
                     if (!ach && !ctl) {
-                        return Rml::String{"Off"};
+                        return Rml::String{"[OFF]"};
                     }
                     if (ach && ctl) {
                         return Rml::String{"All"};
@@ -2676,7 +2676,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                 pane.add_section("Types");
                 pane.add_button(
                     {
-                        .text = "Achievements",
+                        .text = "[ACHIEVEMENTS]",
                         .isSelected =
                         [] {
                             return getSettings().game.enableAchievementToasts.getValue();
@@ -2690,7 +2690,7 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
                     });
                 pane.add_button(
                     {
-                        .text = "Missing Device",
+                        .text = "[MISSING_DEVICE]",
                         .isSelected =
                             [] { return getSettings().game.enableControllerToasts.getValue(); },
                     })
