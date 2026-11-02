@@ -122,9 +122,17 @@ bool initialize() noexcept {
     load_font("HarmonyOS_Sans_SC_Regular.ttf", true);
     load_font("HarmonyOS_Sans_TC_Regular.ttf", true);
 
-    // i18n: route RmlUi [token] strings through our translator, then load dictionaries.
+    // i18n: register the translator before any document is instanced, then load
+    // dictionaries. The hook lives in aurora (added by cmake/AuroraI18nHook.cmake);
+    // if that patch could not be applied the build still works and the UI stays
+    // English, so the callback is only registered when the hook is known to exist.
+#ifdef DUSK_I18N_AURORA_HOOK
     aurora::rmlui::set_translate_callback(i18n::translate);
+#endif
     i18n::initialize();
+    // The launcher ships as one build with a Chinese-first UI. set_language falls
+    // back to English when res/i18n/zh-cn.xml is missing, so a mistyped/missing
+    // resource degrades to English instead of showing [TOKEN] placeholders.
     i18n::set_language("zh-cn");
 
     register_icon_texture_provider();
@@ -156,7 +164,9 @@ void shutdown() noexcept {
     input::reset_input_state();
     input::release_input_block();
     sInitialized = false;
+#ifdef DUSK_I18N_AURORA_HOOK
     aurora::rmlui::set_translate_callback({});
+#endif
     i18n::shutdown();
 }
 

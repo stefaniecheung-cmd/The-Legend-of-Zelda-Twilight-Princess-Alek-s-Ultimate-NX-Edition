@@ -105,6 +105,12 @@ if (DUSK_ENABLE_PROFILER)
 else ()
     add_compile_definitions(DUSK_PROFILER_ENABLED=0)
 endif ()
+# aleks2-cn: RmlUi hands every text node to SystemInterface::TranslateString, and
+# aurora has no way to intercept it. This adds a minimal callback to the aurora
+# submodule in place (idempotent, non-fatal) so the launcher can be localized
+# without forking aurora or repointing .gitmodules. Must run before the
+# subdirectory is added so the patched sources are what gets compiled.
+include(cmake/AuroraI18nHook.cmake)
 add_subdirectory(extern/aurora EXCLUDE_FROM_ALL)
 target_compile_definitions(aurora_mtx PRIVATE MTX_USE_PS=1)
 
@@ -405,6 +411,11 @@ endif ()
 list(APPEND GAME_COMPILE_DEFS
         DUSK_HAS_FUNCHOOK=$<BOOL:${DUSK_HAS_FUNCHOOK}>
         DUSK_HAS_PREPATCH=$<BOOL:${DUSK_HAS_PREPATCH}>)
+# aleks2-cn: set by cmake/AuroraI18nHook.cmake when the translate hook is in
+# place. Without it ui.cpp skips the callback and the UI stays English.
+if (DUSK_I18N_AURORA_HOOK)
+    list(APPEND GAME_COMPILE_DEFS DUSK_I18N_AURORA_HOOK=1)
+endif ()
 
 if (DUSK_PACKAGE_INSTALL)
     include(GNUInstallDirs)

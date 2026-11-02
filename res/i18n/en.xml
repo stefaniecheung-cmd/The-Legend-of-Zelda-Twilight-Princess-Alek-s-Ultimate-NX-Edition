@@ -1446,15 +1446,6 @@
   <entry key="LOADER_REJECTED_PACKAGE">The loader rejected the package</entry>
   <entry key="DEVICE_CONNECTED">Device Connected</entry>
   <entry key="DEVICE_DISCONNECTED">Device Disconnected</entry>
-  <entry key="COULD_NOT_INSPECT_PACKAGES">Could not inspect packages</entry>
-  <entry key="SETTINGS">Settings</entry>
-  <entry key="MODS">Mods</entry>
-  <entry key="CHECK_FOR_UPDATES">Check for Updates</entry>
-  <entry key="QUIT">Quit</entry>
-  <entry key="SELECT_DISC_IMAGE">Select Disc Image</entry>
-  <entry key="CONTINUE_ANYWAY">Continue anyway</entry>
-  <entry key="LANGUAGE_UNAVAILABLE">Language unavailable</entry>
-  <entry key="CANCEL">Cancel</entry>
   <entry key="DATA_FOLDER_NOT_CHANGED">Data Folder Not Changed</entry>
   <entry key="INTERNAL_RESOLUTION">Internal Resolution</entry>
   <entry key="SHADOW_RESOLUTION">Shadow Resolution</entry>

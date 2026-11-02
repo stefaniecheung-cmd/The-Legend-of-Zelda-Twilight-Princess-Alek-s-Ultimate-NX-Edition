@@ -1126,7 +1126,7 @@ void ModBrowser::build_content(Rml::Element* content) {
         }
     }
     auto& category = filters.add_item<DropdownButton>(DropdownButton::Props{
-        .key = "Category",
+        .key = "[CATEGORY]",
         .options = std::move(categoryOptions),
         .getValue =
             [this] {
