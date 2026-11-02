@@ -241,18 +241,12 @@ jobs:
             msvc_arch: amd64
             vcpkg_arch: x64
             artifact_arch: x86_64
-          # Windows on ARM is not a target anyone asked for, and the runner's
-          # ARM64 toolchain cannot even pass CMake's compiler probe: rc.exe
-          # rejects the generated manifest.rc with
-          #   RC2136: missing '=' in EXSTYLE=<flags>
-          # before a single line of the game is compiled. Left out of the matrix
-          # rather than papered over with a patched SDK.
-          # - name: MSVC arm64
-          #   runner: windows-latest
-          #   preset: arm64-msvc
-          #   msvc_arch: amd64_arm64
-          #   vcpkg_arch: arm64
-          #   artifact_arch: arm64
+          - name: MSVC arm64
+            runner: windows-latest
+            preset: arm64-msvc
+            msvc_arch: amd64_arm64
+            vcpkg_arch: arm64
+            artifact_arch: arm64
           # - name: Clang x86_64
           #   runner: windows-latest
           #   preset: clang
@@ -290,35 +284,10 @@ jobs:
           vcpkg install freetype:${{matrix.vcpkg_arch}}-windows zstd:${{matrix.vcpkg_arch}}-windows
 
       - name: Configure CMake
-        # sentry_native pulls a chain of submodules whose clone dies with
-        # "fatal: '$GIT_DIR' too big" on the runner's deep build path; crash
-        # reporting is useless for this fork, so leave it out entirely.
-        # sccache + MSVC on the runner abort abseil with
-        # "fatal error C1083: Cannot open compiler generated file: ''":
-        # the wrapper hands cl a blank temp path. Linux and Apple keep the
-        # cache; Windows builds without it.
-        run: >
-          cmake --preset x-windows-ci-${{matrix.preset}}
-          -D BOREALIS_ENABLE_SENTRY=OFF
-          -D CMAKE_C_COMPILER_LAUNCHER=
-          -D CMAKE_CXX_COMPILER_LAUNCHER=
+        run: cmake --preset x-windows-ci-${{matrix.preset}}
 
-      # The abseil C1083 is a startup race rather than a code problem: exactly
-      # one TU out of the first parallel batch dies with an empty "compiler
-      # generated file" name while cl is still starting mspdbsrv, and the other
-      # 2400 objects build fine. Asking for no debug information (Embedded,
-      # ProgramDatabase, empty) moved the symptom around without removing it, so
-      # keep the stock flags and simply let ninja resume after the hiccup: the
-      # second pass is incremental and only rebuilds what is missing.
       - name: Build
-        shell: pwsh
-        run: |
-          cmake --build --preset x-windows-ci-${{matrix.preset}}
-          if ($LASTEXITCODE -ne 0) {
-            Write-Host "::warning::first build pass failed, retrying once"
-            cmake --build --preset x-windows-ci-${{matrix.preset}}
-          }
-          exit $LASTEXITCODE
+        run: cmake --build --preset x-windows-ci-${{matrix.preset}}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
