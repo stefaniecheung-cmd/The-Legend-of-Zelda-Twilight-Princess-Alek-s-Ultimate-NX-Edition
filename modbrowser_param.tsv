@@ -1,0 +1,24 @@
+MODS_STATUS_TESTED	Tested on Switch with this build. 	已在此版本的 Switch 上测试。
+MODS_STATUS_INACTIVE	Installs on Switch but stays inactive. 	可在 Switch 上安装，但不会生效。
+MODS_STATUS_INCOMPATIBLE	Incompatible with this build. 	与当前版本不兼容。
+MODS_STATUS_UNVERIFIED	Unverified on Switch. 	未在 Switch 上验证。
+MODS_BY_AUTHOR	by 	作者：
+MODS_REQUEST_FAILED_WITH	The mod request failed: 	模组请求失败：
+MODS_LOADING	Loading 	正在加载 
+MODS_COULD_NOT_LOAD	Could not load 	无法加载 
+MODS_QUEUE_AHEAD	 ahead · view downloads	 个排队 · 查看下载
+MODS_KEPT_ON_DISK	 kept on disk	 已保留在磁盘
+MODS_RETRYING_IN	s until retry	 秒后重试
+MODS_INSTALLED_RESTART	 installed · restart the game to run it	 已安装 · 重启游戏后生效
+MODS_DEP_REQUIRED	 required	 个必需
+MODS_SORTED_BY	 mods · sorted by 	 个模组 · 排序方式 
+MODS_PAGE_PREFIX	Page 	第 
+MODS_SWITCH_LINUX_A	Installs the catalog's Linux build, which runs through the compatibility layer. This release also has a Switch package (v	安装的是目录中的 Linux 版本，需要通过兼容层运行。此发行版另含一个在主机上测试过的 Switch 安装包（v
+MODS_SWITCH_LINUX_B	) tested on the console: to use it instead, copy it from the release zip into sdmc:/switch/dusklight/mods/.	）：若要改用该安装包，请从发行版压缩包中复制到 sdmc:/switch/dusklight/mods/。
+MODS_SWITCH_NEWER_A	Newer than this build's own Switch package (v	比当前内置的 Switch 安装包更新（v
+MODS_SWITCH_NEWER_B	). Installing it replaces that one with the catalog's Linux build, which runs through the compatibility layer. To go back, copy the Switch package from the release zip into sdmc:/switch/dusklight/mods/.	）。安装后会用目录中的 Linux 版本替换它，需要通过兼容层运行。若要回退，请从发行版压缩包中复制 Switch 安装包到 sdmc:/switch/dusklight/mods/。
+MODS_TLS_CERT_A	Secure connection failed: the server's certificate was not accepted. The console's date and time are probably wrong (it reads 	安全连接失败：服务器证书未被接受。主机的日期和时间可能有误（当前读数 
+MODS_TLS_CERT_B	). Set them in System Settings > System > Date and Time, then press Retry.	）。请在 系统设置 > 主机 > 日期与时间 中校正后按「重试」。
+ACTIVATING	Activating…	正在激活…
+ENABLED	enabled	已启用
+DISABLED	disabled	已停用

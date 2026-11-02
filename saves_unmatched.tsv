@@ -1,0 +1,54 @@
+169	create the folder
+173	copy the save
+183	The save could not be written to {}: {}
+186	Save Exported
+186	Saved to {}
+281	The {} save was imported.
+282	{} saves were imported.
+284	{} save{} imported before the operation stopped: {}
+285	 was
+285	s were
+382	Replace the entire memory card image? All saves on the current card will be 
+383	replaced. Existing saves for the configured disc will be backed up first.
+395	 This save is from a different region or 
+396	platform than the configured disc and may 
+397	not work correctly.
+400	{} the <b>{}</b> save?{}{}
+400	Replace
+402	 A backup will be made first.
+421	{} {}
+489	There are no saves in {}. Export Save writes them there; to bring a save from another 
+490	device, copy its .dusksave or .gci file into that folder.
+512	The {} newest saves in {}:
+513	Saves in {}:
+530	Save files
+554	Copy Failed
+554	Reset to the main menu before copying saves.
+560	Copy Failed
+565	Copy Failed
+565	There is no save to copy.
+570	Copy Failed
+576	Copy Failed
+576	The destination save name does not fit a GCI file name.
+583	Copy Failed
+593	Copy to Profile
+594	The {} save was copied to {}. Its previous save, if any, is in View Backups.
+603	Copy to Profile
+604	Copy the <b>{}</b> save and its mod data to <b>{}</b>? The current {} save 
+605	is backed up first.
+637	Copy to Profile
+637	There is no other game mode to copy this save to.
+653	Delete the <b>{}</b> save and mod data? A backup will be made first.
+711	{}-{}-{} {}:{}:{} UTC
+808	Delete <b>{}</b>?
+878	Delete saved data for <b>{}</b>? If a game save exists, a 
+879	backup will be made first.
+911	{} · {}
+915	Delete {} data
+939	GCI folder
+940	{} · Card A
+947	 No registered game mode uses this save.
+959	{} · Modified {}
+993	Copy to Profile...
+999	Mod Data ({})
+1008	The {} most recent backups are preserved.
