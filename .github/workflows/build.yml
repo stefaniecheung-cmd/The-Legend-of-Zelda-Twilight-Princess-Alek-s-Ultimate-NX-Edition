@@ -1,6 +1,7 @@
 name: Build
 
 on:
+  workflow_dispatch:
   push:
     paths-ignore:
       - '*.md'
@@ -254,6 +255,12 @@ jobs:
           #   artifact_arch: x86_64
 
     steps:
+      # sentry_native pulls google/benchmark as a submodule, and the checkout
+      # path is long enough that git aborts with "Filename too long" unless
+      # long paths are enabled before the clone starts.
+      - name: Enable git long paths
+        run: git config --global core.longpaths true
+
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
