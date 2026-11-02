@@ -26,42 +26,31 @@ jobs:
           submodules: recursive
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: List available packages
+      - name: Update package lists
         run: |
-          echo "=== pacman system packages ==="
-          pacman -Ss cmake ninja python3 2>/dev/null | head -20 || true
-          echo "=== dkp-pacman switch portlibs ==="
-          dkp-pacman -Sl switch 2>/dev/null | head -50 || true
-          echo "=== search mesa/vulkan ==="
-          dkp-pacman -Ss mesa 2>/dev/null || true
+          dkp-pacman -Sy || true
+          echo "=== all switch packages ==="
+          dkp-pacman -Sl switch 2>/dev/null | grep -iE "vulkan|mesa|nvk|naga|gl|egl|gbm" || true
+          echo "=== search vulkan ==="
           dkp-pacman -Ss vulkan 2>/dev/null || true
-          echo "=== already installed? ==="
-          which cmake ninja python3 git make 2>/dev/null || true
+          echo "=== search mesa ==="
+          dkp-pacman -Ss mesa 2>/dev/null || true
 
-      - name: Install system tools
+      - name: Install vulkan/mesa packages
         run: |
-          pacman -S --noconfirm --needed cmake ninja python3 make git zip unzip 2>/dev/null || true
-
-      - name: Install switch portlibs
-        run: |
-          # Install whatever switch portlibs are available
           dkp-pacman -S --noconfirm --needed \
-            switch-zlib switch-zstd switch-bzip2 switch-libpng \
-            switch-freetype switch-harfbuzz switch-curl switch-mbedtls \
-            2>&1 || true
-          echo "=== verify what got installed ==="
-          ls /opt/devkitpro/portlibs/switch/lib/ 2>/dev/null | head -30 || echo "no portlibs"
+            switch-vulkan switch-mesa switch-nvk 2>&1 || true
 
       - name: Find libvulkan.a
         run: |
-          echo "=== searching for libvulkan.a ==="
-          find /opt/devkitpro -name "libvulkan.a" 2>/dev/null || echo "not found"
-          echo "=== searching for vulkan headers ==="
-          find /opt/devkitpro -path "*/vulkan/vulkan.h" 2>/dev/null || echo "not found"
+          echo "=== all libvulkan files ==="
+          find /opt/devkitpro -name "*vulkan*" 2>/dev/null || echo "none found"
+          echo "=== portlibs/switch/lib ==="
+          ls /opt/devkitpro/portlibs/switch/lib/ 2>/dev/null | grep -iE "vulkan|mesa|nvk" || echo "no vulkan in portlibs"
 
       - name: Configure CMake
         run: |
-          source /etc/profile.d/devkit-env.sh
+          . /etc/profile.d/devkit-env.sh || true
           export DEVKITPRO=/opt/devkitpro
           VULKAN_ROOT=""
           if [ -f /opt/devkitpro/portlibs/switch/lib/libvulkan.a ]; then
@@ -73,7 +62,7 @@ jobs:
 
       - name: Build
         run: |
-          source /etc/profile.d/devkit-env.sh
+          . /etc/profile.d/devkit-env.sh || true
           export DEVKITPRO=/opt/devkitpro
           cmake --build --preset switch-devkitA64-release -j$(nproc)
 
