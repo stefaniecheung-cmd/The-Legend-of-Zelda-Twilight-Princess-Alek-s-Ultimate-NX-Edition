@@ -11,6 +11,7 @@
 #include "saves_window.hpp"
 #include "touch_controls_editor.hpp"
 #include "ui.hpp"
+#include "i18n.hpp"
 #include "dusk/dev_mode.hpp"
 #include <aurora/shader_cache.h>
 
@@ -81,6 +82,39 @@ extern "C" bool aleks2_relaunch_on_exit(void);
 
 namespace dusk::ui {
 namespace {
+
+// cn-switch-port: UI language selector data
+constexpr std::array<const char*, 4> kUiLanguageIds = {
+    "en",
+    "zh-cn",
+    "fr",
+    "ja",
+};
+
+constexpr std::array<const char*, 4> kUiLanguageTokenNames = {
+    "[ENGLISH]",
+    "[SIMPLIFIED_CHINESE]",
+    "[FRENCH]",
+    "[JAPANESE]",
+};
+
+int ui_language_index(std::string_view languageId) {
+    std::string lowered;
+    lowered.reserve(languageId.size());
+    for (const char ch : languageId) {
+        lowered.push_back(static_cast<char>(std::tolower(static_cast<unsigned char>(ch))));
+    }
+    if (lowered == "zh-cn" || lowered == "zh-hans") {
+        return 1;
+    }
+    if (lowered == "fr") {
+        return 2;
+    }
+    if (lowered == "ja") {
+        return 3;
+    }
+    return 0;
+}
 
 constexpr std::array kCardFileTypes = {
     "Card Image",
@@ -2615,32 +2649,71 @@ SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
         auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
         auto& rightPane = add_child<Pane>(content, Pane::Type::Uncontrolled);
 
-        leftPane.add_section("Dusklight");
+        leftPane.add_section("[DUSKLIGHT]");
+
+        // cn-switch-port: UI language selector
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "[UI_LANGUAGE]",
+                .getValue =
+                    [] {
+                        const int idx =
+                            ui_language_index(getSettings().backend.uiLanguage.getValue());
+                        return Rml::String{kUiLanguageTokenNames[idx]};
+                    },
+                .isModified =
+                    [] {
+                        return getSettings().backend.uiLanguage.getValue() !=
+                               getSettings().backend.uiLanguage.getDefaultValue();
+                    },
+            }),
+            rightPane, [](Pane& pane) {
+                for (int i = 0; i < static_cast<int>(kUiLanguageIds.size()); ++i) {
+                    pane
+                        .add_button({
+                            .text = kUiLanguageTokenNames[i],
+                            .isSelected =
+                                [i] {
+                                    return ui_language_index(
+                                               getSettings().backend.uiLanguage.getValue()) == i;
+                                },
+                        })
+                        .on_pressed([i] {
+                            mDoAud_seStartMenu(kSoundItemChange);
+                            getSettings().backend.uiLanguage.setValue(kUiLanguageIds[i]);
+                            i18n::set_language(kUiLanguageIds[i]);
+                            config::save();
+                            close_all_documents();
+                            push_document(std::make_unique<MenuBar>());
+                        });
+                }
+                pane.add_rml("[APPLIES_TO_DUSKLIGHT_UI_TEXT]");
+            });
+
 #if DUSK_CAN_OPEN_DATA_FOLDER
         leftPane.register_control(
-            leftPane.add_button("Open Data Folder").on_pressed([] {
+            leftPane.add_button("[OPEN_DATA_FOLDER]").on_pressed([] {
                 mDoAud_seStartMenu(kSoundClick);
                 data::open_data_path();
             }),
             rightPane, [](Pane& pane) {
-                pane.add_text(
-                    "Open the folder where Dusklight stores settings, saves, logs, texture "
-                    "replacements, and other app data.");
+                pane.add_rml(
+                    "[OPEN_THE_FOLDER_WHERE_DUSKLIGHT_STORES_SETTINGS_SAVES_LOGS_TEXTURE_REPLA]");
             });
 #endif
-        leftPane.register_control(leftPane.add_button("Restart to Main Menu").on_pressed([this] {
+        leftPane.register_control(leftPane.add_button("[RESTART_TO_MAIN_MENU]").on_pressed([this] {
             mDoAud_seStartMenu(kSoundClick);
             pop();
             prelaunch_state().returnToPrelaunchOnReset = true;
             JUTGamePad::C3ButtonReset::sResetSwitchPushing = true;
         }),
             rightPane, [](Pane& pane) {
-                pane.add_text("Restart Dusklight to the pre-launch menu to change settings, game "
-                              "modes, or mods.");
+                pane.add_rml(
+                    "[RESTART_DUSKLIGHT_TO_THE_PRE_LAUNCH_MENU_TO_CHANGE_SETTINGS_GAME]");
             });
         leftPane.register_control(
             leftPane.add_select_button({
-                .key = "Notifications",
+                .key = "[NOTIFICATIONS]",
                 .getValue = [] {
                     const bool ach = getSettings().game.enableAchievementToasts.getValue();
                     const bool ctl = getSettings().game.enableControllerToasts.getValue();

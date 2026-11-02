@@ -1648,6 +1648,8 @@ set(DUSK_FILES
         src/dusk/ui/graphics_tuner.hpp
         src/dusk/ui/group_button.cpp
         src/dusk/ui/group_button.hpp
+        src/dusk/ui/i18n.cpp
+        src/dusk/ui/i18n.hpp
         src/dusk/ui/file_button.cpp
         src/dusk/ui/file_button.hpp
         src/dusk/ui/icon_provider.cpp

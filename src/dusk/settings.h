@@ -489,6 +489,8 @@ struct UserSettings {
     struct {
         ConfigVar<std::string> isoPath;
         ConfigVar<DiscVerificationState> isoVerification;
+        // cn-switch-port: UI language for the launcher/settings. "en" (default) or "zh-cn".
+        ConfigVar<std::string> uiLanguage;
         ConfigVar<std::string> graphicsBackend;
         ConfigVar<bool> skipPreLaunchUI;
         ConfigVar<bool> showPipelineCompilation;

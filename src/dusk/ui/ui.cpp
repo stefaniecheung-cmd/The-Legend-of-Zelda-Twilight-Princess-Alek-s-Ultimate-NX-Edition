@@ -13,6 +13,7 @@
 #include "dusk/config.hpp"
 #include "dusk/mods/queue.hpp"
 #include "dusk/mods/updates.hpp"
+#include "dusk/settings.h"
 #ifdef __SWITCH__
 #include "dusk/self_update.hpp"
 #endif
@@ -25,9 +26,11 @@
 #include <SDL3/SDL_power.h>
 #include <SDL3/SDL_video.h>
 #include <absl/container/flat_hash_set.h>
+#include <aurora/lib/logging.hpp>
 #include <aurora/lib/window.hpp>
 #include <aurora/rmlui.hpp>
 #include <borealis/io.hpp>
+#include <borealis/log.hpp>
 #include <fmt/format.h>
 #include <tracy/Tracy.hpp>
 
@@ -36,11 +39,31 @@
 #include <ranges>
 #include <utility>
 
+#include "i18n.hpp"
+
 namespace dusk::ui {
 namespace {
 
+borealis::Log UiLog{"dusk::ui"};
+
 void load_font(const char* filename, bool fallback = false) {
-    Rml::LoadFontFace(borealis::io::fs_path_to_string(resource_path(filename)), fallback);
+    if (!Rml::LoadFontFace(borealis::io::fs_path_to_string(resource_path(filename)), fallback)) {
+        UiLog.error("Failed to load font '{}'", filename);
+    }
+}
+
+void apply_ui_language_font_class() {
+    auto* context = aurora::rmlui::get_context();
+    if (context == nullptr) {
+        return;
+    }
+    const bool useChineseFont = i18n::use_harmonyos_font();
+
+    auto* root = context->GetRootElement();
+    if (root == nullptr) {
+        return;
+    }
+    root->SetClass("lang-zh-cn", useChineseFont);
 }
 
 bool sInitialized = false;
@@ -114,6 +137,16 @@ bool initialize() noexcept {
     load_font("AlegreyaSC-Bold.ttf");
     load_font("MaterialSymbolsRounded-Regular.ttf");
     load_font("NotoMono-Regular.ttf");
+    // cn-switch-port: CJK fonts for zh-cn / ja UI
+    load_font("HarmonyOS_Sans_Regular.ttf", true);
+    load_font("HarmonyOS_Sans_SC_Regular.ttf", true);
+    load_font("HarmonyOS_Sans_TC_Regular.ttf", true);
+
+    // cn-switch-port: i18n translation callback
+    aurora::rmlui::set_translate_callback(i18n::translate);
+    i18n::initialize();
+    i18n::set_language(getSettings().backend.uiLanguage.getValue());
+    apply_ui_language_font_class();
 
     register_icon_texture_provider();
     register_mod_texture_provider();
@@ -143,6 +176,9 @@ void shutdown() noexcept {
     sConsoleShortcutHeld = false;
     input::reset_input_state();
     input::release_input_block();
+    // cn-switch-port: tear down i18n
+    aurora::rmlui::set_translate_callback({});
+    i18n::shutdown();
     sInitialized = false;
 }
 
@@ -243,8 +279,8 @@ void handle_event(const SDL_Event& event) noexcept {
         if (SDL_GamepadConnected(gamepad)) {
             if (getSettings().game.enableControllerToasts) {
                 const char* name = SDL_GetGamepadName(gamepad);
-                Rml::String content = fmt::format("<span>{}</span>", name ? name : "[Unknown]");
-                Rml::String title = "Device Connected";
+                Rml::String content = fmt::format("<span>{}</span>", name ? name : "[UNKNOWN]");
+                Rml::String title = "[CONTROLLER_CONNECTED]";
                 if (const char* icon =
                         connection_state_icon(SDL_GetGamepadConnectionState(gamepad)))
                 {
@@ -279,8 +315,8 @@ void handle_event(const SDL_Event& event) noexcept {
             const char* name = SDL_GetGamepadNameForID(event.gdevice.which);
             push_toast({
                 .type = "controller",
-                .title = "Device Disconnected",
-                .content = name ? name : "[Unknown]",
+                .title = "[CONTROLLER_DISCONNECTED]",
+                .content = name ? name : "[UNKNOWN]",
                 .duration = std::chrono::seconds(4),
             });
         }
@@ -496,7 +532,7 @@ void update() noexcept {
         } catch (const std::exception& exception) {
             push_toast({
                 .type = "warning",
-                .title = "Could not inspect packages",
+                .title = "[COULD_NOT_INSPECT_PACKAGES]",
                 .content = exception.what(),
                 .duration = std::chrono::seconds{5},
             });
@@ -504,6 +540,7 @@ void update() noexcept {
         sPendingDrops.erase(sPendingDrops.begin() + static_cast<std::ptrdiff_t>(index));
     }
     input::update_input();
+    apply_ui_language_font_class();
     const auto update_documents = [](auto& documents) {
         const size_t count = documents.size();
         for (size_t i = 0; i < count && i < documents.size(); ++i) {
@@ -588,7 +625,21 @@ Rml::Element* append_text(Rml::Element* parent, const Rml::String& text) noexcep
     if (doc == nullptr) {
         return nullptr;
     }
-    return parent->AppendChild(doc->CreateTextNode(text));
+    // cn-switch-port: RmlUi only consults the translation callback when text is
+    // instanced from markup (SetInnerRML), so programmatic text is translated here.
+    Rml::String translated;
+    i18n::translate(translated, text);
+    // Dictionary entries may carry markup of their own (line breaks, emphasis).
+    // Text that did not come from the dictionary stays a plain text node so that
+    // user-supplied strings can never be interpreted as markup.
+    if (translated.find('<') == Rml::String::npos) {
+        return parent->AppendChild(doc->CreateTextNode(translated));
+    }
+    auto* element = append(parent, "span");
+    if (element != nullptr) {
+        element->SetInnerRML(translated);
+    }
+    return element;
 }
 
 Rml::Element* append_text_element(
@@ -613,9 +664,15 @@ void set_text_content(Rml::Element* parent, const Rml::String& text) noexcept {
     }
     if (!text.empty() && parent->GetNumChildren() == 1) {
         if (auto* element = dynamic_cast<Rml::ElementText*>(parent->GetFirstChild())) {
-            // RmlUi only dirties layout when the node's text changes.
-            element->SetText(text);
-            return;
+            // cn-switch-port: translate here like append_text() does. Text whose
+            // translation carries markup falls through so it can be instanced as RML.
+            Rml::String translated;
+            i18n::translate(translated, text);
+            if (translated.find('<') == Rml::String::npos) {
+                // RmlUi only dirties layout when the node's text changes.
+                element->SetText(translated);
+                return;
+            }
         }
     }
     clear_children(parent);

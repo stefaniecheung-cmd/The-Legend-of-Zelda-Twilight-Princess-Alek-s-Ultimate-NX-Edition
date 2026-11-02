@@ -105,6 +105,14 @@ if (DUSK_ENABLE_PROFILER)
 else ()
     add_compile_definitions(DUSK_PROFILER_ENABLED=0)
 endif ()
+
+# cn-switch-port: apply the Aurora RmlUi translate-callback patch before Aurora
+# is added to the build. This lets the launcher UI use the [TOKEN] -> zh-cn system.
+include(cmake/ApplyAuroraPatch.cmake)
+dusk_apply_aurora_patch(
+        "${CMAKE_CURRENT_SOURCE_DIR}/extern/aurora"
+        "${CMAKE_CURRENT_SOURCE_DIR}/ci/patches/aurora-rmlui-translate-callback.patch")
+
 add_subdirectory(extern/aurora EXCLUDE_FROM_ALL)
 target_compile_definitions(aurora_mtx PRIVATE MTX_USE_PS=1)
 
