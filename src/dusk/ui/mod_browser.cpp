@@ -53,12 +53,12 @@ struct SortOption {
 };
 
 constexpr std::array sortOptions{
-    SortOption{mods::catalog::Sort::Featured, "Featured"},
-    SortOption{mods::catalog::Sort::Updated, "Recently updated"},
-    SortOption{mods::catalog::Sort::Downloads, "Most downloaded"},
+    SortOption{mods::catalog::Sort::Featured, "[FEATURED]"},
+    SortOption{mods::catalog::Sort::Updated, "[RECENTLY_UPDATED]"},
+    SortOption{mods::catalog::Sort::Downloads, "[MOST_DOWNLOADED]"},
     // SortOption{mods::catalog::Sort::Endorsements, "Most endorsed"},
-    SortOption{mods::catalog::Sort::Newest, "Newest"},
-    SortOption{mods::catalog::Sort::Name, "Name"},
+    SortOption{mods::catalog::Sort::Newest, "[NEWEST]"},
+    SortOption{mods::catalog::Sort::Name, "[MODS_SORT_NAME]"},
 };
 
 std::string_view sort_label(mods::catalog::Sort sort) noexcept {
@@ -150,7 +150,7 @@ std::string_view activation_failure(const mods::LoadedMod& mod) {
     if (!mod.failureReason.empty()) {
         return mod.failureReason;
     }
-    return mod.suspendedByProvider ? "A required provider is unavailable" : "Activation failed";
+    return mod.suspendedByProvider ? "[MODS_PROVIDER_UNAVAILABLE]" : "[ACTIVATION_FAILED]";
 }
 
 void open_web_url(const std::string& url) {
@@ -205,12 +205,12 @@ std::optional<HardwareBlock> hardware_block(
         return std::nullopt;
     }
     if (const auto note = mods::hardware::switch_variant(id, version, installed_version(id)); !note.empty()) {
-        return HardwareBlock{"Switch build included", Rml::String{note}};
+        return HardwareBlock{"[MODS_SWITCH_BUILD_INCLUDED]", Rml::String{note}};
     }
     if (const auto found = mods::hardware::verdict(id, version, sha256);
         found.status == mods::hardware::Status::Incompatible)
     {
-        return HardwareBlock{"Incompatible with this build", Rml::String{found.reason}};
+        return HardwareBlock{"[MODS_INCOMPATIBLE_BUILD]", Rml::String{found.reason}};
     }
     return std::nullopt;
 }
@@ -227,15 +227,11 @@ Rml::String hardware_note(std::string_view id, std::string_view version, std::st
     if (const auto bundled = mods::hardware::switch_variant_version(id); !bundled.empty()) {
         if (installed.empty()) {
             // V1-rc5: nothing installed: the catalog's build installs; ours stays an option.
-            return fmt::format("Installs the catalog's Linux build, which runs through the compatibility layer. "
-                               "This release also has a Switch package (v{}) tested on the console: to use it "
-                               "instead, copy it from the release zip into sdmc:/switch/dusklight/mods/.",
+            return fmt::format("[MODS_SWITCH_LINUX_INSTALL]",
                 bundled);
         }
         // V1-rc5: newer than this build's own Switch package: installing it replaces that one.
-        return fmt::format("Newer than this build's own Switch package (v{}). Installing it replaces that one with "
-                           "the catalog's Linux build, which runs through the compatibility layer. To go back, copy "
-                           "the Switch package from the release zip into sdmc:/switch/dusklight/mods/.",
+        return fmt::format("[MODS_SWITCH_NEWER_THAN_BUNDLED]",
             bundled);
     }
     const auto found = mods::hardware::verdict(id, version, sha256);
@@ -244,15 +240,15 @@ Rml::String hardware_note(std::string_view id, std::string_view version, std::st
     }
     switch (found.status) {
     case Status::Tested:
-        return fmt::format("Tested on Switch with this build. {}", found.reason);
+        return fmt::format("[MODS_STATUS_TESTED]", found.reason);
     case Status::Inactive:
-        return fmt::format("Installs on Switch but stays inactive. {}", found.reason);
+        return fmt::format("[MODS_STATUS_INACTIVE]", found.reason);
     case Status::Incompatible:
-        return fmt::format("Incompatible with this build. {}", found.reason);
+        return fmt::format("[MODS_STATUS_INCOMPATIBLE]", found.reason);
     case Status::Unverified:
         break;
     }
-    return fmt::format("Unverified on Switch. {}", found.reason);
+    return fmt::format("[MODS_STATUS_UNVERIFIED]", found.reason);
 }
 
 class ModBrowserDetail;
@@ -265,7 +261,7 @@ public:
           mHardwareBlock{hardware_block(mod.id, mod.version, {})} {
         mRoot->SetClass("catalog-card", true);
         mRoot->SetAttribute("mod-id", mod.id);
-        const auto category = mod.category ? mod.category->name : "Uncategorized";
+        const auto category = mod.category ? mod.category->name : "[UNCATEGORIZED]";
 
         auto* art = append(mRoot, "catalog-card-art");
         auto* artImage = append(art, "catalog-card-art-image");
@@ -281,7 +277,7 @@ public:
         auto* identity = append(body, "section");
         append_text_element(identity, "b", category);
         append_text_element(identity, "h2", mod.name);
-        append_text_element(identity, "small", fmt::format("by {}", mod.author.name));
+        append_text_element(identity, "small", fmt::format("[MODS_BY_AUTHOR]", mod.author.name));
         append_text_element(body, "p", snippet(mod.summary, 126));
         auto* meta = append(body, "footer");
         auto* downloads = append(meta, "stat");
@@ -312,10 +308,10 @@ public:
         const bool installed = mods::ModLoader::instance().find_mod(mId) != nullptr;
         const auto* update = mods::updates::find(mId);
         const bool hasUpdate = installed && update && update->actionable;
-        const auto label = hasUpdate          ? "Update available" :
-                           installed          ? "Installed" :
+        const auto label = hasUpdate          ? "[UPDATE_AVAILABLE_MODS]" :
+                           installed          ? "[INSTALLED]" :
                            mHardwareBlock     ? mHardwareBlock->label :
-                           mNativeCodeBlocked ? "Requires bundling" :
+                           mNativeCodeBlocked ? "[REQUIRES_BUNDLING]" :
                                                 mPackageSize;
         if (mLabel != label) {
             set_text_content(mStatus, label);
@@ -386,12 +382,12 @@ private:
                                                  .horizontalBoundary = NavGroup::Boundary::Stop,
                                                  .verticalBoundary = NavGroup::Boundary::Stop,
                                              });
-        auto& back = actions.add_item<Button>("Back");
+        auto& back = actions.add_item<Button>("[BACK]");
         back.root()->SetClass("compact", true);
-        set_icon_button_content(back, "arrow_back", "Back");
+        set_icon_button_content(back, "arrow_back", "[BACK]");
         back.on_pressed([this] { pop(); });
         auto& previous = actions.add_item<ControlledButton>(ControlledButton::Props{
-            .text = "Previous",
+            .text = "[PREVIOUS]",
             .isDisabled = [this] { return mIndex == 0; },
         });
         previous.on_pressed([this] {
@@ -406,7 +402,7 @@ private:
             .isDisabled = [] { return true; },
         });
         auto& next = actions.add_item<ControlledButton>(ControlledButton::Props{
-            .text = "Next",
+            .text = "[NEXT]",
             .isDisabled = [this] { return mIndex + 1 >= mScreenshots.size(); },
         });
         next.on_pressed([this] {
@@ -469,14 +465,14 @@ public:
                         mDetail = std::move(result->detail);
                         mError.clear();
                     } else {
-                        mError = result->error.empty() ? "The mod request failed." :
+                        mError = result->error.empty() ? "[THE_MOD_REQUEST_FAILED]" :
                                                          std::move(result->error);
                     }
                 }
             } catch (const std::exception& exception) {
-                mError = fmt::format("The mod request failed: {}", exception.what());
+                mError = fmt::format("[MODS_REQUEST_FAILED_WITH]", exception.what());
             } catch (...) {
-                mError = "The mod request failed.";
+                mError = "[THE_MOD_REQUEST_FAILED]";
             }
             mFetch = {};
             mRebuildRequested = true;
@@ -514,14 +510,14 @@ private:
 
         auto* status = append(content, "catalog-detail-status");
         if (mError.empty()) {
-            append_status(status, fmt::format("Loading {}", mSummary.name),
-                "Fetching mod details and images...");
+            append_status(status, fmt::format("[MODS_LOADING]", mSummary.name),
+                "[FETCHING_MOD_DETAILS_AND_IMAGES]");
             return;
         }
-        append_status(status, fmt::format("Could not load {}", mSummary.name), mError);
+        append_status(status, fmt::format("[MODS_COULD_NOT_LOAD]", mSummary.name), mError);
         auto* retryRoot = append(status, "catalog-retry-actions");
         auto& retry = add_child<NavGroup>(retryRoot, NavGroup::Props{});
-        retry.add_item<Button>("Retry").on_pressed([this] { begin_fetch(); });
+        retry.add_item<Button>("[MOD_RETRY]").on_pressed([this] { begin_fetch(); });
     }
 
     mods::catalog::Mod mSummary;
@@ -581,38 +577,38 @@ public:
             switch (queued->state) {
             case Queued:
                 icon = "schedule";
-                label = "Queued";
+                label = "[QUEUED]";
                 if (const auto ahead = mods::queue::active_items_ahead(mRequest.id); ahead != 0) {
-                    caption = fmt::format("{} ahead · view downloads", ahead);
+                    caption = fmt::format("[MODS_QUEUE_AHEAD]", ahead);
                 } else {
-                    caption = "Next · view downloads";
+                    caption = "[MODS_NEXT_VIEW_DOWNLOADS]";
                 }
                 break;
             case Downloading:
                 label = fmt::format(
                     "{} / {}", format_bytes(queued->completed), format_bytes(queued->total));
-                caption = "View downloads & installs";
+                caption = "[MODS_VIEW_DOWNLOADS]";
                 break;
             case Paused:
                 mAction = Action::Resume;
                 icon = "play_arrow";
-                label = "Resume";
-                caption = fmt::format("{} kept on disk", format_bytes(queued->completed));
+                label = "[RESUME]";
+                caption = fmt::format("[MODS_KEPT_ON_DISK]", format_bytes(queued->completed));
                 break;
             case Retrying:
                 icon = "warning";
-                label = fmt::format("Retrying in {}s", queued->retrySeconds);
-                caption = "Network error · keeps retrying itself";
+                label = fmt::format("[MODS_RETRYING_IN]", queued->retrySeconds);
+                caption = "[NETWORK_ERROR_KEEPS_RETRYING_ITSELF]";
                 break;
             case Verifying:
                 icon = "schedule";
-                label = "Verifying…";
-                caption = "Checking package integrity";
+                label = "[MODS_VERIFYING]";
+                caption = "[MODS_CHECKING_INTEGRITY]";
                 break;
             case Handoff:
                 icon = "schedule";
-                label = "Installing…";
-                caption = "Applying package";
+                label = "[MODS_INSTALLING]";
+                caption = "[APPLYING_PACKAGE]";
                 progress = 1.0f;
                 disabled = true;
                 break;
@@ -622,8 +618,8 @@ public:
             case Failed:
                 mAction = Action::RetryDownload;
                 icon = "refresh";
-                label = queued->local ? "Retry package" : "Retry download";
-                caption = queued->message.empty() ? "Package preparation failed" : queued->message;
+                label = queued->local ? "[RETRY_PACKAGE]" : "[RETRY_DOWNLOAD]";
+                caption = queued->message.empty() ? "[PACKAGE_PREPARATION_FAILED]" : queued->message;
                 progress = 1.0f;
                 break;
             case Canceled:
@@ -645,58 +641,58 @@ public:
             if (!staged.empty() && mods::compare_package_versions(mRequest.version, staged) <= 0) {
                 mAction = Action::OpenManager;
                 icon = "schedule";
-                label = "Restart to finish";
-                caption = fmt::format("v{} installed · restart the game to run it", staged);
+                label = "[MODS_RESTART_TO_FINISH]";
+                caption = fmt::format("[MODS_INSTALLED_RESTART]", staged);
                 state = "installed";
                 progress = 1.0f;
             } else if (activationPending) {
                 icon = "schedule";
                 label = "Activating…";
-                caption = "Retrying mod activation";
+                caption = "[MODS_RETRYING_ACTIVATION]";
                 state = "installing";
                 progress = 1.0f;
                 disabled = true;
             } else if (current && local->activation_failed()) {
                 mAction = Action::RetryActivation;
                 icon = "refresh";
-                label = "Retry activation";
+                label = "[RETRY_ACTIVATION]";
                 caption = activation_failure(*local);
                 state = "failed";
                 progress = 1.0f;
             } else if (current || (local != nullptr && !updateable)) {
                 mAction = Action::OpenManager;
                 icon = "check_circle";
-                label = "Installed";
-                caption = fmt::format("Installed · {} · {}", format_bytes(package_size()),
+                label = "[INSTALLED]";
+                caption = fmt::format("[MODS_INSTALLED_STATE]", format_bytes(package_size()),
                     local != nullptr && local->active ? "enabled" : "disabled");
                 state = "installed";
                 progress = 1.0f;
             } else {
-                label = "Install";
+                label = "[INSTALL]";
                 if (updateable) {
                     const auto* update = mods::updates::find(mRequest.id);
                     if (!borealis::update::parse_version(local->metadata.version)) {
-                        label = "Unavailable";
-                        caption = "The installed version cannot be compared.";
+                        label = "[UNAVAILABLE]";
+                        caption = "[MODS_VERSION_NOT_COMPARABLE]";
                         disabled = true;
                     } else if (update && !update->queueKey.empty()) {
-                        label = "View download";
+                        label = "[VIEW_DOWNLOAD]";
                         mAction = Action::OpenQueue;
                         mQueueId = update->queueKey;
                     } else if (update && update->result.target && update->actionable) {
                         const bool sameVersion = update->result.target->version == mRequest.version;
-                        label = sameVersion ? "Update" : "View compatible update";
+                        label = sameVersion ? "[UPDATE]" : "[MODS_VIEW_COMPATIBLE_UPDATE]";
                         mAction = sameVersion ? Action::Update : Action::OpenUpdates;
                     } else if (update && !update->reason.empty() &&
                                mods::updates::state() == mods::updates::State::Ready)
                     {
-                        label = "Unavailable";
+                        label = "[UNAVAILABLE]";
                         caption = update->reason;
                         disabled = true;
                     } else {
                         const bool checking =
                             mods::updates::state() == mods::updates::State::Checking;
-                        label = checking ? "Checking…" : "Check for updates";
+                        label = checking ? "[CHECKING]" : "[MODS_CHECK_FOR_UPDATES]";
                         mAction = Action::CheckUpdates;
                         disabled = checking;
                     }
@@ -709,8 +705,8 @@ public:
                 mAction == Action::RetryDownload || mAction == Action::CheckUpdates);
         if (requiresBundling) {
             icon = "block";
-            label = "Requires bundling";
-            caption = "Contains native code; requires bundling.";
+            label = "[REQUIRES_BUNDLING]";
+            caption = "[CONTAINS_NATIVE_CODE_REQUIRES_BUNDLING]";
             state = "idle";
             progress = 0.0f;
             disabled = true;
@@ -820,8 +816,8 @@ private:
         if (!mods::queue::enqueue(mRequest)) {
             push_toast({
                 .type = "warning",
-                .title = "Could not start download",
-                .content = "The catalog download descriptor is invalid.",
+                .title = "[COULD_NOT_START_DOWNLOAD]",
+                .content = "[MODS_DESCRIPTOR_INVALID]",
                 .duration = std::chrono::seconds{5},
             });
         }
@@ -864,14 +860,14 @@ DetailContent::DetailContent(
                                                      .horizontalBoundary = Boundary::Bubble,
                                                      .verticalBoundary = Boundary::Bubble,
                                                  });
-    auto& back = actions.add_item<Button>("Back");
+    auto& back = actions.add_item<Button>("[BACK]");
     back.root()->SetClass("compact", true);
-    set_icon_button_content(back, "arrow_back", "Back");
+    set_icon_button_content(back, "arrow_back", "[BACK]");
     back.root()->SetClass("overlay", true);
     back.on_pressed([&window] { window.pop(); });
-    auto& open = actions.add_item<Button>("Open in browser");
+    auto& open = actions.add_item<Button>("[OPEN_IN_BROWSER]");
     open.root()->SetClass("compact", true);
-    set_icon_button_content(open, "open_in_new", "Open in browser");
+    set_icon_button_content(open, "open_in_new", "[OPEN_IN_BROWSER]");
     open.root()->SetClass("overlay", true);
     open.on_pressed([url = detail.siteUrl] { open_web_url(url); });
 
@@ -880,14 +876,14 @@ DetailContent::DetailContent(
     auto* detailIconImage = append(detailIcon, "mod-icon-image");
     auto* detailHeading = append(identity, "header");
     append_text_element(
-        detailHeading, "b", detail.mod.category ? detail.mod.category->name : "Uncategorized");
+        detailHeading, "b", detail.mod.category ? detail.mod.category->name : "[UNCATEGORIZED]");
     auto* title = append(detailHeading, "h1");
     append_text(title, detail.mod.name);
     append_text_element(title, "small", fmt::format("v{}", detail.mod.version));
     auto* author = append(detailHeading, "p");
     append_text(author, fmt::format("by {} ", detail.mod.author.name));
     if (detail.mod.author.official) {
-        append_text_element(author, "catalog-official-badge", "Official");
+        append_text_element(author, "catalog-official-badge", "[OFFICIAL]");
     }
     if (const auto note = hardware_note(detail.mod.id, detail.mod.version, detail.download.sha256);
         !note.empty())
@@ -907,9 +903,9 @@ DetailContent::DetailContent(
     installControl.add_item<CatalogInstallButton>(window, detail);
 
     auto* stats = append(mRoot, "catalog-detail-stats");
-    append_stat(stats, "download", format_count(detail.mod.downloads), " downloads");
+    append_stat(stats, "download", format_count(detail.mod.downloads), "[MODS_DOWNLOADS_SUFFIX]");
     if constexpr (kEnableEndorsements) {
-        append_stat(stats, "favorite", format_count(detail.mod.endorsements), " endorsements");
+        append_stat(stats, "favorite", format_count(detail.mod.endorsements), "[MODS_ENDORSEMENTS_SUFFIX]");
     }
 
     auto* body = append(mRoot, "catalog-detail-body");
@@ -921,7 +917,7 @@ DetailContent::DetailContent(
     add_existing_item<ScrollAnchor>(description);
     auto* descriptionFragment = append(description, "catalog-fragment");
     if (detail.descriptionHtml.empty()) {
-        append_text_element(descriptionFragment, "p", "No description provided.");
+        append_text_element(descriptionFragment, "p", "[NO_DESCRIPTION_PROVIDED]");
     } else {
         descriptionFragment->SetInnerRML(detail.descriptionHtml);
         add_list_markers(descriptionFragment);
@@ -929,7 +925,7 @@ DetailContent::DetailContent(
 
     if (!detail.screenshots.empty()) {
         auto* section = append(main, "section");
-        append_text(append(section, "h2"), "Screenshots");
+        append_text(append(section, "h2"), "[SCREENSHOTS]");
         auto* galleryRoot = append(section, "catalog-gallery");
         auto& gallery =
             add_existing_item<NavGroup>(galleryRoot, Props{
@@ -959,7 +955,7 @@ DetailContent::DetailContent(
         auto* dependencies = append(main, "section");
         dependencies->SetClass("catalog-scroll-anchor", true);
         add_existing_item<ScrollAnchor>(dependencies);
-        append_text(append(dependencies, "h2"), "Dependencies");
+        append_text(append(dependencies, "h2"), "[DEPENDENCIES]");
         auto* dependencyList = append(dependencies, "catalog-dependencies");
         size_t requiredDusklight = 0;
         std::vector<std::string> dusklightProblems;
@@ -981,16 +977,16 @@ DetailContent::DetailContent(
             append_text_element(row, "catalog-dependency-name", import.id);
             append_text_element(row, "catalog-dependency-status",
                 fmt::format("v{}.{}+ · {}", import.major, import.minMinor,
-                    available ? "Available" : "Not available"));
+                    available ? "[AVAILABLE]" : "Not available"));
             row->SetClass("missing", !available);
         }
         if (requiredDusklight != 0) {
             auto* row = append(dependencyList, "catalog-dependency");
-            append_text_element(row, "catalog-dependency-name", "Dusklight services");
+            append_text_element(row, "catalog-dependency-name", "[DUSKLIGHT_SERVICES]");
             append_text_element(row, "catalog-dependency-status",
                 dusklightProblems.empty() ?
-                    fmt::format("{} required · Available", requiredDusklight) :
-                    fmt::format("{} required", requiredDusklight));
+                    fmt::format("[MODS_DEP_AVAILABLE]", requiredDusklight) :
+                    fmt::format("[MODS_DEP_REQUIRED]", requiredDusklight));
             for (const auto& problem : dusklightProblems) {
                 append_text_element(row, "catalog-dependency-status", problem);
             }
@@ -1002,24 +998,24 @@ DetailContent::DetailContent(
     changelog->SetClass("catalog-scroll-anchor", true);
     add_existing_item<ScrollAnchor>(changelog);
     auto* changelogTitle = append(changelog, "h2");
-    append_text(changelogTitle, "Changelog ");
+    append_text(changelogTitle, "[CHANGELOG]");
     append_text_element(changelogTitle, "small",
         fmt::format("v{} · {}", detail.mod.version, display_date(detail.mod.updatedAt)));
     auto* changelogFragment = append(changelog, "catalog-fragment");
     if (detail.changelogHtml.empty()) {
-        append_text_element(changelogFragment, "p", "No changelog was provided.");
+        append_text_element(changelogFragment, "p", "[NO_CHANGELOG_WAS_PROVIDED]");
     } else {
         changelogFragment->SetInnerRML(detail.changelogHtml);
         add_list_markers(changelogFragment);
     }
 
     auto* detailList = append(sidebar, "dl");
-    append_detail_field(detailList, "Version", detail.mod.version);
-    append_detail_field(detailList, "Last updated", display_date(detail.mod.updatedAt));
+    append_detail_field(detailList, "[VERSION]", detail.mod.version);
+    append_detail_field(detailList, "[LAST_UPDATED]", display_date(detail.mod.updatedAt));
     append_detail_field(
-        detailList, "Category", detail.mod.category ? detail.mod.category->name : "Uncategorized");
+        detailList, "[CATEGORY]", detail.mod.category ? detail.mod.category->name : "[UNCATEGORIZED]");
     if (detail.license && !detail.license->empty()) {
-        append_detail_field(detailList, "License", *detail.license);
+        append_detail_field(detailList, "[LICENSE]", *detail.license);
     }
 }
 
@@ -1108,9 +1104,9 @@ void ModBrowser::build_content(Rml::Element* content) {
                                              .horizontalBoundary = NavGroup::Boundary::Bubble,
                                              .verticalBoundary = NavGroup::Boundary::Stop,
                                          });
-    append_text(append(filtersRoot, "h1"), "Browse Mods");
+    append_text(append(filtersRoot, "h1"), "[BROWSE_MODS]");
     auto& search = filters.add_item<StringButton>(StringButton::Props{
-        .key = "Search",
+        .key = "[SEARCH]",
         .getValue = [this] { return mQuery.search; },
         .setValue =
             [this](Rml::String value) {
@@ -1122,7 +1118,7 @@ void ModBrowser::build_content(Rml::Element* content) {
             },
         .maxLength = 100,
     });
-    std::vector<DropdownButton::Option> categoryOptions{{"All"}};
+    std::vector<DropdownButton::Option> categoryOptions{{"[ALL]"}};
     if (mPage) {
         for (const auto& category : mPage->categories) {
             categoryOptions.push_back({category.name});
@@ -1155,7 +1151,7 @@ void ModBrowser::build_content(Rml::Element* content) {
         sortLabels.push_back({Rml::String{option.label}});
     }
     auto& sort = filters.add_item<DropdownButton>(DropdownButton::Props{
-        .key = "Sort by",
+        .key = "[SORT_BY]",
         .options = std::move(sortLabels),
         .getValue =
             [this] {
@@ -1170,7 +1166,7 @@ void ModBrowser::build_content(Rml::Element* content) {
             },
     });
     auto& device = filters.add_item<BoolButton>(BoolButton::Props{
-        .key = "Compatible only",
+        .key = "[COMPATIBLE_ONLY]",
         .getValue = [this] { return mQuery.thisDevice; },
         .setValue =
             [this](bool value) {
@@ -1196,16 +1192,16 @@ void ModBrowser::build_content(Rml::Element* content) {
     auto* heading = append(resultsRoot, "header");
     const std::string categoryName = [&] {
         if (mQuery.category.empty() || !mPage) {
-            return std::string{"All mods"};
+            return std::string{"[ALL_MODS]"};
         }
         const auto iter =
             std::ranges::find(mPage->categories, mQuery.category, &mods::catalog::Category::slug);
-        return iter == mPage->categories.end() ? std::string{"All mods"} : iter->name;
+        return iter == mPage->categories.end() ? std::string{"[ALL_MODS]"} : iter->name;
     }();
     const uint64_t total = mPage ? mPage->pagination.total : 0;
     append_text_element(heading, "h1", categoryName);
     append_text_element(
-        heading, "small", fmt::format("{} mods · sorted by {}", total, sort_label(mQuery.sort)));
+        heading, "small", fmt::format("[MODS_SORTED_BY]", total, sort_label(mQuery.sort)));
 
     Component* resultFocus = nullptr;
     Component* retryFocus = nullptr;
@@ -1239,7 +1235,7 @@ void ModBrowser::build_content(Rml::Element* content) {
                                 });
             pagination
                 .add_item<ControlledButton>(ControlledButton::Props{
-                    .text = "Previous",
+                    .text = "[PREVIOUS]",
                     .isDisabled = [this] { return mQuery.page <= 1; },
                 })
                 .on_pressed([this] {
@@ -1250,10 +1246,10 @@ void ModBrowser::build_content(Rml::Element* content) {
                 });
             auto* label = append(paginationRoot, "catalog-pagination-label");
             append_text(label,
-                fmt::format("Page {} of {}", mPage->pagination.page, mPage->pagination.pageCount));
+                fmt::format("[MODS_PAGE_OF]", mPage->pagination.page, mPage->pagination.pageCount));
             pagination
                 .add_item<ControlledButton>(ControlledButton::Props{
-                    .text = "Next",
+                    .text = "[NEXT]",
                     .isDisabled =
                         [this] { return !mPage || mQuery.page >= mPage->pagination.pageCount; },
                 })
@@ -1274,22 +1270,22 @@ void ModBrowser::build_content(Rml::Element* content) {
         switch (mState) {
         case State::Loading:
             // TODO better loading state
-            append_status(status, "Loading catalog", "Fetching published mods...");
+            append_status(status, "[LOADING_CATALOG]", "[FETCHING_PUBLISHED_MODS]");
             break;
         case State::Unavailable:
-            append_status(status, "Catalog unavailable", "This build has no HTTP backend.");
+            append_status(status, "[CATALOG_UNAVAILABLE]", "[THIS_BUILD_HAS_NO_HTTP_BACKEND]");
             break;
         case State::Error: {
-            append_status(status, "Could not load mods", mError);
+            append_status(status, "[COULD_NOT_LOAD_MODS]", mError);
             auto* retryRoot = append(status, "catalog-retry-actions");
             auto& retryGroup = results.add_existing_item<NavGroup>(retryRoot, NavGroup::Props{});
-            auto& retry = retryGroup.add_item<Button>("Retry");
+            auto& retry = retryGroup.add_item<Button>("[MOD_RETRY]");
             retry.on_pressed([this] { begin_fetch(FocusTarget::Retry); });
             retryFocus = &retry;
             break;
         }
         case State::Ready:
-            append_status(status, "No mods found", "Try changing the search or category.");
+            append_status(status, "[NO_MODS_FOUND]", "[MODS_TRY_CHANGING_SEARCH]");
             break;
         }
     }
@@ -1356,7 +1352,7 @@ void ModBrowser::finish_fetch(mods::catalog::FetchResult result) {
         }
     } else {
         mState = State::Error;
-        mError = result.error.empty() ? "The catalog request failed." : std::move(result.error);
+        mError = result.error.empty() ? "[THE_CATALOG_REQUEST_FAILED]" : std::move(result.error);
 #ifdef __SWITCH__
         // 1.0.1: "SSL peer certificate or SSH remote key was not OK" (CURLE_PEER_FAILED_VERIFICATION) is almost
         // always the console's clock: the site's certificate is renewed every ~90 days, and Horizon's ssl service
@@ -1369,9 +1365,7 @@ void ModBrowser::finish_fetch(mods::catalog::FetchResult result) {
             }
             DuskLog.warn("Mod catalog: secure connection to twilitrealm.dev failed ({}); console clock {}; {}", mError,
                 date, dusk::switchnet::system_release());
-            mError = fmt::format("Secure connection failed: the server's certificate was not accepted. The console's "
-                                 "date and time are probably wrong (it reads {}). Set them in System Settings > "
-                                 "System > Date and Time, then press Retry.",
+            mError = fmt::format("[MODS_TLS_CERT_FAILED]",
                 date);
         }
 #endif
@@ -1398,7 +1392,7 @@ void ModBrowser::update() {
             finish_fetch(
                 {.error = fmt::format("The catalog request failed: {}", exception.what())});
         } catch (...) {
-            finish_fetch({.error = "The catalog request failed."});
+            finish_fetch({.error = "[THE_CATALOG_REQUEST_FAILED]"});
         }
         mFetch = {};
     }
