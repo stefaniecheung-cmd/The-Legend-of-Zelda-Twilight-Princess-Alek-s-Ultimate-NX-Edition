@@ -392,7 +392,7 @@ public:
         mDetail = append(content, "small");
 
         auto* actions = append(mDialog, "modal-actions");
-        mCancelButton = std::make_unique<Button>(actions, "Cancel");
+        mCancelButton = std::make_unique<Button>(actions, "[CANCEL]");
         mCancelButton->root()->SetClass("modal-btn", true);
         mCancelButton->on_pressed([this] { request_cancel(); });
 
@@ -531,7 +531,7 @@ std::vector<const gamemode::GameMode*> carousel_game_modes() {
 
 std::string game_mode_button_text() {
     if (prelaunch_state().activeDiscPath.empty()) {
-        return "Select Disc Image";
+        return "[SELECT_DISC_IMAGE]";
     }
     const auto* currentGameMode = gamemode::getGameModeManager().getCurrentGameMode();
     if (currentGameMode == nullptr || currentGameMode->getId() == gamemode::kVanillaGameModeId) {
@@ -759,7 +759,7 @@ void try_push_verification_modal(Document& host) {
                         .onPressed = dismiss,
                     },
                     ModalAction{
-                        .label = "Continue anyway",
+                        .label = "[CONTINUE_ANYWAY]",
                         .onPressed = acceptHashMismatch,
                     },
                 },
@@ -801,7 +801,7 @@ void try_push_language_unavailable_modal(Document& host) {
     auto dismiss = [](Modal& modal) { modal.pop(); };
 
     host.push(std::make_unique<Modal>(Modal::Props{
-        .title = "Language unavailable",
+        .title = "[LANGUAGE_UNAVAILABLE]",
         .bodyRml = bodyRml,
         .actions =
             {
@@ -1382,14 +1382,14 @@ void Prelaunch::build_menu_buttons() {
         apply_intro_animation(playButton->root(), "delay-1");
         mMenuButtons.push_back(std::move(playButton));
 
-        mMenuButtons.push_back(std::make_unique<Button>(menuList, "Settings"));
+        mMenuButtons.push_back(std::make_unique<Button>(menuList, "[SETTINGS]"));
         mMenuButtons.back()->on_pressed([this] {
             mRestartSuppressed = false;
             push(std::make_unique<SettingsWindow>(true));
         });
         apply_intro_animation(mMenuButtons.back()->root(), "delay-2");
 
-        mMenuButtons.push_back(std::make_unique<Button>(menuList, "Mods"));
+        mMenuButtons.push_back(std::make_unique<Button>(menuList, "[MODS]"));
         mModsButton = mMenuButtons.back().get();
         mModsButton->set_disabled(!mods::ModLoader::instance().initialized());
         mMenuButtons.back()->on_pressed([this] {
@@ -1401,7 +1401,7 @@ void Prelaunch::build_menu_buttons() {
 #ifdef __SWITCH__
         // V1-rc9: the updater on the main menu (Settings, Aleks, Updates has the rest). Its label follows the state
         // (Prelaunch::update): check, install the version found, or restart once it is ready.
-        mMenuButtons.push_back(std::make_unique<Button>(menuList, "Check for Updates"));
+        mMenuButtons.push_back(std::make_unique<Button>(menuList, "[CHECK_FOR_UPDATES]"));
         sUpdateMenuButton = mMenuButtons.back().get();
         mMenuButtons.back()->on_pressed([] {
             using dusk::self_update::State;
@@ -1424,7 +1424,7 @@ void Prelaunch::build_menu_buttons() {
         apply_intro_animation(mMenuButtons.back()->root(), "delay-3");
 #endif
 
-        mMenuButtons.push_back(std::make_unique<Button>(menuList, "Quit"));
+        mMenuButtons.push_back(std::make_unique<Button>(menuList, "[QUIT]"));
         mMenuButtons.back()->on_pressed([] { IsRunning = false; });
         apply_intro_animation(mMenuButtons.back()->root(), "delay-4");
     }

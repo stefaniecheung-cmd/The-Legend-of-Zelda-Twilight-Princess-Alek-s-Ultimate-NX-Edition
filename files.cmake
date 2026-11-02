@@ -1619,6 +1619,8 @@ set(DUSK_FILES
         src/dusk/touch_camera.cpp
         src/dusk/ui/achievements.cpp
         src/dusk/ui/achievements.hpp
+        src/dusk/ui/i18n.cpp
+        src/dusk/ui/i18n.hpp
         src/dusk/ui/command_console.cpp
         src/dusk/ui/command_console.hpp
         src/dusk/ui/bool_button.cpp
