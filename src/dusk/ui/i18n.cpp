@@ -17,6 +17,7 @@
 #include "aurora/lib/rmlui/FileInterface_SDL.h"
 #include "dusk/io.hpp"
 #include "ui.hpp"
+#include <borealis/io.hpp>
 #include <borealis/log.hpp>
 
 namespace dusk::ui::i18n {
@@ -133,7 +134,7 @@ Rml::String decode_xml_entities(std::string_view value) {
 
 std::string read_resource_text(const std::filesystem::path& filePath) {
     aurora::rmlui::FileInterface_SDL fileInterface;
-    const Rml::String fileName = io::fs_path_to_string(filePath);
+    const Rml::String fileName = borealis::io::fs_path_to_string(filePath);
     RmlFile file{fileInterface, fileInterface.Open(fileName)};
     if (!file.handle) {
         throw std::runtime_error(fmt::format("Unable to open resource '{}'", fileName));
@@ -212,12 +213,12 @@ bool load_dictionary(std::string_view language) {
     try {
         const std::string xml = read_resource_text(filePath);
         if (!parse_language_xml(xml)) {
-            I18nLog.error("No valid i18n entries found in '{}'", io::fs_path_to_string(filePath));
+            I18nLog.error("No valid i18n entries found in '{}'", borealis::io::fs_path_to_string(filePath));
             return false;
         }
         return true;
     } catch (const std::exception& e) {
-        I18nLog.error("Failed to load i18n dictionary '{}': {}", io::fs_path_to_string(filePath), e.what());
+        I18nLog.error("Failed to load i18n dictionary '{}': {}", borealis::io::fs_path_to_string(filePath), e.what());
         return false;
     }
 }
