@@ -10,14 +10,13 @@ concurrency:
   group: build-switch-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  DEVKITPRO: /opt/devkitpro
-
 jobs:
   build-switch:
     name: Build Switch .nro (Chinese)
     runs-on: ubuntu-24.04
     timeout-minutes: 120
+    container:
+      image: devkitpro/devkita64:latest
 
     steps:
       - name: Checkout
@@ -27,23 +26,13 @@ jobs:
           submodules: recursive
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install devkitPro
+      - name: Install base packages
         run: |
-          wget -q https://apt.devkitpro.org/install-devkitpro
-          chmod +x install-devkitpro
-          sudo ./install-devkitpro <<< $'\n'
-          echo "DEVKITPRO=/opt/devkitpro" >> $GITHUB_ENV
-          echo "/opt/devkitpro/tools/bin" >> $GITHUB_PATH
-          echo "/opt/devkitpro/devkitA64/bin" >> $GITHUB_PATH
-
-      - name: Install devkitPro packages
-        run: |
-          sudo dkp-pacman -S --noconfirm --needed \
-            devkitA64 libnx switch-tools \
+          dkp-pacman -S --noconfirm --needed \
             switch-zlib switch-zstd switch-bzip2 switch-xz \
             switch-freetype switch-harfbuzz switch-libpng \
             switch-curl switch-expat switch-mbedtls \
-            cmake ninja python3
+            cmake ninja python3 make git zip
 
       - name: Search for Mesa/Vulkan package
         run: |
@@ -53,14 +42,13 @@ jobs:
           dkp-pacman -Ss vulkan || true
           echo "=== search naga ==="
           dkp-pacman -Ss naga || true
-          echo "=== all switch packages ==="
+          echo "=== all switch packages matching ==="
           dkp-pacman -Sl switch 2>/dev/null | grep -iE "mesa|vulkan|naga|nvk" || true
 
       - name: Install Mesa Vulkan SDK
         run: |
-          # Try common package names for Mesa Horizon Vulkan
           PKG=""
-          for p in switch-mesa-vulkan switch-mesa switch-naga-vulkan mesa-vulkan switch-vulkan-nvk; do
+          for p in switch-mesa-vulkan switch-mesa switch-naga-vulkan mesa-vulkan switch-vulkan-nvk switch-mesa-horizon; do
             if dkp-pacman -Si "$p" >/dev/null 2>&1; then
               PKG="$p"
               break
@@ -68,9 +56,9 @@ jobs:
           done
           if [ -n "$PKG" ]; then
             echo "Installing $PKG"
-            sudo dkp-pacman -S --noconfirm --needed "$PKG"
+            dkp-pacman -S --noconfirm --needed "$PKG"
           else
-            echo "::warning::No Mesa/Vulkan package found in dkp-pacman"
+            echo "::warning::No Mesa/Vulkan package found"
           fi
 
       - name: Find libvulkan.a
@@ -83,12 +71,10 @@ jobs:
       - name: Configure CMake
         run: |
           source /etc/profile.d/devkit-env.sh
+          export DEVKITPRO=/opt/devkitpro
           VULKAN_ROOT=""
-          # Auto-detect Mesa SDK prefix
-          if [ -d /opt/devkitpro/portlibs/switch ]; then
-            if [ -f /opt/devkitpro/portlibs/switch/lib/libvulkan.a ]; then
-              VULKAN_ROOT=/opt/devkitpro/portlibs/switch
-            fi
+          if [ -f /opt/devkitpro/portlibs/switch/lib/libvulkan.a ]; then
+            VULKAN_ROOT=/opt/devkitpro/portlibs/switch
           fi
           echo "NAGA_VULKAN_ROOT=$VULKAN_ROOT"
           cmake --preset switch-devkitA64-release \
@@ -97,6 +83,7 @@ jobs:
       - name: Build
         run: |
           source /etc/profile.d/devkit-env.sh
+          export DEVKITPRO=/opt/devkitpro
           cmake --build --preset switch-devkitA64-release -j$(nproc)
 
       - name: Find output .nro
