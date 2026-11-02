@@ -24,6 +24,16 @@ namespace {
 
 borealis::Log I18nLog{"dusk::ui::i18n"};
 
+// std::filesystem::path has no accessor that yields UTF-8 on every platform
+// (string() uses the ANSI codepage on Windows), and both the Rml file
+// interface and the log lines want UTF-8 bytes.
+std::string to_utf8(const std::filesystem::path& path) {
+    const auto u8 = path.u8string();
+    // char8_t under C++20, char under C++17 -- the cast is a no-op in the
+    // latter case and covers both.
+    return std::string(reinterpret_cast<const char*>(u8.data()), u8.size());
+}
+
 absl::flat_hash_map<Rml::String, Rml::String> sDictionary;
 std::string sLanguage = "en";
 bool sInitialized = false;
@@ -133,7 +143,7 @@ Rml::String decode_xml_entities(std::string_view value) {
 
 std::string read_resource_text(const std::filesystem::path& filePath) {
     aurora::rmlui::FileInterface_SDL fileInterface;
-    const Rml::String fileName = io::fs_path_to_string(filePath);
+    const Rml::String fileName = to_utf8(filePath);
     RmlFile file{fileInterface, fileInterface.Open(fileName)};
     if (!file.handle) {
         throw std::runtime_error(fmt::format("Unable to open resource '{}'", fileName));
@@ -212,12 +222,12 @@ bool load_dictionary(std::string_view language) {
     try {
         const std::string xml = read_resource_text(filePath);
         if (!parse_language_xml(xml)) {
-            I18nLog.error("No valid i18n entries found in '{}'", io::fs_path_to_string(filePath));
+            I18nLog.error("No valid i18n entries found in '{}'", to_utf8(filePath));
             return false;
         }
         return true;
     } catch (const std::exception& e) {
-        I18nLog.error("Failed to load i18n dictionary '{}': {}", io::fs_path_to_string(filePath), e.what());
+        I18nLog.error("Failed to load i18n dictionary '{}': {}", to_utf8(filePath), e.what());
         return false;
     }
 }
