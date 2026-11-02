@@ -1484,7 +1484,6 @@
   <entry key="ACHIEVEMENTS">成就</entry>
   <entry key="MISSING_DEVICE">缺少设备</entry>
   <entry key="BACKEND_AUTO">自动</entry>
-  <entry key="NONE">(无)</entry>
   <entry key="UNKNOWN">未知</entry>
   <entry key="AUTO_TIGHT">仅在 GPU 紧张时自动</entry>
   <entry key="OFF">关闭</entry>
@@ -1543,4 +1542,5 @@
   <entry key="ENABLED">已启用</entry>
   <entry key="DISABLED">已停用</entry>
   <entry key="MODS_ACTIVATING">正在激活…</entry>
+  <entry key="NONE">无</entry>
 </localization>

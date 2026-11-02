@@ -1484,7 +1484,6 @@
   <entry key="ACHIEVEMENTS">Achievements</entry>
   <entry key="MISSING_DEVICE">Missing Device</entry>
   <entry key="BACKEND_AUTO">Auto</entry>
-  <entry key="NONE">(none)</entry>
   <entry key="UNKNOWN">Unknown</entry>
   <entry key="AUTO_TIGHT">Auto (only when the GPU is tight)</entry>
   <entry key="OFF">Off</entry>
@@ -1543,4 +1542,5 @@
   <entry key="ENABLED">enabled</entry>
   <entry key="DISABLED">disabled</entry>
   <entry key="MODS_ACTIVATING">Activating…</entry>
+  <entry key="NONE">None</entry>
 </localization>
