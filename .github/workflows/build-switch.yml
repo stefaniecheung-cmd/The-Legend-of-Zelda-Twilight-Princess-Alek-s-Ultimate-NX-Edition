@@ -26,40 +26,31 @@ jobs:
           submodules: recursive
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install base packages
+      - name: List available packages
         run: |
+          echo "=== pacman system packages ==="
+          pacman -Ss cmake ninja python3 2>/dev/null | head -20 || true
+          echo "=== dkp-pacman switch portlibs ==="
+          dkp-pacman -Sl switch 2>/dev/null | head -50 || true
+          echo "=== search mesa/vulkan ==="
+          dkp-pacman -Ss mesa 2>/dev/null || true
+          dkp-pacman -Ss vulkan 2>/dev/null || true
+          echo "=== already installed? ==="
+          which cmake ninja python3 git make 2>/dev/null || true
+
+      - name: Install system tools
+        run: |
+          pacman -S --noconfirm --needed cmake ninja python3 make git zip unzip 2>/dev/null || true
+
+      - name: Install switch portlibs
+        run: |
+          # Install whatever switch portlibs are available
           dkp-pacman -S --noconfirm --needed \
-            switch-zlib switch-zstd switch-bzip2 switch-xz \
-            switch-freetype switch-harfbuzz switch-libpng \
-            switch-curl switch-expat switch-mbedtls \
-            cmake ninja python3 make git zip
-
-      - name: Search for Mesa/Vulkan package
-        run: |
-          echo "=== search mesa ==="
-          dkp-pacman -Ss mesa || true
-          echo "=== search vulkan ==="
-          dkp-pacman -Ss vulkan || true
-          echo "=== search naga ==="
-          dkp-pacman -Ss naga || true
-          echo "=== all switch packages matching ==="
-          dkp-pacman -Sl switch 2>/dev/null | grep -iE "mesa|vulkan|naga|nvk" || true
-
-      - name: Install Mesa Vulkan SDK
-        run: |
-          PKG=""
-          for p in switch-mesa-vulkan switch-mesa switch-naga-vulkan mesa-vulkan switch-vulkan-nvk switch-mesa-horizon; do
-            if dkp-pacman -Si "$p" >/dev/null 2>&1; then
-              PKG="$p"
-              break
-            fi
-          done
-          if [ -n "$PKG" ]; then
-            echo "Installing $PKG"
-            dkp-pacman -S --noconfirm --needed "$PKG"
-          else
-            echo "::warning::No Mesa/Vulkan package found"
-          fi
+            switch-zlib switch-zstd switch-bzip2 switch-libpng \
+            switch-freetype switch-harfbuzz switch-curl switch-mbedtls \
+            2>&1 || true
+          echo "=== verify what got installed ==="
+          ls /opt/devkitpro/portlibs/switch/lib/ 2>/dev/null | head -30 || echo "no portlibs"
 
       - name: Find libvulkan.a
         run: |
