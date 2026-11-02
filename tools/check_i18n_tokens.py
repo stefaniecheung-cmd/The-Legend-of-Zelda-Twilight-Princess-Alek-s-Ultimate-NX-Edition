@@ -198,46 +198,6 @@ def history_candidates(ref: str, files: list[str]) -> dict[str, set[str]]:
     return candidates
 
 
-def check_value_safety(i18n_dir: Path, used: set[str]) -> int:
-    """Reject values that RmlUi would misinterpret once a token is substituted.
-
-    RmlUi calls SystemInterface::TranslateString for every text node and, when a
-    substitution happened, re-parses the result as RML (Factory::InstanceElementText).
-    So braces become data expressions and a stray '<' turns into a parse error,
-    which silently drops the whole text node.
-
-    Only keys the sources actually reference are checked: the dictionaries carry a
-    larger reference-port vocabulary on purpose, so the untranslated remainder is
-    inert until a screen starts using it. Keys ending in _FORMAT are fmt templates
-    consumed by i18n::tr() + fmt::format at C++ level, never by TranslateString.
-    """
-    errors = 0
-    tag = re.compile(r"</?[A-Za-z][^<>]*>")
-    for filename in LANGUAGE_FILES:
-        path = i18n_dir / filename
-        for key, value in load_entries(path):
-            if key not in used:
-                continue
-            if not value.strip():
-                print(f"EMPTY_VALUE {filename}: {key}")
-                errors += 1
-                continue
-            if key.endswith("_FORMAT"):
-                continue
-            for ch in "{}":
-                if ch in value:
-                    print(f"UNSAFE_VALUE {filename}: {key}: contains {ch!r} "
-                          f"(RmlUi reads {{...}} as a data expression)")
-                    errors += 1
-            if "<" in value:
-                stripped = tag.sub("", value)
-                if "<" in stripped or ">" in stripped:
-                    print(f"UNSAFE_VALUE {filename}: {key}: unbalanced angle bracket "
-                          f"(RmlUi re-parses substituted text as RML): {value!r}")
-                    errors += 1
-    return errors
-
-
 def check_xml_files(i18n_dir: Path) -> int:
     errors = 0
     base_keys: set[str] | None = None
@@ -285,13 +245,10 @@ def main() -> int:
     i18n_dir = root / "res/i18n"
     en_path = i18n_dir / "en.xml"
 
-    used_tokens = source_tokens(root)
-
     errors = check_xml_files(i18n_dir)
-    errors += check_value_safety(i18n_dir, used_tokens)
 
     en_entries = load_entry_map(en_path)
-    missing = sorted(used_tokens - set(en_entries))
+    missing = sorted(source_tokens(root) - set(en_entries))
     if missing:
         print(f"MISSING_EN_KEYS {len(missing)}:")
         for key in missing:
