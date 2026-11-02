@@ -82,7 +82,7 @@ Rml::String format_switch_resolution(int index) {
     index = std::clamp(index, 0, respol::kCarouselCount - 1);
     const int value = respol::kCarouselValues[index];
     const int stored = getSettings().game.internalResolutionScale.getValue();
-    Rml::String text = value == 0 ? Rml::String("Auto") : fmt::format("{}p", ladder::exact_height(value));
+    Rml::String text = value == 0 ? Rml::String("[AUTO]") : fmt::format("{}p", ladder::exact_height(value));
     if (index != switch_resolution_index(stored)) {
         return text;  // a neighbor, not the current selection
     }
@@ -109,9 +109,9 @@ Rml::String format_switch_resolution(int index) {
 Rml::String format_resampler(int value) {
     switch (static_cast<Resampler>(value)) {
     case Resampler::Bilinear:
-        return "Bilinear";
+        return "[BILINEAR]";
     case Resampler::Area:
-        return "Area";
+        return "[AREA]";
     default:
         return "";
     }
@@ -120,11 +120,11 @@ Rml::String format_resampler(int value) {
 Rml::String format_post_process_mode(int value) {
     switch (static_cast<BloomMode>(value)) {
     case BloomMode::Off:
-        return "Off";
+        return "[OFF]";
     case BloomMode::Classic:
-        return "Classic";
+        return "[CLASSIC]";
     case BloomMode::Dusk:
-        return "Dusklight";
+        return "[DUSKLIGHT]";
     default:
         return "";
     }
@@ -134,7 +134,7 @@ Rml::String format_times(int value) { return fmt::format("{}×", value); }
 
 Rml::String format_percent(int value) { return fmt::format("{}%", value); }
 
-Rml::String format_bool(int value) { return value ? "On" : "Off"; }
+Rml::String format_bool(int value) { return value ? "[ON]" : "[OFF]"; }
 
 template <typename T>
 int read_cvar(const ConfigVar<T>& var) {
