@@ -480,10 +480,6 @@ endif ()
 set(_dusklight_all_files src/dusk/main.cpp ${GAME_BASE_FILES} ${GAME_DEBUG_FILES})
 set(DUSK_INTERNAL_FILES ${_dusklight_all_files})
 list(FILTER DUSK_INTERNAL_FILES INCLUDE REGEX "^src/dusk/")
-# d_map.cpp (game) and settings.cpp read frame_telemetry::lab() on every
-# platform, but the real implementation is Switch-only; the stub is a no-op
-# translation unit on the console, where frame_telemetry.cpp provides it.
-list(APPEND DUSK_INTERNAL_FILES src/dusk/frame_telemetry_stub.cpp)
 if (DUSK_PLATFORM_SWITCH)
     # aleks2: NativeModule is dlopen; src/dusk/switch_native_module.cpp provides
     # it over the built-in mod table instead, which keeps upstream's file

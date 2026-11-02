@@ -1446,15 +1446,6 @@
   <entry key="LOADER_REJECTED_PACKAGE">加载器拒绝了该安装包</entry>
   <entry key="DEVICE_CONNECTED">设备已连接</entry>
   <entry key="DEVICE_DISCONNECTED">设备已断开连接</entry>
-  <entry key="COULD_NOT_INSPECT_PACKAGES">无法检查安装包</entry>
-  <entry key="SETTINGS">设置</entry>
-  <entry key="MODS">模组</entry>
-  <entry key="CHECK_FOR_UPDATES">检查更新</entry>
-  <entry key="QUIT">退出</entry>
-  <entry key="SELECT_DISC_IMAGE">选择光盘镜像</entry>
-  <entry key="CONTINUE_ANYWAY">仍然继续</entry>
-  <entry key="LANGUAGE_UNAVAILABLE">语言不可用</entry>
-  <entry key="CANCEL">取消</entry>
   <entry key="DATA_FOLDER_NOT_CHANGED">数据文件夹未更改</entry>
   <entry key="INTERNAL_RESOLUTION">内部分辨率</entry>
   <entry key="SHADOW_RESOLUTION">阴影分辨率</entry>
