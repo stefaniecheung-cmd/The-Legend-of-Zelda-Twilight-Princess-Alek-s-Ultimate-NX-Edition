@@ -594,13 +594,13 @@ void TouchControlsEditor::save_layout() {
 void TouchControlsEditor::request_reset() {
     auto dismiss = [](Modal& modal) { modal.pop(); };
     push(std::make_unique<Modal>(Modal::Props{
-        .title = "Reset Touch Layout?",
+        .title = "[RESET_TOUCH_LAYOUT]",
         .bodyText =
-            "Reset controls to their default layout. This will not be saved until you press Save.",
+            "[RESET_CONTROLS_TO_THEIR_DEFAULT_LAYOUT_THIS_WILL_NOT_BE_SAVED_UNTIL_YO]",
         .actions =
             {
                 ModalAction{
-                    .label = "Reset",
+                    .label = "[RESET]",
                     .onPressed =
                         [this, dismiss](Modal& modal) {
                             reset_working_layout();
@@ -609,7 +609,7 @@ void TouchControlsEditor::request_reset() {
                         },
                 },
                 ModalAction{
-                    .label = "Cancel",
+                    .label = "[CANCEL]",
                     .onPressed = dismiss,
                 },
             },

@@ -26,23 +26,23 @@ std::vector<DropPackage> prepare_packages(std::vector<DropPackage> packages) {
         if (!package.error.empty()) {
             package.status = package.error;
         } else if (std::ranges::find(batchIds, package.metadata.id) != batchIds.end()) {
-            package.status = "Duplicate package in this drop";
+            package.status = "[DUPLICATE_PACKAGE_IN_THIS_DROP]";
         } else if (!borealis::update::parse_version(package.metadata.version)) {
-            package.status = "Invalid package version";
+            package.status = "[INVALID_PACKAGE_VERSION]";
         } else if (package.hasNative && !mods::EnableCodeMods) {
-            package.status = "Native mods cannot be installed on this platform";
+            package.status = "[NATIVE_MODS_CANNOT_BE_INSTALLED_ON_THIS_PLATFORM]";
         } else if (const auto queued = mods::queue::find_by_mod_id(package.metadata.id);
             queued && !mods::queue::is_terminal(queued->state))
         {
-            package.status = "Already in the install queue";
+            package.status = "[ALREADY_IN_THE_INSTALL_QUEUE]";
         } else if (const auto* installed =
                        mods::ModLoader::instance().find_mod(package.metadata.id))
         {
             if (!mods::ModLoader::instance().can_update(*installed)) {
-                package.status = "A development directory cannot be replaced";
+                package.status = "[A_DEVELOPMENT_DIRECTORY_CANNOT_BE_REPLACED]";
             } else if (mods::compare_package_versions(
                            package.metadata.version, installed->metadata.version) < 0) {
-                package.status = "A newer version is already installed";
+                package.status = "[A_NEWER_VERSION_IS_ALREADY_INSTALLED]";
             } else if (mods::compare_package_versions(
                            package.metadata.version, installed->metadata.version) == 0) {
                 package.status = fmt::format("Reinstall {}", package.metadata.version);
@@ -52,7 +52,7 @@ std::vector<DropPackage> prepare_packages(std::vector<DropPackage> packages) {
                 package.valid = true;
             }
         } else {
-            package.status = "New";
+            package.status = "[NEW]";
             package.valid = true;
         }
         batchIds.push_back(package.metadata.id);
@@ -91,12 +91,12 @@ DropInstallModal::DropInstallModal(std::vector<DropPackage> packages)
 
 DropInstallModal::DropInstallModal(std::vector<DropPackage> packages, PreparedTag)
     : Modal{Props{
-          .title = "Install mods?",
-          .bodyText = "Only install mods from trusted authors.",
+          .title = "[INSTALL_MODS]",
+          .bodyText = "[ONLY_INSTALL_MODS_FROM_TRUSTED_AUTHORS]",
           .actions =
               {
                   ModalAction{
-                      .label = "Cancel",
+                      .label = "[CANCEL]",
                       .onPressed = [](Modal& modal) { modal.pop(); },
                       .isDisabled = {},
                   },

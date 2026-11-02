@@ -68,14 +68,14 @@ void Component::set_disabled(bool value) {
             // RmlUi moves focus to the parent when a focused control is disabled.
             mDisabledFocusFallback = mRoot->GetParentNode();
         }
-        mRoot->SetAttribute("disabled", "");
-        mRoot->SetPseudoClass("disabled", true);
+        mRoot->SetAttribute("[DISABLED]", "");
+        mRoot->SetPseudoClass("[DISABLED]", true);
         mRoot->Blur();
     } else {
         const bool restoreFocus = mDisabledFocusFallback != nullptr && context != nullptr &&
                                   context->GetFocusElement() == mDisabledFocusFallback;
-        mRoot->RemoveAttribute("disabled");
-        mRoot->SetPseudoClass("disabled", false);
+        mRoot->RemoveAttribute("[DISABLED]");
+        mRoot->SetPseudoClass("[DISABLED]", false);
         mDisabledFocusFallback = nullptr;
         if (restoreFocus) {
             focus();

@@ -14,7 +14,7 @@ CrashReportWindow::CrashReportWindow() : WindowSmall("modal") {
     auto* header = append(mDialog, "modal-header");
 
     auto* title = append(header, "modal-title");
-    append_text(title, "Send Crash Reports");
+    append_text(title, "[SEND_CRASH_REPORTS]");
 
     auto* headIcon = append(header, "icon");
     headIcon->SetClass("question-mark", true);
@@ -48,11 +48,11 @@ CrashReportWindow::CrashReportWindow() : WindowSmall("modal") {
     };
 
     static constexpr OptionInfo kOptions[] = {
-        {"Enable",
+        {"[ENABLE]",
             "Send crash reports to Dusklight developers. Reports will include the information "
             "described above.",
             [] { borealis::sentry::set_consent(true); }},
-        {"Disable",
+        {"[DISABLE]",
             "Do not send crash reports. This may make it more difficult to resolve issues you "
             "encounter.",
             [] { borealis::sentry::set_consent(false); }},

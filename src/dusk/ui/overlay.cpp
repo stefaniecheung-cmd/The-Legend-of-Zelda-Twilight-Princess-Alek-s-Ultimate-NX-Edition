@@ -165,7 +165,7 @@ Rml::String back_button_name() {
         case SDL_GAMEPAD_TYPE_PS5:
             return "Create";
         case SDL_GAMEPAD_TYPE_XBOX360:
-            return "Back";
+            return "[BACK]";
         case SDL_GAMEPAD_TYPE_XBOXONE:
             return "View";
         case SDL_GAMEPAD_TYPE_GAMECUBE:
@@ -174,7 +174,7 @@ Rml::String back_button_name() {
             break;
         }
     }
-    return "Back";
+    return "[BACK]";
 }
 
 Rml::Element* create_menu_notification(Rml::Element* parent) {
@@ -195,16 +195,16 @@ Rml::Element* create_menu_notification(Rml::Element* parent) {
     auto* row = append(message, "row");
     auto* prefix = append(row, "notification-prefix");
 #if defined(TARGET_ANDROID) || (defined(__APPLE__) && TARGET_OS_IOS && !TARGET_OS_MACCATALYST)
-    append_text(prefix, "3-finger tap or");
+    append_text(prefix, "[THREE_FINGER_TAP_OR]");
 #else
-    append_text(prefix, "Press ");
+    append_text(prefix, "[PRESS]");
     append_text(append(prefix, "b"), "F1");
     append_text(prefix, " or");
 #endif
     auto* icon = append(row, "icon");
     icon->SetClass("controller", true);
     append_text(append(append(row, "notification-button"), "b"), padButton);
-    append_text(append(row, "notification-action"), "to open menu");
+    append_text(append(row, "notification-action"), "[TO_OPEN_MENU]");
 
     return elem;
 }
@@ -351,10 +351,10 @@ void Overlay::update() {
     if (dusk::speedrun::isActive() && getSettings().game.liveSplitEnabled) {
         dusk::speedrun::updateLiveSplit();
         if (dusk::speedrun::consumeConnectedEvent()) {
-            push_toast({.title = "LiveSplit connected", .duration = std::chrono::seconds(3)});
+            push_toast({.title = "[LIVESPLIT_CONNECTED]", .duration = std::chrono::seconds(3)});
         }
         if (dusk::speedrun::consumeDisconnectedEvent()) {
-            push_toast({.title = "LiveSplit disconnected", .duration = std::chrono::seconds(3)});
+            push_toast({.title = "[LIVESPLIT_DISCONNECTED]", .duration = std::chrono::seconds(3)});
         }
     }
 #endif

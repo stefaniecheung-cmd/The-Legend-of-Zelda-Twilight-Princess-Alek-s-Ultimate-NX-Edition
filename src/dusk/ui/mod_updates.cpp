@@ -22,17 +22,17 @@ public:
     explicit UpdateHeader(Rml::Element* parent)
         : NavGroup{append(parent, "updates-header"), {.layout = Layout::Horizontal}} {
         auto* heading = append(mRoot, "updates-heading");
-        append_text(append(heading, "h2"), "Updates");
+        append_text(append(heading, "h2"), "[UPDATES]");
         mStatus = append(mRoot, "p");
         auto* actions = append(mRoot, "updates-actions");
-        auto& all = add_existing_item<Button>(actions, "Update all");
+        auto& all = add_existing_item<Button>(actions, "[UPDATE_ALL]");
         all.root()->SetClass("update-all", true);
         all.root()->SetAttribute("focus-key", "updates-all");
         all.on_pressed([] {
             const auto result = mods::updates::enqueue_all();
             if (result.skipped) {
                 push_toast({.type = "warning",
-                    .title = "Some updates could not be queued",
+                    .title = "[SOME_UPDATES_COULD_NOT_BE_QUEUED]",
                     .content =
                         fmt::format("{} skipped. {}", result.skipped, escape(result.error))});
             }
@@ -51,7 +51,7 @@ public:
         set_text_content(mStatus, mods::updates::status_text());
         const auto label = count ? fmt::format("Update all ({}) · {}", count,
                                        format_bytes(mods::updates::download_size())) :
-                                   "Update all";
+                                   "[UPDATE_ALL]";
         if (mAllLabel != label) {
             ui::clear_children(mAll->root());
             auto* icon = append(mAll->root(), "icon");
@@ -82,7 +82,7 @@ public:
         mRow = &row;
         auto* actions = row.actions_root();
         auto& action = add_existing_item<IconButton>(
-            actions, IconButton::Props{.icon = "file_download", .label = "Update"});
+            actions, IconButton::Props{.icon = "file_download", .label = "[UPDATE]"});
         action.root()->SetClass("compact", true);
         action.root()->SetAttribute("focus-key", "mod-action-" + mId);
         action.on_pressed([this] { enqueue_mod_update(mId); });
@@ -92,7 +92,7 @@ public:
             const bool isExpanded = expanded.contains(mId);
             auto& changelog = add_existing_item<IconButton>(
                 actions, IconButton::Props{.icon = "description",
-                             .label = isExpanded ? "Hide changelog" : "Show changelog"});
+                             .label = isExpanded ? "[HIDE_CHANGELOG]" : "[SHOW_CHANGELOG]"});
             changelog.root()->SetClass("compact", true);
             changelog.root()->SetAttribute("focus-key", "changelog-" + mId);
             mChangelog = append(mRoot, "update-changelog");
@@ -106,7 +106,7 @@ public:
                     expanded.erase(mId);
                 }
                 mChangelog->SetProperty("display", isExpanded ? "block" : "none");
-                changelog.set_label(isExpanded ? "Hide changelog" : "Show changelog");
+                changelog.set_label(isExpanded ? "[HIDE_CHANGELOG]" : "[SHOW_CHANGELOG]");
                 changelog.set_selected(isExpanded);
             });
             changelog.set_selected(isExpanded);
@@ -143,7 +143,7 @@ public:
         mRow->set_icon(local->metadata.iconPath.empty() ?
                            "" :
                            mod_image_source(*local, local->metadata.iconPath));
-        mAction->set_label(entry->actionable ? "Update" : "Unavailable");
+        mAction->set_label(entry->actionable ? "[UPDATE]" : "[UNAVAILABLE]");
         mAction->set_disabled(!entry->actionable);
         Component::update();
     }
@@ -161,7 +161,7 @@ void enqueue_mod_update(std::string_view id) {
     const auto result = mods::updates::enqueue_update(id);
     if (!result.error.empty()) {
         push_toast({.type = "warning",
-            .title = "Could not queue update",
+            .title = "[COULD_NOT_QUEUE_UPDATE]",
             .content = escape(result.error)});
     }
 }
@@ -215,7 +215,7 @@ void build_mod_updates(Pane& pane, std::unordered_set<std::string>& expanded) {
                 continue;
             }
             if (blocked && !heading) {
-                pane.add_section("Unavailable updates");
+                pane.add_section("[UNAVAILABLE_UPDATES]");
                 heading = true;
             }
             pane.add_child<UpdateCard>(entry.result.id, expanded);

@@ -30,7 +30,7 @@ List::List(Rml::Element* parent, Props props)
     mViewport = append_element(mRoot, "ui-list-viewport");
     mContent = append_element(mViewport, "ui-list-content");
     mEmpty = append_element(mRoot, "ui-list-empty");
-    append_text(mEmpty, "No items");
+    append_text(mEmpty, "[NO_ITEMS]");
 
     Component::listen(mViewport, Rml::EventId::Scroll, [this](Rml::Event&) { mRangeDirty = true; });
     listen(Rml::EventId::Keydown, [this](Rml::Event& event) { handle_keydown(event); });
@@ -265,7 +265,7 @@ bool List::focus_row(int index, bool mayEnterList) {
     }
     auto& row = *mRows[index];
     row.button->update();
-    if (row.button->root()->IsPseudoClassSet("disabled")) {
+    if (row.button->root()->IsPseudoClassSet("[DISABLED]")) {
         return false;
     }
     if (row.button->focus()) {
@@ -318,7 +318,7 @@ void List::update_pending_focus() {
 
     auto& row = *it->second;
     row.button->update();
-    if (!row.button->root()->IsPseudoClassSet("disabled") && row.button->focus()) {
+    if (!row.button->root()->IsPseudoClassSet("[DISABLED]") && row.button->focus()) {
         mActiveKey = row.key;
     }
     mPendingFocusKey.reset();

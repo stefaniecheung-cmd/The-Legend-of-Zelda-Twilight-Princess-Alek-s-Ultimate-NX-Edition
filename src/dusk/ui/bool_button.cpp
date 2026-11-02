@@ -36,7 +36,7 @@ Rml::String BoolButton::format_value() {
         }
     }
 
-    return mGetValue() ? "On" : "Off";
+    return mGetValue() ? "[ON]" : "[OFF]";
 }
 
 bool BoolButton::handle_nav_command(NavCommand cmd) {

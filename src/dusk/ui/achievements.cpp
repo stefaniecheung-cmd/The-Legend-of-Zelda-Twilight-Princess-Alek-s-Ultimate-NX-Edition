@@ -18,11 +18,11 @@ struct CategoryInfo {
 };
 
 constexpr CategoryInfo kCategories[] = {
-    {AchievementCategory::Challenge, "Challenge"},
-    {AchievementCategory::Collection, "Collection"},
-    {AchievementCategory::Minigame, "Minigame"},
-    {AchievementCategory::Misc, "Misc"},
-    {AchievementCategory::Glitched, "Glitched"},
+    {AchievementCategory::Challenge, "[CHALLENGE]"},
+    {AchievementCategory::Collection, "[SAVE_EDITOR_COLLECTION]"},
+    {AchievementCategory::Minigame, "[SAVE_EDITOR_MINIGAME]"},
+    {AchievementCategory::Misc, "[MISC]"},
+    {AchievementCategory::Glitched, "[GLITCHED]"},
 };
 
 void append_achievement_info(Rml::Element* parent, const Achievement& a) {
@@ -32,7 +32,7 @@ void append_achievement_info(Rml::Element* parent, const Achievement& a) {
     append_text(name, a.name);
     auto* badge = append(header, "status-badge");
     badge->SetClass(a.unlocked ? "success" : "error", true);
-    append_text(badge, a.unlocked ? "Unlocked" : "Locked");
+    append_text(badge, a.unlocked ? "[UNLOCKED]" : "[LOCKED]");
 
     auto* description = append(parent, "p");
     description->SetClass("achievement-desc", true);
@@ -63,7 +63,7 @@ public:
                     resetConfirm();
                 } else {
                     mConfirming = true;
-                    mClearButton->set_text("Clear?");
+                    mClearButton->set_text("[CLEAR_QUESTION]");
                 }
                 return true;
             }
@@ -144,9 +144,9 @@ AchievementsWindow::AchievementsWindow() {
                 pane.add_child<AchievementRow>(a);
             }
 
-            pane.add_section("Actions");
+            pane.add_section("[SAVE_EDITOR_ACTIONS]");
 
-            auto& clearAllBtn = pane.add_button("Clear All Achievements");
+            auto& clearAllBtn = pane.add_button("[CLEAR_ALL_ACHIEVEMENTS]");
             clearAllBtn.root()->SetClass("danger", true);
             auto* clearAllPtr = &clearAllBtn;
             auto confirmingAll = std::make_shared<bool>(false);
@@ -157,23 +157,23 @@ AchievementsWindow::AchievementsWindow() {
                         mDoAud_seStartMenu(kSoundClick);
                         AchievementSystem::get().clearAll();
                         *confirmingAll = false;
-                        clearAllPtr->set_text("Clear All Achievements");
+                        clearAllPtr->set_text("[CLEAR_ALL_ACHIEVEMENTS]");
                     } else {
                         *confirmingAll = true;
-                        clearAllPtr->set_text("Are you sure?");
+                        clearAllPtr->set_text("[ARE_YOU_SURE]");
                     }
                     return true;
                 }
                 if (cmd == NavCommand::Cancel && *confirmingAll) {
                     *confirmingAll = false;
-                    clearAllPtr->set_text("Clear All Achievements");
+                    clearAllPtr->set_text("[CLEAR_ALL_ACHIEVEMENTS]");
                     return true;
                 }
                 return false;
             });
             clearAllBtn.listen(Rml::EventId::Blur, [clearAllPtr, confirmingAll](Rml::Event&) {
                 *confirmingAll = false;
-                clearAllPtr->set_text("Clear All Achievements");
+                clearAllPtr->set_text("[CLEAR_ALL_ACHIEVEMENTS]");
             });
         });
     }

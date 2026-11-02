@@ -37,7 +37,7 @@ void Tooltip::update() {
     const bool active = mFollowsFocus ? mAnchor->Contains(context->GetFocusElement()) :
                                         mAnchor->IsPseudoClassSet("hover");
     const bool visible =
-        !mAnchor->IsPseudoClassSet("disabled") && mAnchor->IsVisible(true) && active;
+        !mAnchor->IsPseudoClassSet("[DISABLED]") && mAnchor->IsVisible(true) && active;
     const bool opening = visible && !mRoot->IsClassSet("visible");
     mRoot->SetClass("visible", visible);
     if (!visible) {

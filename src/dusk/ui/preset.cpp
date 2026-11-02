@@ -64,14 +64,14 @@ PresetWindow::PresetWindow() : WindowSmall("modal") {
     auto* header = append(mDialog, "modal-header");
 
     auto* title = append(header, "modal-title");
-    append_text(title, "Welcome to Dusklight");
+    append_text(title, "[WELCOME_TO_DUSKLIGHT]");
 
     auto* headIcon = append(header, "icon");
     headIcon->SetClass("celebration", true);
 
     auto* intro = append(mDialog, "modal-body");
     append_text(intro,
-        "Choose a preset to get started. You can change any setting later from the Settings menu.");
+        "[CHOOSE_A_PRESET_TO_GET_STARTED_YOU_CAN_CHANGE_ANY_SETTING_LATER_FROM_THE]");
 
     auto* grid = append(mDialog, "preset-grid");
 
@@ -83,13 +83,13 @@ PresetWindow::PresetWindow() : WindowSmall("modal") {
 
     static constexpr PresetInfo kPresets[] = {
         {
-            "Classic",
+            "[CLASSIC]",
             "Enhancements disabled to match the GameCube version. "
             "Good for speedrunning or simple nostalgia!",
             applyPresetClassic,
         },
         {
-            "Dusklight",
+            "[DUSKLIGHT]",
             "Graphics & quality of life tweaks, including some from the Wii U version. "
             "Our recommended way to play!",
             applyPresetDusk,

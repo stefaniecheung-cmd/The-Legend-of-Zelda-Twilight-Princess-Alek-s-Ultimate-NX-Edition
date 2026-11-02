@@ -71,35 +71,35 @@ MenuBar::MenuBar()
 }
 
 void MenuBar::build_tabs() {
-    mTabBar->add_tab("Settings", [this] { push(std::make_unique<SettingsWindow>()); });
+    mTabBar->add_tab("[SETTINGS]", [this] { push(std::make_unique<SettingsWindow>()); });
 
     if (getSettings().backend.enableAdvancedSettings) {
-        mTabBar->add_tab("Warp", [this] { push(std::make_unique<WarpWindow>()); });
-        mTabBar->add_tab("Editor", [this] { push(std::make_unique<EditorWindow>()); });
+        mTabBar->add_tab("[WARP]", [this] { push(std::make_unique<WarpWindow>()); });
+        mTabBar->add_tab("[EDITOR]", [this] { push(std::make_unique<EditorWindow>()); });
     }
 
     // Only allow us to access achievements if we are playing on a game mode that uses them
     if (gamemode::getGameModeManager().isCurrentGameMode(gamemode::kVanillaGameModeId) ||
         gamemode::getGameModeManager().isCurrentGameMode(speedrun::kSpeedrunGameModeId))
     {
-        mTabBar->add_tab("Achievements", [this] { push(std::make_unique<AchievementsWindow>()); });
+        mTabBar->add_tab("[ACHIEVEMENTS]", [this] { push(std::make_unique<AchievementsWindow>()); });
     }
-    mModsButton = &mTabBar->add_tab("Mods", [this] { push(std::make_unique<ModsWindow>()); });
+    mModsButton = &mTabBar->add_tab("[MODS]", [this] { push(std::make_unique<ModsWindow>()); });
     for (auto& tab : mods::svc::ui_mod_menu_tabs()) {
         mTabBar->add_tab(tab.label, std::move(tab.onSelected));
     }
 
-    mTabBar->add_tab("Reset", [this] {
+    mTabBar->add_tab("[RESET]", [this] {
         mTabBar->set_active_tab(-1);
         const auto dismiss = [](Modal& modal) { modal.pop(); };
         push(std::make_unique<Modal>(Modal::Props{
-            .title = "Reset Game",
+            .title = "[RESET_GAME]",
             .bodyRml = "Unsaved progress will be lost.<br/>"
                        "<modal-tip>Tip: You can also reset by holding Start+X+B</modal-tip>",
             .actions =
                 {
                     ModalAction{
-                        .label = "Cancel",
+                        .label = "[CANCEL]",
                         .onPressed =
                             [this, dismiss](Modal& modal) {
                                 mDoAud_seStartMenu(kSoundWindowClose);
@@ -107,7 +107,7 @@ void MenuBar::build_tabs() {
                             },
                     },
                     ModalAction{
-                        .label = "Reset",
+                        .label = "[RESET]",
                         .onPressed =
                             [this, dismiss](Modal& modal) {
                                 mDoAud_seStartMenu(kSoundClick);
@@ -130,16 +130,16 @@ void MenuBar::build_tabs() {
             .icon = "question-mark",
         }));
     });
-    mTabBar->add_tab("Quit", [this] {
+    mTabBar->add_tab("[QUIT]", [this] {
         mTabBar->set_active_tab(-1);
         const auto dismiss = [](Modal& modal) { modal.pop(); };
         push(std::make_unique<Modal>(Modal::Props{
-            .title = "Quit Dusklight",
-            .bodyText = "Unsaved progress will be lost.",
+            .title = "[QUIT_DUSKLIGHT]",
+            .bodyText = "[UNSAVED_PROGRESS_WILL_BE_LOST_TIP_YOU_CAN_ALSO_RESET_BY_HOLDING_START_X]",
             .actions =
                 {
                     ModalAction{
-                        .label = "Cancel",
+                        .label = "[CANCEL]",
                         .onPressed =
                             [dismiss](Modal& modal) {
                                 mDoAud_seStartMenu(kSoundWindowClose);
@@ -147,7 +147,7 @@ void MenuBar::build_tabs() {
                             },
                     },
                     ModalAction{
-                        .label = "Quit",
+                        .label = "[QUIT]",
                         .onPressed =
                             [dismiss](Modal& modal) {
                                 mDoAud_seStartMenu(kSoundClick);
@@ -162,7 +162,7 @@ void MenuBar::build_tabs() {
     });
 
     if (speedrun::isActive()) {
-        mTabBar->add_tab("Reset Run", [this] {
+        mTabBar->add_tab("[RESET_RUN]", [this] {
             mTabBar->set_active_tab(-1);
             mDoAud_seStartMenu(kSoundClick);
             speedrun::g_speedrunInfo.reset();

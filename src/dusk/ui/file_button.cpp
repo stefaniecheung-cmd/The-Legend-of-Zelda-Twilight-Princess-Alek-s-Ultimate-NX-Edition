@@ -24,7 +24,7 @@ bool FileButton::disabled() const {
 Rml::String FileButton::format_value() {
     const Rml::String location = mGetValue ? mGetValue() : "";
     if (location.empty()) {
-        return "(none)";
+        return "[NONE_PARENTHESIZED]";
     }
     const auto name = borealis::io::display_name(location);
     return name.empty() ? location : name;
