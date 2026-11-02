@@ -35,8 +35,13 @@
 #endif
 #if defined(__SWITCH__) && DUSK_HAS_FUNCHOOK
 #include "dusk/switch_code_arena.h"
-#include "same_path.hpp"  // V1: equivalent() is wrong on the Switch (st_ino 0)
 #endif
+// aleks2 (V1) put this behind __SWITCH__, but same_path() itself falls back to
+// std::filesystem::equivalent() off the console, while the install and scan
+// checks below call it on every platform -- so the header has to be
+// unconditional or the PC builds stop at "same_path is not a member of
+// dusk::mods".
+#include "same_path.hpp"  // V1: equivalent() is wrong on the Switch (st_ino 0)
 
 #include <borealis/io.hpp>
 #include <borealis/update.hpp>
