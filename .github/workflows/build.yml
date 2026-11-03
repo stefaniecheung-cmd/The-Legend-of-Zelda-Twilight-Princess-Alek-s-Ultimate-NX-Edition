@@ -287,7 +287,15 @@ jobs:
         # sentry_native pulls a chain of submodules whose clone dies with
         # "fatal: '$GIT_DIR' too big" on the runner's deep build path; crash
         # reporting is useless for this fork, so leave it out entirely.
-        run: cmake --preset x-windows-ci-${{matrix.preset}} -D BOREALIS_ENABLE_SENTRY=OFF
+        # sccache + MSVC on the runner abort abseil with
+        # "fatal error C1083: Cannot open compiler generated file: ''":
+        # the wrapper hands cl a blank temp path. Linux and Apple keep the
+        # cache; Windows builds without it.
+        run: >
+          cmake --preset x-windows-ci-${{matrix.preset}}
+          -D BOREALIS_ENABLE_SENTRY=OFF
+          -D CMAKE_C_COMPILER_LAUNCHER=
+          -D CMAKE_CXX_COMPILER_LAUNCHER=
 
       - name: Build
         run: cmake --build --preset x-windows-ci-${{matrix.preset}}
