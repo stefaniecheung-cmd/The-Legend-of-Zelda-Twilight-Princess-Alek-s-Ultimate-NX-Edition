@@ -229,10 +229,11 @@ Rml::String hardware_note(std::string_view id, std::string_view version, std::st
     if (const auto bundled = mods::hardware::switch_variant_version(id); !bundled.empty()) {
         if (installed.empty()) {
             // V1-rc5: nothing installed: the catalog's build installs; ours stays an option.
-            return i18n::tr("[MODS_SWITCH_LINUX_A]") + bundled + i18n::tr("[MODS_SWITCH_LINUX_B]");
+            // bundled is a string_view; GCC/Clang refuse string + string_view.
+            return i18n::tr("[MODS_SWITCH_LINUX_A]") + std::string(bundled) + i18n::tr("[MODS_SWITCH_LINUX_B]");
         }
         // V1-rc5: newer than this build's own Switch package: installing it replaces that one.
-        return i18n::tr("[MODS_SWITCH_NEWER_A]") + bundled + i18n::tr("[MODS_SWITCH_NEWER_B]");
+        return i18n::tr("[MODS_SWITCH_NEWER_A]") + std::string(bundled) + i18n::tr("[MODS_SWITCH_NEWER_B]");
     }
     const auto found = mods::hardware::verdict(id, version, sha256);
     if (!found.listed) {
