@@ -296,6 +296,7 @@ jobs:
           -D BOREALIS_ENABLE_SENTRY=OFF
           -D CMAKE_C_COMPILER_LAUNCHER=
           -D CMAKE_CXX_COMPILER_LAUNCHER=
+          -D CMAKE_MSVC_DEBUG_INFORMATION_FORMAT=ProgramDatabase
 
       - name: Build
         run: cmake --build --preset x-windows-ci-${{matrix.preset}}

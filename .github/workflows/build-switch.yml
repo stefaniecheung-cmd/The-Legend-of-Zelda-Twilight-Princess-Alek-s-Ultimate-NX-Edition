@@ -56,7 +56,7 @@ jobs:
       - name: Stage the portlibs prefix
         if: steps.sdk.outputs.cache-hit != 'true' || inputs.force_driver
         run: |
-          set -euo pipefail
+          set -eu
           rm -rf naga-sdk
           mkdir -p naga-sdk/lib naga-sdk/include
           lib=$(find mesa-switch/builddir-switch -name 'libvulkan.a' | head -1)
@@ -129,7 +129,7 @@ jobs:
       # for a full Mesa rebuild.
       - name: Top up the Vulkan headers
         run: |
-          set -euo pipefail
+          set -eu
           if [ -d naga-sdk/include/vk_video ]; then
             echo "vk_video already staged"
             exit 0
