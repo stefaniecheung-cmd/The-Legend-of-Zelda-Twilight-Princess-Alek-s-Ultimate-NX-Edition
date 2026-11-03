@@ -140,13 +140,19 @@ jobs:
           cp -r /tmp/Vulkan-Headers-1.3.280/include/vk_video naga-sdk/include/
           ls naga-sdk/include/vk_video
 
-      # ALEKS2_STATIC_MODS stays empty on purpose: the preset's default is the
-      # core NRO, and the H36 demo mods do not all build on this toolchain.
+      # ALEKS2_STATIC_MODS stays empty (the documented demo mods do not all
+      # build on this toolchain), but the native loader has to be on: it is what
+      # makes DUSK_CODE_MODS true on the console, and src/dusk/mods/svc/hook.cpp
+      # logs from outside its DUSK_CODE_MODS guards. With both off the file has
+      # no logging header, no fmt and no std::vector, and the build stopped at
+      # "'DuskLog' was not declared in this scope". Every build aleks2 shipped
+      # had code mods on; this one is no different.
       - name: Configure
         run: |
           export DEVKITPRO=/opt/devkitpro
           cmake --preset switch-devkitA64-release \
-            -DNAGA_VULKAN_ROOT="$GITHUB_WORKSPACE/naga-sdk"
+            -DNAGA_VULKAN_ROOT="$GITHUB_WORKSPACE/naga-sdk" \
+            -DALEKS2_NATIVE_MOD_LOADER=ON
 
       - name: Build
         run: |

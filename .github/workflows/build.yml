@@ -296,7 +296,12 @@ jobs:
           -D BOREALIS_ENABLE_SENTRY=OFF
           -D CMAKE_C_COMPILER_LAUNCHER=
           -D CMAKE_CXX_COMPILER_LAUNCHER=
-          -D CMAKE_MSVC_DEBUG_INFORMATION_FORMAT=ProgramDatabase
+          # /Z7 with an explicit /Fd made cl 14.51 abort with C1083 "cannot
+          # open compiler generated file: ''"; switching to /Zi turned that
+          # into C1041, mspdbsrv losing the race between parallel cl runs.
+          # The artifact is a game download, not a debug target, so ask for no
+          # debug information at all.
+          -D CMAKE_MSVC_DEBUG_INFORMATION_FORMAT=Empty
 
       - name: Build
         run: cmake --build --preset x-windows-ci-${{matrix.preset}}
