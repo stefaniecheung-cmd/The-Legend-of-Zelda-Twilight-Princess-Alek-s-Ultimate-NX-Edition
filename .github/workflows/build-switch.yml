@@ -15,6 +15,8 @@ jobs:
     name: Build Switch .nro (Chinese)
     runs-on: ubuntu-24.04
     timeout-minutes: 180
+    container:
+      image: devkitpro/devkita64:latest
 
     steps:
       - name: Checkout
@@ -24,62 +26,33 @@ jobs:
           submodules: recursive
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install devkitPro + build deps
+      - name: Install Python3
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            wget ca-certificates gnupg git python3 python3-pip \
-            meson ninja-build build-essential pkg-config \
-            bison flex llvm-15-dev clang-15 libclang-15-dev \
-            libclc-15-dev spirv-tools libdrm-dev cmake zip unzip \
-            libssl-dev
-          wget -q -O /tmp/devkitpro.keyring.pgp https://apt.devkitpro.org/devkitpro-keyring.pgp
-          sudo cp /tmp/devkitpro.keyring.pgp /etc/apt/trusted.gpg.d/
-          echo "deb [signed-by=/etc/apt/trusted.gpg.d/devkitpro.keyring.pgp] https://apt.devkitpro.org stable main" | sudo tee /etc/apt/sources.list.d/devkitpro.list
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends devkitA64 libnx switch-tools
-          sudo pip3 install --break-system-packages 'meson>=1.4' mako pyyaml
+          apt-get update
+          apt-get install -y --no-install-recommends python3 python3-pip
+          pip3 install --break-system-packages mako pyyaml
 
-      - name: Setup Rust nightly
-        uses: dtolnay/rust-toolchain@nightly
-        with:
-          components: rust-src, rustfmt
-
-      - name: Build Mesa NVK
+      - name: Download NAGA Vulkan SDK
         run: |
-          git clone --depth 1 https://github.com/HayatoG/switch-nvk.git /tmp/switch-nvk
-          cd /tmp/switch-nvk
-          export DEVKITPRO=/opt/devkitpro
-          export PATH=$DEVKITPRO/devkitA64/bin:$DEVKITPRO/tools/bin:$PATH
-          # Try to build using the repo's scripts
-          bash configure-mesa.sh || echo "configure-mesa.sh failed, trying direct"
-          meson setup /tmp/mb --cross-file /tmp/switch-nvk/crossfiles/switch.cross \
-            --buildtype=plain --default-library=static \
-            -Dvulkan-drivers=nouveau -Dopengl=false -Dgles1=disabled -Dgles2=disabled \
-            -Degl=disabled -Dglx=disabled -Dllvm=disabled \
-            /tmp/switch-nvk/mesa-25 || echo "meson setup failed"
-
-      - name: Find libvulkan.a
-        run: |
-          find / -name "libvulkan.a" 2>/dev/null | head -5
-          find /tmp -name "*.a" -path "*/nouveau/*" 2>/dev/null | head -10
+          mkdir -p /tmp/naga-sdk
+          curl -L -o /tmp/naga-sdk.zip \
+            "https://github.com/${{ github.repository }}/releases/download/naga-sdk/naga-sdk.zip"
+          cd /tmp/naga-sdk && unzip /tmp/naga-sdk.zip
+          ls -la /tmp/naga-sdk/lib/libvulkan.a
+          ls -la /tmp/naga-sdk/include/vulkan/vulkan.h
 
       - name: Configure CMake
         run: |
+          . /etc/profile.d/devkit-env.sh || true
           export DEVKITPRO=/opt/devkitpro
-          export PATH=$DEVKITPRO/devkitA64/bin:$DEVKITPRO/tools/bin:$PATH
-          VULKAN_ROOT=""
-          if [ -f /tmp/nvk-switch/lib/libvulkan.a ]; then
-            VULKAN_ROOT=/tmp/nvk-switch
-          fi
-          echo "NAGA_VULKAN_ROOT=$VULKAN_ROOT"
           cmake --preset switch-devkitA64-release \
-            -DNAGA_VULKAN_ROOT="$VULKAN_ROOT"
+            -DNAGA_VULKAN_ROOT=/tmp/naga-sdk \
+            -DPython3_EXECUTABLE=/usr/bin/python3
 
       - name: Build
         run: |
+          . /etc/profile.d/devkit-env.sh || true
           export DEVKITPRO=/opt/devkitpro
-          export PATH=$DEVKITPRO/devkitA64/bin:$DEVKITPRO/tools/bin:$PATH
           cmake --build --preset switch-devkitA64-release -j$(nproc)
 
       - name: Find output .nro
