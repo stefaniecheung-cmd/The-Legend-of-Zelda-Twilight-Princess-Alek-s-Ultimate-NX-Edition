@@ -6,6 +6,7 @@
 #include "natives.hpp"
 #include "lib_cache.hpp"  // V1-rc19
 #include "packages.hpp"
+#include "same_path.hpp"
 #include "update_journal.hpp"
 #if DUSK_HAS_PREPATCH
 #include "prepatch.hpp"
