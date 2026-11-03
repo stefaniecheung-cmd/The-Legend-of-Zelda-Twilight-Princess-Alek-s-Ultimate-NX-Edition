@@ -545,13 +545,13 @@ void endHudCapture() {
     prevPort->setPort();  // never NULL — the capture bails out above
 }
 
-#if !defined(TARGET_ANDROID) && !defined(__ANDROID__) && !defined(ANDROID)
 // Swapping which panel each WINDOW opens on is an Android idea; a desktop aux
 // window has no launcher to hand the choice to. Defined here so the call sites
-// need no platform guard of their own — android_aux_display.cpp supplies the
-// real one.
+// need no platform guard of their own. The comment here used to point at
+// android_aux_display.cpp for the real one, but no such file exists in this
+// tree, so the Android link failed with an undefined symbol and the guard is
+// gone -- every platform that reaches this line wants the no-op.
 void publishSwapPreference(bool) {}
-#endif
 
 bool hudOnCompanion() {
     return getSettings().game.dualScreen.getValue() && s_displayAvailable;
