@@ -284,7 +284,10 @@ jobs:
           vcpkg install freetype:${{matrix.vcpkg_arch}}-windows zstd:${{matrix.vcpkg_arch}}-windows
 
       - name: Configure CMake
-        run: cmake --preset x-windows-ci-${{matrix.preset}}
+        # sentry_native pulls a chain of submodules whose clone dies with
+        # "fatal: '$GIT_DIR' too big" on the runner's deep build path; crash
+        # reporting is useless for this fork, so leave it out entirely.
+        run: cmake --preset x-windows-ci-${{matrix.preset}} -D BOREALIS_ENABLE_SENTRY=OFF
 
       - name: Build
         run: cmake --build --preset x-windows-ci-${{matrix.preset}}
