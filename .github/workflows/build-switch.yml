@@ -73,6 +73,11 @@ jobs:
             exit 1
           fi
           cp -r "$(dirname "$hdr")" naga-sdk/include/
+          # vulkan_core.h includes <vk_video/vulkan_video_codec_h264std.h>;
+          # those headers live in a sibling vk_video/ directory in the mesa
+          # tree, so copy it across or every consumer fails to compile.
+          vkvid=$(find mesa-switch -path '*vk_video/vulkan_video_codec_h264std.h' | head -1)
+          if [ -n "$vkvid" ]; then cp -r "$(dirname "$vkvid")" naga-sdk/include/; fi
           # FindNagaVulkan also wants the Switch WSI header next to vulkan.h.
           find mesa-switch -name 'nvk_switch_wsi.h' -exec cp {} naga-sdk/include/vulkan/ \; || true
           echo "--- staged ---"
