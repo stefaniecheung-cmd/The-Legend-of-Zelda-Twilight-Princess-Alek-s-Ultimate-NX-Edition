@@ -39,12 +39,22 @@ jobs:
           path: mesa-switch
           fetch-depth: 1
 
+      # mesa-switch's rustc wrapper only picks an ELF aarch64 target on the
+      # Windows/MSYS host; on any other host RUST_TARGET stays empty, rustc
+      # falls back to x86_64-unknown-linux-gnu and every Mesa Rust crate
+      # (libnil's format table, compiler_builtins, ...) ends up in libvulkan.a as
+      # EM:62 objects. The NRO link then dies with 167 copies of
+      #   "Relocations in generic ELF (EM: 62)".
+      # ci/patch-mesa-switch.sh pins the target and fetches its std.
+      - name: Pin the Rust cross target for the driver
+        run: bash ci/patch-mesa-switch.sh mesa-switch
+
       - name: Restore driver
         id: sdk
         uses: actions/cache@v4
         with:
           path: naga-sdk
-          key: naga-sdk-v1-${{ hashFiles('mesa-switch/build-switch.sh', 'mesa-switch/Docker.rust') }}
+          key: naga-sdk-v2-${{ hashFiles('mesa-switch/build-switch.sh', 'mesa-switch/Docker.rust', 'mesa-switch/rustc-switch-wrapper.sh') }}
 
       # build-switch.sh runs the whole cross build in a container, so this only
       # needs Docker. It leaves static archives under builddir-switch.
@@ -83,6 +93,9 @@ jobs:
           echo "--- staged ---"
           find naga-sdk -type f | head -20
           ls -la naga-sdk/lib/
+          # A host-arch archive only shows up 40 minutes later as 167 copies of
+          # "Relocations in generic ELF (EM: 62)" in the NRO link.
+          python3 ci/check-archive-arch.py naga-sdk/lib/libvulkan.a
 
       - name: Upload driver
         uses: actions/upload-artifact@v4
