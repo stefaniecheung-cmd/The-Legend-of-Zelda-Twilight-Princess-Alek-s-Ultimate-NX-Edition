@@ -41,16 +41,28 @@ if [ ! -f "$marker" ]; then
     : > "$marker"
 fi
 
-# Proc-macro crates (meson subprojects like paste) run on the host.  With a
-# cross --target rustc emits the target's late link args for them and the
-# host linker stops with
-#   rust-lld: error: --fix-cortex-a53-843419 is only supported on AArch64
-# so those invocations must keep the native target.
+# Crates that have to be built for the build machine instead of the Switch:
+# proc-macro crates (rustc dlopen()s them) *plus* the plain rlibs they depend
+# on.  Meson compiles each subproject once, so a dependency of a proc-macro
+# crate is emitted for the target triple only, and the host-side proc-macro
+# build then dies with
+#   error[E0461]: couldn't find crate `unicode_ident` with expected target
+#   triple x86_64-unknown-linux-gnu
+#   note: crate `unicode_ident`, target triple aarch64-unknown-linux-gnu: ...
+# Matching the command line for "*proc-macro*" is not enough: proc-macro2
+# carries --cfg 'feature="proc-macro"' but its dependency unicode-ident does
+# not, so it kept the aarch64 triple.  Keying off --crate-name fixes that.
+# Keep this list in sync with the rust subprojects mesa pulls in.
+HOST_CRATES=" proc_macro2 unicode_ident syn quote paste "
+crate=
+prev=
 for arg in "$@"; do
-    case "$arg" in
-        *proc-macro*) RUST_TARGET= ;;
-    esac
+    if [ "$prev" = "--crate-name" ]; then crate="$arg"; fi
+    prev="$arg"
 done
+case "$HOST_CRATES" in
+    *" $crate "*) RUST_TARGET= ;;
+esac
 
 if [ -n "$RUST_TARGET" ]; then
     exec "$RUSTC_BIN" --target="$RUST_TARGET" "$@"
@@ -66,3 +78,4 @@ PY
 grep -n 'RUST_TARGET=' "$wrapper" | head -3
 # The insert reads `.../rustup" target add ...`, so match on the stable part.
 grep -n 'target add' "$wrapper"
+grep -n 'HOST_CRATES' "$wrapper"
