@@ -67,21 +67,6 @@ jobs:
         run: sccache --show-stats
 
 
-      # The runner checks the repo out at
-      # D:\a\<76-char repo name>\<76-char repo name>\... and the abseil
-      # objects land under _deps\abseil-cpp-build\absl\...\CMakeFiles\
-      # <target>.dir\internal\<file>.cc.obj -- combined that is past
-      # MAX_PATH (260). cl then dies deterministically with
-      # C1083 "Cannot open compiler generated file: ''" on the same four
-      # longest paths, on both the windows-2022 and windows-2025 images,
-      # with every debug-format setting. Configure and build through a
-      # short junction instead; the artifacts still upload from the
-      # workspace path, which stays shallow.
-      - name: Configure and build through a short path
-        shell: pwsh
-        run: |
-          if (Test-Path C:\w) { Remove-Item C:\w -Force -Recurse }
-          New-Item -ItemType Junction -Path C:\w -Target $env:GITHUB_WORKSPACE | Out-Null
       - name: Configure CMake
         run: cmake --preset x-linux-ci-${{matrix.preset}}
 
@@ -312,6 +297,23 @@ jobs:
           choco install ninja
           vcpkg install freetype:${{matrix.vcpkg_arch}}-windows zstd:${{matrix.vcpkg_arch}}-windows
 
+      # The runner checks the repo out at
+      # D:\a\<76-char repo name>\<76-char repo name>\... and the abseil
+      # objects land under _deps\abseil-cpp-build\absl\...\CMakeFiles\
+      # <target>.dir\internal\<file>.cc.obj -- combined that is past
+      # MAX_PATH (260). cl then dies deterministically with
+      # C1083 "Cannot open compiler generated file: ''" on the same four
+      # longest paths, on both the windows-2022 and windows-2025 images,
+      # with every debug-format setting. Configure and build through a
+      # short junction instead; the artifacts still upload from the
+      # workspace path, which stays shallow.
+      - name: Create short junction
+        shell: pwsh
+        run: |
+          if (Test-Path C:\w) { cmd /c rmdir C:\w }
+          New-Item -ItemType Junction -Path C:\w -Target $env:GITHUB_WORKSPACE | Out-Null
+          Get-Item C:\w | Select-Object FullName, LinkType, Target
+
       - name: Configure CMake
         working-directory: C:\w
         # sentry_native pulls a chain of submodules whose clone dies with
@@ -327,13 +329,9 @@ jobs:
           -D CMAKE_C_COMPILER_LAUNCHER=
           -D CMAKE_CXX_COMPILER_LAUNCHER=
 
-      # The abseil C1083 is a startup race rather than a code problem: exactly
-      # one TU out of the first parallel batch dies with an empty "compiler
-      # generated file" name while cl is still starting mspdbsrv, and the other
-      # 2400 objects build fine. Asking for no debug information (Embedded,
-      # ProgramDatabase, empty) moved the symptom around without removing it, so
-      # keep the stock flags and simply let ninja resume after the hiccup: the
-      # second pass is incremental and only rebuilds what is missing.
+      # The retry is a safety net only: round 10 confirmed the C1083 came from
+      # MAX_PATH overflow, which the junction above removes. Keep the second
+      # pass anyway -- it is incremental and cheap when the first one is green.
       - name: Build
         working-directory: C:\w
         shell: pwsh
