@@ -39,6 +39,14 @@ jobs:
           path: mesa-switch
           fetch-depth: 1
 
+      # The driver job never checks out the game repo (it only builds
+      # mesa-switch in a container), but the patch and the archive check live in
+      # ci/, so pull those helpers in explicitly.
+      - name: Checkout CI helpers
+        uses: actions/checkout@v6
+        with:
+          path: ci-helpers
+
       # mesa-switch's rustc wrapper only picks an ELF aarch64 target on the
       # Windows/MSYS host; on any other host RUST_TARGET stays empty, rustc
       # falls back to x86_64-unknown-linux-gnu and every Mesa Rust crate
@@ -47,7 +55,7 @@ jobs:
       #   "Relocations in generic ELF (EM: 62)".
       # ci/patch-mesa-switch.sh pins the target and fetches its std.
       - name: Pin the Rust cross target for the driver
-        run: bash ci/patch-mesa-switch.sh mesa-switch
+        run: bash ci-helpers/ci/patch-mesa-switch.sh mesa-switch
 
       - name: Restore driver
         id: sdk
@@ -95,7 +103,7 @@ jobs:
           ls -la naga-sdk/lib/
           # A host-arch archive only shows up 40 minutes later as 167 copies of
           # "Relocations in generic ELF (EM: 62)" in the NRO link.
-          python3 ci/check-archive-arch.py naga-sdk/lib/libvulkan.a
+          python3 ci-helpers/ci/check-archive-arch.py naga-sdk/lib/libvulkan.a
 
       - name: Upload driver
         uses: actions/upload-artifact@v4

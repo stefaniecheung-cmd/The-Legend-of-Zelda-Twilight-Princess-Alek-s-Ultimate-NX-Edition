@@ -236,7 +236,13 @@ jobs:
       matrix:
         include:
           - name: MSVC x86_64
-            runner: windows-latest
+            # windows-latest is the windows-2025 image, whose MSVC 14.51 dies
+            # on the first batch of abseil TUs with C1083 "Cannot open compiler
+            # generated file: ''" -- deterministically, seconds into the build,
+            # on three different files. Nothing in the command line is at
+            # fault, so build on the windows-2022 image and its stable MSVC
+            # 14.4x toolchain instead.
+            runner: windows-2022
             preset: msvc
             msvc_arch: amd64
             vcpkg_arch: x64
