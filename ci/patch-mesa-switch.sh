@@ -89,7 +89,14 @@ for mb in sorted((root / "subprojects" / "packagefiles").glob("*/meson.build")):
         if line.rstrip() == ")":
             lines.insert(
                 i + 1,
-                "\nadd_project_arguments('--cfg', 'mesa_switch_build_machine', language: 'rust')\n",
+                # native: true is REQUIRED: meson routes project args per
+                # machine, and these native: true targets are BUILD machine
+                # targets (they invoke PATH rustc, which is the wrapper, since
+                # build-switch.sh puts /usr/local/libexec on PATH).  Without
+                # the kwarg the cfg lands in the host-machine bucket and never
+                # reaches the command line (verified in the 2026-11-04 run:
+                # "marked 18" but zero occurrences of the marker in the log).
+                "\nadd_project_arguments('--cfg', 'mesa_switch_build_machine', language: 'rust', native: true)\n",
             )
             break
     else:
@@ -99,6 +106,32 @@ for mb in sorted((root / "subprojects" / "packagefiles").glob("*/meson.build")):
     marked += 1
     print("marked", mb.relative_to(root))
 print("marked", marked, "build-machine subprojects")
+
+# --- 3. mark the MAIN project's build-machine rust targets ---------------
+# compiler_proc (src/compiler/rust/meson.build, native: true) is NOT a
+# subproject, so step 2 cannot reach it.  Injecting the same cfg into the
+# root meson.build (build-machine bucket) covers every native: true rust
+# target in the main tree, whatever it is.  add_project_arguments before
+# any target is fine, and meson does not require 'rust' to be an enabled
+# language at the call site (verified against meson 1.12 source).
+root_mb = root / "meson.build"
+body = root_mb.read_text()
+if "mesa_switch_build_machine" in body:
+    print("root meson.build already marked")
+else:
+    lines = body.splitlines(keepends=True)
+    for i, line in enumerate(lines[:60]):
+        if line.rstrip() == ")":
+            lines.insert(
+                i + 1,
+                "\n# CI patch: mark build-machine rust compiles for rustc-switch-wrapper.sh\n"
+                "add_project_arguments('--cfg', 'mesa_switch_build_machine', language: 'rust', native: true)\n",
+            )
+            print("marked root meson.build after project() line", i + 1)
+            break
+    else:
+        sys.exit("root meson.build project() close not found")
+    root_mb.write_text("".join(lines))
 PY
 
 grep -n 'RUST_TARGET=' "$wrapper" | head -3
