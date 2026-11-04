@@ -50,4 +50,5 @@ print("patched", path)
 PY
 
 grep -n 'RUST_TARGET=' "$wrapper" | head -3
-grep -n 'rustup target add' "$wrapper"
+# The insert reads `.../rustup" target add ...`, so match on the stable part.
+grep -n 'target add' "$wrapper"
