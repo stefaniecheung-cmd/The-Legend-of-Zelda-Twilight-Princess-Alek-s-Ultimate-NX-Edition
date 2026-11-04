@@ -32,18 +32,32 @@ if default_old not in text:
     sys.exit("rustc wrapper default target line not found")
 text = text.replace(default_old, default_new, 1)
 
-exec_old = '    exec "$RUSTC_BIN" --target="$RUST_TARGET" "$@"'
-ensure = '''    # The base image ships rust-src but no std for this target, so rustc would
-    # stop with "can't find crate for `core`". Install it once per container.
-    marker="/tmp/.mesa-switch-rust-target-$(echo "$RUST_TARGET" | tr / _)"
-    if [ ! -f "$marker" ]; then
-        "$(dirname "$RUSTC_BIN")/rustup" target add "$RUST_TARGET" >/dev/null 2>&1 || true
-        : > "$marker"
-    fi
-'''
+exec_old = 'if [ -n "$RUST_TARGET" ]; then\n    exec "$RUSTC_BIN" --target="$RUST_TARGET" "$@"\nfi'
+ensure = '''# The base image ships rust-src but no std for this target, so rustc would
+# stop with "can't find crate for `core`". Install it once per container.
+marker="/tmp/.mesa-switch-rust-target-$(echo "$RUST_TARGET" | tr / _)"
+if [ ! -f "$marker" ]; then
+    "$(dirname "$RUSTC_BIN")/rustup" target add "$RUST_TARGET" >/dev/null 2>&1 || true
+    : > "$marker"
+fi
+
+# Proc-macro crates (meson subprojects like paste) run on the host.  With a
+# cross --target rustc emits the target's late link args for them and the
+# host linker stops with
+#   rust-lld: error: --fix-cortex-a53-843419 is only supported on AArch64
+# so those invocations must keep the native target.
+for arg in "$@"; do
+    case "$arg" in
+        *proc-macro*) RUST_TARGET= ;;
+    esac
+done
+
+if [ -n "$RUST_TARGET" ]; then
+    exec "$RUSTC_BIN" --target="$RUST_TARGET" "$@"
+fi'''
 if exec_old not in text:
-    sys.exit("rustc wrapper exec line not found")
-text = text.replace(exec_old, ensure + exec_old, 1)
+    sys.exit("rustc wrapper exec block not found")
+text = text.replace(exec_old, ensure, 1)
 
 path.write_text(text)
 print("patched", path)

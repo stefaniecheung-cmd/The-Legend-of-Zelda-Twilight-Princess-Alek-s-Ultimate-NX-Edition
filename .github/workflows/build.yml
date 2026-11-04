@@ -18,6 +18,7 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 env:
+  APP_VERSION: v1.1.0-cn
   SCCACHE_GHA_ENABLED: "true"
   RUSTC_WRAPPER: "sccache"
   SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
@@ -65,6 +66,22 @@ jobs:
       - name: Print sccache stats
         run: sccache --show-stats
 
+
+      # The runner checks the repo out at
+      # D:\a\<76-char repo name>\<76-char repo name>\... and the abseil
+      # objects land under _deps\abseil-cpp-build\absl\...\CMakeFiles\
+      # <target>.dir\internal\<file>.cc.obj -- combined that is past
+      # MAX_PATH (260). cl then dies deterministically with
+      # C1083 "Cannot open compiler generated file: ''" on the same four
+      # longest paths, on both the windows-2022 and windows-2025 images,
+      # with every debug-format setting. Configure and build through a
+      # short junction instead; the artifacts still upload from the
+      # workspace path, which stays shallow.
+      - name: Configure and build through a short path
+        shell: pwsh
+        run: |
+          if (Test-Path C:\w) { Remove-Item C:\w -Force -Recurse }
+          New-Item -ItemType Junction -Path C:\w -Target $env:GITHUB_WORKSPACE | Out-Null
       - name: Configure CMake
         run: cmake --preset x-linux-ci-${{matrix.preset}}
 
@@ -296,6 +313,7 @@ jobs:
           vcpkg install freetype:${{matrix.vcpkg_arch}}-windows zstd:${{matrix.vcpkg_arch}}-windows
 
       - name: Configure CMake
+        working-directory: C:\w
         # sentry_native pulls a chain of submodules whose clone dies with
         # "fatal: '$GIT_DIR' too big" on the runner's deep build path; crash
         # reporting is useless for this fork, so leave it out entirely.
@@ -317,6 +335,7 @@ jobs:
       # keep the stock flags and simply let ninja resume after the hiccup: the
       # second pass is incremental and only rebuilds what is missing.
       - name: Build
+        working-directory: C:\w
         shell: pwsh
         run: |
           cmake --build --preset x-windows-ci-${{matrix.preset}}
