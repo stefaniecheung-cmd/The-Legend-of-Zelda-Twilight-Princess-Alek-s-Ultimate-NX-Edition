@@ -77,12 +77,12 @@ jobs:
           set -eu
           rm -rf naga-sdk
           mkdir -p naga-sdk/lib naga-sdk/include
-          # build-switch.sh partial-links the driver into one object that also
-          # carries rustc's core/alloc/compiler_builtins (libvulkan-selfcontained.a).
-          # The plain meson archive leaves `core::panicking::*` and `__rdl_alloc`
-          # undefined, which only surfaces 40 minutes later as a link failure of
-          # dusklight.elf, so prefer the self-contained one and fall back to the
-          # raw archive for old caches.
+          # build-switch.sh appends rustc's core/alloc/compiler_builtins objects
+          # to the driver archive (libvulkan-selfcontained.a). The plain meson
+          # archive leaves `core::panicking::*` and `__rdl_alloc` undefined,
+          # which only surfaces 40 minutes later as a link failure of
+          # dusklight.elf, so prefer the bundled one and fall back to the raw
+          # archive for old caches.
           lib=$(find mesa-switch/builddir-switch -name 'libvulkan-selfcontained.a' | head -1)
           if [ -z "$lib" ]; then
             lib=$(find mesa-switch/builddir-switch -name 'libvulkan.a' | head -1)

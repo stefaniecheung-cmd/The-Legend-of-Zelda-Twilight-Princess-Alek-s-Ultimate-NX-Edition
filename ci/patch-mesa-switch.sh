@@ -133,35 +133,45 @@ else:
         sys.exit("root meson.build project() close not found")
     root_mb.write_text("".join(lines))
 
-# --- 4. self-contained driver archive ------------------------------------
-# A plain archive merge leaves the Rust runtime undefined: the NRO link died
-# with `core::panicking::panic*`, `alloc::alloc::handle_alloc_error`,
-# `alloc::raw_vec::RawVecInner::deallocate` and a hidden `__rdl_alloc`.
-# The prebuilt nvk.tar.xz driver shipped one `ld -r` object
-# (libnvk_local.o, 27 MB) instead of a bag of members, i.e. it had already
-# pulled rustc's core/alloc/compiler_builtins in.  Replicate that inside the
-# build container, where the aarch64 ld and the rustup std for the cross
-# target both exist.
+# --- 4. bundle the rust runtime into the driver archive -------------------
+# The meson-built libvulkan.a already carries nak_rs and std objects, but not
+# rustc's core/alloc/compiler_builtins.  The NRO link has no access to rustc
+# rlibs, so it died with
+#   undefined reference to `core::panicking::panic`
+#   undefined reference to `alloc::alloc::handle_alloc_error`
+#   hidden symbol `__rdl_alloc' isn't defined
+# Do NOT partial-link with `ld -r --whole-archive`: the archive contains
+# duplicate member names (nv_push_cl*.c.o appear twice), so --whole-archive
+# extracts them twice and every symbol becomes "multiple definition".
+# Appending the runtime objects as extra *members* is safe instead: a static
+# link only pulls the members it actually needs.
 build_script = root / "build-switch.sh"
 bs = build_script.read_text()
 if "libvulkan-selfcontained.a" in bs:
-    print("build-switch.sh already produces the self-contained archive")
+    print("build-switch.sh already bundles the rust runtime")
 else:
     tail_marker = '\necho "=== Build complete ==="'
     if tail_marker not in bs:
         sys.exit("build-switch.sh completion banner not found")
-    extra = r'''
-# Partial-link the driver into one object so the Rust runtime comes along.
-# Consumers (the NRO link) have no access to rustc's rlibs, and the C linker
-# cannot invent `core::panicking::*` / `alloc::*` on its own.
-echo "=== Creating self-contained libvulkan.a ==="
+    extra = r"""
+# Append rustc's runtime objects to the driver archive so the NRO link (which
+# cannot see rustc rlibs) resolves core/alloc/compiler_builtins/__rdl_alloc.
+echo "=== Bundling rust runtime into libvulkan.a ==="
 run '
 set -e
 cd /project/builddir-switch
-LD=/opt/devkitpro/devkitA64/bin/aarch64-none-elf-ld
+LIB=src/nouveau/vulkan/libvulkan.a
 AR=/opt/devkitpro/devkitA64/bin/aarch64-none-elf-ar
+if [ ! -f "$LIB" ]; then
+    echo "ERROR: $LIB not found" >&2
+    exit 1
+fi
+if [ -n "$(head -c 8 "$LIB" | tr -d "\n" | grep thin || true)" ]; then
+    echo "ERROR: $LIB is a thin archive, unsupported by this step" >&2
+    exit 1
+fi
 STD="$(/root/.cargo/bin/rustc --print target-libdir --target aarch64-unknown-linux-gnu 2>/dev/null || true)"
-if [ ! -d "$STD" ]; then
+if [ -z "$STD" ] || [ ! -d "$STD" ]; then
     STD="$(ls -d /root/.rustup/toolchains/*/lib/rustlib/aarch64-unknown-linux-gnu/lib 2>/dev/null | head -1)"
 fi
 if [ -z "$STD" ] || [ ! -d "$STD" ]; then
@@ -169,19 +179,33 @@ if [ -z "$STD" ] || [ ! -d "$STD" ]; then
     exit 1
 fi
 echo "rust std: $STD"
-set -- "$STD"/libcore-*.rlib "$STD"/liballoc-*.rlib \
-       "$STD"/libcompiler_builtins-*.rlib "$STD"/libpanic_abort-*.rlib
-echo "rust runtime archives:"; printf "  %s\n" "$@"
-"$LD" -r -o libnvk_selfcontained.o \
-    --whole-archive src/nouveau/vulkan/libvulkan.a --no-whole-archive \
-    --start-group "$@" --end-group
-"$AR" rcs libvulkan-selfcontained.a libnvk_selfcontained.o
-ls -la libvulkan-selfcontained.a libnvk_selfcontained.o
+rm -rf .rustrt
+mkdir .rustrt
+cd .rustrt
+for crate in core alloc compiler_builtins panic_abort; do
+    rlib=$(ls "$STD"/lib${crate}-*.rlib 2>/dev/null | head -1)
+    if [ -z "$rlib" ]; then
+        echo "ERROR: lib${crate}-*.rlib missing in $STD" >&2
+        exit 1
+    fi
+    echo "  + $crate  $(basename "$rlib")"
+    "$AR" x "$rlib"
+done
+rm -f lib.rmeta
+count=$(ls *.o 2>/dev/null | wc -l)
+echo "runtime objects: $count"
+"$AR" qs "../$LIB" *.o
+cd ..
+rm -rf .rustrt
+echo "archive members now: $("$AR" t "$LIB" | wc -l)"
+cp "$LIB" libvulkan-selfcontained.a
+ls -la libvulkan-selfcontained.a
 '
-'''
+"""
     bs = bs.replace(tail_marker, extra + tail_marker, 1)
     build_script.write_text(bs)
     print("patched", build_script)
+
 PY
 
 grep -n 'RUST_TARGET=' "$wrapper" | head -3
