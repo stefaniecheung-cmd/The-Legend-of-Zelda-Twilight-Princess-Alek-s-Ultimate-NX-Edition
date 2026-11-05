@@ -12,7 +12,6 @@ void shutdown() noexcept;
 bool set_language(std::string_view language) noexcept;
 const std::string& language() noexcept;
 bool is_simplified_chinese() noexcept;
-bool use_harmonyos_font() noexcept;
 int translate(Rml::String& translated, const Rml::String& input);
 // Translates outside of RmlUi's text path (log output, native dialogs, ...).
 std::string tr(std::string_view input);

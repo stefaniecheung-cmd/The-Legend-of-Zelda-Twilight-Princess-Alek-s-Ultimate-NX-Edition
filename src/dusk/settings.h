@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <string>
 
 #include "dusk/config_var.hpp"
 #include "dusk/resolution_ladder.hpp"
@@ -263,6 +264,12 @@ struct UserSettings {
         ConfigVar<bool> enableReverb;
         ConfigVar<bool> menuSounds;
     } audio;
+
+    struct {
+        // Interface language. The text lives in res/i18n/<language>.xml; the
+        // value is the file stem ("en", "zh-cn").
+        ConfigVar<std::string> language;
+    } ui;
 
     // Game settings
 

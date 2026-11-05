@@ -13,9 +13,10 @@
 #include <string_view>
 #include <system_error>
 
+#include "aurora/lib/io.hpp"
 #include "aurora/lib/logging.hpp"
 #include "aurora/lib/rmlui/FileInterface_SDL.h"
-#include "dusk/io.hpp"
+#include "dusk/settings.h"
 #include "ui.hpp"
 #include <borealis/log.hpp>
 
@@ -24,16 +25,10 @@ namespace {
 
 borealis::Log I18nLog{"dusk::ui::i18n"};
 
-// std::filesystem::path has no accessor that yields UTF-8 on every platform
-// (string() uses the ANSI codepage on Windows), and both the Rml file
-// interface and the log lines want UTF-8 bytes.
-std::string to_utf8(const std::filesystem::path& path) {
-    const auto u8 = path.u8string();
-    // char8_t under C++20, char under C++17 -- the cast is a no-op in the
-    // latter case and covers both.
-    return std::string(reinterpret_cast<const char*>(u8.data()), u8.size());
-}
-
+// Keys are the exact English text this port renders: the UI is written with
+// string literals rather than tokens, and RmlUi hands the finished string to
+// TranslateString, so the source text *is* the key. That keeps the whole
+// translation out of the 500-odd call sites and out of every upstream merge.
 absl::flat_hash_map<Rml::String, Rml::String> sDictionary;
 std::string sLanguage = "en";
 bool sInitialized = false;
@@ -143,7 +138,7 @@ Rml::String decode_xml_entities(std::string_view value) {
 
 std::string read_resource_text(const std::filesystem::path& filePath) {
     aurora::rmlui::FileInterface_SDL fileInterface;
-    const Rml::String fileName = to_utf8(filePath);
+    const Rml::String fileName = aurora::io::fs_path_to_string(filePath);
     RmlFile file{fileInterface, fileInterface.Open(fileName)};
     if (!file.handle) {
         throw std::runtime_error(fmt::format("Unable to open resource '{}'", fileName));
@@ -208,7 +203,10 @@ bool parse_language_xml(std::string_view xml) {
             continue;
         }
 
-        const auto key = trim_ascii(xml.substr(keyBegin, keyEnd - keyBegin));
+        // The key is the literal the port renders, so it has to come back out of
+        // the attribute exactly as it went in: "Downloads & installs" is stored
+        // as "Downloads &amp; installs" and would otherwise never match.
+        const auto key = decode_xml_entities(trim_ascii(xml.substr(keyBegin, keyEnd - keyBegin)));
         const auto rawValue = xml.substr(tagEnd + 1, entryClose - (tagEnd + 1));
         sDictionary[key] = decode_xml_entities(rawValue);
         cursor = entryClose + 8;
@@ -222,12 +220,12 @@ bool load_dictionary(std::string_view language) {
     try {
         const std::string xml = read_resource_text(filePath);
         if (!parse_language_xml(xml)) {
-            I18nLog.error("No valid i18n entries found in '{}'", to_utf8(filePath));
+            I18nLog.error("No valid i18n entries found in '{}'", aurora::io::fs_path_to_string(filePath));
             return false;
         }
         return true;
     } catch (const std::exception& e) {
-        I18nLog.error("Failed to load i18n dictionary '{}': {}", to_utf8(filePath), e.what());
+        I18nLog.error("Failed to load i18n dictionary '{}': {}", aurora::io::fs_path_to_string(filePath), e.what());
         return false;
     }
 }
@@ -241,11 +239,23 @@ bool translate_token(Rml::String& translated, std::string_view token) {
     return true;
 }
 
+bool find_exact(const Rml::String& key, Rml::String& out) {
+    if (key.empty()) {
+        return false;
+    }
+    const auto it = sDictionary.find(key);
+    if (it == sDictionary.end()) {
+        return false;
+    }
+    out = it->second;
+    return true;
+}
+
 }  // namespace
 
 bool initialize() noexcept {
     sInitialized = true;
-    return set_language("en");
+    return set_language(getSettings().ui.language.getValue());
 }
 
 void shutdown() noexcept {
@@ -262,8 +272,7 @@ bool set_language(std::string_view language) noexcept {
     if (normalized == "zh-hans") {
         normalized = "zh-cn";
     }
-    if (normalized != "en" && normalized != "zh-cn" && normalized != "fr" && normalized != "ja")
-    {
+    if (normalized != "en" && normalized != "zh-cn") {
         normalized = "en";
     }
 
@@ -277,8 +286,8 @@ bool set_language(std::string_view language) noexcept {
     }
 
     if (normalized != "en" && load_dictionary("en")) {
-        // Keep requested UI language so style decisions (e.g. zh-cn default font)
-        // still apply even when text falls back to en resources.
+        // Keep the requested UI language so font/style decisions still apply even
+        // when the text falls back to the English resources.
         sLanguage = std::move(normalized);
         return true;
     }
@@ -294,16 +303,31 @@ bool is_simplified_chinese() noexcept {
     return sLanguage == "zh-cn";
 }
 
-bool use_harmonyos_font() noexcept {
-    return is_simplified_chinese() || sLanguage == "ja";
-}
-
 int translate(Rml::String& translated, const Rml::String& input) {
     if (!sInitialized || sDictionary.empty()) {
         translated = input;
         return 0;
     }
 
+    // 1. The literal this port passes to set_text_content / SetInnerRML, verbatim.
+    auto trimmed = trim_ascii(input);
+    if (find_exact(trimmed, translated)) {
+        return 1;
+    }
+
+    // 2. Multi-line blocks whose first line is the translated label, e.g.
+    //    "Enabled Mods:\n<list>" or "Shader cache: 42 entries\n...".
+    const auto newline = input.find('\n');
+    if (newline != Rml::String::npos) {
+        auto head = trim_ascii(std::string_view(input).substr(0, newline));
+        Rml::String headTranslation;
+        if (find_exact(head, headTranslation)) {
+            translated = headTranslation + input.substr(newline);
+            return 1;
+        }
+    }
+
+    // 3. "[TOKEN]" substitution, for strings built by concatenation.
     translated.clear();
     translated.reserve(input.size());
 
@@ -330,6 +354,10 @@ int translate(Rml::String& translated, const Rml::String& input) {
             translated.append(input.substr(open, close - open + 1));
         }
         cursor = close + 1;
+    }
+
+    if (replacements == 0) {
+        translated = input;
     }
     return replacements;
 }

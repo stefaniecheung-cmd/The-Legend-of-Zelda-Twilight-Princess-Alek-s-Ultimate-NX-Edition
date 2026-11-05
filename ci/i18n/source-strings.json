@@ -1,0 +1,5087 @@
+{
+"Reserved": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"Not Bound": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Import Failed": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Ready.": [
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Actions": [
+"src\\dusk\\ui\\achievements.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"Copy Failed": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Export Failed": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Restart now": [
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\prelaunch.cpp",
+"src\\dusk\\ui\\prelaunch.cpp",
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Unknown": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\prelaunch.cpp",
+"src\\dusk\\ui\\prelaunch.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"User-Agent": [
+"src\\dusk\\ui\\remote_texture_provider.cpp",
+"src\\dusk\\mods\\catalog.cpp",
+"src\\dusk\\mods\\svc\\http.cpp",
+"src\\dusk\\mods\\svc\\http.cpp",
+"src\\dusk\\mods\\svc\\websocket.cpp",
+"src\\dusk\\mods\\svc\\websocket.cpp"
+],
+"Update": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_updates.cpp",
+"src\\dusk\\ui\\mod_updates.cpp",
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Clear": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\logs_window.cpp",
+"src\\dusk\\ui\\online_mods.cpp",
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Clear All Achievements": [
+"src\\dusk\\ui\\achievements.cpp",
+"src\\dusk\\ui\\achievements.cpp",
+"src\\dusk\\ui\\achievements.cpp",
+"src\\dusk\\ui\\achievements.cpp"
+],
+"Dusklight": [
+"src\\dusk\\ui\\graphics_tuner.cpp",
+"src\\dusk\\ui\\preset.cpp",
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Import Save": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Installed": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\package_row.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Mod requires a newer Dusklight version": [
+"src\\dusk\\mods\\loader\\mod_services.cpp",
+"src\\dusk\\mods\\loader\\mod_services.cpp",
+"src\\dusk\\mods\\svc\\registry.cpp",
+"src\\dusk\\mods\\svc\\registry.cpp"
+],
+"No Device Selected": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Options": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"Retry": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Unavailable": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_updates.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"no display name": [
+"src\\dusk\\mods\\svc\\hook.cpp",
+"src\\dusk\\mods\\svc\\hook.cpp",
+"src\\dusk\\mods\\svc\\hook.cpp",
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"A required provider is unavailable": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\mods\\loader\\loader.cpp",
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"All mods": [
+"src\\dusk\\ui\\logs_window.cpp",
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Buttons": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"C Stick": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Canceled": [
+"src\\dusk\\ui\\package_row.cpp",
+"src\\dusk\\mods\\queue.cpp",
+"src\\dusk\\mods\\queue.cpp"
+],
+"Check for updates": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_updates.cpp",
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Control Stick": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Copy to Profile": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Create Backup": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Custom Action Bindings": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Delete": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Disable": [
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\reporting.cpp"
+],
+"Failed": [
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\package_row.cpp",
+"src\\dusk\\ui\\package_row.cpp"
+],
+"Items": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"Left Stick": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Logs": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\logs_window.cpp",
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"No writable mods directory is configured": [
+"src\\dusk\\mods\\loader\\loader.cpp",
+"src\\dusk\\mods\\queue.cpp",
+"src\\dusk\\mods\\queue.cpp"
+],
+"Normal": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Open Save Folder": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Quit": [
+"src\\dusk\\ui\\menu_bar.cpp",
+"src\\dusk\\ui\\menu_bar.cpp",
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Reset": [
+"src\\dusk\\ui\\menu_bar.cpp",
+"src\\dusk\\ui\\menu_bar.cpp",
+"src\\dusk\\ui\\touch_controls_editor.cpp"
+],
+"Restart by hand": [
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Restart required": [
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Right Stick": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Select All": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Start": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"The catalog request failed.": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\mods\\catalog.cpp"
+],
+"The mod is no longer installed": [
+"src\\dusk\\mods\\loader\\loader.cpp",
+"src\\dusk\\mods\\loader\\loader.cpp",
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"The mod request failed.": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\mods\\catalog.cpp"
+],
+"Uncategorized": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Waiting...": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Warp": [
+"src\\dusk\\ui\\menu_bar.cpp",
+"src\\dusk\\ui\\warp.cpp",
+"src\\dusk\\ui\\warp.cpp"
+],
+"failed to register service exports": [
+"src\\dusk\\mods\\loader\\loader.cpp",
+"src\\dusk\\mods\\loader\\loader.cpp",
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"glibc POLL* bits (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp",
+"src\\dusk\\mods\\loader\\glibc_net.cpp",
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"truncated hook record": [
+"src\\dusk\\mods\\loader\\natives.cpp",
+"src\\dusk\\mods\\loader\\natives.cpp",
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"Accept": [
+"src\\dusk\\ui\\remote_texture_provider.cpp",
+"src\\dusk\\mods\\catalog.cpp"
+],
+"Achievements": [
+"src\\dusk\\ui\\menu_bar.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"All": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Analog": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Auto (only when the GPU is tight)": [
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Canceling...": [
+"src\\dusk\\mods\\queue.cpp",
+"src\\dusk\\mods\\queue.cpp"
+],
+"Category": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Check for Updates": [
+"src\\dusk\\ui\\prelaunch.cpp",
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Checking for mod updates…": [
+"src\\dusk\\mods\\updates.cpp",
+"src\\dusk\\mods\\updates.cpp"
+],
+"Classic": [
+"src\\dusk\\ui\\graphics_tuner.cpp",
+"src\\dusk\\ui\\preset.cpp"
+],
+"Collection": [
+"src\\dusk\\ui\\achievements.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"Connection": [
+"src\\dusk\\mods\\svc\\http.cpp",
+"src\\dusk\\mods\\svc\\websocket.cpp"
+],
+"Content-Length": [
+"src\\dusk\\mods\\svc\\http.cpp",
+"src\\dusk\\mods\\svc\\websocket.cpp"
+],
+"Copied to clipboard": [
+"src\\dusk\\ui\\color_input.cpp",
+"src\\dusk\\ui\\logs_window.cpp"
+],
+"Copy": [
+"src\\dusk\\ui\\logs_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Create": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\overlay.cpp"
+],
+"D-Pad": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Deadzone": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Default": [
+"src\\dusk\\ui\\color_input.cpp",
+"src\\dusk\\ui\\color_input.cpp"
+],
+"Delete Backup": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Delete Mod Data": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Delete Save": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Development directories cannot be updated in-game.": [
+"src\\dusk\\mods\\updates.cpp",
+"src\\dusk\\mods\\updates.cpp"
+],
+"Digital": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Enable": [
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\reporting.cpp"
+],
+"English": [
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Equipment": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"Failed to check for updates": [
+"src\\dusk\\ui\\prelaunch.cpp",
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Fairy": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"GameCube": [
+"src\\dusk\\ui\\prelaunch.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Gameplay": [
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Hero's Clothes": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hide changelog": [
+"src\\dusk\\ui\\mod_updates.cpp",
+"src\\dusk\\ui\\mod_updates.cpp"
+],
+"Hold": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Host": [
+"src\\dusk\\mods\\svc\\http.cpp",
+"src\\dusk\\mods\\svc\\websocket.cpp"
+],
+"Import": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Keyboard": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Language": [
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Looking for disc images...": [
+"src\\dusk\\ui\\prelaunch.cpp",
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Magic Armor": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"Max Life": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"Minigame": [
+"src\\dusk\\ui\\achievements.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"Minus": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\overlay.cpp"
+],
+"Mod failed": [
+"src\\dusk\\mods\\loader\\loader.cpp",
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Mod must be updated for the current Dusklight version": [
+"src\\dusk\\mods\\loader\\mod_services.cpp",
+"src\\dusk\\mods\\svc\\registry.cpp"
+],
+"Mod requires a service that is unavailable": [
+"src\\dusk\\mods\\loader\\mod_services.cpp",
+"src\\dusk\\mods\\svc\\registry.cpp"
+],
+"Mods": [
+"src\\dusk\\ui\\menu_bar.cpp",
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Mouse": [
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Network": [
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Next": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Online mods": [
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Open Data Folder": [
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Open in browser": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Ordon Clothes": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"Pause": [
+"src\\dusk\\ui\\online_mods.cpp",
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Pause all": [
+"src\\dusk\\ui\\online_mods.cpp",
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Previous": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Queued": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\package_row.cpp"
+],
+"Quit Dusklight and open it again to apply the change.": [
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Rainbow": [
+"src\\dusk\\ui\\color_input.cpp",
+"src\\dusk\\ui\\color_input.cpp"
+],
+"Remove update": [
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Requires bundling": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Restore Backup": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Resume": [
+"src\\dusk\\ui\\mod_browser.cpp",
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Room": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\warp.cpp"
+],
+"Rumble": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Save Files": [
+"src\\dusk\\ui\\saves_window.cpp",
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Select": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\overlay.cpp"
+],
+"Select None": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Settings": [
+"src\\dusk\\ui\\menu_bar.cpp",
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Share": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\overlay.cpp"
+],
+"Show changelog": [
+"src\\dusk\\ui\\mod_updates.cpp",
+"src\\dusk\\ui\\mod_updates.cpp"
+],
+"Switch": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"The download failed": [
+"src\\dusk\\mods\\queue.cpp",
+"src\\dusk\\mods\\queue.cpp"
+],
+"The snapshot comes from another region or platform.": [
+"src\\dusk\\mods\\svc\\save_snapshot.cpp",
+"src\\dusk\\mods\\svc\\save_snapshot.cpp"
+],
+"Tools": [
+"src\\dusk\\ui\\settings.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Uninstall": [
+"src\\dusk\\ui\\mods_window.cpp",
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Update all": [
+"src\\dusk\\ui\\mod_updates.cpp",
+"src\\dusk\\ui\\mod_updates.cpp"
+],
+"Update available!": [
+"src\\dusk\\ui\\prelaunch.cpp",
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Updates": [
+"src\\dusk\\ui\\mod_updates.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Value": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"View": [
+"src\\dusk\\ui\\controller_config.cpp",
+"src\\dusk\\ui\\overlay.cpp"
+],
+"Wii": [
+"src\\dusk\\ui\\prelaunch.cpp",
+"src\\dusk\\ui\\settings.cpp"
+],
+"Zora Armor": [
+"src\\dusk\\ui\\editor.cpp",
+"src\\dusk\\ui\\editor.cpp"
+],
+"deactivating mod": [
+"src\\dusk\\mods\\loader\\loader.cpp",
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"fortify failure: logged, then a crash report": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp",
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"glibc 1024-bit fd_set, on poll (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp",
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"glibc AF_* values (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp",
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"glibc F_* commands and O_* flags; glibc errno (DM2-d)": [
+"src\\dusk\\mods\\loader\\glibc_abi.cpp",
+"src\\dusk\\mods\\loader\\glibc_abi.cpp"
+],
+"glibc O_* flags; glibc errno (DM2-d)": [
+"src\\dusk\\mods\\loader\\glibc_abi.cpp",
+"src\\dusk\\mods\\loader\\glibc_abi.cpp"
+],
+"glibc clock ids (DM2-d)": [
+"src\\dusk\\mods\\loader\\glibc_abi.cpp",
+"src\\dusk\\mods\\loader\\glibc_abi.cpp"
+],
+"glibc internals": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp",
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"glibc msghdr, no ancillary data (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp",
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"main image has malformed load commands": [
+"src\\dusk\\mods\\loader\\prepatch.cpp",
+"src\\dusk\\mods\\loader\\prepatch.cpp"
+],
+"message for a glibc errno value (DM2-d)": [
+"src\\dusk\\mods\\loader\\glibc_abi.cpp",
+"src\\dusk\\mods\\loader\\glibc_abi.cpp"
+],
+"suspended: a required provider is disabled": [
+"src\\dusk\\mods\\loader\\loader.cpp",
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"there is no fork": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp",
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"thread_local destructors, run at thread exit before the thread's TLS blocks are freed (TLS-lab)": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp",
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"write failed": [
+"src\\dusk\\mods\\svc\\save.cpp",
+"src\\dusk\\mods\\svc\\save_snapshot.cpp"
+],
+"' and '": [
+"src\\dusk\\mods\\svc\\hook_conflicts.cpp"
+],
+"' both replace '": [
+"src\\dusk\\mods\\svc\\hook_conflicts.cpp"
+],
+"' defined outside the image": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"' from '": [
+"src\\dusk\\mods\\svc\\hook_conflicts.cpp"
+],
+"' lies outside the module's PT_TLS": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"' took over '": [
+"src\\dusk\\mods\\svc\\hook_conflicts.cpp"
+],
+"', which is not thread-local": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"': both replace it, and only one replacement can run": [
+"src\\dusk\\mods\\svc\\hook_conflicts.cpp"
+],
+"'; only one of them can be enabled at a time": [
+"src\\dusk\\mods\\svc\\hook_conflicts.cpp"
+],
+"(unknown error)": [
+"src\\dusk\\mods\\loader\\native_module.cpp"
+],
+") in a package built for Switch": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"); it stays disabled until you turn it off and on again.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+", native": [
+"src\\dusk\\mods\\updates.cpp"
+],
+", not AArch64 (183)": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+", not ELF64": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+", not a shared object (ET_DYN)": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+", which it did not open here; refused (EBADF), the game keeps it": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"0: libstdc++ always uses atomics": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"20 Hearts": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"3 Hearts": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"3-finger tap or": [
+"src\\dusk\\ui\\overlay.cpp"
+],
+"384 MHz": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"3DS Style": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"460.8 MHz": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"5.1 Surround": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"7.1 Surround": [
+"src\\dusk\\ui\\settings.cpp"
+],
+": initial-exec TLS needs a static TLS block allocated with every thread; the loader provides only dynamic TLS (TLSDESC, __tls_get_addr)": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+": the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT and RELATIVE": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+": the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT, RELATIVE, TLSDESC, TLS_DTPMOD64 and TLS_DTPREL64": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"; the entry there did not match and was replaced": [
+"src\\dusk\\mods\\loader\\lib_cache.cpp"
+],
+"A development directory cannot be replaced": [
+"src\\dusk\\ui\\drop_install_modal.cpp"
+],
+"A key bound to any action here will REPLACE the default control for that action. Only bind buttons here that aren't used anywhere else.": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"A mod cannot declare both runtime and native code": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"A mod with native code is reloaded by restarting the game": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"A newer version is already installed": [
+"src\\dusk\\ui\\drop_install_modal.cpp"
+],
+"Abilities": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Accept-Encoding": [
+"src\\dusk\\mods\\svc\\http.cpp"
+],
+"Action": [
+"src\\dusk\\ui\\warp.cpp"
+],
+"Activating…": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Activation failed": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Active": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Actor profile could not be removed during mod deactivation": [
+"src\\dusk\\mods\\svc\\actor.cpp"
+],
+"Adjusts the volume of all music in the game.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Adjusts the volume of all sounds in the game.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"After Learning Skill": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Aiming Reticle": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Aleks": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"All 60": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"All Files": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Allow Background Inputs": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Allow fishing with the Fishing Rod using the button the item is assigned to.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Allow inputs even when the game window is not focused.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Allows Wolf Link to howl and change the time of day.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Allows transforming even if NPCs are looking.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Already in the install queue": [
+"src\\dusk\\ui\\drop_install_modal.cpp"
+],
+"Also offer versions GitHub marks as pre-releases (betas and release candidates).": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Always": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Always Greatspin": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Always collect Rupees even if your Wallet is too full.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Amounts": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"An in-place native library cannot be reloaded": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Ancient Sky Book": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ancient Sky Book (Filled)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ancient Sky Book (Partial)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ant": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ant (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ant (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Any hit will instantly kill you.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Apply Options": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Apply configured dead zones to the sticks and analog triggers.": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Applying package": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Archive is not a valid mod package": [
+"src\\dusk\\mods\\loader\\bundle_zip.cpp"
+],
+"Are you sure?": [
+"src\\dusk\\ui\\achievements.cpp"
+],
+"Area": [
+"src\\dusk\\ui\\graphics_tuner.cpp"
+],
+"Arrows (1)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Arrows (10)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Arrows (20)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Arrows (30)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Arrows Amount": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Arrows Max": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ashei's Sketch": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Attempted to register a game mode with no ID": [
+"src\\dusk\\mods\\svc\\game_mode.cpp"
+],
+"Audio": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Auru's Memo": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Automatic update checks are off.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Autosave": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Autosaves the game when going to a new area or opening a dungeon door.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Available": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Back Slice": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Backup successfully created.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Backups": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Ball and Chain": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Barnes 1": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Barnes 2": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Barnes Bombs": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bedroom Key": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bee Larva": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bee Larve (Shop)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Beetle": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Beetle (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Beetle (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Benchmark not started": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Big": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Big Quiver": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Big Wallet": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bigger Wallets": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Biggest": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bilinear": [
+"src\\dusk\\ui\\graphics_tuner.cpp"
+],
+"Black Chu Jelly": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bloom": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Bloom Brightness": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Blue Chu Jelly": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Blue Potion": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Blue Rupee": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bomb Arrow": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bomb Bag": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bomblings": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bomblings (10)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bomblings (20)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bomblings (30)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bomblings (5)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bomblings Max": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bombs": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bombs (10)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bombs (20)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bombs (30)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bombs (5)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Boss Key": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Bottom Left": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Bottom Right": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Browse Mods": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Browse online mods": [
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Bulblin Camp Key": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Butterfly": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Butterfly (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Butterfly (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Button Fishing": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"CARD backing storage is unavailable for mod save sidecars": [
+"src\\dusk\\mods\\svc\\save.cpp"
+],
+"Camera": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Can Transform Anywhere": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Cancelling...": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Cannot install mod over a development directory": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Capacities": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Capped": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Card Image": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Catalog unavailable": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Caught": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Challenge": [
+"src\\dusk\\ui\\achievements.cpp"
+],
+"Change Data Folder": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Cheats": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Check for Dusklight Updates": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Check for Updates at Start": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Check for updates again.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Check for updates first.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Check now": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Check tour not started": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Checking for updates...": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Checking package integrity": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Checking…": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Choose a preset to get started. You can change any setting later from the Settings menu.": [
+"src\\dusk\\ui\\preset.cpp"
+],
+"Choose disc image": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Choose the saves to import. Existing saves will be backed up first.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Circle": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"City in the Sky": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Clawshot": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Clear All": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Clear None": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Clear?": [
+"src\\dusk\\ui\\achievements.cpp"
+],
+"Close": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Close and reopen Dusklight to play from it.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Clothes": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Clothing": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Code mods are disabled on this Dusklight build": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"Code mods are not available in this build": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"Collected": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Color": [
+"src\\dusk\\ui\\color_input.cpp"
+],
+"Combo Equip X": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Combo Equip Y": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Companion (Aleks)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Companion Refresh": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Companion Resolution": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Companion Screen": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Compass": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Compatible only": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Completed": [
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Config": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Configure Inputs": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Configure bloom intensity. Higher values make bright areas glow more strongly.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Configure the post-processing bloom effect. Classic uses the original bloom pass; Dusklight uses a higher-quality bloom pass.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Configure the post-processing depth-of-field effect. Classic uses the original depth-of-field pass; Dusklight uses a higher-quality depth-of-field pass.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Configure the resolution used for rendering the game. Higher values are more demanding on your graphics hardware.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Configure the sampling method used when scaling the internal resolution for final presentation.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Configure the shadow-map resolution. Higher values improve shadow quality but increase GPU and memory usage.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Configure your desired rumble intensities, then run a test to check how they feel.": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Contains native code; requires bundling.": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Content-Type": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"Continue anyway": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Controls horizontal gyro aiming sensitivity.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Controls how strongly gyro input tilts the Rollgoal table.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Controls mouse aim sensitivity.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Controls mouse camera sensitivity.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Controls vertical gyro aiming sensitivity.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Copy color": [
+"src\\dusk\\ui\\color_input.cpp"
+],
+"Copy to Profile...": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Coral Earring": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Cosmetic": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Could not check mod updates.": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"Could not copy the local package": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"Could not enqueue this update.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Could not inspect packages": [
+"src\\dusk\\ui\\ui.cpp"
+],
+"Could not load mods": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Could not open folder": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Could not open the downloaded package": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"Could not queue update": [
+"src\\dusk\\ui\\mod_updates.cpp"
+],
+"Could not read the downloaded package": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"Could not stage the local package": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"Could not start download": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Crash Reporting": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Cross": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Current data folder:": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Customize Layout": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"D-pad down": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"D-pad left": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"D-pad right": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"D-pad up": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"DRS stress not started": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"DT_GNU_HASH buckets outside the image": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_GNU_HASH chain does not terminate": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_GNU_HASH chain outside the image": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_GNU_HASH outside the file-backed image": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_GNU_HASH sizes overflow": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_HASH outside the file-backed image": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_INIT is not in an executable segment": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_NEEDED '": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_NEEDED name outside DT_STRTAB": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_PLTREL is not DT_RELA": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_SONAME outside DT_STRTAB": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_SYMTAB is not inside the file-backed image": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"DT_VERSYM is not inside the file-backed image": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"Damage Multiplier": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Danger Zone": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Data Folder": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Data Folder Not Changed": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Data will be migrated automatically on restart.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Day": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Dayfly": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Debug": [
+"src\\dusk\\ui\\logs_window.cpp"
+],
+"Default All": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Delete Failed": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Delete Save...": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Delete This Backup...": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Dependencies": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Depth of Field": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Destination": [
+"src\\dusk\\ui\\warp.cpp"
+],
+"Device": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Device Connected": [
+"src\\dusk\\ui\\ui.cpp"
+],
+"Device Disconnected": [
+"src\\dusk\\ui\\ui.cpp"
+],
+"Diagnostics (Aleks, developer mode)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Difficulty": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Disable Cutscene Pillarboxing": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Disable Letterboxing": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Disable Rupee Cutscenes": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Disable black bars on the left and right sides of the screen during some cutscenes, particularly on ultra-wide displays. Visuals beyond the original intended framing may appear buggy.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Disable the beeping sound when having low health.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Disabled": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Disc Image": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Disc hash mismatch.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Disc image changed": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Disc image found on the SD card; using it": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Disc not verified.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Disc ready.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Disc unavailable.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Disc verification error": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Disc verification warning": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Disc verification was canceled. Dusklight cannot guarantee the selected disc image is compatible.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Discover texture packs, gameplay mods, custom models, and more from the community.": [
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Dismiss": [
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Display": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Display a controller input overlay while playing.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Display the RTA timer. IGT is always visible.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Do not send crash reports. This may make it more difficult to resolve issues you encounter.": [
+"src\\dusk\\ui\\reporting.cpp"
+],
+"Dominion Rod": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Dominion Rod (Uncharged)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Double Clawshots": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Double Defense": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Download and install": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Download community mods and check for updates.": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Downloading": [
+"src\\dusk\\ui\\package_row.cpp"
+],
+"Downloads & installs": [
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Dragonfly": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Dragonfly (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Dragonfly (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Dual Screen HUD": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Dungeon Map": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Duplicate package in this drop": [
+"src\\dusk\\ui\\drop_install_modal.cpp"
+],
+"Dusk UI update": [
+"src\\dusk\\ui\\ui.cpp"
+],
+"Dusklight Menu Sounds": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Dusklight Update": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Dusklight can automatically send crash reports to the developers. Crash reports contain the following:": [
+"src\\dusk\\ui\\reporting.cpp"
+],
+"Dusklight could not open the folder picker.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Dusklight does not currently support the Wii's Korean version.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Dusklight services": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Dynamic Resolution": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"ELF version is not 1": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"Easy Quick Spin (R+B)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Edit": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Editor": [
+"src\\dusk\\ui\\menu_bar.cpp"
+],
+"Effects": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Empty Bomb Bag": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Empty Bottle": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Emulate Triggers": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Emulated Trigger Thresholds": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Enable Advanced Settings": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enable Dead Zones": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Enable Discord Rich Presence": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enable Dusklight to integrate with Discord Rich Presence. This allows Discord to show your status in-game.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enable LED Status": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Enable Mini-Map Shadows": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enable Reverb": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enable Rotating Link Doll": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enable Texture Replacements": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enable VSync": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enable Vibration": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Enable installed texture replacements.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enables Speedrun game mode option in the Dusklight launch menu.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enables free camera control, letting you control the camera fully with the C-Stick.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enables gyro controls for Rollgoal in Hena's Cabin.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enables mouse and touch input for supported in-game menus.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enables mouse input for controlling the third-person camera.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enables rotating Link in the collection menu with the C-Stick.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enables the L+R+Y button combo to toggle freely repositioning Link.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Enables the reverb effect in game audio.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Ending Blow": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Enhancements disabled to match the GameCube version. Good for speedrunning or simple nostalgia!": [
+"src\\dusk\\ui\\preset.cpp"
+],
+"Equip X": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Equip Y": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Error": [
+"src\\dusk\\ui\\logs_window.cpp"
+],
+"Executable Memory": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Export Full Card Image (.raw)": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Export Save...": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Export a portable Dusklight archive with mod data, or a standard GCI for other tools.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Extends Clawshot behavior beyond the normal game rules.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Failed to publish download": [
+"src\\dusk\\mods\\svc\\http.cpp"
+],
+"Fancy": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Fast": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Fast Iron Boots": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Fast Roll": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Fast Spinner": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Faster Climbing": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Faster Scene Transitions": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Faster Tears of Light": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Featured": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Fetching mod details and images...": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Fetching published mods...": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Fishing Log": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Fishing Rod": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Fishing Rod (Bee Larva)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Fishing Rod (Earring + Bee Larva)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Fishing Rod (Earring + Worm)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Fishing Rod (Earring)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Fishing Rod (Lure)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Fishing Rod (Worm)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Flags": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Flip Grip": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Forest Temple": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Form": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Framerate Cap": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Free Camera": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Free Camera X Sensitivity": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Free Camera Y Sensitivity": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"From Jr.": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Fruit-Pop-Flight Score": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Fused Shadows": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"GCI Folder": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"GCI folder": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"GCZ (experimental)": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"GNU strerror_r for a glibc errno value (DM2-d)": [
+"src\\dusk\\mods\\loader\\glibc_abi.cpp"
+],
+"GPU Boost (handheld)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Gale Boomerang": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Game": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Game Disc Images": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"General": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Gesture Sensitivity": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Giant": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Giant Bomb Bag": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Giant Quiver": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Giant Wallet": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Given to Agitha": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Glitched": [
+"src\\dusk\\ui\\achievements.cpp"
+],
+"Golden Bugs": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Good Soup": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Goron Mines": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Goron Mines Boss Key": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Graphics & quality of life tweaks, including some from the Wii U version. Our recommended way to play!": [
+"src\\dusk\\ui\\preset.cpp"
+],
+"Graphics Backend": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Grasshopper": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Grasshopper (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Grasshopper (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Great Fairy Tears (Jovani)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Great Fairy's Tears": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Great Spin": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Green Chu Jelly": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Green Potion": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Green Rupee": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Greengill": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Guide Reader": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Gyro": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Gyro Aim": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Gyro Deadband": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Gyro Pitch Sensitivity": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Gyro Rollgoal": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Gyro Smoothing": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Gyro Yaw Sensitivity": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"HD Rumble": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"HTTP completion callback": [
+"src\\dusk\\mods\\svc\\http.cpp"
+],
+"HTTP request completion failed": [
+"src\\dusk\\mods\\svc\\http.cpp"
+],
+"HUD Scale": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Half Milk Bottle": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hawk Arrow": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hawkeye": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Health": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Health & Souls": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Heart": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Heart Container": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hearts will never drop from enemies, pots, and various other places.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Helm Splitter": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hero's Bow": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hex": [
+"src\\dusk\\ui\\color_input.cpp"
+],
+"Hidden Skills": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hide Owl Statue Markers": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"High Rumble Frequency": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Higher values make smaller movements count as a gesture.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Higher values smooth gyro input over time.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Hold B for Instant Text": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Hold Button to Mash": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Hold R and A to rise into the air.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Hold R to always do a Quick Spin when attacking with B.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Hold Tab to increase game speed by up to 4x.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Hold the indicated button to mash automatically.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"HookSystem: cannot detach a mod with a live hook at {:p}": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"HookSystem: cannot hand off a hook that remains installed at {:p}": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"HookSystem: funchook_create failed for {:p}": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"HookSystem: installed at {:p}": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"HookSystem: no hook backend can install target {:p}": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"HookSystem: no reinstallable trampoline for {:p}; hooks there are disabled until a mod reinstalls one": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"Horizon": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"Horse Angle": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Horse Call": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Horse Location": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Horse Name": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Horse Position": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Horse Room": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Horse Spawn ID": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Horse Stage": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hotspring Water": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hotspring Water (Shop)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hour": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"How strong every vibration is, HD Rumble and the classic one alike. 0 % turns it off.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Human": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hybrid": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Hylian Loach": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hylian Pike": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hylian Shield": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hyrule Bass": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Hyrule Field Keys": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"ID allocator exhausted!": [
+"src\\dusk\\mods\\svc\\id_allocator.cpp"
+],
+"If-Range": [
+"src\\dusk\\mods\\svc\\http.cpp"
+],
+"Ignores small gyro movement to reduce drift and jitter.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Ilia's Charm": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Import Anyway": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Import a save or start this mode to create one.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Import, export, back up, and remove saves for the configured disc.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Include Beta Versions": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Included mod data:": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Incompatible with this build": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Incomplete update response": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"Infinite Arrows": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Infinite Bombs": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Infinite Hearts": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Infinite Oil": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Infinite Oxygen": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Infinite Rupees": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Infinite Seeds": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Info": [
+"src\\dusk\\ui\\logs_window.cpp"
+],
+"Input": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Inputs": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Install": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Install mods?": [
+"src\\dusk\\ui\\drop_install_modal.cpp"
+],
+"Installed mod will be removed. Settings and saved data are kept.": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Installed mod will be reverted back to the bundled version. Settings and saved data are kept.": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Installed mods changed. Check again.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Installed mods changed. Checking again…": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Installed, disabled by config": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Installing": [
+"src\\dusk\\ui\\package_row.cpp"
+],
+"Installing…": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Instant Death": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Instant Saves": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Interface": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Internal Resolution": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Interpolation Quality": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invalid blockers": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"Invalid mod bundle layout (old mod?)": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"Invalid mod metadata records": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"Invalid package version": [
+"src\\dusk\\ui\\drop_install_modal.cpp"
+],
+"Invalid service export descriptor": [
+"src\\dusk\\mods\\svc\\registry.cpp"
+],
+"Invalid service import descriptor": [
+"src\\dusk\\mods\\svc\\registry.cpp"
+],
+"Invalid update download": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"Inventory": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Invert Camera X Axis": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invert Camera Y Axis": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invert First Person X Axis": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invert First Person Y Axis": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invert Gyro Pitch": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invert Gyro Yaw": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invert Mouse Y": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invert horizontal gyro aiming.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invert horizontal movement while flying or swimming.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invert vertical gyro aiming.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invert vertical mouse control for both aiming and camera.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invert vertical movement while flying or swimming.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invincible": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invincible Enemies": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Invoice": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Iron Boots": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Item Wheel": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Item drops such as rupees and hearts will never disappear after they drop.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Its native code is running: turn the mod off, restart, then uninstall it": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Jump Strike": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Kakariko Goods": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Keep existing mod data": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Keeps all bomb bags full.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Keeps your arrow count full.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Keeps your health full.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Keeps your lantern oil full.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Keeps your rupee count full.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Keeps your slingshot pellets (seeds) full.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Keeps your underwater oxygen meter full.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Key Items": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Key Shard (1)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Key Shard (2)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Key Shard (3)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"L Threshold": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"L stays held only while your finger is on the button.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Ladybug": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ladybug (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ladybug (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Lakebed Temple": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Lanayru Tourism": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Language unavailable": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Lantern": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Lantern (Reclaimed)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Lantern Oil": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Lantern Oil (Coro)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Lantern Oil (Scooped)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Lantern Refill (Scooped)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Lantern Refill (Shop)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Lantern Refill (Yellow Chu)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Large Magic": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Last updated": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Layer": [
+"src\\dusk\\ui\\warp.cpp"
+],
+"Left Joy-Con": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Left Trigger": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"License": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Light Arrow": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Light Sword": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Limit the framerate to the specified value.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Link": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Link will not recoil when his sword hits walls.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Linux system calls do not exist on Horizon": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"LiveSplit Connection": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"LiveSplit connected": [
+"src\\dusk\\ui\\overlay.cpp"
+],
+"LiveSplit disconnected": [
+"src\\dusk\\ui\\overlay.cpp"
+],
+"Loading catalog": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Location": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Lock 4:3 Aspect Ratio": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Lock the game's aspect ratio to the original. Flip Grip forces 4:3 while it is in effect whatever this says; this setting is untouched and applies again when you leave it.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Locked": [
+"src\\dusk\\ui\\achievements.cpp"
+],
+"Low Rumble Frequency": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"MESGbmg1": [
+"src\\dusk\\mods\\svc\\flow.cpp"
+],
+"Magic Armor Behavior": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Main Music Volume": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Makes Link's roll animation and movement twice as fast.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Makes text scroll immediately by holding B.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Malo Mart": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Mantis": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Mantis (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Mantis (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Map": [
+"src\\dusk\\ui\\warp.cpp"
+],
+"Maps": [
+"src\\dusk\\ui\\warp.cpp"
+],
+"Master Sword": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Master Volume": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Max Anisotropy": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Max Health": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Max Oil": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Mayfly (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Mayfly (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Medicine Scent": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Menu": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Menu Scaling Mode": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Metal": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Milk Bottle": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Minimal HUD": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Minimap": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Minimap Refresh": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Minute": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Mirror Mode": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Mirror Shard (City in the Sky)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Mirror Shard (Snowpeak Ruins)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Mirror Shard (Temple of Time)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Mirror Shards": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Mirrors the world horizontally, so Link looks right-handed as in the Wii version of the game. Off keeps the left-handed Link of the GameCube version.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Misc": [
+"src\\dusk\\ui\\achievements.cpp"
+],
+"Missing Device": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Missing required mod API exports": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"Mod ABI version mismatch": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"Mod browser detail update": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Mod browser rebuild": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Mod browser update": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Mod download failed": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"Mod failed to activate": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Mod install failed": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Mod installed": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Mod manager rebuild": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Mod manager update": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Mod package failed": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"Mod reported an unknown failure": [
+"src\\dusk\\mods\\svc\\host.cpp"
+],
+"Mod started": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Mod stopped": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Mod uninstalled": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Mod update undone": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Mods (Aleks)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Mods failed": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Mods: Listen on the Local Network": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Mods: the companion screen is on at startup; its slot queries are offered to mods": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"Mono": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Moon Jump (R+A)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Mortal Draw": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Most downloaded": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Motion Sword Hand": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Mouse Aim": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Mouse Aim Sensitivity": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Mouse Camera": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Mouse Camera Sensitivity": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Mouse Left": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Mouse Middle": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Mouse Right": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Mouse X1": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Mouse X2": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Move Axis or press a Key or Button...": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Move Link (L+R+Y)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Multiplies incoming damage.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Name": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Nasty Soup": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Native Mods": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Native Mods: Loader Mode": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Native mod updates are not supported on this device.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Native mods cannot be installed on this platform": [
+"src\\dusk\\ui\\drop_install_modal.cpp"
+],
+"Network error · keeps retrying itself": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"New": [
+"src\\dusk\\ui\\drop_install_modal.cpp"
+],
+"Newest": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Next Start Without Mods": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Next · view downloads": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"No 2nd Fish for Cat": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"No Climbing Miss Animation": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"No Device Assigned": [
+"src\\dusk\\ui\\overlay.cpp"
+],
+"No Device Detected": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"No Heart Drops": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"No Item Timer": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"No Low HP Sound": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"No Rupee Returns": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"No Sword Recoil": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"No backups yet": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"No changelog was provided.": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"No description provided.": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"No disc image found.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"No installed package to remove": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"No items": [
+"src\\dusk\\ui\\list.cpp"
+],
+"No mods found": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"No mods installed.": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"No other updates available.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"No registered game mode uses these saves.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"No save file": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"No updates ready to install.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Non-Stop Midna's Lament": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"None of them can be used.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Normal Bombs Max": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Not Supported": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Not available": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Not installed": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Notifications": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Null": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Obtained Items": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Official": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Oil": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"On Damage": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Online mod updates are unavailable.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Only During Cutscenes": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Only During Gameplay": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Only install mods from trusted authors.": [
+"src\\dusk\\ui\\drop_install_modal.cpp"
+],
+"Ooccoo 1": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ooccoo 2": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ooccoo Jr.": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ooccoo Sr.": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ooccoo Sr. (City in the Sky)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ooccoo Sr. (First Time)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ooccoo's Note": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Open Save Manager": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Open folder": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Open input binding configuration.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Open the folder where Dusklight stores settings, saves, logs, texture replacements, and other app data.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Open the touch controls layout editor.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"OpenGL": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"OpenGL ES": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Opening disc image...": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Optimized Settings": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Orange Rupee": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ordon Catfish": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ordon Goat Cheese": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ordon Pumpkin": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ordon Shield": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Ordon Sword": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Output": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Output Mode": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Output Resampling": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Overlay received focus": [
+"src\\dusk\\ui\\overlay.cpp"
+],
+"Owned": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"PT_DYNAMIC has too many entries": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"PT_DYNAMIC is not inside the file": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"Package ID does not match the catalog entry": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"Package checksum mismatch": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"Package preparation failed": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Package size mismatch": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"Package verification failed": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"Package version does not match the catalog entry": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"Patch Own Code": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Pause on Focus Lost": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Pause the game when window focus is lost.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Paused": [
+"src\\dusk\\ui\\package_row.cpp"
+],
+"Pending restart.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Performance (Aleks)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Performance tour not started": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Phasmid": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Phasmid (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Phasmid (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Piece of Heart": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Pill Bug": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Pill Bug (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Pill Bug (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Pipeline Memo (H31)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Play": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Play sound effects when navigating the Dusklight menu.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Play trailer takes": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Player": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Player Name": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Player Status": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Plus": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Poe Fire 1": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Poe Fire 2": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Poe Fire 3": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Poe Fire 4": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Poe Scent": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Poe Soul": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Poe Souls": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Point": [
+"src\\dusk\\ui\\warp.cpp"
+],
+"Port 1": [
+"src\\dusk\\ui\\overlay.cpp"
+],
+"Portable Mode": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Post-Processing": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Postman Letters": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Predictive Interpolation": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Prelaunch": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Prepare Shaders": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Preparing shaders": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Presets": [
+"src\\dusk\\ui\\color_input.cpp"
+],
+"Press a Key or Button...": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Press a Key or Mouse Button...": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Prevents Link from playing a struggle animation when grabbing ledges or climbing on vines.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Prevents enemies from taking damage.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Prevents enemy music while Midna's Lament is playing.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Princess Agitha": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Profile matrix not started": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Pumpkin Scent": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Pumpkin Seeds": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Purlo": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Purple Chu Jelly": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Purple Rupee": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Purple Rupee (Link's Savings)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Quality of Life": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Queues every known shader in the background, as starts did before rc5. For comparing hitches against the per-scene warmup.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Quick Transform (R+Y)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Quicker climbing on ladders and vines like the HD version.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Quit Dusklight": [
+"src\\dusk\\ui\\menu_bar.cpp"
+],
+"Quit Dusklight and open it again to apply the changes.": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Quiver": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"R + Start": [
+"src\\dusk\\ui\\overlay.cpp"
+],
+"R Threshold": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"R_AARCH64_IRELATIVE relocation": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"R_AARCH64_TLS_TPREL64 x": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"R_AARCH64_unknown": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"Range": [
+"src\\dusk\\mods\\svc\\http.cpp"
+],
+"Rare Chu Jelly": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Raw memory card": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Reason": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Recent": [
+"src\\dusk\\ui\\color_input.cpp"
+],
+"Recenter Motion Sensors": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Recently updated": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Recording Mode": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Records": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Red Chu Jelly": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Red Potion": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Red Potion (Scooped)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Red Rupee": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Reduces how long the transitions take when changing maps.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Reekfish": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Reekfish Scent": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Region": [
+"src\\dusk\\ui\\warp.cpp"
+],
+"Reload": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Remember Window Size": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Removes completed Owl Statue markers from the map and Minimap.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Renado": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Renado's Letter": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Render a thick shadow around the mini-map. May impact performance.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Rendering": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Replace": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Replace the current save and mod data with this backup?": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Replace the entire memory card image? All saves on the current card will be replaced. Existing saves for the configured disc will be backed up first.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Rescan": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Reset Game": [
+"src\\dusk\\ui\\menu_bar.cpp"
+],
+"Reset Key (": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Reset Run": [
+"src\\dusk\\ui\\menu_bar.cpp"
+],
+"Reset Touch Layout?": [
+"src\\dusk\\ui\\touch_controls_editor.cpp"
+],
+"Reset controls to their default layout. This will not be saved until you press Save.": [
+"src\\dusk\\ui\\touch_controls_editor.cpp"
+],
+"Reset to Default": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Reset to default": [
+"src\\dusk\\ui\\graphics_tuner.cpp"
+],
+"Reset to the main menu before copying saves.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Reset to the main menu before importing saves.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Resolution": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Resources": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Restart Dusklight to the pre-launch menu to change settings, game modes, or mods.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Restart later": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Restart to Main Menu": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Restart to Update": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Restart to finish": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Restore": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Restore Default Controls": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Restore Default Window Size": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Restore This Backup...": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Restore Wii 1.0 Glitches": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Restore a backup or import this save to use it again.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Restores all binding configurations for the currently selected device to their defaults.": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Restores patched glitches from Wii USA 1.0, the first released version.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Resume all": [
+"src\\dusk\\ui\\online_mods.cpp"
+],
+"Retry activation": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Retry download": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Retry package": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Retry-After": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"Retrying mod activation": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Right Joy-Con": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Right Trigger": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Rollgoal Sensitivity": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Rumble Intensity": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Run Benchmark": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Run Check Tour": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Run DRS Stress": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Run Performance Tour": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Run Profile Matrix": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Running. Choose it again to stop.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Rupees": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Rupees will not play cutscenes after you have collected them the first time.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"STAR Game Time (ms)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Save + mod data (.dusksave)": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Save Exported": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Save File Type": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Save Import": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Save Location": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Save and restore the previous session's window size when opening Dusklight.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Save file": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Save files": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Save only (.gci)": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Save present": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Scales the Dusklight interface relative to the display's DPI scale. Has no effect on the game's UI and HUD.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Scales the size of the gameplay HUD (hearts, buttons, mini-map, etc.). Does not affect dialog boxes or menus.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Scent": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Scent of Ilia": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Screen Layout": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Screenshots": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Search": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Sec-WebSocket-Extensions": [
+"src\\dusk\\mods\\svc\\websocket.cpp"
+],
+"Sec-WebSocket-Key": [
+"src\\dusk\\mods\\svc\\websocket.cpp"
+],
+"Sec-WebSocket-Protocol": [
+"src\\dusk\\mods\\svc\\websocket.cpp"
+],
+"Sec-WebSocket-Version": [
+"src\\dusk\\mods\\svc\\websocket.cpp"
+],
+"Select Disc Image": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Send Crash Reports": [
+"src\\dusk\\ui\\reporting.cpp"
+],
+"Send crash reports to Dusklight developers. Reports will include the information described above.": [
+"src\\dusk\\ui\\reporting.cpp"
+],
+"Sensor": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Service export registration failed": [
+"src\\dusk\\mods\\svc\\registry.cpp"
+],
+"Sets the controller's lighting color based on the game's state.": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Shad": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Shader preparation not started": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Shadow Crystal": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Shadow Resolution": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Shield": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Shield Attack": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Shields": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Show FPS Counter": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Show Gyro Input Viewer": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Show Input Viewer": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Show Internal Names": [
+"src\\dusk\\ui\\warp.cpp"
+],
+"Show Poe Count on Map": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Show Profiler Overlay": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Show RTA": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Show Shader Compilation": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Show an overlay when shaders are being compiled for your hardware.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Show gyro sensor values in the input viewer.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Shows a CPU timing overlay. A diagnostic for development.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Shows the aiming reticle for bow and slingshot.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Shows the guide reader page on the companion.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Shows the map in the corner of the screen. Off hides only that map, which is the HUD element that costs the most in large areas like Hyrule Field. The full map still opens as usual.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Silver Rupee": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Simple Soup": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Skills": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Skip": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Skip Dusklight Main Menu": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Skip TV Settings Screen": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Skip needing to catch a second fish for Sera's cat.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Skips the TV calibration screen shown when loading a save.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Skips the delay when writing to the Memory Card.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Slingshot": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Slingshot Amount": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Slot {0:02d}": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Small Key": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Small Key (North Faron Gate)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Small Magic": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Snail": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Snail (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Snail (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Snapshots can only be applied from the pre-launch menu.": [
+"src\\dusk\\mods\\svc\\save_snapshot.cpp"
+],
+"Snowboard Race Time (ms)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Snowpeak Ruins": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Some": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Some updates could not be queued": [
+"src\\dusk\\ui\\mod_updates.cpp"
+],
+"Sort by": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Sound": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"South Faron Gate Key": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Spawn ID": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Speedrun Mode": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Speedrunning": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Speeds up Spinner movement while holding R.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Speeds up movement while heavy, including wearing the Iron Boots, holding the Ball and Chain, wearing Magic Armor without rupees, etc.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Spinner": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Square": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Stag Beetle": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Stag Beetle (F)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Stag Beetle (M)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Stage": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Starting the game": [
+"src\\dusk\\ui\\boot_splash.cpp"
+],
+"Static service export has null service pointer": [
+"src\\dusk\\mods\\svc\\registry.cpp"
+],
+"Status": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Stereo": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Stereo (Headphones)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Stereo (Speakers)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Sticks": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Stop": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Storage and Recovery": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Sun's Song (R+X)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Super Clawshot": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Superb Soup": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Superseded by a newer lifecycle request": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Surf Leaf": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Surround": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Suspended": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Swap Direct Select Input": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Swap Swing Sides": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Swap the controls for using Direct Select on the item wheel, making Direct Select the default and holding L to scroll the wheel.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Swaps which slash a left-to-right swing plays, in case it looks reversed. Works together with Mirror Mode (turning on both cancels out).": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Swing Direction Animations": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Switch build included": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Sword": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Swords": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Synchronizes the frame rate to your monitor's refresh rate.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Takes effect the next time Dusklight starts.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Tap L to keep it held. Tap again to release it.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Tap once to lock on when a target is found. Double-tap when none is found to hold L.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Target Type": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Tear of Light": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Tears of Light dropped by Shadow Insects pop out faster like the HD version.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Telma": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Temple of Time": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Test Rumble": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"That image changed since it was listed and can no longer be used.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"The Postman": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"The backup was restored.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"The card image does not contain saves for the configured disc.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"The catalog download descriptor is invalid.": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"The catalog response was invalid.": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"The console went to sleep; the connection was lost": [
+"src\\dusk\\mods\\svc\\net.cpp"
+],
+"The data folder is where Dusklight stores settings, saves, logs, texture replacements, and other app data.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"The destination filename is already used by another package": [
+"src\\dusk\\mods\\loader\\packages.cpp"
+],
+"The destination save name does not fit a GCI file name.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"The folders could not be read.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"The game crashed while this mod was loading or starting. It was disabled.": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"The install source changed": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"The install source is not a URL": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"The install source is not a local file": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"The installed mod inventory exceeds the catalog limit.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"The installed version cannot be compared.": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"The installed version changed.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"The installed version changed. Check for updates again.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"The loader rejected the package": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"The local package changed after confirmation": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"The local save changed since it was last checked.": [
+"src\\dusk\\mods\\svc\\save_snapshot.cpp"
+],
+"The memory card image was imported.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"The mod could not be loaded": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"The mod data was deleted.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"The mod depends on a library this build does not provide.": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"The mod failed to activate": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"The mod folder could not be opened in the file browser.": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"The mod is no longer installed.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"The mod needs a game function another enabled mod already replaces.": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"The mod needs a symbol this build does not provide.": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"The mod reported a failure while the game was running. It was disabled and stays disabled.": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"The mod reported an error while starting.": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"The mod response was invalid.": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"The mod uses a relocation type the loader does not support.": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"The mod version cannot be compared.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"The mod's file is not a module this build can load.": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"The mod's startup code failed.": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"The package is not in the mod staging directory": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"The package version is invalid": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"The package was not found": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"The save contains an unsupported filename.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"The save file could not be exported.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"The save file picker could not be opened.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"The save folder could not be opened in the file browser.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"The save name is invalid.": [
+"src\\dusk\\mods\\svc\\save_snapshot.cpp"
+],
+"The selected disc image could not be validated.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"The selected disc image did not pass hash verification. It may be corrupt or modified.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"The selected disc image is valid.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"The selected file is not a valid disc image.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"The selected game is not supported by Dusklight.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"The snapshot is not an individual save.": [
+"src\\dusk\\mods\\svc\\save_snapshot.cpp"
+],
+"The update check did not return a result.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"The update package identity changed": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"The whole list is queued in the background.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"There is no other game mode to copy this save to.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"There is no save file.": [
+"src\\dusk\\mods\\svc\\save_snapshot.cpp"
+],
+"There is no save to copy.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"This build has no HTTP backend.": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"This can be changed in the Settings menu at any time.": [
+"src\\dusk\\ui\\reporting.cpp"
+],
+"This mod already has an active install": [
+"src\\dusk\\mods\\queue.cpp"
+],
+"This release does not support this device.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"This release introduces a required dependency cycle.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"This release requires a different Dusklight ABI.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"This save does not match the configured disc.": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"This version is already installed or older.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Toggle Fullscreen": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Top Left": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Top Right": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Touch": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Touch Camera X Sensitivity": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Touch Camera Y Sensitivity": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Touch Controls": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Touch Targeting": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Trace": [
+"src\\dusk\\ui\\logs_window.cpp"
+],
+"Trailer takes not started": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Transfer": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"Transform Level": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Transform instantly by pressing R and Y simultaneously.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Treat analog trigger movement as digital L and R button input.": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Triangle": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Triggers": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Triple Hearts": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Try changing the search or category.": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Turbo Key": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Tweaks": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Twilight Clear Level": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Types": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"UI Scale": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"UiService v1 dialog_add_action is no longer supported": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"Unable to copy export source": [
+"src\\dusk\\mods\\svc\\file.cpp"
+],
+"Unable to open the legacy mod save file.": [
+"src\\dusk\\mods\\svc\\save.cpp"
+],
+"Unable to read the selected file.": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Unavailable updates": [
+"src\\dusk\\ui\\mod_updates.cpp"
+],
+"Uniform Reuse (H35)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Unknown bundle validation error": [
+"src\\dusk\\mods\\loader\\manifest.cpp"
+],
+"Unknown exception in config change callback": [
+"src\\dusk\\mods\\svc\\config.cpp"
+],
+"Unknown exception in item give observer": [
+"src\\dusk\\mods\\item_gives.cpp"
+],
+"Unknown exception in mod lifecycle callback": [
+"src\\dusk\\mods\\svc\\host.cpp"
+],
+"Unknown exception in mod_update": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Unknown exception in window event callback": [
+"src\\dusk\\mods\\svc\\window.cpp"
+],
+"Unknown mod load failure": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"Unknown type???": [
+"src\\dusk\\mods\\svc\\audio_res\\bst.cpp"
+],
+"Unlimited": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Unlock Framerate": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Unlocked": [
+"src\\dusk\\ui\\achievements.cpp"
+],
+"Unsaved progress will be lost.": [
+"src\\dusk\\ui\\menu_bar.cpp"
+],
+"Up to Date": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Update available": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Update is available, but the release did not include a download URL": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Update ready!": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Update response does not match the installed inventory": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"Upgrade": [
+"src\\dusk\\mods\\svc\\websocket.cpp"
+],
+"Upper limit for anisotropic texture filtering. Lower values cost less GPU time; textures seen at an angle look softer.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Use Device Haptics": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"Use native device haptics instead of controller rumble. Useful for devices with built-in gamepads.": [
+"src\\dusk\\ui\\controller_config.cpp"
+],
+"User update removed": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"Verify": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Verifying": [
+"src\\dusk\\ui\\package_row.cpp"
+],
+"Verifying disc image": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Verifying…": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Version": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Vessel of Light (Eldin)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Vessel of Light (Faron)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Vessel of Light (Filled)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Vessel of Light (Lanayru)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Video": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"View Backups": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"View compatible update": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"View download": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"View downloads & installs": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"Volume": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Vulkan": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Vulkan — best mod compatibility": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"WIA (experimental)": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"Waiting for mods to initialize.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Waiting on": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"Waits for the display before showing each frame (60 Hz on the Switch), so frames never tear.": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Wallet": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Wallet Size": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Wallet sizes are like in the HD version. (500, 1000, 2000)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Warm All Shaders": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Warming every shader": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Warn": [
+"src\\dusk\\ui\\logs_window.cpp"
+],
+"Warp to the selected destination.": [
+"src\\dusk\\ui\\warp.cpp"
+],
+"Water Bombs": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Water Bombs (10)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Water Bombs (20)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Water Bombs (30)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Water Bombs (5)": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Water Bombs Max": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Water Bottle": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"WebGPU": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"WebGPU, run with deko3d when it renders": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"Welcome to Dusklight": [
+"src\\dusk\\ui\\preset.cpp"
+],
+"What teh fuck?": [
+"src\\dusk\\mods\\svc\\audio_res\\opus.cpp"
+],
+"Wii U Style": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Wii-style Motion": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Wii-style Motion Controls (Experimental)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"Wolf": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Wooden Shield": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Wooden Statue": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Wooden Sword": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"World": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Worm": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"X-Dusklight-Version": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"Yellow Chu Jelly": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Yellow Rupee": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Yeta": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"Your mods are up to date.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Your mods changed; checking again.": [
+"src\\dusk\\mods\\updates.cpp"
+],
+"Youth's Scent": [
+"src\\dusk\\ui\\editor.cpp"
+],
+"_exit from a mod: logged, then a crash report": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"a TLS descriptor names a module that was never registered": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"a TLS descriptor names a module whose mapping failed": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"a modmeta record has an invalid size": [
+"src\\dusk\\mods\\loader\\mod_services.cpp"
+],
+"a modmeta record is cut off": [
+"src\\dusk\\mods\\loader\\mod_services.cpp"
+],
+"a module accessed TLS before the runtime was prepared (no thread-exit key)": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"a package built for Switch may not depend on another library": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"a preinit_array entry does not point into code": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"a present": [
+"src\\dusk\\mods\\svc\\gfx.cpp"
+],
+"a service import has an unterminated or empty id": [
+"src\\dusk\\mods\\loader\\mod_services.cpp"
+],
+"a service import record has the wrong size": [
+"src\\dusk\\mods\\loader\\mod_services.cpp"
+],
+"a thread-local of the game, through its accessor": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"a thread-local the game does not offer to modules": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"a tls_index names an accessor that was never registered": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"a versioned import (": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"abort: logged, then a crash report": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"achievement-clear compact danger": [
+"src\\dusk\\ui\\achievements.cpp"
+],
+"activating mod": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"all mods unloaded": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"an init_array entry does not point into code": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"assertion failed (__assert_fail)": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"assertion failed (__assert_func)": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"bad extended hook member-pointer size": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"bad record size": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"big-endian ELF": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"bind(family, length)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"buffer overflow detected (__chk_fail)": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"buffer overflow detected (__fortify_fail)": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"cannot be read": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"cannot check file equivalence": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"cannot determine the running image's build id; ignoring symbol manifest": [
+"src\\dusk\\mods\\manifest.cpp"
+],
+"catalog response is for a different game": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"closedir, releasing the glibc-layout entry": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"compiled into this build; loading": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"context menu": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"context menu action": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"control getter": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"control on_pressed callback": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"control predicate": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"control setter": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"copy the save": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"could not copy the backup": [
+"src\\dusk\\mods\\loader\\update_journal.cpp"
+],
+"could not write the update journal": [
+"src\\dusk\\mods\\loader\\update_journal.cpp"
+],
+"create the folder": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"damaged or incomplete": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"decompressed symbol manifest is malformed": [
+"src\\dusk\\mods\\manifest.cpp"
+],
+"deko3d (Experimental)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"deko3d (recommended)": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"dialog action callback": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"dialog action is_disabled callback": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"dialog on_dismiss callback": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"disabled by config": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"disabled; its code stops in the main menu or after a restart": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"dusk-libcache 1": [
+"src\\dusk\\mods\\loader\\lib_cache.cpp"
+],
+"enabled; its code starts in the main menu or after a restart": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"errno of the calling thread (newlib's errno)": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"exit from a mod: logged, then a crash report": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"expected an object": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"facet in a new stream's locale": [
+"src\\dusk\\mods\\loader\\linux_ctype.cpp"
+],
+"facet in classic() for Linux modules": [
+"src\\dusk\\mods\\loader\\linux_ctype.cpp"
+],
+"facet in the global locale": [
+"src\\dusk\\mods\\loader\\linux_ctype.cpp"
+],
+"failed to load": [
+"src\\dusk\\mods\\svc\\registry.cpp"
+],
+"failed to resolve service imports": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"fails as glibc does without processes (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"file %llu %64s %n": [
+"src\\dusk\\mods\\loader\\lib_cache.cpp"
+],
+"file not found": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"forgot removed package": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"format not supported": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"game mode activation callback": [
+"src\\dusk\\mods\\svc\\game_mode.cpp"
+],
+"game mode deactivation callback": [
+"src\\dusk\\mods\\svc\\game_mode.cpp"
+],
+"game mode new-save callback": [
+"src\\dusk\\mods\\svc\\game_mode.cpp"
+],
+"game mode new-save selection callback": [
+"src\\dusk\\mods\\svc\\game_mode.cpp"
+],
+"game mode play callback": [
+"src\\dusk\\mods\\svc\\game_mode.cpp"
+],
+"game mode reset callback": [
+"src\\dusk\\mods\\svc\\game_mode.cpp"
+],
+"game mode save-loaded callback": [
+"src\\dusk\\mods\\svc\\game_mode.cpp"
+],
+"game mode tick callback": [
+"src\\dusk\\mods\\svc\\game_mode.cpp"
+],
+"gfx stage callback returned with its offscreen pass still open": [
+"src\\dusk\\mods\\svc\\gfx.cpp"
+],
+"glibc EAI_* values (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"glibc addrinfo list (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"glibc addrinfo list, IPv4 (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"glibc assert: logged, then a crash report": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"glibc dynamic-linker internals": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"glibc errno (DM3 sockets layer)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"glibc errno values on failure (DM2-d glibc ABI layer)": [
+"src\\dusk\\mods\\loader\\glibc_abi.cpp"
+],
+"glibc error codes (DM2-d)": [
+"src\\dusk\\mods\\loader\\glibc_abi.cpp"
+],
+"glibc filebuf _M_file at 112": [
+"src\\dusk\\mods\\loader\\linux_ctype.cpp"
+],
+"glibc ifaddrs (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"glibc ifaddrs: loopback and the console's IPv4 (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"glibc sockaddr and NI_* flags (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"glibc sockaddr and flags, glibc errno (DM3 sockets layer)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"glibc table = C ctype for 256 bytes": [
+"src\\dusk\\mods\\loader\\linux_ctype.cpp"
+],
+"glibc utsname describing Horizon (DM3)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"glibc's FILE internals": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"glibc's pthread_once: an exception from the routine resets the flag (TLS-lab)": [
+"src\\dusk\\mods\\loader\\elf_tls_once.cpp"
+],
+"glibc-built pthread object on newlib: zero-initialised mutexes and condition variables match; static recursive-mutex initialisers act as normal mutexes": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"glibc-built sem_t on newlib: layouts differ unless sem_init is called": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"graphics deko3d cannot draw": [
+"src\\dusk\\mods\\svc\\gfx.cpp"
+],
+"has PT_INTERP: an executable, not a library": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"has text relocations (DT_TEXTREL)": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"id does not match the file name": [
+"src\\dusk\\mods\\loader\\update_journal.cpp"
+],
+"image dimensions are too large": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"image has no sources": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"image source width is too large": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"indirect function '": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"installed at runtime": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"installed disabled by config": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"invalid image": [
+"src\\dusk\\ui\\remote_texture_provider.cpp"
+],
+"is disabled": [
+"src\\dusk\\mods\\svc\\registry.cpp"
+],
+"it did not load": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"it is tried again after a restart": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"lib cache: cannot read the package to hash it; extracting as before": [
+"src\\dusk\\mods\\loader\\lib_cache.cpp"
+],
+"lib cache: cannot write its manifest; extracting as before": [
+"src\\dusk\\mods\\loader\\lib_cache.cpp"
+],
+"linked for initial-exec TLS (DF_STATIC_TLS): it needs a static TLS block allocated with every thread, and the loader provides only dynamic TLS (TLSDESC, __tls_get_addr)": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"linux-aarch64 compatibility": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"list is_disabled callback": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"list is_selected callback": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"list on_pressed callback": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"main image has a truncated segment command": [
+"src\\dusk\\mods\\loader\\prepatch.cpp"
+],
+"main image has no usable executable or writable segments": [
+"src\\dusk\\mods\\loader\\prepatch.cpp"
+],
+"main image is not a supported 64-bit arm64 Mach-O image": [
+"src\\dusk\\mods\\loader\\prepatch.cpp"
+],
+"main image runtime segment range overflows": [
+"src\\dusk\\mods\\loader\\prepatch.cpp"
+],
+"main image segment range overflows": [
+"src\\dusk\\mods\\loader\\prepatch.cpp"
+],
+"major version": [
+"src\\dusk\\mods\\loader\\manifest.cpp"
+],
+"malformed TLS template": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"malformed section header table": [
+"src\\dusk\\mods\\loader\\mod_services.cpp"
+],
+"malformed section name table": [
+"src\\dusk\\mods\\loader\\mod_services.cpp"
+],
+"malloc, without devkitPro's memalign(32) when malloc_direct is on": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"memory card": [
+"src\\dusk\\mods\\svc\\save_snapshot.cpp"
+],
+"menu tab": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"menu tab on_selected callback": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"message override returned malformed encoded text": [
+"src\\dusk\\mods\\svc\\flow.cpp"
+],
+"minor version": [
+"src\\dusk\\mods\\loader\\manifest.cpp"
+],
+"missing required mod_ctx export": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"mod UI dialog build": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"mod UI group build": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"mod UI panel build": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"mod UI panel update": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"mod UI tab build": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"mod UI tab update": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"mod cache cleanup (.cache)": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"mod dependency sort stalled unexpectedly": [
+"src\\dusk\\mods\\loader\\depgraph.cpp"
+],
+"mod package scan": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"mod-entry, mod-header": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"mod_meta section bounds are invalid": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"more than one PT_TLS": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"native filebuf 216 bytes": [
+"src\\dusk\\mods\\loader\\linux_ctype.cpp"
+],
+"native mod failed to load": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"net: a mod asked epoll for edge-triggered events; they are level-triggered here": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"net: a mod asked getaddrinfo for IPv6; this console's resolver answers IPv4 only": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"net: a mod's TCP socket on 127.0.0.1:": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"newlib assert: logged, then a crash report": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"no DT_HASH or DT_GNU_HASH: the symbol count is unknown": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"no DT_STRTAB or DT_SYMTAB": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"no NRO header to take the build id from; by-name resolution unavailable": [
+"src\\dusk\\mods\\manifest.cpp"
+],
+"no PT_DYNAMIC: nothing says how to relocate it": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"no PT_LOAD segment": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"no Switch library": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"no details": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"no mod search directories configured; mod loading skipped": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"no mods found": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"no result": [
+"src\\dusk\\ui\\remote_texture_provider.cpp"
+],
+"no symbol manifest embedded; by-name resolution unavailable": [
+"src\\dusk\\mods\\manifest.cpp"
+],
+"no symbol manifest for this build": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"no thread-local key left for module TLS (pthread_key_create failed; libnx has a fixed number of slots): the module is not loaded": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"no-op: modules are never unloaded": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"not a disc image": [
+"src\\dusk\\ui\\prelaunch.cpp"
+],
+"not an ELF file": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"not an ELF64 little-endian library": [
+"src\\dusk\\mods\\loader\\mod_services.cpp"
+],
+"not in the game's exported surface": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"not initialized": [
+"src\\dusk\\mods\\loader\\prepatch.cpp"
+],
+"not provided": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"nothing yet": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"null link-time target": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"null pointer-to-member target": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"open failed": [
+"src\\dusk\\mods\\svc\\save.cpp"
+],
+"out of memory for a module's TLS block": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"out of memory for a thread's TLS state (first module TLS access in this thread)": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"out of memory for a thread's TLS table": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"prepatch support is not available in this build": [
+"src\\dusk\\mods\\loader\\prepatch.cpp"
+],
+"program header table is not inside the file": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"pthread_create, the thread counted while it runs": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"pthread_setspecific failed for a thread's TLS state (first module TLS access in this thread)": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"queue-row button": [
+"src\\dusk\\ui\\mods_window.cpp"
+],
+"readdir with glibc's struct dirent layout": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"renamed RTTI name marked '*'": [
+"src\\dusk\\mods\\loader\\linux_ctype.cpp"
+],
+"running constructors": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"runtime activate": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"runtime deactivate": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"runtime must be a service id followed by @major or @major.minor": [
+"src\\dusk\\mods\\loader\\manifest.cpp"
+],
+"runtime must be a string": [
+"src\\dusk\\mods\\loader\\manifest.cpp"
+],
+"runtime update": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"runtime version pin has too many components": [
+"src\\dusk\\mods\\loader\\manifest.cpp"
+],
+"s were": [
+"src\\dusk\\ui\\saves_window.cpp"
+],
+"setsockopt(level, name)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"shorter than an ELF64 header": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"socket(domain, type)": [
+"src\\dusk\\mods\\loader\\glibc_net.cpp"
+],
+"stack canary failure: logged, then a crash report": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"stack smashing detected (__stack_chk_fail)": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"stopped from Diagnostics": [
+"src\\dusk\\ui\\settings.cpp"
+],
+"supported platform is not a string": [
+"src\\dusk\\mods\\catalog.cpp"
+],
+"symbol '": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"symbol manifest descriptor is corrupt": [
+"src\\dusk\\mods\\manifest.cpp"
+],
+"symbol manifest is malformed": [
+"src\\dusk\\mods\\manifest.cpp"
+],
+"symbol version tables are malformed": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"target has no valid gateway": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"the C library's stderr stream": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"the C library's stdin stream": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"the C library's stdout stream": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"the game and every mapped module, glibc dl_phdr_info layout (DM2-d)": [
+"src\\dusk\\mods\\loader\\elf_dl.cpp"
+],
+"the game stopped twice in a row while this mod was loading": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"the game stopped while this mod was loading (closed, or a crash); it is tried once more": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"the image has neither DT_GNU_HASH nor DT_HASH": [
+"src\\dusk\\mods\\loader\\image_symbols.cpp"
+],
+"the image has no dynamic symbol table": [
+"src\\dusk\\mods\\loader\\image_symbols.cpp"
+],
+"the image's DT_GNU_HASH is empty": [
+"src\\dusk\\mods\\loader\\image_symbols.cpp"
+],
+"the last start crashed in it": [
+"src\\dusk\\mods\\loader\\update_journal.cpp"
+],
+"the modmeta section has no contents": [
+"src\\dusk\\mods\\loader\\mod_services.cpp"
+],
+"the modmeta section lies outside the file": [
+"src\\dusk\\mods\\loader\\mod_services.cpp"
+],
+"the module's dynamic TLS (TLS-lab)": [
+"src\\dusk\\mods\\loader\\elf_tls.cpp"
+],
+"the module's own stack canary": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"the new package cannot be read": [
+"src\\dusk\\mods\\loader\\update_journal.cpp"
+],
+"the nine ints are laid out as glibc lays them out": [
+"src\\dusk\\mods\\loader\\glibc_abi.cpp"
+],
+"the object holding a pc and its PT_GNU_EH_FRAME, glibc dl_find_object layout (DM2-d)": [
+"src\\dusk\\mods\\loader\\elf_dl.cpp"
+],
+"there is no list of loaded objects to walk": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"this console has no file picker": [
+"src\\dusk\\mods\\svc\\file.cpp"
+],
+"this console's address": [
+"src\\dusk\\mods\\svc\\net.cpp"
+],
+"thread-local destructors are not provided": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"thread-local storage is not provided": [
+"src\\dusk\\mods\\loader\\elf_runtime_policy.cpp"
+],
+"thread-local symbol '": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"to open menu": [
+"src\\dusk\\ui\\overlay.cpp"
+],
+"too many DT_NEEDED entries": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"trailing bytes": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"truncated export record": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"truncated extended hook record": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"truncated header record": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"truncated import record": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"truncated pointer-to-member representation": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"type_info differs from native both ways": [
+"src\\dusk\\mods\\loader\\linux_ctype.cpp"
+],
+"type_info equals itself": [
+"src\\dusk\\mods\\loader\\linux_ctype.cpp"
+],
+"ul, ol": [
+"src\\dusk\\ui\\mod_browser.cpp"
+],
+"unexpected resolve failure": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"unknown error": [
+"src\\dusk\\ui\\remote_texture_provider.cpp"
+],
+"unknown exception in file list callback": [
+"src\\dusk\\mods\\svc\\file.cpp"
+],
+"unknown exception in file picker callback": [
+"src\\dusk\\mods\\svc\\file.cpp"
+],
+"unknown exception in gfx compute callback": [
+"src\\dusk\\mods\\svc\\gfx.cpp"
+],
+"unknown exception in gfx draw callback": [
+"src\\dusk\\mods\\svc\\gfx.cpp"
+],
+"unknown exception in gfx present callback": [
+"src\\dusk\\mods\\svc\\gfx.cpp"
+],
+"unknown exception in gfx stage callback": [
+"src\\dusk\\mods\\svc\\gfx.cpp"
+],
+"unknown exception in message override": [
+"src\\dusk\\mods\\svc\\flow.cpp"
+],
+"unsafe mod id for the update journal": [
+"src\\dusk\\mods\\loader\\update_journal.cpp"
+],
+"unterminated export service id": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"unterminated extended hook display name": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"unterminated extended hook vtable symbol": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"unterminated hook display name": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"unterminated hook symbol name": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"unterminated hook vtable symbol": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"unterminated import service id": [
+"src\\dusk\\mods\\loader\\natives.cpp"
+],
+"updated; it applies after a restart": [
+"src\\dusk\\mods\\loader\\loader.cpp"
+],
+"uses DT_REL relocations; AArch64 uses DT_RELA": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"uses packed relative relocations (DT_RELR)": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"uses thread-local storage and no TLS provider was given": [
+"src\\dusk\\mods\\loader\\elf_loader.cpp"
+],
+"vtable slot is empty": [
+"src\\dusk\\mods\\svc\\hook.cpp"
+],
+"window on_closed callback": [
+"src\\dusk\\mods\\svc\\ui.cpp"
+],
+"you asked to start without mods": [
+"src\\dusk\\mods\\loader\\boot_guard.cpp"
+],
+"{:.0f} FPS": [
+"src\\dusk\\ui\\overlay.cpp"
+],
+"• CPU architecture": [
+"src\\dusk\\ui\\reporting.cpp"
+],
+"• File paths (may include account username)": [
+"src\\dusk\\ui\\reporting.cpp"
+],
+"• GPU model & driver version": [
+"src\\dusk\\ui\\reporting.cpp"
+],
+"• Operating system version": [
+"src\\dusk\\ui\\reporting.cpp"
+],
+"• Stack trace": [
+"src\\dusk\\ui\\reporting.cpp"
+],
+"← Return": [
+"src\\dusk\\ui\\graphics_tuner.cpp"
+]
+}

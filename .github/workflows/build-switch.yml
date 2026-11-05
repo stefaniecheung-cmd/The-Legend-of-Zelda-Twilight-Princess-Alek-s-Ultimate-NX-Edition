@@ -1,207 +1,104 @@
-name: Build Switch NRO
+name: Build Switch (NRO)
 
-# Cloud build for the console target. Nothing here runs on a developer machine:
-# the two pieces the Switch build needs and the PC builds do not are the Mesa
-# NVK driver (libvulkan.a, built in a container) and the devkitA64 toolchain
-# (pulled from the devkitPro image).
-#
-# Run it from the Actions tab (this workflow only starts on demand).
+# Cross build for the console: devkitA64 + libnx + the Mesa Horizon Vulkan SDK.
+# docs/dev/building-switch.md has the long form; this file is the same recipe on
+# a clean Ubuntu runner, which is the only place the build has been reproduced
+# outside the author's machine.
 
 on:
   workflow_dispatch:
-    inputs:
-      force_driver:
-        description: "Rebuild the Vulkan driver even if the cache has one"
-        type: boolean
-        default: false
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "include/**"
+      - "res/**"
+      - "platforms/switch/**"
+      - "cmake/**"
+      - "mods/**"
+      - "CMakeLists.txt"
+      - "files.cmake"
+      - "CMakePresets.json"
+      - ".github/workflows/build-switch.yml"
 
 concurrency:
   group: switch-nro-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
+
+env:
+  # Built by stefaniecheung-cmd/mesa-switch, workflow "Build Mesa Switch SDK".
+  # It is a portlibs/switch prefix: lib/libvulkan.a is a complete static Vulkan
+  # for Horizon (vk*, vk_icdGetInstanceProcAddr, VK_NN_vi_surface, its own winsys).
+  MESA_SDK_URL: https://github.com/stefaniecheung-cmd/mesa-switch/releases/download/sdk-26.2.4/mesa-26.2.4-switch-unified-horizon-sdk.zip
+  DEVKITPRO: /opt/devkitpro
 
 jobs:
-  driver:
-    name: Mesa NVK driver (libvulkan.a)
-    runs-on: ubuntu-latest
-    timeout-minutes: 300
-    steps:
-      - name: Free disk space
-        run: |
-          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc \
-            /opt/hostedtoolcache/CodeQL /usr/local/share/boost
-          sudo docker image prune -af || true
-          df -h /
-
-      - name: Checkout mesa-switch
-        uses: actions/checkout@v6
-        with:
-          repository: danfromtico/mesa-switch
-          path: mesa-switch
-          fetch-depth: 1
-
-      # The driver job never checks out the game repo (it only builds
-      # mesa-switch in a container), but the patch and the archive check live in
-      # ci/, so pull those helpers in explicitly.
-      - name: Checkout CI helpers
-        uses: actions/checkout@v6
-        with:
-          path: ci-helpers
-
-      # mesa-switch's rustc wrapper only picks an ELF aarch64 target on the
-      # Windows/MSYS host; on any other host RUST_TARGET stays empty, rustc
-      # falls back to x86_64-unknown-linux-gnu and every Mesa Rust crate
-      # (libnil's format table, compiler_builtins, ...) ends up in libvulkan.a as
-      # EM:62 objects. The NRO link then dies with 167 copies of
-      #   "Relocations in generic ELF (EM: 62)".
-      # ci/patch-mesa-switch.sh pins the target and fetches its std.
-      - name: Pin the Rust cross target for the driver
-        run: bash ci-helpers/ci/patch-mesa-switch.sh mesa-switch
-
-      - name: Restore driver
-        id: sdk
-        uses: actions/cache@v4
-        with:
-          path: naga-sdk
-          key: naga-sdk-v2-${{ hashFiles('mesa-switch/build-switch.sh', 'mesa-switch/Docker.rust', 'mesa-switch/rustc-switch-wrapper.sh') }}
-
-      # build-switch.sh runs the whole cross build in a container, so this only
-      # needs Docker. It leaves static archives under builddir-switch.
-      - name: Build NVK
-        if: steps.sdk.outputs.cache-hit != 'true' || inputs.force_driver
-        working-directory: mesa-switch
-        run: bash build-switch.sh
-
-      - name: Stage the portlibs prefix
-        if: steps.sdk.outputs.cache-hit != 'true' || inputs.force_driver
-        run: |
-          set -eu
-          rm -rf naga-sdk
-          mkdir -p naga-sdk/lib naga-sdk/include
-          # build-switch.sh appends rustc's core/alloc/compiler_builtins objects
-          # to the driver archive (libvulkan-selfcontained.a). The plain meson
-          # archive leaves `core::panicking::*` and `__rdl_alloc` undefined,
-          # which only surfaces 40 minutes later as a link failure of
-          # dusklight.elf, so prefer the bundled one and fall back to the raw
-          # archive for old caches.
-          lib=$(find mesa-switch/builddir-switch -name 'libvulkan-selfcontained.a' | head -1)
-          if [ -z "$lib" ]; then
-            lib=$(find mesa-switch/builddir-switch -name 'libvulkan.a' | head -1)
-          fi
-          if [ -z "$lib" ]; then
-            echo "no driver archive found; build produces:" >&2
-            find mesa-switch/builddir-switch -name '*.a' | head -20 >&2
-            exit 1
-          fi
-          echo "driver archive: $lib"
-          cp "$lib" naga-sdk/lib/libvulkan.a
-          hdr=$(find mesa-switch -path '*/include/vulkan/vulkan.h' | head -1)
-          if [ -z "$hdr" ]; then
-            echo "vulkan.h not found" >&2
-            find mesa-switch -name 'vulkan.h' | head -20 >&2
-            exit 1
-          fi
-          cp -r "$(dirname "$hdr")" naga-sdk/include/
-          # vulkan_core.h includes <vk_video/vulkan_video_codec_h264std.h>;
-          # those headers live in a sibling vk_video/ directory in the mesa
-          # tree, so copy it across or every consumer fails to compile.
-          vkvid=$(find mesa-switch -path '*vk_video/vulkan_video_codec_h264std.h' | head -1)
-          if [ -n "$vkvid" ]; then cp -r "$(dirname "$vkvid")" naga-sdk/include/; fi
-          # FindNagaVulkan also wants the Switch WSI header next to vulkan.h.
-          find mesa-switch -name 'nvk_switch_wsi.h' -exec cp {} naga-sdk/include/vulkan/ \; || true
-          echo "--- staged ---"
-          find naga-sdk -type f | head -20
-          ls -la naga-sdk/lib/
-          # A host-arch archive only shows up 40 minutes later as 167 copies of
-          # "Relocations in generic ELF (EM: 62)" in the NRO link.
-          python3 ci-helpers/ci/check-archive-arch.py naga-sdk/lib/libvulkan.a
-
-      - name: Upload driver
-        uses: actions/upload-artifact@v4
-        with:
-          name: naga-vulkan-sdk
-          path: naga-sdk/
-          retention-days: 14
-
   nro:
-    name: Build dusklight.nro
-    needs: driver
-    runs-on: ubuntu-latest
-    timeout-minutes: 300
-    container:
-      image: devkitpro/devkita64:latest
-      options: --user root
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
     steps:
-      # The image ships devkitA64 and libnx but its CMake is older than the 3.25
-      # the presets require, so CMake and Ninja come from pip.
-      - name: Install build tools
-        run: |
-          apt-get update
-          apt-get install -y --no-install-recommends git patch ca-certificates curl xz-utils python3 python3-pip
-          python3 -m pip install --break-system-packages --no-cache-dir cmake ninja
-          rm -rf /var/lib/apt/lists/*
-          cmake --version
-          ninja --version
-
-      - name: Checkout source
-        uses: actions/checkout@v6
+      - name: Check out (with submodules)
+        uses: actions/checkout@v4
         with:
           submodules: recursive
-          fetch-depth: 1
+          fetch-depth: 0
 
-      - name: Download driver
-        uses: actions/download-artifact@v4
-        with:
-          name: naga-vulkan-sdk
-          path: naga-sdk
-
-      # The cached driver artifact was staged before the vk_video copy was added
-      # to the driver job, and a cache hit skips that step entirely, so the
-      # headers that vulkan_core.h needs are topped up here instead of paying
-      # for a full Mesa rebuild.
-      - name: Top up the Vulkan headers
+      - name: Install devkitPro, devkitA64 and the switch portlibs
         run: |
-          set -eu
-          if [ -d naga-sdk/include/vk_video ]; then
-            echo "vk_video already staged"
-            exit 0
-          fi
-          curl -sSL -o /tmp/vk-headers.tar.gz \
-            https://github.com/KhronosGroup/Vulkan-Headers/archive/refs/tags/v1.3.280.tar.gz
-          tar xzf /tmp/vk-headers.tar.gz -C /tmp
-          cp -r /tmp/Vulkan-Headers-1.3.280/include/vk_video naga-sdk/include/
-          ls naga-sdk/include/vk_video
+          set -euo pipefail
+          wget -q https://apt.devkitpro.org/install-devkitpro-pacman
+          chmod +x install-devkitpro-pacman
+          yes | sudo ./install-devkitpro-pacman
+          sudo dkp-pacman -Syu --noconfirm
+          # zlib/zstd/bzip2/xz/expat and libpng/curl are what the driver, Dawn and
+          # the HTTP service link against; freetype/harfbuzz carry the UI fonts.
+          sudo dkp-pacman -S --noconfirm --needed \
+            devkitA64 libnx \
+            switch-zlib switch-zstd switch-bzip2 switch-xz switch-expat \
+            switch-libpng switch-libjpeg-turbo switch-libwebp \
+            switch-freetype switch-harfbuzz switch-curl \
+            switch-libiconv
+          sudo apt-get install -y --no-install-recommends ninja-build cmake patch unzip
 
-      # ALEKS2_STATIC_MODS stays empty (the documented demo mods do not all
-      # build on this toolchain), but the native loader has to be on: it is what
-      # makes DUSK_CODE_MODS true on the console, and src/dusk/mods/svc/hook.cpp
-      # logs from outside its DUSK_CODE_MODS guards. With both off the file has
-      # no logging header, no fmt and no std::vector, and the build stopped at
-      # "'DuskLog' was not declared in this scope". Every build aleks2 shipped
-      # had code mods on; this one is no different.
+      - name: Install the Mesa Horizon Vulkan SDK
+        run: |
+          set -euo pipefail
+          curl -sSL "$MESA_SDK_URL" -o /tmp/mesa-sdk.zip
+          unzip -q /tmp/mesa-sdk.zip -d /tmp/mesa-sdk
+          sudo cp -r /tmp/mesa-sdk/opt/devkitpro/portlibs/switch/. "$DEVKITPRO/portlibs/switch/"
+          test -f "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
+          ls -l "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
+
       - name: Configure
         run: |
-          export DEVKITPRO=/opt/devkitpro
-          cmake --preset switch-devkitA64-release \
-            -DNAGA_VULKAN_ROOT="$GITHUB_WORKSPACE/naga-sdk" \
-            -DALEKS2_NATIVE_MOD_LOADER=ON
+          set -euo pipefail
+          source /etc/profile.d/devkit-env.sh
+          cmake --version
+          cmake --preset switch-devkitA64-release-h36 \
+            -DNAGA_VULKAN_ROOT="$DEVKITPRO/portlibs/switch"
 
       - name: Build
         run: |
-          export DEVKITPRO=/opt/devkitpro
-          cmake --build --preset switch-devkitA64-release
+          set -euo pipefail
+          source /etc/profile.d/devkit-env.sh
+          cmake --build --preset switch-devkitA64-release-h36 -- -k 0
 
-      - name: Collect NRO
+      - name: Collect the NRO
         run: |
-          find . -name 'dusklight.nro' -o -name 'dusklight.elf' | tee /tmp/found.txt
-          mkdir -p upload
-          nro=$(find . -name 'dusklight.nro' | head -1)
-          test -n "$nro"
-          cp "$nro" upload/
-          ls -la upload/
+          set -euo pipefail
+          nro=$(find build/switch-devkitA64-release-h36 -name 'dusklight.nro' -print -quit)
+          if [ -z "$nro" ]; then
+            echo "no dusklight.nro produced; build tree:" >&2
+            find build -maxdepth 4 -name '*.nro' -o -maxdepth 4 -name 'dusklight*' >&2
+            exit 1
+          fi
+          mkdir -p dist
+          cp "$nro" dist/dusklight.nro
+          ls -lh dist/
 
-      - name: Upload NRO
+      - name: Upload the NRO
         uses: actions/upload-artifact@v4
         with:
-          name: dusklight-nro
-          path: upload/
-          retention-days: 30
+          name: dusklight-nro-zh
+          path: dist/dusklight.nro
+          if-no-files-found: error

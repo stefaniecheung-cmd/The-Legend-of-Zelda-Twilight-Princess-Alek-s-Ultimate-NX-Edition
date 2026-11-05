@@ -1,7 +1,5 @@
 #include "ui.hpp"
 
-#include "i18n.hpp"
-
 #include "command_console.hpp"
 #include "drop_install_modal.hpp"
 #include "icon_provider.hpp"
@@ -38,6 +36,8 @@
 #include <filesystem>
 #include <ranges>
 #include <utility>
+
+#include "i18n.hpp"
 
 namespace dusk::ui {
 namespace {
@@ -117,24 +117,13 @@ bool initialize() noexcept {
     load_font("AlegreyaSC-Bold.ttf");
     load_font("MaterialSymbolsRounded-Regular.ttf");
     load_font("NotoMono-Regular.ttf");
-    // CJK fonts for the Simplified Chinese launcher. Loaded as *fallback* faces so
-    // RmlUi falls back to them for glyphs missing from the Latin UI font (Fira Sans).
+    // CJK fallback. None of the faces above carry a single Han codepoint, so
+    // without this the Chinese dictionary would rasterise as blanks. Loaded as
+    // a fallback so Latin text keeps FiraSans' metrics.
     load_font("HarmonyOS_Sans_Regular.ttf", true);
-    load_font("HarmonyOS_Sans_SC_Regular.ttf", true);
-    load_font("HarmonyOS_Sans_TC_Regular.ttf", true);
 
-    // i18n: register the translator before any document is instanced, then load
-    // dictionaries. The hook lives in aurora (added by cmake/AuroraI18nHook.cmake);
-    // if that patch could not be applied the build still works and the UI stays
-    // English, so the callback is only registered when the hook is known to exist.
-#ifdef DUSK_I18N_AURORA_HOOK
-    aurora::rmlui::set_translate_callback(i18n::translate);
-#endif
     i18n::initialize();
-    // The launcher ships as one build with a Chinese-first UI. set_language falls
-    // back to English when res/i18n/zh-cn.xml is missing, so a mistyped/missing
-    // resource degrades to English instead of showing [TOKEN] placeholders.
-    i18n::set_language("zh-cn");
+    aurora::rmlui::set_translate_callback(i18n::translate);
 
     register_icon_texture_provider();
     register_mod_texture_provider();
@@ -165,10 +154,6 @@ void shutdown() noexcept {
     input::reset_input_state();
     input::release_input_block();
     sInitialized = false;
-#ifdef DUSK_I18N_AURORA_HOOK
-    aurora::rmlui::set_translate_callback({});
-#endif
-    i18n::shutdown();
 }
 
 const char* battery_icon(SDL_PowerState state, int level) noexcept {
@@ -269,7 +254,7 @@ void handle_event(const SDL_Event& event) noexcept {
             if (getSettings().game.enableControllerToasts) {
                 const char* name = SDL_GetGamepadName(gamepad);
                 Rml::String content = fmt::format("<span>{}</span>", name ? name : "[Unknown]");
-                Rml::String title = "[DEVICE_CONNECTED]";
+                Rml::String title = "Device Connected";
                 if (const char* icon =
                         connection_state_icon(SDL_GetGamepadConnectionState(gamepad)))
                 {
@@ -304,7 +289,7 @@ void handle_event(const SDL_Event& event) noexcept {
             const char* name = SDL_GetGamepadNameForID(event.gdevice.which);
             push_toast({
                 .type = "controller",
-                .title = "[DEVICE_DISCONNECTED]",
+                .title = "Device Disconnected",
                 .content = name ? name : "[Unknown]",
                 .duration = std::chrono::seconds(4),
             });
@@ -521,7 +506,7 @@ void update() noexcept {
         } catch (const std::exception& exception) {
             push_toast({
                 .type = "warning",
-                .title = "[COULD_NOT_INSPECT_PACKAGES]",
+                .title = "Could not inspect packages",
                 .content = exception.what(),
                 .duration = std::chrono::seconds{5},
             });

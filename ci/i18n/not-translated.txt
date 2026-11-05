@@ -1,0 +1,223 @@
+# Strings that stay English on purpose
+
+`res/i18n/zh-cn.xml` falls back to the English literal for every key with no
+translation, so a gap here is never a blank line in the UI. The keys below were
+reviewed and deliberately left out of the map.
+
+## Wire format and constants (27)
+
+HTTP and WebSocket field names, ELF relocation names, format strings. Translating
+these breaks the protocol or the format, not the reader.
+
+- `0: libstdc++ always uses atomics`
+- `384 MHz`
+- `460.8 MHz`
+- `Accept`
+- `Accept-Encoding`
+- `Connection`
+- `Content-Length`
+- `Content-Type`
+- `English`
+- `Horizon`
+- `Host`
+- `If-Range`
+- `MESGbmg1`
+- `R_AARCH64_IRELATIVE relocation`
+- `R_AARCH64_TLS_TPREL64 x`
+- `R_AARCH64_unknown`
+- `Range`
+- `Retry-After`
+- `Sec-WebSocket-Extensions`
+- `Sec-WebSocket-Key`
+- `Sec-WebSocket-Protocol`
+- `Sec-WebSocket-Version`
+- `User-Agent`
+- `X-Dusklight-Version`
+- `dusk-libcache 1`
+- `file %llu %64s %n`
+- `ul, ol`
+
+## Assembled fragments (28)
+
+Pieces of sentences the loader concatenates at run time. The callback sees the
+finished string, which is never this literal, so an entry here could not match.
+
+- `' and '`
+- `' both replace '`
+- `' defined outside the image`
+- `' from '`
+- `' lies outside the module's PT_TLS`
+- `' took over '`
+- `', which is not thread-local`
+- `': both replace it, and only one replacement can run`
+- `'; only one of them can be enabled at a time`
+- `) in a package built for Switch`
+- `); it stays disabled until you turn it off and on again.`
+- `, native`
+- `, not AArch64 (183)`
+- `, not ELF64`
+- `, not a shared object (ET_DYN)`
+- `, which it did not open here; refused (EBADF), the game keeps it`
+- `: initial-exec TLS needs a static TLS block allocated with every thread; the loader provides only dynamic TLS (TLSDESC, __tls_get_addr)`
+- `: the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT and RELATIVE`
+- `: the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT, RELATIVE, TLSDESC, TLS_DTPMOD64 and TLS_DTPREL64`
+- `; the entry there did not match and was replaced`
+- `DT_NEEDED '`
+- `Dusklight can automatically send crash reports to the developers. Crash reports contain the following:`
+- `a versioned import (`
+- `indirect function '`
+- `net: a mod's TCP socket on 127.0.0.1:`
+- `renamed RTTI name marked '*'`
+- `symbol '`
+- `thread-local symbol '`
+
+## Loader internals (143)
+
+ELF tables, relocations, TLS plumbing. These go to the log; when one is appended
+to a sentence the whole sentence stops matching the dictionary, so a translation
+would carry weight without ever being shown.
+
+- `DT_GNU_HASH buckets outside the image`
+- `DT_GNU_HASH chain does not terminate`
+- `DT_GNU_HASH chain outside the image`
+- `DT_GNU_HASH outside the file-backed image`
+- `DT_GNU_HASH sizes overflow`
+- `DT_HASH outside the file-backed image`
+- `DT_INIT is not in an executable segment`
+- `DT_NEEDED name outside DT_STRTAB`
+- `DT_PLTREL is not DT_RELA`
+- `DT_SONAME outside DT_STRTAB`
+- `DT_SYMTAB is not inside the file-backed image`
+- `DT_VERSYM is not inside the file-backed image`
+- `ELF version is not 1`
+- `GNU strerror_r for a glibc errno value (DM2-d)`
+- `HookSystem: cannot detach a mod with a live hook at {:p}`
+- `HookSystem: cannot hand off a hook that remains installed at {:p}`
+- `HookSystem: funchook_create failed for {:p}`
+- `HookSystem: installed at {:p}`
+- `HookSystem: no hook backend can install target {:p}`
+- `HookSystem: no reinstallable trampoline for {:p}; hooks there are disabled until a mod reinstalls one`
+- `Invalid mod metadata records`
+- `Invalid service export descriptor`
+- `Invalid service import descriptor`
+- `PT_DYNAMIC has too many entries`
+- `PT_DYNAMIC is not inside the file`
+- `The mod needs a symbol this build does not provide.`
+- `The mod uses a relocation type the loader does not support.`
+- `_exit from a mod: logged, then a crash report`
+- `a TLS descriptor names a module that was never registered`
+- `a TLS descriptor names a module whose mapping failed`
+- `a modmeta record has an invalid size`
+- `a modmeta record is cut off`
+- `a service import record has the wrong size`
+- `abort: logged, then a crash report`
+- `assertion failed (__assert_fail)`
+- `assertion failed (__assert_func)`
+- `bad record size`
+- `big-endian ELF`
+- `bind(family, length)`
+- `buffer overflow detected (__chk_fail)`
+- `buffer overflow detected (__fortify_fail)`
+- `cannot determine the running image's build id; ignoring symbol manifest`
+- `closedir, releasing the glibc-layout entry`
+- `decompressed symbol manifest is malformed`
+- `errno of the calling thread (newlib's errno)`
+- `fails as glibc does without processes (DM3)`
+- `fortify failure: logged, then a crash report`
+- `glibc 1024-bit fd_set, on poll (DM3)`
+- `glibc AF_* values (DM3)`
+- `glibc EAI_* values (DM3)`
+- `glibc F_* commands and O_* flags; glibc errno (DM2-d)`
+- `glibc O_* flags; glibc errno (DM2-d)`
+- `glibc POLL* bits (DM3)`
+- `glibc addrinfo list (DM3)`
+- `glibc addrinfo list, IPv4 (DM3)`
+- `glibc assert: logged, then a crash report`
+- `glibc clock ids (DM2-d)`
+- `glibc dynamic-linker internals`
+- `glibc errno (DM3 sockets layer)`
+- `glibc errno values on failure (DM2-d glibc ABI layer)`
+- `glibc error codes (DM2-d)`
+- `glibc filebuf _M_file at 112`
+- `glibc ifaddrs (DM3)`
+- `glibc ifaddrs: loopback and the console's IPv4 (DM3)`
+- `glibc internals`
+- `glibc msghdr, no ancillary data (DM3)`
+- `glibc sockaddr and NI_* flags (DM3)`
+- `glibc sockaddr and flags, glibc errno (DM3 sockets layer)`
+- `glibc table = C ctype for 256 bytes`
+- `glibc utsname describing Horizon (DM3)`
+- `glibc's FILE internals`
+- `glibc's pthread_once: an exception from the routine resets the flag (TLS-lab)`
+- `glibc-built pthread object on newlib: zero-initialised mutexes and condition variables match; static recursive-mutex initialisers act as normal mutexes`
+- `glibc-built sem_t on newlib: layouts differ unless sem_init is called`
+- `has PT_INTERP: an executable, not a library`
+- `has text relocations (DT_TEXTREL)`
+- `lib cache: cannot read the package to hash it; extracting as before`
+- `lib cache: cannot write its manifest; extracting as before`
+- `linked for initial-exec TLS (DF_STATIC_TLS): it needs a static TLS block allocated with every thread, and the loader provides only dynamic TLS (TLSDESC, __tls_get_addr)`
+- `main image has a truncated segment command`
+- `main image has no usable executable or writable segments`
+- `main image is not a supported 64-bit arm64 Mach-O image`
+- `main image runtime segment range overflows`
+- `main image segment range overflows`
+- `malformed section header table`
+- `malformed section name table`
+- `message for a glibc errno value (DM2-d)`
+- `mod-entry, mod-header`
+- `mod_meta section bounds are invalid`
+- `more than one PT_TLS`
+- `net: a mod asked epoll for edge-triggered events; they are level-triggered here`
+- `net: a mod asked getaddrinfo for IPv6; this console's resolver answers IPv4 only`
+- `newlib assert: logged, then a crash report`
+- `no DT_HASH or DT_GNU_HASH: the symbol count is unknown`
+- `no DT_STRTAB or DT_SYMTAB`
+- `no NRO header to take the build id from; by-name resolution unavailable`
+- `no PT_DYNAMIC: nothing says how to relocate it`
+- `no PT_LOAD segment`
+- `no symbol manifest embedded; by-name resolution unavailable`
+- `no symbol manifest for this build`
+- `no thread-local key left for module TLS (pthread_key_create failed; libnx has a fixed number of slots): the module is not loaded`
+- `not an ELF file`
+- `not an ELF64 little-endian library`
+- `out of memory for a module's TLS block`
+- `out of memory for a thread's TLS table`
+- `program header table is not inside the file`
+- `pthread_create, the thread counted while it runs`
+- `pthread_setspecific failed for a thread's TLS state (first module TLS access in this thread)`
+- `readdir with glibc's struct dirent layout`
+- `runtime must be a service id followed by @major or @major.minor`
+- `setsockopt(level, name)`
+- `shorter than an ELF64 header`
+- `socket(domain, type)`
+- `stack canary failure: logged, then a crash report`
+- `stack smashing detected (__stack_chk_fail)`
+- `symbol manifest descriptor is corrupt`
+- `symbol manifest is malformed`
+- `symbol version tables are malformed`
+- `the game and every mapped module, glibc dl_phdr_info layout (DM2-d)`
+- `the image has neither DT_GNU_HASH nor DT_HASH`
+- `the image has no dynamic symbol table`
+- `the image's DT_GNU_HASH is empty`
+- `the modmeta section has no contents`
+- `the modmeta section lies outside the file`
+- `the module's dynamic TLS (TLS-lab)`
+- `the module's own stack canary`
+- `the nine ints are laid out as glibc lays them out`
+- `the object holding a pc and its PT_GNU_EH_FRAME, glibc dl_find_object layout (DM2-d)`
+- `thread_local destructors, run at thread exit before the thread's TLS blocks are freed (TLS-lab)`
+- `too many DT_NEEDED entries`
+- `truncated export record`
+- `truncated extended hook record`
+- `truncated header record`
+- `truncated hook record`
+- `truncated import record`
+- `unterminated export service id`
+- `unterminated extended hook vtable symbol`
+- `unterminated hook symbol name`
+- `unterminated hook vtable symbol`
+- `unterminated import service id`
+- `uses DT_REL relocations; AArch64 uses DT_RELA`
+- `uses packed relative relocations (DT_RELR)`
+- `vtable slot is empty`
+

@@ -105,12 +105,24 @@ if (DUSK_ENABLE_PROFILER)
 else ()
     add_compile_definitions(DUSK_PROFILER_ENABLED=0)
 endif ()
-# aleks2-cn: RmlUi hands every text node to SystemInterface::TranslateString, and
-# aurora has no way to intercept it. This adds a minimal callback to the aurora
-# submodule in place (idempotent, non-fatal) so the launcher can be localized
-# without forking aurora or repointing .gitmodules. Must run before the
-# subdirectory is added so the patched sources are what gets compiled.
-include(cmake/AuroraI18nHook.cmake)
+# Localisation: RmlUi sends every string it renders through
+# SystemInterface::TranslateString, and aurora does not override it, so there is
+# nowhere to hang a dictionary. The script adds that override (26 lines, a pure
+# addition: with no callback installed it assigns the input unchanged) to the
+# checked-out submodule, and does nothing on a second run. Applied here rather
+# than per platform because src/dusk/ui is shared: every target that compiles
+# ui.cpp calls the new entry point.
+if(EXISTS "${CMAKE_SOURCE_DIR}/extern/aurora/lib/rmlui.cpp")
+  find_package(Python3 COMPONENTS Interpreter REQUIRED)
+  execute_process(
+    COMMAND "${Python3_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/ci/patches/aurora-translate-callback.py"
+            "${CMAKE_SOURCE_DIR}/extern/aurora"
+    RESULT_VARIABLE _dusk_aurora_i18n)
+  if(NOT _dusk_aurora_i18n EQUAL 0)
+    message(FATAL_ERROR "i18n: ci/patches/aurora-translate-callback.py failed (${_dusk_aurora_i18n})")
+  endif()
+endif()
+
 add_subdirectory(extern/aurora EXCLUDE_FROM_ALL)
 target_compile_definitions(aurora_mtx PRIVATE MTX_USE_PS=1)
 
@@ -411,11 +423,6 @@ endif ()
 list(APPEND GAME_COMPILE_DEFS
         DUSK_HAS_FUNCHOOK=$<BOOL:${DUSK_HAS_FUNCHOOK}>
         DUSK_HAS_PREPATCH=$<BOOL:${DUSK_HAS_PREPATCH}>)
-# aleks2-cn: set by cmake/AuroraI18nHook.cmake when the translate hook is in
-# place. Without it ui.cpp skips the callback and the UI stays English.
-if (DUSK_I18N_AURORA_HOOK)
-    list(APPEND GAME_COMPILE_DEFS DUSK_I18N_AURORA_HOOK=1)
-endif ()
 
 if (DUSK_PACKAGE_INSTALL)
     include(GNUInstallDirs)
@@ -480,10 +487,6 @@ endif ()
 set(_dusklight_all_files src/dusk/main.cpp ${GAME_BASE_FILES} ${GAME_DEBUG_FILES})
 set(DUSK_INTERNAL_FILES ${_dusklight_all_files})
 list(FILTER DUSK_INTERNAL_FILES INCLUDE REGEX "^src/dusk/")
-# d_map.cpp (game) and settings.cpp read frame_telemetry::lab() on every
-# platform, but the real implementation is Switch-only; the stub is a no-op
-# translation unit on the console, where frame_telemetry.cpp provides it.
-list(APPEND DUSK_INTERNAL_FILES src/dusk/frame_telemetry_stub.cpp)
 if (DUSK_PLATFORM_SWITCH)
     # aleks2: NativeModule is dlopen; src/dusk/switch_native_module.cpp provides
     # it over the built-in mod table instead, which keeps upstream's file

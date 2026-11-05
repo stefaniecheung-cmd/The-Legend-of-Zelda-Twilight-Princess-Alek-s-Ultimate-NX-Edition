@@ -44,6 +44,10 @@ UserSettings g_userSettings = {
         .menuSounds {"audio.menuSounds", true},
     },
 
+    .ui = {
+        .language {"ui.language", std::string{"en"}},
+    },
+
     .game = {
         .language { "game.language", GameLanguage::English },
 
@@ -397,6 +401,9 @@ void registerSettings() {
     Register(g_userSettings.audio.fanfareVolume);
     Register(g_userSettings.audio.enableReverb);
     Register(g_userSettings.audio.menuSounds);
+
+    // Interface
+    Register(g_userSettings.ui.language);
 
     // Game
     Register(g_userSettings.game.language);
