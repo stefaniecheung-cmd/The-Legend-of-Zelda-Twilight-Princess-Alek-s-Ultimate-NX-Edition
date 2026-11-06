@@ -3,8 +3,8 @@
 | | |
 |---|---|
 | 上游 | [Alexgg1014/The-Legend-of-Zelda-Twilight-Princess-Alek-s-Ultimate-NX-Edition](https://github.com/Alexgg1014/The-Legend-of-Zelda-Twilight-Princess-Alek-s-Ultimate-NX-Edition) `main`，基线版本 **1.1.1** |
-| 本分支 | `stefaniecheung-cmd/...` 的 `main` @ `593ce04a` |
-| 发布 tag | `v1.1.1-cn` |
+| 构建基线 | `593ce04a`（`main` 上的版本号提交；其后的文档与 CI 提交不改动产物） |
+| 发布 tag | `v1.1.1-cn`（指向包含维护文档的最新 `main`） |
 | 产物 | `dusklight-1.1.1-cn.nro`，98,963,453 字节（94.4 MiB） |
 | SHA256 | `7ff5f620beee34aef563a9e3fff9b37b341b7179cc7ab6fd57047f47da250e17` |
 | 构建 | GitHub Actions run `42207198181`（success），`devkitpro/devkita64` 容器 |
