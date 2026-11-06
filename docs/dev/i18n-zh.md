@@ -81,7 +81,7 @@ git rebase upstream/main        # 或者 merge，看你的习惯
 
 ### 冲突面有多大
 
-汉化本体改了 18 个文本文件（见下方清单），另加 1 个中文字体二进制、1 个构建 workflow，以及 README 和两份文档。其中大部分是**纯新增**（词表、引擎、工具、补丁脚本、字体、文档），rebase 时零冲突。真正可能撞的只有 7 个：
+汉化本体改了 18 个文本文件（见 [更新摘要](RELEASE-NOTES-zh.md) 第三节清单），另加字体二进制、`platforms/switch/mod-packages/` 下两个上游 `.dusk` 模组包、构建 workflow，以及 README 和文档。其中大部分是**纯新增**（词表、引擎、工具、补丁脚本、字体、模组包、文档），rebase 时零冲突。真正可能撞的只有 7 个：
 
 | 文件 | 改了什么 | 冲突处理 |
 |---|---|---|
@@ -126,6 +126,11 @@ CI 在 `.github/workflows/build-switch.yml`。push 到 `main` 且改动命中 `s
 1. `devkitpro/devkita64` 容器（直接装 devkitPro 会遇到 `pkg.devkitpro.org` 403）
 2. Mesa Horizon SDK 的 `libvulkan.a`，解压后必须 `aarch64-none-elf-ranlib -D` 重建索引，否则链接报四千多个 `core::panicking::*` 未定义。SDK 是 `stefaniecheung-cmd/mesa-switch` 的 release `sdk-26.2.4`
 3. `-DALEKS2_NATIVE_MOD_LOADER=ON -DALEKS2_SYMBOL_CHECK_STRICT=OFF`，否则缺 `aleks2_live_mod_threads`
+4. 想和 Release 一样带上内置模组，`-DALEKS2_BUNDLED_MOD_PACKAGES="<绝对路径>/randomizer.dusk;<绝对路径>/dev.aleks2.cross_save.dusk"`。两个包在 `platforms/switch/mod-packages/`，是从上游 v1.1.1 NRO 的 RomFS 原样提取的，来源与哈希见该目录 README
+
+> **不重编也能装模组**：把这两个 `.dusk` 直接拷到 `sdmc:/switch/dusklight/mods/` 重启即可，上游 `docs/user/mods.md` 就是这么写的。`mods_init()` 把卡上的 `mods/` 设为第一搜索目录，优先级高于 `romfs:/res/mods`；同 id 时低优先级的那份被 `shadowed by higher-priority duplicate` 跳过，两份共存不会重复加载。模组默认自动启用（`ConfigVar<bool>(..., true)`）。Release 里把两个 `.dusk` 也作为独立资产提供，就是为了这条更快的路。若模组显示 refused，检查设置 → 诊断 → **Native Mods (H37)** 是否为 **Execute**。
+
+着色器种子（`ALEKS2_DAWN_CACHE_SEED` / `ALEKS2_DKSH_CACHE`）不要随便塞：它们带驱动标识，换驱动就会被 Aurora 忽略。本分支用自建 Mesa 26.2.4 Horizon，与上游 26.2.3 不同，交给真机首次启动时自己编译并落盘。
 
 ## 五、变更记录
 
@@ -137,4 +142,5 @@ CI 在 `.github/workflows/build-switch.yml`。push 到 `main` 且改动命中 `s
 | `bd187046` | ranlib 改从 devkitA64 的 `tools/bin` 解析 |
 | `687cbf57` | 默认界面语言改为 `zh-cn` |
 | `593ce04a` | 版本号固定为 `v1.1.1-cn` |
+| `5e174a84` | 打包两个内置 `.dusk` 模组包，CI 传 `ALEKS2_BUNDLED_MOD_PACKAGES` |
 | 发布 | tag `v1.1.1-cn`，Release 附 `dusklight-1.1.1-cn.nro` 与本摘要 |
