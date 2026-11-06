@@ -82,14 +82,28 @@ jobs:
           unzip -q /tmp/mesa-sdk.zip -d /tmp/mesa-sdk
           cp -r /tmp/mesa-sdk/opt/devkitpro/portlibs/switch/. "$DEVKITPRO/portlibs/switch/"
           test -f "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
+          # The archive ships an incomplete symbol index: its Rust core/alloc/std
+          # members are in it but unindexed, so GNU ld reports ~4.5k undefined
+          # core::panicking::* references at link time. Regenerating the index is
+          # the whole fix, and it is the one step
+          # platforms/switch/tools/reproduce-mesa-libvulkan.sh documents.
+          aarch64-none-elf-ranlib -D "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
           ls -l "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
 
       - name: Configure
         run: |
           set -euo pipefail
           cmake --version
+          # ALEKS2_NATIVE_MOD_LOADER: the static-mods preset leaves it off, but
+          # platforms/switch expects the run-time loader's declarations
+          # (aleks2_live_mod_threads, self_update) whichever way it is set, so the
+          # release configuration is the one h37 uses: statics plus the loader.
+          # The strict symbol manifest is off for the same reason h37 turns it off
+          # - it is calibrated to one exact update, not to this combination.
           cmake --preset switch-devkitA64-release-h36 \
-            -DNAGA_VULKAN_ROOT="$DEVKITPRO/portlibs/switch"
+            -DNAGA_VULKAN_ROOT="$DEVKITPRO/portlibs/switch" \
+            -DALEKS2_NATIVE_MOD_LOADER=ON \
+            -DALEKS2_SYMBOL_CHECK_STRICT=OFF
 
       - name: Build
         run: |
