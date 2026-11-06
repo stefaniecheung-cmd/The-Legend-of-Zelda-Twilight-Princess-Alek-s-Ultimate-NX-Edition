@@ -38,6 +38,10 @@ jobs:
     runs-on: ubuntu-24.04
     container: devkitpro/devkita64:latest
     timeout-minutes: 360
+    # The image's /bin/sh is dash, and every step here wants pipefail.
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Check out (with submodules)
         uses: actions/checkout@v4
