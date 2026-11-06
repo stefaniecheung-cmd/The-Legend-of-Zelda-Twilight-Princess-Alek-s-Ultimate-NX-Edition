@@ -114,6 +114,9 @@ jobs:
         run: |
           set -euo pipefail
           cmake --version
+          # Version label: the upstream port is 1.1.1, this build is the Chinese
+          # one, so it reports 1.1.1-cn in the menu and in the NACP instead of the
+          # build id the h36 preset would otherwise fall back to.
           # ALEKS2_NATIVE_MOD_LOADER: the static-mods preset leaves it off, but
           # platforms/switch expects the run-time loader's declarations
           # (aleks2_live_mod_threads, self_update) whichever way it is set, so the
@@ -123,7 +126,8 @@ jobs:
           cmake --preset switch-devkitA64-release-h36 \
             -DNAGA_VULKAN_ROOT="$DEVKITPRO/portlibs/switch" \
             -DALEKS2_NATIVE_MOD_LOADER=ON \
-            -DALEKS2_SYMBOL_CHECK_STRICT=OFF
+            -DALEKS2_SYMBOL_CHECK_STRICT=OFF \
+            -DDUSK_APP_VERSION_OVERRIDE=v1.1.1-cn
 
       - name: Build
         run: |
@@ -141,11 +145,12 @@ jobs:
           fi
           mkdir -p dist
           cp "$nro" dist/dusklight.nro
+          cp "$nro" dist/dusklight-1.1.1-cn.nro
           ls -lh dist/
 
       - name: Upload the NRO
         uses: actions/upload-artifact@v4
         with:
-          name: dusklight-nro-zh
-          path: dist/dusklight.nro
+          name: dusklight-1.1.1-cn
+          path: dist/dusklight-1.1.1-cn.nro
           if-no-files-found: error
