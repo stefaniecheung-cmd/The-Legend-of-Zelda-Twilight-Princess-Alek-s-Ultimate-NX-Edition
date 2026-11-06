@@ -123,10 +123,26 @@ jobs:
           # release configuration is the one h37 uses: statics plus the loader.
           # The strict symbol manifest is off for the same reason h37 turns it off
           # - it is calibrated to one exact update, not to this combination.
+          # ALEKS2_BUNDLED_MOD_PACKAGES: upstream's release NRO ships these two
+          # .dusk packages in romfs:/res/mods, but they are not in git (they come
+          # from a separate mod build) so a clean source build omits them. Keep
+          # the exact upstream v1.1.1 binaries here and hand the paths to CMake;
+          # it copies each by basename into romfs. When upstream bumps versions,
+          # replace the two files in platforms/switch/mod-packages/ and refresh
+          # the hashes in docs/dev/RELEASE-NOTES-zh.md.
+          # Shader seeds (initial_dawn_cache.db / initial_dksh_cache.bin) are
+          # intentionally NOT bundled: they must be captured on a real console
+          # for the exact driver this NRO carries, and the console builds its own
+          # cache during the first "Preparing shaders" pass anyway.
+          modpkg="$GITHUB_WORKSPACE/platforms/switch/mod-packages"
+          test -f "$modpkg/randomizer.dusk"
+          test -f "$modpkg/dev.aleks2.cross_save.dusk"
+          sha256sum "$modpkg"/*.dusk
           cmake --preset switch-devkitA64-release-h36 \
             -DNAGA_VULKAN_ROOT="$DEVKITPRO/portlibs/switch" \
             -DALEKS2_NATIVE_MOD_LOADER=ON \
             -DALEKS2_SYMBOL_CHECK_STRICT=OFF \
+            -DALEKS2_BUNDLED_MOD_PACKAGES="$modpkg/randomizer.dusk;$modpkg/dev.aleks2.cross_save.dusk" \
             -DDUSK_APP_VERSION_OVERRIDE=v1.1.1-cn
 
       - name: Build
@@ -143,6 +159,12 @@ jobs:
             find build -maxdepth 4 \( -name '*.nro' -o -name 'dusklight*' \) >&2
             exit 1
           fi
+          # RomFS keeps the file names in its entry table, so a plain binary grep
+          # is enough to prove the two built-in mod packages really made it in.
+          for pkg in randomizer.dusk dev.aleks2.cross_save.dusk ; do
+            grep -a -q "$pkg" "$nro" || { echo "missing $pkg in the NRO" >&2; exit 1; }
+            echo "bundled: $pkg"
+          done
           mkdir -p dist
           cp "$nro" dist/dusklight.nro
           cp "$nro" dist/dusklight-1.1.1-cn.nro
