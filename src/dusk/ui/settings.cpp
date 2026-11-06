@@ -45,9 +45,15 @@
 #if ALEKS2_NATIVE_MOD_LOADER
 #include "dusk/main.h"
 #include "dusk/switch_native_loader.hpp"
-#ifdef __SWITCH__
-#include "dusk/self_update.hpp"
 #endif
+#ifdef __SWITCH__
+// These two are used below under __SWITCH__ alone: the restart button in the
+// backend picker (aleks2_relaunch_on_exit lives in switch_startup.cpp) and the
+// Updates section (self_update.cpp is built for every switch target). Keeping
+// them inside the ALEKS2_NATIVE_MOD_LOADER block above left the static-mods
+// preset with no declaration in scope.
+#include "dusk/main.h"
+#include "dusk/self_update.hpp"
 // platforms/switch/source/switch_startup.cpp (V1-rc4): start this NRO again when the program exits.
 extern "C" bool aleks2_relaunch_on_exit(void);
 #endif
