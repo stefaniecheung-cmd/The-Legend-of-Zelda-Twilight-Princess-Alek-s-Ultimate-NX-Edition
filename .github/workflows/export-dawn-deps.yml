@@ -1,0 +1,143 @@
+name: Export Dawn deps (offline)
+
+# One-shot helper for building the Switch NRO on a Windows/MSYS2 host.
+# It runs exactly the same configure step as build-switch.yml - which makes
+# FetchContent pull encounter/dawn and makes Dawn's own
+# fetch_dawn_dependencies.py shallow-clone its 14+ third_party checkouts from
+# chromium.googlesource.com - then hands the resulting source tree back as an
+# artifact, with both Horizon patches already applied.
+#
+# On the Windows host, point -DFETCHCONTENT_SOURCE_DIR_DAWN at the unpacked
+# dawn-src and pass -DDAWN_FETCH_DEPENDENCIES=OFF: configure then never needs
+# to reach a Google source. See /c/swh/tp/configure_local.sh.
+#
+# workflow_dispatch only, on purpose: committing this file must not kick off a
+# full cross build, and the ordinary NRO workflow is left untouched.
+
+on:
+  workflow_dispatch:
+    inputs:
+      exclude_vcs:
+        description: "Drop nested .git directories from the tarball"
+        type: boolean
+        default: true
+
+concurrency:
+  group: export-dawn-deps-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Built by stefaniecheung-cmd/mesa-switch, workflow "Build Mesa Switch SDK".
+  MESA_SDK_URL: https://github.com/stefaniecheung-cmd/mesa-switch/releases/download/sdk-26.2.4/mesa-26.2.4-switch-unified-horizon-sdk.zip
+  DEVKITPRO: /opt/devkitpro
+
+jobs:
+  deps:
+    runs-on: ubuntu-24.04
+    container: devkitpro/devkita64:latest
+    timeout-minutes: 180
+    # The image's /bin/sh is dash, and every step here wants pipefail.
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Install the switch portlibs
+        run: |
+          set -uo pipefail
+          sudo apt-get update -qq || true
+          sudo apt-get install -y -qq --no-install-recommends ninja-build unzip zip
+
+          libs="$DEVKITPRO/portlibs/switch/lib"
+          count=$(find "$libs" -maxdepth 1 -name '*.a' 2>/dev/null | wc -l)
+          echo "portlibs/switch/lib carries $count archives"
+
+          if [ "$count" -lt 15 ]; then
+            echo "too few archives; trying dkp-pacman (it may 403)"
+            for attempt in 1 2 3; do
+              sudo dkp-pacman -Sy --noconfirm && break
+              echo "sync attempt $attempt failed"; sleep 20
+            done
+            for pkg in switch-zlib switch-libzstd switch-bzip2 switch-libexpat \
+                       switch-libpng switch-libjpeg-turbo switch-libwebp \
+                       switch-freetype switch-harfbuzz switch-curl ; do
+              sudo dkp-pacman -S --noconfirm --needed "$pkg" >/tmp/dkp.log 2>&1 \
+                || { echo "miss $pkg"; tail -3 /tmp/dkp.log; }
+            done
+          fi
+
+          cmake --version | head -1
+          ninja --version
+
+      - name: Install the Mesa Horizon Vulkan SDK
+        run: |
+          set -euo pipefail
+          curl -sSL "$MESA_SDK_URL" -o /tmp/mesa-sdk.zip
+          unzip -q /tmp/mesa-sdk.zip -d /tmp/mesa-sdk
+          cp -r /tmp/mesa-sdk/opt/devkitpro/portlibs/switch/. "$DEVKITPRO/portlibs/switch/"
+          test -f "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
+          export PATH="$DEVKITPRO/tools/bin:$PATH"
+          ranlib=$(command -v aarch64-none-elf-ranlib || command -v ranlib || true)
+          if [ -z "$ranlib" ]; then
+            echo "no ranlib found" >&2; ls "$DEVKITPRO/tools/bin" | head -30; exit 1
+          fi
+          "$ranlib" -D "$DEVKITPRO/portlibs/switch/lib/libvulkan.a" \
+            || "$ranlib" "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
+
+      - name: Configure (this is what fetches the Dawn dependencies)
+        run: |
+          set -euo pipefail
+          cmake --version
+          cmake --preset switch-devkitA64-release-h36 \
+            -DNAGA_VULKAN_ROOT="$DEVKITPRO/portlibs/switch" \
+            -DALEKS2_NATIVE_MOD_LOADER=ON \
+            -DALEKS2_SYMBOL_CHECK_STRICT=OFF \
+            -DDUSK_APP_VERSION_OVERRIDE=v1.1.1-cn
+
+      - name: Package the Dawn source tree
+        env:
+          EXCLUDE_VCS: ${{ inputs.exclude_vcs }}
+        run: |
+          set -euo pipefail
+          deps=build/switch-devkitA64-release-h36/_deps
+          dawn="$deps/dawn-src"
+
+          # configure succeeded, so these must be populated; fail loudly if a
+          # future Dawn revision moves them instead of shipping a broken tarball.
+          for d in third_party/abseil-cpp third_party/vulkan-headers/src \
+                   third_party/spirv-headers/src third_party/spirv-tools/src; do
+            test -d "$dawn/$d" || { echo "missing dependency: $d" >&2; exit 1; }
+          done
+          test -f "$dawn/patches/abseil-cpp.patch"
+
+          echo "---- Dawn tree ----"
+          du -sh "$dawn"
+          du -sh "$dawn"/third_party/* 2>/dev/null | sort -h | tail -20 || true
+
+          tar_args=(-czf "$RUNNER_TEMP/dawn-offline.tar.gz")
+          if [ "$EXCLUDE_VCS" = "true" ]; then
+            # --exclude-vcs drops the 14+ nested .git dirs. They are only used
+            # by fetch_dawn_dependencies.py, which the offline host disables.
+            tar_args=(--exclude-vcs "${tar_args[@]}")
+          fi
+          tar "${tar_args[@]}" -C "$deps" dawn-src
+
+          ls -lh "$RUNNER_TEMP/dawn-offline.tar.gz"
+          sha256sum "$RUNNER_TEMP/dawn-offline.tar.gz" \
+            | tee "$RUNNER_TEMP/dawn-offline.sha256"
+
+      - name: Upload the Dawn tree
+        uses: actions/upload-artifact@v4
+        with:
+          name: dawn-offline
+          path: |
+            ${{ runner.temp }}/dawn-offline.tar.gz
+            ${{ runner.temp }}/dawn-offline.sha256
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
