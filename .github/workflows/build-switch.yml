@@ -98,7 +98,16 @@ jobs:
           # core::panicking::* references at link time. Regenerating the index is
           # the whole fix, and it is the one step
           # platforms/switch/tools/reproduce-mesa-libvulkan.sh documents.
-          aarch64-none-elf-ranlib -D "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
+          # The image's devkitA64 binutils are not on PATH for a non-login bash,
+          # so resolve ranlib by path and accept the plain name as a fallback.
+          export PATH="$DEVKITPRO/tools/bin:$PATH"
+          ranlib=$(command -v aarch64-none-elf-ranlib || command -v ranlib || true)
+          if [ -z "$ranlib" ]; then
+            echo "no ranlib found" >&2; ls "$DEVKITPRO/tools/bin" | head -30; exit 1
+          fi
+          echo "ranlib: $ranlib"
+          "$ranlib" -D "$DEVKITPRO/portlibs/switch/lib/libvulkan.a" \
+            || "$ranlib" "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
           ls -l "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
 
       - name: Configure
