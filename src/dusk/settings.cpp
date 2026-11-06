@@ -45,7 +45,8 @@ UserSettings g_userSettings = {
     },
 
     .ui = {
-        .language {"ui.language", std::string{"en"}},
+        // 汉化版默认中文；设置里的「界面语言」仍可切回英文
+        .language {"ui.language", std::string{"zh-cn"}},
     },
 
     .game = {
