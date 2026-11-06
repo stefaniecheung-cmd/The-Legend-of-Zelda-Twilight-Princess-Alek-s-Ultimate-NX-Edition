@@ -131,13 +131,38 @@ jobs:
           sha256sum "$RUNNER_TEMP/dawn-offline.tar.gz" \
             | tee "$RUNNER_TEMP/dawn-offline.sha256"
 
+      - name: Package the remaining FetchContent source trees
+        run: |
+          set -euo pipefail
+          cd build/switch-devkitA64-release-h36/_deps
+          # Every FetchContent_Declare lands in <lowercase-name>-src. Dawn has
+          # its own artifact and SDL downloads fine on Windows, so ship the
+          # rest. Windows CMake cannot extract some of these tarballs itself
+          # (zstd ships a symlink, freetype hits file(RENAME) Permission denied),
+          # hence --dereference: symlinks become plain files in the tarball.
+          mapfile -t srcs < <(find . -maxdepth 1 -type d -name '*-src' \
+            ! -name 'dawn-src' ! -name 'sdl-src' -printf '%f\n' | sort)
+          printf '%s\n' "${srcs[@]}"
+          [ "${#srcs[@]}" -gt 0 ] || { echo "no FetchContent source trees" >&2; exit 1; }
+          du -sh "${srcs[@]}" | sort -h
+          tar --exclude-vcs --dereference -czf "$RUNNER_TEMP/aurora-deps.tar.gz" "${srcs[@]}"
+          ls -lh "$RUNNER_TEMP/aurora-deps.tar.gz"
+          sha256sum "$RUNNER_TEMP/aurora-deps.tar.gz"
+
       - name: Upload the Dawn tree
         uses: actions/upload-artifact@v4
         with:
           name: dawn-offline
-          path: |
-            ${{ runner.temp }}/dawn-offline.tar.gz
-            ${{ runner.temp }}/dawn-offline.sha256
+          path: ${{ runner.temp }}/dawn-offline.tar.gz
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+
+      - name: Upload the remaining FetchContent source trees
+        uses: actions/upload-artifact@v4
+        with:
+          name: aurora-deps-offline
+          path: ${{ runner.temp }}/aurora-deps.tar.gz
           if-no-files-found: error
           retention-days: 7
           compression-level: 0
