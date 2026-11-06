@@ -167,13 +167,19 @@ jobs:
         run: |
           set -euo pipefail
           root="$DEVKITPRO/portlibs/switch"
-          files=()
-          for lib in zstd bz2 lzma; do
+          # Ship every static portlib except the 91 MB Mesa libvulkan.a (the
+          # offline host already has that one). A Windows devkitPro install is
+          # missing most of these, and each one otherwise costs another
+          # configure/build round trip at link time.
+          mapfile -t libs < <(find "$root/lib" -maxdepth 1 -name '*.a' \
+            ! -name 'libvulkan.a' -printf 'lib/%f\n' | sort)
+          [ "${#libs[@]}" -gt 0 ] || { echo "no portlib archives" >&2; exit 1; }
+          for lib in zstd bz2 lzma expat; do
             test -f "$root/lib/lib${lib}.a" || { echo "missing lib${lib}.a" >&2; exit 1; }
-            files+=("lib/lib${lib}.a")
           done
-          [ -d "$root/include" ] && files+=(include)
-          tar -czf "$RUNNER_TEMP/switch-codec-portlibs.tar.gz" -C "$root" "${files[@]}"
+          tar -czf "$RUNNER_TEMP/switch-codec-portlibs.tar.gz" -C "$root" \
+            "${libs[@]}" include
+          echo "packaged ${#libs[@]} archives"
           ls -lh "$RUNNER_TEMP/switch-codec-portlibs.tar.gz"
 
       - name: Upload the Dawn tree
