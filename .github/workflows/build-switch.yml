@@ -2,8 +2,9 @@ name: Build Switch (NRO)
 
 # Cross build for the console: devkitA64 + libnx + the Mesa Horizon Vulkan SDK.
 # docs/dev/building-switch.md has the long form; this file is the same recipe on
-# a clean Ubuntu runner, which is the only place the build has been reproduced
-# outside the author's machine.
+# a clean runner. The toolchain comes from the devkitPro container image, which
+# already ships cmake, git, sudo and dkp-pacman - no host-side installer, so
+# nothing depends on apt.devkitpro.org (Cloudflare 403s GitHub runners).
 
 on:
   workflow_dispatch:
@@ -35,6 +36,7 @@ env:
 jobs:
   nro:
     runs-on: ubuntu-24.04
+    container: devkitpro/devkita64:latest
     timeout-minutes: 360
     steps:
       - name: Check out (with submodules)
@@ -43,36 +45,31 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      - name: Install devkitPro, devkitA64 and the switch portlibs
+      - name: Install the switch portlibs
         run: |
           set -euo pipefail
-          wget -q https://apt.devkitpro.org/install-devkitpro-pacman
-          chmod +x install-devkitpro-pacman
-          yes | sudo ./install-devkitpro-pacman
-          sudo dkp-pacman -Syu --noconfirm
-          # zlib/zstd/bzip2/xz/expat and libpng/curl are what the driver, Dawn and
-          # the HTTP service link against; freetype/harfbuzz carry the UI fonts.
+          sudo dkp-pacman -Sy --noconfirm
+          # zlib/zstd/bzip2/xz/expat are what the driver and the HTTP service link
+          # against; freetype/harfbuzz carry the UI fonts; png/jpeg/webp/curl are
+          # what the texture provider and update checker ask for.
           sudo dkp-pacman -S --noconfirm --needed \
-            devkitA64 libnx \
             switch-zlib switch-zstd switch-bzip2 switch-xz switch-expat \
             switch-libpng switch-libjpeg-turbo switch-libwebp \
             switch-freetype switch-harfbuzz switch-curl \
-            switch-libiconv
-          sudo apt-get install -y --no-install-recommends ninja-build cmake patch unzip
+            switch-libiconv ninja unzip
 
       - name: Install the Mesa Horizon Vulkan SDK
         run: |
           set -euo pipefail
           curl -sSL "$MESA_SDK_URL" -o /tmp/mesa-sdk.zip
           unzip -q /tmp/mesa-sdk.zip -d /tmp/mesa-sdk
-          sudo cp -r /tmp/mesa-sdk/opt/devkitpro/portlibs/switch/. "$DEVKITPRO/portlibs/switch/"
+          cp -r /tmp/mesa-sdk/opt/devkitpro/portlibs/switch/. "$DEVKITPRO/portlibs/switch/"
           test -f "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
           ls -l "$DEVKITPRO/portlibs/switch/lib/libvulkan.a"
 
       - name: Configure
         run: |
           set -euo pipefail
-          source /etc/profile.d/devkit-env.sh
           cmake --version
           cmake --preset switch-devkitA64-release-h36 \
             -DNAGA_VULKAN_ROOT="$DEVKITPRO/portlibs/switch"
@@ -80,7 +77,6 @@ jobs:
       - name: Build
         run: |
           set -euo pipefail
-          source /etc/profile.d/devkit-env.sh
           cmake --build --preset switch-devkitA64-release-h36 -- -k 0
 
       - name: Collect the NRO
@@ -89,7 +85,7 @@ jobs:
           nro=$(find build/switch-devkitA64-release-h36 -name 'dusklight.nro' -print -quit)
           if [ -z "$nro" ]; then
             echo "no dusklight.nro produced; build tree:" >&2
-            find build -maxdepth 4 -name '*.nro' -o -maxdepth 4 -name 'dusklight*' >&2
+            find build -maxdepth 4 \( -name '*.nro' -o -name 'dusklight*' \) >&2
             exit 1
           fi
           mkdir -p dist
