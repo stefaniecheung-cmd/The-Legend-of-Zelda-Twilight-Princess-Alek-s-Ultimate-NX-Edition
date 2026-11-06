@@ -149,6 +149,20 @@ jobs:
           ls -lh "$RUNNER_TEMP/aurora-deps.tar.gz"
           sha256sum "$RUNNER_TEMP/aurora-deps.tar.gz"
 
+      - name: Package the switch-curl portlib
+        run: |
+          set -euo pipefail
+          root="$DEVKITPRO/portlibs/switch"
+          test -f "$root/lib/libcurl.a" || {
+            echo "libcurl.a missing" >&2
+            find "$root/lib" -maxdepth 1 -name '*.a' | head -40 >&2
+            exit 1
+          }
+          files=(lib/libcurl.a include/curl)
+          [ -f "$root/lib/pkgconfig/libcurl.pc" ] && files+=(lib/pkgconfig/libcurl.pc)
+          tar -czf "$RUNNER_TEMP/switch-curl-portlib.tar.gz" -C "$root" "${files[@]}"
+          ls -lh "$RUNNER_TEMP/switch-curl-portlib.tar.gz"
+
       - name: Upload the Dawn tree
         uses: actions/upload-artifact@v4
         with:
@@ -163,6 +177,15 @@ jobs:
         with:
           name: aurora-deps-offline
           path: ${{ runner.temp }}/aurora-deps.tar.gz
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+
+      - name: Upload the switch-curl portlib
+        uses: actions/upload-artifact@v4
+        with:
+          name: switch-curl-portlib
+          path: ${{ runner.temp }}/switch-curl-portlib.tar.gz
           if-no-files-found: error
           retention-days: 7
           compression-level: 0
