@@ -50,17 +50,35 @@ jobs:
           fetch-depth: 0
 
       - name: Install the switch portlibs
+        # The image already carries most of them. Package names in dkp-libs are
+        # not uniform (switch-zlib but not switch-zstd), so each one is tried on
+        # its own and a miss is reported instead of killing the job; the tail of
+        # the log lists what is really in portlibs/switch/lib.
         run: |
-          set -euo pipefail
+          set -uo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ninja-build unzip zip cmake git
           sudo dkp-pacman -Sy --noconfirm
-          # zlib/zstd/bzip2/xz/expat are what the driver and the HTTP service link
-          # against; freetype/harfbuzz carry the UI fonts; png/jpeg/webp/curl are
-          # what the texture provider and update checker ask for.
-          sudo dkp-pacman -S --noconfirm --needed \
-            switch-zlib switch-zstd switch-bzip2 switch-xz switch-expat \
-            switch-libpng switch-libjpeg-turbo switch-libwebp \
-            switch-freetype switch-harfbuzz switch-curl \
-            switch-libiconv ninja unzip
+
+          for pkg in \
+            switch-zlib switch-libzstd switch-zstd switch-bzip2 switch-libxz switch-xz \
+            switch-libexpat switch-expat switch-libiconv switch-libpng \
+            switch-libjpeg-turbo switch-libwebp switch-freetype switch-harfbuzz \
+            switch-curl switch-libcurl switch-mesa ; do
+            if ! sudo dkp-pacman -S --noconfirm --needed "$pkg" 2>&1 | tee /tmp/dkp.log | grep -q "target not found"; then
+              echo "ok   $pkg"
+            else
+              echo "miss $pkg"
+            fi
+          done
+
+          echo "---- candidates in dkp-libs ----"
+          sudo dkp-pacman -Ss 'zstd|expat|libiconv' | head -20 || true
+          echo "---- portlibs/switch/lib ----"
+          ls "$DEVKITPRO/portlibs/switch/lib" | tr '\n' ' ' || true
+          echo
+          echo "---- system tools ----"
+          cmake --version | head -1; ninja --version; unzip -v | head -1
 
       - name: Install the Mesa Horizon Vulkan SDK
         run: |
