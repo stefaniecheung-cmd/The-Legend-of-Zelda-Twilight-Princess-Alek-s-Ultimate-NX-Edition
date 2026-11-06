@@ -1,0 +1,140 @@
+# 简体中文汉化维护指南
+
+这份文档给以后接手的人看：汉化是怎么接进引擎的、怎么加词改词、上游更新时怎么对齐。
+本版的改动摘要与发布信息见 [RELEASE-NOTES-zh.md](RELEASE-NOTES-zh.md)。
+
+## 一、结构：三层，互不侵入
+
+```
+res/i18n/zh-cn.xml          ← 词表（键 = 英文原文，值 = 中文）
+        ↑ 生成
+ci/i18n/zh-cn.json          ← 词表的源数据，日常只改这个
+ci/i18n/source-strings.json ← 从源码抽出来的英文全集，只读
+
+src/dusk/ui/i18n.cpp/.hpp   ← 查表引擎，提供 i18n::translate()
+        ↑ 注册
+src/dusk/ui/ui.cpp          ← 启动时 i18n::initialize() + set_translate_callback(i18n::translate)
+
+extern/aurora/lib/rmlui/SystemInterface_Aurora.cpp
+                            ← TranslateString() override，由补丁脚本自动注入
+```
+
+关键设计：**没有改任何一处 UI 调用点**。RmlUi 渲染文本时走 `TranslateString`，我们把整句英文丢进词表查，查到就换掉，查不到原样返回。因此：
+
+- 某句没译 → 显示英文，不会空白，不会崩
+- 上游改了源码文案 → 那句自动变回英文（因为键对不上），不会编译失败
+- 上游新增界面 → 新文案自动是英文，等你补词
+
+`res/i18n/en.xml` 是恒等映射（键 = 值），给没翻译的条目兜底。默认语言在 `src/dusk/settings.cpp` 里写死为 `zh-cn`，设置页可以切回 `en`。
+
+## 二、加词改词
+
+```bash
+# 1. 改 ci/i18n/zh-cn.json，键是英文原文，值是中文
+# 2. 重新生成 XML
+python tools/build-i18n.py ci/i18n/source-strings.json ci/i18n/zh-cn.json res/i18n
+# 3. 想看源码里有哪些英文还没进词表
+python tools/extract-ui-strings.py
+```
+
+`build-i18n.py` 不会拒绝任何缺失：没译的键会用英文原文作为值写进 XML。
+生成的 XML 里含 `&`、`'` 这类字符时会被转义；引擎读回时做实体解码，否则带 `&` 的词条会匹配不上（第一版踩过这个坑）。
+
+### 词表数字怎么读
+
+| 口径 | 数量 |
+|---|---|
+| `source-strings.json` 抽出的源串 / `zh-cn.xml` 条目 | 1586 |
+| `zh-cn.json` 里的译文映射 | 1388 |
+| XML 中值 ≠ 键（真正换成中文） | **1379（86.9%）** |
+| 保持英文 | 207 |
+
+207 = `not-translated.txt` 里逐条审过的 198 条 + 9 条本来就写作英文的专名（`GameCube`、`Wii`、`Vulkan`、`WebGPU`、`R + Start` 等，译文与原文相同）。
+所以「1388 条译文」和「1379 条已译」不矛盾，只是统计口径不同；对外统一说 **1379 / 1586（86.9%）**。
+
+### 故意不译的条目
+
+`ci/i18n/not-translated.txt` 列了 198 条，分三类，都有理由：
+
+| 类别 | 数量 | 为什么 |
+|---|---|---|
+| 协议字段名 | 27 | `Content-Length`、`Sec-WebSocket-Key` 这类 HTTP/WebSocket 头，翻了会坏协议 |
+| 拼接片段 | 28 | 运行时拼好的整句才会进回调，这些字面量永远匹配不到 |
+| 加载器内部诊断 | 143 | ELF 表、重定位、TLS 相关，只写日志，不进界面 |
+
+补词之前先看这份清单，避免白做功。
+
+## 三、对齐上游更新
+
+这是最需要小心的一步。上游是 `Alexgg1014/The-Legend-of-Zelda-Twilight-Princess-Alek-s-Ultimate-NX-Edition`。
+
+```bash
+git remote add upstream https://github.com/Alexgg1014/The-Legend-of-Zelda-Twilight-Princess-Alek-s-Ultimate-NX-Edition.git
+git fetch upstream main
+git rebase upstream/main        # 或者 merge，看你的习惯
+```
+
+同步完必做两件事：
+
+1. 跑 `python tools/extract-ui-strings.py`，把新出现的英文串与 `ci/i18n/source-strings.json` 比对，补进 `zh-cn.json` 后重建 XML。
+2. 用 `-DDUSK_APP_VERSION_OVERRIDE=v<上游版本>-cn` 重新构建，别把版本号留在旧值。
+
+### 冲突面有多大
+
+汉化本体改了 18 个文本文件（见下方清单），另加 1 个中文字体二进制、1 个构建 workflow，以及 README 和两份文档。其中大部分是**纯新增**（词表、引擎、工具、补丁脚本、字体、文档），rebase 时零冲突。真正可能撞的只有 7 个：
+
+| 文件 | 改了什么 | 冲突处理 |
+|---|---|---|
+| `CMakeLists.txt` | 配置期调用补丁脚本那段 | 保留上游，重新插入 aurora 补丁调用块 |
+| `files.cmake` | 列表里加 `src/dusk/ui/i18n.cpp` | 直接加回去 |
+| `src/dusk/settings.h` | 加 `ConfigVar<std::string> language` | 直接加回去 |
+| `src/dusk/settings.cpp` | 注册 `ui.language`，默认 `zh-cn` | 直接加回去 |
+| `src/dusk/ui/settings.cpp` | 设置页「界面语言」下拉 | 直接加回去 |
+| `src/dusk/ui/ui.cpp` | 两行：`i18n::initialize()` + 挂回调 | 直接加回去 |
+| `README.md` | 顶部中文版说明块 | 重新贴回去，下载链接的 tag 换成新版本 |
+
+### 上游换了 aurora 版本时
+
+`ci/patches/aurora-translate-callback.py` 是按文本锚点往 aurora 里插代码的，改 4 个文件、26 行纯增量、可重复执行。如果 aurora 改了你锚定的那几行，configure 会以 `FATAL_ERROR` 停下，日志写着 `i18n: ci/patches/aurora-translate-callback.py failed`。
+
+处理办法：打开脚本，看它 `ANCHORS` 里对不上的那条，按新代码调整锚点文本，然后单独跑一次验证：
+
+```bash
+python ci/patches/aurora-translate-callback.py extern/aurora
+python ci/patches/aurora-translate-callback.py extern/aurora   # 第二遍应该全是 already present
+```
+
+第二遍能幂等退出，才算改对。注意 `extern/aurora` 是子模块，升级后别忘了重新打补丁；CI 的 configure 步会自动跑，本地手动构建要自己跑一次。
+
+### 上游升版本号时
+
+版本号不在源码里写死，由 configure 参数决定，见 `.github/workflows/build-switch.yml` 的 Configure 步：
+
+```bash
+-DDUSK_APP_VERSION_OVERRIDE=v1.1.1-cn
+```
+
+上游出 1.2.0 就改成 `v1.2.0-cn`。规则在 `cmake/DuskAppVersion.cmake`：必须是 `vX.Y.Z` 或 `vX.Y.Z-后缀`，后缀只允许字母数字和点。菜单显示 `v1.2.0-cn`，NACP 显示 `1.2.0-cn`（上限 15 字符），数字版本 `1.2.0.0`。
+产物文件名 `dusklight-<版本>-cn.nro` 与 artifact 名也在同一个 workflow 里，改版本时一起改，别只改一半。
+
+## 四、构建
+
+CI 在 `.github/workflows/build-switch.yml`。push 到 `main` 且改动命中 `src/**`、`res/**`、`cmake/**`、workflow 等路径时自动跑（纯文档改动不会触发），产物是 `dusklight-<版本>-cn.nro`，也可以手动 `workflow_dispatch`。
+
+本地构建要先解决三件事，细节见 [building-switch.md](building-switch.md)：
+
+1. `devkitpro/devkita64` 容器（直接装 devkitPro 会遇到 `pkg.devkitpro.org` 403）
+2. Mesa Horizon SDK 的 `libvulkan.a`，解压后必须 `aarch64-none-elf-ranlib -D` 重建索引，否则链接报四千多个 `core::panicking::*` 未定义。SDK 是 `stefaniecheung-cmd/mesa-switch` 的 release `sdk-26.2.4`
+3. `-DALEKS2_NATIVE_MOD_LOADER=ON -DALEKS2_SYMBOL_CHECK_STRICT=OFF`，否则缺 `aleks2_live_mod_threads`
+
+## 五、变更记录
+
+| 提交 | 内容 |
+|---|---|
+| `ab30befe` | i18n 引擎、词表、字体、设置项、CI |
+| `6dfcf7e3` | `settings.cpp` 的 Switch 声明移到 `__SWITCH__` 块内 |
+| `f2f40295` | `libvulkan.a` 重建索引；开启运行时模组加载器 |
+| `bd187046` | ranlib 改从 devkitA64 的 `tools/bin` 解析 |
+| `687cbf57` | 默认界面语言改为 `zh-cn` |
+| `593ce04a` | 版本号固定为 `v1.1.1-cn` |
+| 发布 | tag `v1.1.1-cn`，Release 附 `dusklight-1.1.1-cn.nro` 与本摘要 |
