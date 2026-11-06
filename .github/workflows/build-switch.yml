@@ -50,30 +50,41 @@ jobs:
           fetch-depth: 0
 
       - name: Install the switch portlibs
-        # The image already carries most of them. Package names in dkp-libs are
-        # not uniform (switch-zlib but not switch-zstd), so each one is tried on
-        # its own and a miss is reported instead of killing the job.
+        # The devkita64 image already ships the switch portlibs this build links
+        # against, so the normal path touches no package database at all:
+        # pkg.devkitpro.org sits behind Cloudflare, which 403s GitHub runners now
+        # and then (run 42198744805), and dkp-pacman treats that as fatal. The
+        # pacman call below only runs when the archives are actually absent, and
+        # it may fail without taking the job with it.
         run: |
           set -uo pipefail
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq --no-install-recommends ninja-build unzip zip cmake git
-          sudo dkp-pacman -Sy --noconfirm
+          sudo apt-get update -qq || true
+          sudo apt-get install -y -qq --no-install-recommends ninja-build unzip zip
 
-          for pkg in \
-            switch-zlib switch-libzstd switch-bzip2 switch-libxz \
-            switch-libexpat switch-libiconv switch-libpng switch-libjpeg-turbo \
-            switch-libwebp switch-freetype switch-harfbuzz switch-curl ; do
-            if sudo dkp-pacman -S --noconfirm --needed "$pkg" >/tmp/dkp.log 2>&1; then
-              echo "ok   $pkg"
-            else
-              echo "miss $pkg"; cat /tmp/dkp.log
-            fi
-          done
+          libs="$DEVKITPRO/portlibs/switch/lib"
+          count=$(find "$libs" -maxdepth 1 -name '*.a' 2>/dev/null | wc -l)
+          echo "portlibs/switch/lib carries $count archives"
+
+          if [ "$count" -lt 15 ]; then
+            echo "too few archives; trying dkp-pacman (it may 403)"
+            for attempt in 1 2 3; do
+              sudo dkp-pacman -Sy --noconfirm && break
+              echo "sync attempt $attempt failed"; sleep 20
+            done
+            for pkg in switch-zlib switch-libzstd switch-bzip2 switch-libexpat \
+                       switch-libpng switch-libjpeg-turbo switch-libwebp \
+                       switch-freetype switch-harfbuzz switch-curl ; do
+              sudo dkp-pacman -S --noconfirm --needed "$pkg" >/tmp/dkp.log 2>&1 \
+                || { echo "miss $pkg"; tail -3 /tmp/dkp.log; }
+            done
+            count=$(find "$libs" -maxdepth 1 -name '*.a' 2>/dev/null | wc -l)
+            echo "portlibs/switch/lib now carries $count archives"
+          fi
 
           echo "---- system tools ----"
-          cmake --version
+          cmake --version | head -1
           ninja --version
-          unzip -v >/dev/null && echo "unzip ok"
+          command -v unzip >/dev/null && echo "unzip ok"
 
       - name: Install the Mesa Horizon Vulkan SDK
         run: |
