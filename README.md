@@ -4,7 +4,7 @@
   <h1>Dusklight — Alek's Ultimate NX Edition</h1>
 
   <p><b>A free, unofficial Nintendo Switch port of <a href="https://github.com/TwilitRealm/dusklight">Dusklight</a></b><br>
-  by <a href="https://github.com/Alexgg1014">Alexgg1014</a> · version <code>1.1.1</code></p>
+  by <a href="https://github.com/Alexgg1014">Alexgg1014</a> · version <code>1.1.3</code></p>
 
   <p>
     <a href="https://github.com/Alexgg1014/The-Legend-of-Zelda-Twilight-Princess-Alek-s-Ultimate-NX-Edition/releases/latest"><b>Download</b></a>
@@ -16,14 +16,6 @@
     <a href="docs/README.md">Documentation</a>
   </p>
 </div>
-
-> [!NOTE]
-> **本仓库是简体中文界面分支（v1.1.1-cn）**，基于上游 1.1.1，仅汉化移植层界面，不含游戏本体文本。
-> 默认简体中文，可在设置 → 界面语言切回 English。
-> 安装：NRO 放 `sdmc:/switch/dusklight/`，按住 R 从游戏标题接管启动（不要从相册启动）。
-> 下载本分支的 NRO 与两个可选模组包：[Releases · v1.1.1-cn](https://github.com/stefaniecheung-cmd/The-Legend-of-Zelda-Twilight-Princess-Alek-s-Ultimate-NX-Edition/releases/tag/v1.1.1-cn)。两个 `.dusk` 也可以不重下 NRO，直接放进 `sdmc:/switch/dusklight/mods/`。
-> 改动范围与对齐上游的方法见 [更新摘要](docs/dev/RELEASE-NOTES-zh.md) 与 [汉化维护指南](docs/dev/i18n-zh.md)。
-> 上游原版仍在 [Alexgg1014 的仓库](https://github.com/Alexgg1014/The-Legend-of-Zelda-Twilight-Princess-Alek-s-Ultimate-NX-Edition)。
 
 > [!IMPORTANT]
 > **Fan project. Not affiliated with Nintendo. Requires your own copy of the game.**
