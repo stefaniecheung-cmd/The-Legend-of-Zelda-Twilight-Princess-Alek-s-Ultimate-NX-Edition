@@ -126,6 +126,20 @@ def literals_in(text: str):
         pos = end
 
 
+def reassemble_utf8(s: str) -> str:
+    r"""\xNN escapes encode raw bytes, so "\xE2\x86\x90 Return" is "← Return" on
+    disk and at run time. decode() turns each escape into a lone U+00E2/U+0086/
+    U+0090 codepoint; when every such char came from an escape the whole string
+    re-decodes as UTF-8. Strings that already carry real text above U+00FF fail
+    the encode step and come back unchanged."""
+    if not any(0x80 <= ord(c) <= 0xFF for c in s):
+        return s
+    try:
+        return s.encode("latin-1").decode("utf-8")
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        return s
+
+
 def keep(s: str) -> bool:
     if not (3 <= len(s) <= 400):
         return False
@@ -163,6 +177,7 @@ def main() -> int:
         for path in sorted((root / rel).rglob("*.cpp")):
             text = strip_comments(path.read_text(encoding="utf-8", errors="replace"))
             for literal, _ in literals_in(text):
+                literal = reassemble_utf8(literal)
                 if keep(literal):
                     found.setdefault(literal, []).append(str(path.relative_to(root)))
 

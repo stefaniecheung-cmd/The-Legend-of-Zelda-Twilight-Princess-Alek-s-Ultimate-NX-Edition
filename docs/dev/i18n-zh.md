@@ -40,21 +40,30 @@ python tools/extract-ui-strings.py
 `build-i18n.py` 不会拒绝任何缺失：没译的键会用英文原文作为值写进 XML。
 生成的 XML 里含 `&`、`'` 这类字符时会被转义；引擎读回时做实体解码，否则带 `&` 的词条会匹配不上（第一版踩过这个坑）。
 
-### 词表数字怎么读
+### [TOKEN] 词条
+
+源码里还有一类 UI 串写作 `"[TOKEN]"`（拼接句、参数化句），引擎会把方括号里的裸 token 名丢进同一本词典查。这部分词条来自 `ci/i18n/tokens.json`（每条 `{token: {en, zh}}`，从 v1.1.1-cn 重构前的 token 词表回收），`build-i18n.py` 会自动把它们并入两份 XML：
+
+- `en.xml`：`TOKEN → 英文原文`（英文界面不显示裸 token）；
+- `zh-cn.xml`：`TOKEN → 中文`（没有中文时回落英文）。
+
+源码里新增 `[TOKEN]` 时，把它连同英文原文加进 `tokens.json` 即可；`tools/check_i18n_tokens.py` 会核对源码里的 token 是否都有词条。v1.1.1-cn 发布时这 233 个 token 没进词典，界面会直接显示 `[XXX]`，v1.1.3-cn 已修复。
+
+### 词表数字怎么读（v1.1.3-cn）
 
 | 口径 | 数量 |
 |---|---|
-| `source-strings.json` 抽出的源串 / `zh-cn.xml` 条目 | 1586 |
-| `zh-cn.json` 里的译文映射 | 1388 |
-| XML 中值 ≠ 键（真正换成中文） | **1379（86.9%）** |
-| 保持英文 | 207 |
+| `source-strings.json` 抽出的源串 / XML 整句条目 | 1449 |
+| `zh-cn.json` 里的译文映射 | 1394 |
+| 整句中真正换成中文（值 ≠ 键） | **1222（84.3%）** |
+| `[TOKEN]` 词条（en/zh-cn 各一份） | 233，全部有中文 |
+| 保持英文的整句 | 227 |
 
-207 = `not-translated.txt` 里逐条审过的 198 条 + 9 条本来就写作英文的专名（`GameCube`、`Wii`、`Vulkan`、`WebGPU`、`R + Start` 等，译文与原文相同）。
-所以「1388 条译文」和「1379 条已译」不矛盾，只是统计口径不同；对外统一说 **1379 / 1586（86.9%）**。
+227 = `not-translated.txt` 里逐条审过的 227 条（含 20 条 RML 模板碎片与 8 条加载器诊断的抽取噪音、9 条英文专名）。
 
 ### 故意不译的条目
 
-`ci/i18n/not-translated.txt` 列了 198 条，分三类，都有理由：
+`ci/i18n/not-translated.txt` 逐条记录了不译的原因：
 
 | 类别 | 数量 | 为什么 |
 |---|---|---|
@@ -111,7 +120,7 @@ python ci/patches/aurora-translate-callback.py extern/aurora   # 第二遍应该
 版本号不在源码里写死，由 configure 参数决定，见 `.github/workflows/build-switch.yml` 的 Configure 步：
 
 ```bash
--DDUSK_APP_VERSION_OVERRIDE=v1.1.1-cn
+-DDUSK_APP_VERSION_OVERRIDE=v1.1.3-cn
 ```
 
 上游出 1.2.0 就改成 `v1.2.0-cn`。规则在 `cmake/DuskAppVersion.cmake`：必须是 `vX.Y.Z` 或 `vX.Y.Z-后缀`，后缀只允许字母数字和点。菜单显示 `v1.2.0-cn`，NACP 显示 `1.2.0-cn`（上限 15 字符），数字版本 `1.2.0.0`。

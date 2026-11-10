@@ -1,6 +1,6 @@
 # 内置模组包（Switch）
 
-这两个 `.dusk` 是上游 `Alexgg1014/...` **v1.1.1 Release 的 `dusklight.nro` 里 RomFS 的原样提取**，未做任何修改。上游 Release 不单独提供 `randomizer.dusk`，但它把两个包都打进了 NRO 的 `romfs:/res/mods/`；`dev.aleks2.cross_save.dusk` 也作为独立资产发布，已核对与这里逐字节一致。
+这两个 `.dusk` 是上游 `Alexgg1014/...` **v1.1.1 Release 的 `dusklight.nro` 里 RomFS 的原样提取**，未做任何修改。上游 v1.1.3 Release 单独发布的 `dev.aleks2.cross_save.dusk` 已核对与本目录逐字节一致（SHA256 相同，2026-11 核对），故无需替换；上游 Release 不单独提供 `randomizer.dusk`，但上游把两个包都打进了 NRO 的 `romfs:/res/mods/`。
 
 | 文件 | 大小（字节） | SHA256 |
 |---|---:|---|

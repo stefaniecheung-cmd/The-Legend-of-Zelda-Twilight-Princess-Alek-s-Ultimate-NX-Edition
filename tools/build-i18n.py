@@ -55,26 +55,45 @@ def main() -> int:
     keys = json.loads(strings_path.read_text(encoding="utf-8"))
     translations = json.loads(translations_path.read_text(encoding="utf-8"))
 
+    # [TOKEN] entries: some call sites render "[TOKEN]" strings (built by
+    # concatenation or replaced wholesale); i18n::translate() strips the
+    # brackets and looks the bare token up in the same dictionary. tokens.json
+    # carries {"token": {"en": ..., "zh": ...}} for every token the source
+    # renders; en.xml gets the English text so the English UI never shows a
+    # raw "[TOKEN]", zh-cn.xml gets the Chinese when one exists.
+    tokens_path = strings_path.parent / "tokens.json"
+    token_entries_en: list[tuple[str, str]] = []
+    token_entries_zh: list[tuple[str, str]] = []
+    if tokens_path.exists():
+        tokens = json.loads(tokens_path.read_text(encoding="utf-8"))
+        token_entries_en = [(t, v["en"]) for t, v in sorted(tokens.items())]
+        token_entries_zh = [(t, v.get("zh") or v["en"]) for t, v in sorted(tokens.items())]
+
     out_dir.mkdir(parents=True, exist_ok=True)
     ordered = sorted(keys)
 
     write(
         out_dir / "en.xml",
         "en",
-        [(k, k) for k in ordered],
+        [(k, k) for k in ordered] + token_entries_en,
         "English is the source language: the keys and the values are the same text.",
     )
 
     translated = [(k, translations[k]) for k in ordered if k in translations]
     fallback = [k for k in ordered if k not in translations]
+    translated_tokens = sum(1 for t, v in token_entries_zh if v != dict(token_entries_en)[t])
     write(
         out_dir / "zh-cn.xml",
         "zh-cn",
-        [(k, translations.get(k, k)) for k in ordered],
-        f"{len(translated)} of {len(ordered)} strings translated; the rest fall back to English.",
+        [(k, translations.get(k, k)) for k in ordered] + token_entries_zh,
+        f"{len(translated)} of {len(ordered)} strings translated plus "
+        f"{translated_tokens}/{len(token_entries_zh)} [TOKEN] entries; the rest fall back to English.",
     )
 
-    print(f"en.xml/zh-cn.xml: {len(ordered)} entries, {len(translated)} translated, {len(fallback)} fallback")
+    print(
+        f"en.xml/zh-cn.xml: {len(ordered)} entries + {len(token_entries_en)} tokens, "
+        f"{len(translated)} translated, {len(fallback)} fallback"
+    )
     return 0
 
 

@@ -97,7 +97,7 @@ jobs:
             -DNAGA_VULKAN_ROOT="$DEVKITPRO/portlibs/switch" \
             -DALEKS2_NATIVE_MOD_LOADER=ON \
             -DALEKS2_SYMBOL_CHECK_STRICT=OFF \
-            -DDUSK_APP_VERSION_OVERRIDE=v1.1.1-cn
+            -DDUSK_APP_VERSION_OVERRIDE=v1.1.3-cn
 
       - name: Package the Dawn source tree
         env:

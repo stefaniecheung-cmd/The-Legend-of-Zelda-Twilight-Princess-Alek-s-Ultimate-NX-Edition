@@ -221,3 +221,79 @@ would carry weight without ever being shown.
 - `uses packed relative relocations (DT_RELR)`
 - `vtable slot is empty`
 
+
+## Extraction noise (20)
+
+Fragments the scanner shreds out of C++ raw-string RML templates (the
+self-update and touch-stick markup in `prelaunch.cpp`, the overlays in
+`settings.cpp`) and out of adjacent literals across code lines in the mod
+loader. RmlUi translates text nodes, never this markup, and the loader never
+renders these — there is nothing to translate.
+
+- `
+    <update-download-label id=`
+- `
+                <update-message id=`
+- `
+            <disc-status id=`
+- `
+            <version-label>Version <version-number id=`
+- `
+        <button id=`
+- `
+        <graphics-tuner>
+            <tuner-header>
+                <tuner-title id=`
+- `
+        <modal-dialog id=`
+- `
+        <output id=`
+- `
+        <resize-handle id=`
+- `
+        <span id=`
+- `
+        <speedrun-rta id=`
+- `
+    <touch-stick id=`
+- `><div id=`
+- `><img id=`
+- `><oil-fill id=`
+- `(<img src=`
+- `RML(
+    <button id=`
+- `RML(
+    <selection-frame id=`
+- `RML(
+<rml>
+<head>
+    <link type=`
+- `';
+    for (const char c : s) {
+        switch (c) {
+        case '`
+
+## Loader / libstdc++ diagnostics (8)
+
+`static_assert` messages and loader-internal log lines from
+`src/dusk/mods/loader/linux_*.cpp` and the libstdc++ layout checks. Log-only,
+never rendered.
+
+- `';
+    for (const char c : text) {
+        switch (c) {
+        case '`
+- `a locale holding the glibc-table ctype<char> (DM2-b)`
+- `basic_filebuf<char> is not glibc's size`
+- `basic_fstream<char> is not glibc's size`
+- `basic_ifstream<char> is not glibc's size`
+- `basic_ofstream<char> is not glibc's size`
+- `ctype<char> with glibc's 2-byte mask table (DM2-b)`
+- `the game's own ctype<char> is unchanged`
+
+## Assembled fragments, second kind (1)
+
+Interpolated into a bigger RML string before rendering, so the callback only
+ever sees the finished sentence (settings.cpp, LAN listen help).
+
+- `this console's address (Settings > Internet on the console)`
