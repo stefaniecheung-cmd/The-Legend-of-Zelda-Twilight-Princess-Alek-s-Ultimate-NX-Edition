@@ -4,9 +4,9 @@
 |---|---|
 | 上游 | [Alexgg1014/The-Legend-of-Zelda-Twilight-Princess-Alek-s-Ultimate-NX-Edition](https://github.com/Alexgg1014/The-Legend-of-Zelda-Twilight-Princess-Alek-s-Ultimate-NX-Edition) `main`，基线版本 **1.1.3**（合并上游 tag `v1.1.3`） |
 | 发布 tag | `v1.1.3-cn`（annotated tag，指向发布时的 `main`） |
-| 产物 | `dusklight-1.1.3-cn.nro`，BUILD_SIZE_PLACEHOLDER |
-| SHA256 | BUILD_SHA_PLACEHOLDER |
-| 构建 | GitHub Actions run BUILD_RUN_PLACEHOLDER（success），`devkitpro/devkita64` 容器 |
+| 产物 | `dusklight-1.1.3-cn.nro`，108,041,097 字节（103.0 MiB） |
+| SHA256 | `e702c03c7f8519e36f1d52b1a5017a103c54fcfddc81fb2487c046b9d3fd9c8b` |
+| 构建 | GitHub Actions run `42860215054`（success），`devkitpro/devkita64` 容器 |
 
 > 这是上游的个人汉化分支，不是官方版本。只汉化**移植层界面**，游戏内剧情对话、道具名等原版游戏资源不在范围内。
 
@@ -115,7 +115,7 @@ python tools/check_i18n_tokens.py           # 核对 [TOKEN] 词条
 
 ## 七、为什么比上游 Release 的 NRO 小
 
-上游 v1.1.3 的 `dusklight.nro` 是 170.7 MiB（178,989,461 字节），本分支约 10X MiB。**不是编译裁剪，也不是压缩差异**，而是上游在发布时额外传入了四个不在 git 里的二进制：
+上游 v1.1.3 的 `dusklight.nro` 是 170.7 MiB（178,989,461 字节），本分支 103.0 MiB。**不是编译裁剪，也不是压缩差异**，而是上游在发布时额外传入了四个不在 git 里的二进制：
 
 | 文件 | 大小 | 本分支 |
 |---|---:|---|
@@ -131,9 +131,8 @@ python tools/check_i18n_tokens.py           # 核对 [TOKEN] 词条
 | 提交 | 内容 |
 |---|---|
 | `652af97` | 合并上游 v1.1.3（含 v1.1.2） |
-| i18n 提交 | token 词条回收（`ci/i18n/tokens.json`）、build-i18n 并入 token、抽取工具 `\xNN` 修复、6 条新译文、词表重建 |
-| 版本提交 | workflow / README / 文档版本号 `v1.1.3-cn` |
-| 文档提交 | 摘要里的产物数字随最终构建回填 |
+| `6ad63b2` | token 词条回收（`ci/i18n/tokens.json`）、build-i18n 并入 token、抽取工具 `\xNN` 修复、6 条新译文、词表重建、版本号 `v1.1.3-cn` |
+| 文档提交 | 本摘要回填最终产物数字（run `42860215054`，42 分钟构建完成） |
 
 ---
 
