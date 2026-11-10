@@ -153,3 +153,6 @@ CI 在 `.github/workflows/build-switch.yml`。push 到 `main` 且改动命中 `s
 | `593ce04a` | 版本号固定为 `v1.1.1-cn` |
 | `5e174a84` | 打包两个内置 `.dusk` 模组包，CI 传 `ALEKS2_BUNDLED_MOD_PACKAGES` |
 | 发布 | tag `v1.1.1-cn`，Release 附 `dusklight-1.1.1-cn.nro` 与本摘要 |
+| `652af97` | 合并上游 v1.1.2 + v1.1.3 |
+| `6ad63b2` | 回收 233 条 `[TOKEN]` 词条（v1.1.1-cn 回归修复）、补译 6 条、抽取工具 `\xNN` 修复、版本号 `v1.1.3-cn` |
+| 发布 | tag `v1.1.3-cn`，Release 附 `dusklight-1.1.3-cn.nro` 与更新摘要 |
