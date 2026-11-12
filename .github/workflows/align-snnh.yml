@@ -21,7 +21,7 @@ jobs:
           repository: snnh/dusk-cn
           ref: cn-enhancements
           fetch-depth: 1
-          submodules: false
+          submodules: recursive
           path: upstream
 
       - name: Import as a single-commit snapshot branch
@@ -31,9 +31,10 @@ jobs:
           set -euo pipefail
           cd upstream
           SRC_SHA="$(git rev-parse HEAD)"
-          rm -rf .git
-          git init -q
+          # 单提交快照，但保留 submodule gitlinks，构建 workflow 才能拉子模块
           git checkout -q --orphan snnh-cn-enhancements
+          # GITHUB_TOKEN 是 GitHub App，无 workflows 权限，不能推送 .github/workflows/*.yml
+          rm -rf .github/workflows
           git add -A
           git -c user.name="workbuddy-sync" -c user.email="sync@local" \
               commit -q -m "Import snnh/dusk-cn@cn-enhancements ${SRC_SHA}"
