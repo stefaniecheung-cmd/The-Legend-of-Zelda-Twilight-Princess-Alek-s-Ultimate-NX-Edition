@@ -1,0 +1,1890 @@
+#include "settings.hpp"
+
+#include "bool_button.hpp"
+#include "controller_config.hpp"
+#include "graphics_tuner.hpp"
+#include "i18n.hpp"
+#include "menu_bar.hpp"
+#include "modal.hpp"
+#include "number_button.hpp"
+#include "pane.hpp"
+#include "prelaunch.hpp"
+#include "saves_window.hpp"
+#include "touch_controls_editor.hpp"
+#include "ui.hpp"
+
+#include "dusk/app_info.hpp"
+#include "dusk/audio/DuskAudioSystem.h"
+#include "dusk/audio/DuskDsp.hpp"
+#include "dusk/config.hpp"
+#include "dusk/data.hpp"
+#include "dusk/discord_presence.hpp"
+#include "dusk/hotkeys.h"
+#include "dusk/imgui/ImGuiEngine.hpp"
+#include "dusk/language.hpp"
+#include "dusk/livesplit.h"
+#include "dusk/presentation.hpp"
+#include "dusk/speedrun.h"
+
+#include <aurora/gfx.h>
+#include <aurora/lib/window.hpp>
+#include <borealis/file_select.hpp>
+#include <borealis/io.hpp>
+#if BOREALIS_HAS_SENTRY
+#include <borealis/sentry.hpp>
+#endif
+#include <fmt/format.h>
+#include <SDL3/SDL_filesystem.h>
+
+#include <algorithm>
+#include <cctype>
+#include <filesystem>
+
+#if defined(__APPLE__)
+#include <TargetConditionals.h>
+#endif
+
+#if defined(TARGET_ANDROID) || defined(__ANDROID__) ||                                             \
+    (defined(__APPLE__) && TARGET_OS_IOS && !TARGET_OS_MACCATALYST)
+#define TOUCH_CONTROLS_AVAILABLE true
+#else
+#define TOUCH_CONTROLS_AVAILABLE false
+#endif
+
+namespace dusk::ui {
+namespace {
+
+constexpr std::array<const char*, 4> kUiLanguageIds = {
+    "en",
+    "zh-cn",
+    "fr",
+    "ja",
+};
+
+constexpr std::array<const char*, 4> kUiLanguageTokenNames = {
+    "[ENGLISH]",
+    "[SIMPLIFIED_CHINESE]",
+    "[FRENCH]",
+    "[JAPANESE]",
+};
+
+int ui_language_index(std::string_view languageId) {
+    std::string lowered;
+    lowered.reserve(languageId.size());
+    for (const char ch : languageId) {
+        lowered.push_back(static_cast<char>(std::tolower(static_cast<unsigned char>(ch))));
+    }
+    if (lowered == "zh-cn" || lowered == "zh-hans") {
+        return 1;
+    }
+    if (lowered == "fr") {
+        return 2;
+    }
+    if (lowered == "ja") {
+        return 3;
+    }
+    return 0;
+}
+
+// Languages offered while the TPHD HD layer is active: the HD content ships its own
+// region-specific message folders, so the display names distinguish the variants below.
+constexpr std::array kHdLanguages = {
+    GameLanguage::English,
+    GameLanguage::German,
+    GameLanguage::French,
+    GameLanguage::Spanish,
+    GameLanguage::Italian,
+};
+
+constexpr std::array kLanguageNamesUS = {
+    "[AMERICAN_ENGLISH]",
+    "[GERMAN]",
+    "[CANADIAN_FRENCH]",
+    "[LATIN_AMERICAN_SPANISH]",
+    "[ITALIAN]",
+};
+
+constexpr std::array kLanguageNamesEU = {
+    "[BRITISH_ENGLISH]",
+    "[GERMAN]",
+    "[EUROPEAN_FRENCH]",
+    "[EUROPEAN_SPANISH]",
+    "[ITALIAN]",
+};
+
+const char* language_display_token(GameLanguage language) noexcept {
+    if (dusk::tphd_active()) {
+        const auto& names = prelaunch_state().configuredDiscInfo.region == iso::Region::Europe
+                                ? kLanguageNamesEU
+                                : kLanguageNamesUS;
+        const auto index = static_cast<std::size_t>(language);
+        if (index < names.size()) {
+            return names[index];
+        }
+    }
+
+    switch (language) {
+    case GameLanguage::English:
+        return "[ENGLISH]";
+    case GameLanguage::German:
+        return "[GERMAN]";
+    case GameLanguage::French:
+        return "[FRENCH]";
+    case GameLanguage::Spanish:
+        return "[SPANISH]";
+    case GameLanguage::Italian:
+        return "[ITALIAN]";
+    case GameLanguage::Japanese:
+        return "[JAPANESE]";
+    }
+    return "[ENGLISH]";
+}
+
+constexpr std::array kCardFileTypes = {
+    "[CARD_IMAGE]",
+    "[GCI_FOLDER]",
+};
+
+constexpr std::array kFpsOverlayCornerNames = {
+    "[TOP_LEFT]",
+    "[TOP_RIGHT]",
+    "[BOTTOM_LEFT]",
+    "[BOTTOM_RIGHT]",
+};
+
+constexpr std::array kInterpolationModes = {
+    "[OFF]",
+    "[CAPPED]",
+    "[UNLIMITED]",
+};
+
+constexpr std::array kAudioOutputModeNames = {
+    "[STEREO_SPEAKERS]",
+    "[STEREO_HEADPHONES]",
+    "[SURROUND_5_1]",
+    "[SURROUND_7_1]",
+};
+
+constexpr std::array kLetterboxModes = {
+    "[OFF]",
+    "[ON]",
+    "[ONLY_DURING_GAMEPLAY]",
+    "[ONLY_DURING_CUTSCENES]",
+};
+
+constexpr std::array kTouchTargetingLabels = {
+    "[HYBRID]",
+    "[HOLD]",
+    "[SWITCH]",
+};
+
+constexpr std::array kTouchTargetingDescriptions = {
+    "[TAP_ONCE_TO_LOCK_ON_WHEN_A_TARGET_IS_FOUND_DOUBLE_TAP_WHEN_NONE_IS_FOUND_TO]",
+    "[L_STAYS_HELD_ONLY_WHILE_YOUR_FINGER_IS_ON_THE_BUTTON]",
+    "[TAP_L_TO_KEEP_IT_HELD_TAP_AGAIN_TO_RELEASE_IT]",
+};
+
+constexpr std::array kGyroInputModeLabels = {
+    "[SENSOR]",
+    "[MOUSE]",
+};
+
+constexpr std::array kMenuScalingModeLabels = {
+    "[GAMECUBE]",
+    "[WII]",
+    "[DUSKLIGHT]",
+};
+
+constexpr std::array kAlwaysGreatspinModes = {
+    "[OFF]",
+    "[AFTER_LEARNING_SKILL]",
+    "[ALWAYS]",
+};
+
+constexpr std::array kMagicArmorModes = {
+    "[MAGIC_ARMOR_NORMAL]",
+    "[MAGIC_ARMOR_ON_DAMAGE]",
+    "[MAGIC_ARMOR_DOUBLE_DEFENSE]",
+    "[MAGIC_ARMOR_INVINCIBLE]",
+    "[MAGIC_ARMOR_COSMETIC]",
+};
+
+bool try_parse_backend(std::string_view backend, AuroraBackend& outBackend) {
+    if (backend == "auto") {
+        outBackend = BACKEND_AUTO;
+        return true;
+    }
+    if (backend == "d3d11") {
+        outBackend = BACKEND_D3D11;
+        return true;
+    }
+    if (backend == "d3d12") {
+        outBackend = BACKEND_D3D12;
+        return true;
+    }
+    if (backend == "metal") {
+        outBackend = BACKEND_METAL;
+        return true;
+    }
+    if (backend == "vulkan") {
+        outBackend = BACKEND_VULKAN;
+        return true;
+    }
+    if (backend == "opengl") {
+        outBackend = BACKEND_OPENGL;
+        return true;
+    }
+    if (backend == "opengles") {
+        outBackend = BACKEND_OPENGLES;
+        return true;
+    }
+    if (backend == "webgpu") {
+        outBackend = BACKEND_WEBGPU;
+        return true;
+    }
+    if (backend == "null") {
+        outBackend = BACKEND_NULL;
+        return true;
+    }
+
+    return false;
+}
+
+std::string_view backend_name(AuroraBackend backend) {
+    switch (backend) {
+    default:
+        return "[AUTO]";
+    case BACKEND_D3D12:
+        return "[D3D12]";
+    case BACKEND_D3D11:
+        return "[D3D11]";
+    case BACKEND_METAL:
+        return "[METAL]";
+    case BACKEND_VULKAN:
+        return "[VULKAN]";
+    case BACKEND_OPENGL:
+        return "[OPENGL]";
+    case BACKEND_OPENGLES:
+        return "[OPENGL_ES]";
+    case BACKEND_WEBGPU:
+        return "[WEBGPU]";
+    case BACKEND_NULL:
+        return "[NULL]";
+    }
+}
+
+std::string_view backend_id(AuroraBackend backend) {
+    switch (backend) {
+    default:
+        return "auto";
+    case BACKEND_D3D12:
+        return "d3d12";
+    case BACKEND_D3D11:
+        return "d3d11";
+    case BACKEND_METAL:
+        return "metal";
+    case BACKEND_VULKAN:
+        return "vulkan";
+    case BACKEND_OPENGL:
+        return "opengl";
+    case BACKEND_OPENGLES:
+        return "opengles";
+    case BACKEND_WEBGPU:
+        return "webgpu";
+    case BACKEND_NULL:
+        return "null";
+    }
+}
+
+std::vector<AuroraBackend> available_backends() {
+    std::vector<AuroraBackend> backends;
+    backends.emplace_back(BACKEND_AUTO);
+    size_t backendCount = 0;
+    const AuroraBackend* raw = aurora_get_available_backends(&backendCount);
+    for (size_t i = 0; i < backendCount; ++i) {
+        // Do not expose NULL
+        if (raw[i] != BACKEND_NULL) {
+            backends.emplace_back(raw[i]);
+        }
+    }
+    return backends;
+}
+
+AuroraBackend configured_backend() {
+    AuroraBackend configuredBackend = BACKEND_AUTO;
+    const auto configuredId = getSettings().backend.graphicsBackend.getValue();
+    if (!try_parse_backend(configuredId, configuredBackend)) {
+        configuredBackend = BACKEND_AUTO;
+    }
+    return configuredBackend;
+}
+
+bool is_graphics_backend_restart_pending() {
+    return getSettings().backend.graphicsBackend.getValue() !=
+           prelaunch_state().initialGraphicsBackend;
+}
+
+Rml::String graphics_backend_display_name() {
+    if (is_graphics_backend_restart_pending()) {
+        return Rml::String{backend_name(configured_backend())};
+    }
+    return Rml::String{backend_name(aurora_get_backend())};
+}
+
+Rml::String configured_data_path_display_name() {
+    const auto path = data::abbreviated_path_string(data::configured_data_path());
+    if (path.empty()) {
+        return "[NONE_PARENTHESIZED]";
+    }
+
+    auto display = borealis::io::display_name(path);
+    if (display.empty()) {
+        return path;
+    }
+    return display;
+}
+
+class DataFolderPathText : public Component {
+public:
+    explicit DataFolderPathText(Rml::Element* parent)
+        : Component(append(parent, "data-folder-path")) {
+        append_text_element(mRoot, "small", "[CURRENT_DATA_FOLDER]");
+        mPath = append(mRoot, "file-path");
+    }
+
+    void update() override {
+        const Rml::String path = data::abbreviated_path_string(data::configured_data_path());
+        if (path != mCurrentPath) {
+            set_text_content(mPath, path);
+            mCurrentPath = path;
+        }
+        Component::update();
+    }
+
+private:
+    Rml::Element* mPath = nullptr;
+    Rml::String mCurrentPath;
+};
+
+void show_data_folder_error_modal(std::string_view message) {
+    auto dismiss = [](Modal& modal) {
+        mDoAud_seStartMenu(kSoundWindowClose);
+        modal.pop();
+    };
+    push_document(std::make_unique<Modal>(Modal::Props{
+        .title = "[DATA_FOLDER_NOT_CHANGED]",
+        .bodyText = Rml::String{message},
+        .actions =
+            {
+                ModalAction{
+                    .label = "[OK]",
+                    .onPressed = dismiss,
+                },
+            },
+        .onDismiss = dismiss,
+        .icon = "warning",
+    }));
+    if (auto* doc = top_document()) {
+        doc->focus();
+    }
+}
+
+void data_folder_dialog_callback(borealis::file_select::Result result) {
+    if (result.status == borealis::file_select::Status::Canceled) {
+        return;
+    }
+    if (result.status != borealis::file_select::Status::Selected || result.locations.empty()) {
+        show_data_folder_error_modal("[DUSKLIGHT_COULD_NOT_OPEN_THE_FOLDER_PICKER]");
+        return;
+    }
+
+    std::string dataPathError;
+    if (data::set_custom_data_path(result.locations.front(), &dataPathError)) {
+        mDoAud_seStartMenu(kSoundItemChange);
+        return;
+    }
+
+    if (dataPathError.empty()) {
+        dataPathError =
+            fmt::format("{} [COULD_NOT_USE_THE_SELECTED_FOLDER_AS_ITS_DATA_FOLDER]", AppName);
+    }
+    show_data_folder_error_modal(dataPathError);
+}
+
+const Rml::String kInternalResolutionHelpText =
+    "[CONFIGURE_THE_RESOLUTION_USED_FOR_RENDERING_THE_GAME_HIGHER_VALUES_ARE_MORE_DE]";
+const Rml::String kShadowResolutionHelpText =
+    "[CONFIGURE_THE_SHADOW_MAP_RESOLUTION_HIGHER_VALUES_IMPROVE_SHADOW_QUALITY_BUT]";
+const Rml::String kResamplerHelpText =
+    "[CONFIGURE_THE_SAMPLING_METHOD_USED_WHEN_SCALING_THE_INTERNAL_RESOLUTION_FOR_FINAL_PRESENTATION]";
+const Rml::String kBloomHelpText =
+    "[CONFIGURE_THE_POST_PROCESSING_BLOOM_EFFECT_CLASSIC_USES_THE_ORIGINAL_BLO]";
+const Rml::String kBloomBrightnessHelpText =
+    "[CONFIGURE_BLOOM_INTENSITY_HIGHER_VALUES_MAKE_BRIGHT_AREAS_GLOW_MORE]";
+const Rml::String kDepthOfFieldHelpText =
+    "[CONFIGURE_THE_POST_PROCESSING_DEPTH_OF_FIELD_EFFECT_CLASSIC_USES_THE_ORIGINAL]";
+const Rml::String kUnlockFramerateHelpText =
+    "[USES_INTER_FRAME_INTERPOLATION_TO_ENABLE_HIGHER_FRAME_RATES_MAY_INTRODUCE_MINOR]";
+const Rml::String kTextureReplacementHelpText =
+    "[ENABLE_INSTALLED_TEXTURE_REPLACEMENTS]";
+
+int float_setting_percent(ConfigVar<float>& var) {
+    return static_cast<int>(var.getValue() * 100.0f + 0.5f);
+}
+
+bool gyro_enabled() {
+    return getSettings().game.enableGyroAim || getSettings().game.enableGyroRollgoal;
+}
+
+Rml::String touch_targeting_label(TouchTargeting targeting) {
+    const auto index = static_cast<size_t>(targeting);
+    if (index >= kTouchTargetingLabels.size()) {
+        return "[UNKNOWN]";
+    }
+    return kTouchTargetingLabels[index];
+}
+
+struct ConfigBoolProps {
+    Rml::String key;
+    Rml::String icon;
+    Rml::String helpText;
+    std::function<void(bool)> onChange;
+    std::function<bool()> isDisabled;
+};
+
+SelectButton& config_bool_select(
+    Pane& leftPane, Pane& rightPane, ConfigVar<bool>& var, ConfigBoolProps props) {
+    auto& button = leftPane.add_child<BoolButton>(BoolButton::Props{
+        .key = std::move(props.key),
+        .icon = std::move(props.icon),
+        .getValue = [&var] { return var.getValue(); },
+        .setValue =
+            [&var, callback = std::move(props.onChange)](bool value) {
+                if (value == var.getValue()) {
+                    return;
+                }
+                var.setValue(value);
+                config::save();
+                if (callback) {
+                    callback(value);
+                }
+            },
+        .isDisabled = std::move(props.isDisabled),
+        .isModified = [&var] { return var.getValue() != var.getDefaultValue(); },
+    });
+    leftPane.register_control(
+        button, rightPane, [helpText = std::move(props.helpText)](Pane& pane) {
+            pane.clear();
+            pane.add_rml(helpText);
+        });
+    return button;
+}
+
+void add_speedrun_disabled_option(Pane& leftPane, Pane& rightPane, ConfigVar<bool>& var,
+    const Rml::String& key, const Rml::String& helpText) {
+    config_bool_select(leftPane, rightPane, var, {
+        .key = key,
+        .helpText = helpText,
+        .isDisabled = [] { return speedrun::isActive(); },
+    });
+}
+
+SelectButton& config_percent_select(Pane& leftPane, Pane& rightPane, ConfigVar<float>& var,
+    Rml::String key, Rml::String helpText, int min, int max, int step = 5,
+    std::function<bool()> isDisabled = {}) {
+    auto& button = leftPane.add_child<NumberButton>(NumberButton::Props{
+        .key = std::move(key),
+        .getValue = [&var] { return float_setting_percent(var); },
+        .setValue =
+            [&var, min, max](int value) {
+                var.setValue(std::clamp(value, min, max) / 100.0f);
+                config::save();
+            },
+        .isDisabled = std::move(isDisabled),
+        .isModified = [&var] { return var.getValue() != var.getDefaultValue(); },
+        .min = min,
+        .max = max,
+        .step = step,
+        .suffix = "%",
+    });
+    leftPane.register_control(button, rightPane, [helpText = std::move(helpText)](Pane& pane) {
+        pane.clear();
+        pane.add_rml(helpText);
+    });
+    return button;
+}
+
+SelectButton& config_int_select(Pane& leftPane, Pane& rightPane, ConfigVar<int>& var,
+    Rml::String key, Rml::String helpText, int min, int max, int step = 5,
+    std::function<bool()> isDisabled = {}, std::function<void(int)> onChange = {},
+    std::string suffix = "") {
+    auto& button = leftPane.add_child<NumberButton>(NumberButton::Props{
+        .key = std::move(key),
+        .getValue = [&var] { return var.getValue(); },
+        .setValue =
+            [&var, min, max, callback = std::move(onChange)](int value) {
+                const int clampedValue = std::clamp(value, min, max);
+                var.setValue(clampedValue);
+                config::save();
+                if (callback) {
+                    callback(clampedValue);
+                }
+            },
+        .isDisabled = std::move(isDisabled),
+        .isModified = [&var] { return var.getValue() != var.getDefaultValue(); },
+        .min = min,
+        .max = max,
+        .step = step,
+        .suffix = suffix,
+    });
+    leftPane.register_control(button, rightPane, [helpText = std::move(helpText)](Pane& pane) {
+        pane.clear();
+        pane.add_text(helpText);
+    });
+    return button;
+}
+
+void graphics_tuner_control(Window& window, Pane& leftPane, Pane& rightPane,
+    const GraphicsTunerProps& props) {
+    const auto setting = GraphicsSetting::of(props.option);
+    leftPane.register_control(
+        leftPane
+            .add_select_button({
+                .key = props.title,
+                .getValue = [setting] { return setting.text(); },
+                .isModified = [setting] { return setting.isModified(); },
+                .submit = false,
+            })
+            .on_nav_command([&window, props](Rml::Event&, NavCommand cmd) {
+                if (cmd == NavCommand::Confirm || cmd == NavCommand::Left ||
+                    cmd == NavCommand::Right) {
+                    window.push(std::make_unique<GraphicsTuner>(props));
+                    return true;
+                }
+                return false;
+            }),
+        rightPane, [helpText = props.helpText](Pane& pane) {
+            pane.clear();
+            pane.add_text(helpText);
+        });
+}
+
+}  // namespace
+
+SettingsWindow::SettingsWindow(bool prelaunch) : mPrelaunch(prelaunch) {
+    if (prelaunch) {
+        add_tab("[PRELAUNCH]", [this](Rml::Element* content) {
+            auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
+            auto& rightPane = add_child<Pane>(content, Pane::Type::Uncontrolled);
+
+            leftPane.register_control(
+                leftPane
+                    .add_select_button({
+                        .key = "[DISC_IMAGE]",
+                        .getValue =
+                            [] {
+                                const auto& path = prelaunch_state().configuredDiscPath;
+                                std::string display;
+                                if (path.empty()) {
+                                    display = "[NONE_PARENTHESIZED]";
+                                } else {
+                                    display = borealis::io::display_name(path);
+                                    if (display.empty()) {
+                                        display = path;
+                                    }
+                                }
+                                return display;
+                            },
+                        .isModified =
+                            [] {
+                                const auto& state = prelaunch_state();
+                                const auto& active = state.activeDiscPath;
+                                return !active.empty() && state.configuredDiscPath != active;
+                            },
+                    })
+                    .on_pressed([] { open_iso_picker(); }),
+                rightPane, [](Pane& pane) {
+                    pane.add_rml("[SET_THE_DISC_IMAGE_THAT_DUSKLIGHT_USES_TO_LAUNCH_THE_GAME_CHANGES_REQUIR]");
+                });
+            leftPane.register_control(
+                leftPane
+                    .add_select_button({
+                        .key = "[TPHD_CONTENT_FOLDER]",
+                        .getValue =
+                            [] {
+                                const auto& path = prelaunch_state().configuredHdContentPath;
+                                std::string display;
+                                if (path.empty()) {
+                                    display = "[NONE_PARENTHESIZED]";
+                                } else {
+                                    display = std::filesystem::path(path).string();
+                                    if (display.empty()) {
+                                        display = path;
+                                    }
+                                }
+                                return display;
+                            },
+                        .isModified =
+                            [] {
+                                const auto& state = prelaunch_state();
+                                const auto& active = state.activeHdContentPath;
+                                return !active.empty() && state.configuredHdContentPath != active;
+                            },
+                    })
+                    .on_pressed([] { open_folder_picker(); }),
+                rightPane, [](Pane& pane) {
+                    pane.add_rml("[SET_THE_DIRECTORY_THAT_DUSK_LOADS_ELIGIBLE_TPHD_CONTENT_FROM]"
+                                  "<br/><br/>[CHANGES_REQUIRE_A_RESTART]");
+                    pane.add_button({
+                        .text = "[CLEAR_TPHD_FOLDER]",
+                        .isDisabled =
+                            [] {
+                                return prelaunch_state().configuredHdContentPath.empty();
+                            },
+                    }).on_pressed([] {
+                        clear_hd_content_path();
+                        mDoAud_seStartMenu(kSoundItemChange);
+                    });
+                });
+
+            leftPane.register_control(
+                leftPane.add_child<BoolButton>(BoolButton::Props{
+                    .key = "[ENABLE_TPHD]",
+                    .getValue = [] { return getSettings().backend.enableTphd.getValue(); },
+                    .setValue =
+                        [](bool value) {
+                            getSettings().backend.enableTphd.setValue(value);
+                            config::save();
+                        },
+                    .isModified =
+                        [] {
+                            return getSettings().backend.enableTphd.getValue() !=
+                                   prelaunch_state().initialEnableTphd;
+                        },
+                }),
+                rightPane, [](Pane& pane) {
+                    pane.add_rml("[DISABLES_THE_EXPERIMENTAL_TPHD_HD_RESOURCE_LAYER_WHEN_OFF]"
+                                  "<br/><br/>[CHANGES_REQUIRE_A_RESTART]");
+                });
+
+            if (data::manager().capabilities().canChangeLocation &&
+                borealis::file_select::capabilities().canOpenFolder)
+            {
+                leftPane.register_control(
+                    leftPane.add_select_button({
+                        .key = "[DATA_FOLDER]",
+                        .getValue = [] { return configured_data_path_display_name(); },
+                        .isModified = [] { return data::is_data_path_restart_pending(); },
+                    }),
+                    rightPane, [](Pane& pane) {
+                        pane.add_text("[THE_DATA_FOLDER_IS_WHERE_DUSKLIGHT_STORES_SETTINGS_SAVES_LOGS_TEXTURE_RE]");
+                        pane.add_child<DataFolderPathText>();
+#if DUSK_CAN_OPEN_DATA_FOLDER
+                        pane.add_button("[OPEN_DATA_FOLDER]").on_pressed([] {
+                            if (data::open_data_path()) {
+                                mDoAud_seStartMenu(kSoundClick);
+                            }
+                        });
+#endif
+                        pane.add_button("[CHANGE_DATA_FOLDER]").on_pressed([] {
+                            const auto defaultLocation =
+                                borealis::io::fs_path_to_string(data::configured_data_path());
+                            borealis::file_select::open_folder(
+                                {
+                                    .parentWindow = aurora::window::get_sdl_window(),
+                                    .defaultLocation = defaultLocation,
+                                    .requireRealPath = true,
+                                },
+                                &data_folder_dialog_callback);
+                        });
+#if defined(_WIN32)
+                        pane.add_button("[PORTABLE_MODE]").on_pressed([] {
+                            if (data::set_portable_data_path()) {
+                                mDoAud_seStartMenu(kSoundItemChange);
+                            }
+                        });
+#endif
+                        pane.add_button({
+                            .text = "[RESET_TO_DEFAULT]",
+                            .isDisabled = [] { return data::is_default_data_path(); },
+                        }).on_pressed([] {
+                            if (data::reset_data_path()) {
+                                mDoAud_seStartMenu(kSoundItemChange);
+                            }
+                        });
+                        pane.add_rml("[DATA_WILL_BE_MIGRATED_AUTOMATICALLY_ON_RESTART]");
+                    });
+            }
+            leftPane.register_control(
+                leftPane.add_select_button({
+                    .key = dusk::tphd_active() ? "[LANGUAGE_HD]" : "[LANGUAGE]",
+                    .getValue =
+                        [] {
+                            const auto& state = prelaunch_state();
+                            if (!state.configuredDiscCanLaunch) {
+                                return language_display_token(GameLanguage::English);
+                            }
+                            return language_display_token(getSettings().game.language.getValue());
+                        },
+                    .isDisabled =
+                        [] {
+                            const auto& state = prelaunch_state();
+                            if (!state.configuredDiscCanLaunch) {
+                                return true;
+                            }
+                            if (dusk::tphd_active()) {
+                                // The HD content supplies its own regional message folders.
+                                return false;
+                            }
+                            return language::available_languages(state.configuredDiscInfo).size() <= 1;
+                        },
+                    .isModified =
+                        [] {
+                            return getSettings().game.language.getValue() !=
+                                   prelaunch_state().initialLanguage;
+                        },
+                }),
+                rightPane, [](Pane& pane) {
+                    const auto& state = prelaunch_state();
+                    const auto add_language_button = [&pane](GameLanguage language) {
+                        pane.add_button({
+                                .text = Rml::String{language_display_token(language)},
+                                .isSelected =
+                                    [language] {
+                                        return getSettings().game.language.getValue() == language;
+                                    },
+                            })
+                            .on_pressed([language] {
+                                mDoAud_seStartMenu(kSoundItemChange);
+                                getSettings().game.language.setValue(language);
+                                config::save();
+                            });
+                    };
+
+                    if (dusk::tphd_active()) {
+                        for (const GameLanguage language : kHdLanguages) {
+                            add_language_button(language);
+                        }
+                    } else {
+                        const auto languages =
+                            state.configuredDiscCanLaunch
+                                ? language::available_languages(state.configuredDiscInfo)
+                                : language::available_languages({});
+                        for (const GameLanguage language : languages) {
+                            add_language_button(language);
+                        }
+                    }
+                    pane.add_rml("[CHANGES_REQUIRE_A_RESTART]");
+                });
+            leftPane.register_control(
+                leftPane.add_select_button({
+                    .key = "[GRAPHICS_BACKEND]",
+                    .getValue = [] { return graphics_backend_display_name(); },
+                    .isModified = [] { return is_graphics_backend_restart_pending(); },
+                }),
+                rightPane, [](Pane& pane) {
+                    const auto availableBackends = available_backends();
+                    for (const auto backend : availableBackends) {
+                        pane
+                            .add_button({
+                                .text = Rml::String{backend_name(backend)},
+                                .isSelected = [backend] { return configured_backend() == backend; },
+                            })
+                            .on_pressed([backend] {
+                                mDoAud_seStartMenu(kSoundItemChange);
+                                getSettings().backend.graphicsBackend.setValue(
+                                    std::string{backend_id(backend)});
+                                config::save();
+                            });
+                    }
+                    pane.add_rml("[CHANGES_REQUIRE_A_RESTART]");
+                });
+            leftPane.register_control(
+                leftPane.add_select_button({
+                    .key = "[SAVE_FILE_TYPE]",
+                    .getValue =
+                        [] {
+                            return kCardFileTypes[getSettings().backend.cardFileType.getValue()];
+                        },
+                    .isModified =
+                        [] {
+                            return getSettings().backend.cardFileType.getValue() !=
+                                   prelaunch_state().initialCardFileType;
+                        },
+                }),
+                rightPane, [](Pane& pane) {
+                    for (int i = 0; i < kCardFileTypes.size(); i++) {
+                        pane
+                            .add_button({
+                                .text = kCardFileTypes[i],
+                                .isSelected =
+                                    [i] {
+                                        return getSettings().backend.cardFileType.getValue() == i;
+                                    },
+                            })
+                            .on_pressed([i] {
+                                mDoAud_seStartMenu(kSoundItemChange);
+                                getSettings().backend.cardFileType.setValue(i);
+                                config::save();
+                            });
+                    }
+                });
+            add_save_files_control(leftPane, rightPane);
+        });
+    }
+
+    add_tab("[VIDEO]", [this](Rml::Element* content) {
+        auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
+        auto& rightPane = add_child<Pane>(content, Pane::Type::Uncontrolled);
+
+        leftPane.add_section("[DISPLAY]");
+
+        leftPane.register_control(leftPane.add_button("[TOGGLE_FULLSCREEN]").on_pressed([] {
+            mDoAud_seStartMenu(kSoundItemChange);
+            getSettings().video.enableFullscreen.setValue(!getSettings().video.enableFullscreen);
+            VISetWindowFullscreen(getSettings().video.enableFullscreen);
+            config::save();
+        }),
+            rightPane, [](Pane& pane) { pane.clear(); });
+        leftPane.register_control(leftPane.add_button("[RESTORE_DEFAULT_WINDOW_SIZE]").on_pressed([] {
+            mDoAud_seStartMenu(kSoundItemChange);
+            getSettings().video.enableFullscreen.setValue(false);
+            VISetWindowFullscreen(false);
+            VISetWindowSize(FB_WIDTH * 2, FB_HEIGHT * 2);
+            VICenterWindow();
+        }),
+            rightPane, [](Pane& pane) { pane.clear(); });
+        config_bool_select(leftPane, rightPane, getSettings().video.enableVsync,
+            {
+                .key = "[ENABLE_VSYNC]",
+                .helpText = "[SYNCHRONIZES_THE_FRAME_RATE_TO_YOUR_MONITOR_S_REFRESH_RATE]",
+                .onChange = [](bool value) { aurora_enable_vsync(value); },
+            });
+        config_bool_select(leftPane, rightPane, getSettings().video.lockAspectRatio,
+            {
+                .key = "[LOCK_4_3_ASPECT_RATIO]",
+                .helpText = "[LOCK_THE_GAME_S_ASPECT_RATIO_TO_THE_ORIGINAL]",
+                .onChange =
+                    [](bool value) {
+                        AuroraSetViewportPolicy(
+                            value ? AURORA_VIEWPORT_FIT : AURORA_VIEWPORT_STRETCH);
+                    },
+            });
+        config_bool_select(leftPane, rightPane, getSettings().game.pauseOnFocusLost,
+            {
+                .key = "[PAUSE_ON_FOCUS_LOST]",
+                .helpText = "[PAUSE_THE_GAME_WHEN_WINDOW_FOCUS_IS_LOST]",
+                .isDisabled = [] { return IsMobile || speedrun::isActive(); },
+            });
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "[SHOW_FPS_COUNTER]",
+                .getValue =
+                    [] {
+                        if (!getSettings().video.enableFpsOverlay.getValue()) {
+                            return Rml::String{"[OFF]"};
+                        }
+                        const int idx = getSettings().video.fpsOverlayCorner.getValue();
+                        return Rml::String{kFpsOverlayCornerNames[idx]};
+                    },
+                .isModified =
+                    [] {
+                        const auto& enable = getSettings().video.enableFpsOverlay;
+                        const auto& corner = getSettings().video.fpsOverlayCorner;
+                        return enable.getValue() != enable.getDefaultValue() ||
+                               (enable.getValue() && corner.getValue() != corner.getDefaultValue());
+                    },
+            }),
+            rightPane, [](Pane& pane) {
+                pane.add_button(
+                        {
+                            .text = "[OFF]",
+                            .isSelected =
+                                [] { return !getSettings().video.enableFpsOverlay.getValue(); },
+                        })
+                    .on_pressed([] {
+                        mDoAud_seStartMenu(kSoundItemChange);
+                        getSettings().video.enableFpsOverlay.setValue(false);
+                        config::save();
+                    });
+                for (int i = 0; i < static_cast<int>(kFpsOverlayCornerNames.size()); ++i) {
+                    pane.add_button(
+                            {
+                                .text = kFpsOverlayCornerNames[i],
+                                .isSelected =
+                                    [i] {
+                                        return getSettings().video.enableFpsOverlay.getValue() &&
+                                               getSettings().video.fpsOverlayCorner.getValue() == i;
+                                    },
+                            })
+                        .on_pressed([i] {
+                            mDoAud_seStartMenu(kSoundItemChange);
+                            getSettings().video.enableFpsOverlay.setValue(true);
+                            getSettings().video.fpsOverlayCorner.setValue(i);
+                            config::save();
+                        });
+                }
+                pane.add_rml(
+                    "[DISPLAY_THE_CURRENT_FRAMERATE_IN_A_CORNER_OF_THE_SCREEN_WHILE_PLAYING]");
+            });
+        config_bool_select(leftPane, rightPane, getSettings().video.rememberWindowSize,
+            {
+                .key = "[REMEMBER_WINDOW_SIZE]",
+                .helpText = "[SAVE_AND_RESTORE_THE_PREVIOUS_SESSIONS_WINDOW_SIZE_WHEN_OPENING_DUSKLIGHT]",
+                .onChange =
+                    [](bool value) {
+                        if (value && !getSettings().video.enableFullscreen) {
+                            const auto windowSize = aurora::window::get_window_size();
+                            getSettings().video.lastWindowWidth.setValue(windowSize.width);
+                            getSettings().video.lastWindowHeight.setValue(windowSize.height);
+                            config::save();
+                        }
+                    },
+                .isDisabled = [] { return IsMobile; },
+            });
+        config_int_select(leftPane, rightPane, getSettings().video.uiScale,
+            "[UI_SCALE]",
+            "[SCALES_THE_DUSKLIGHT_INTERFACE_RELATIVE_TO_THE_DISPLAY_S_DPI_SCALE_HAS_NO_EFF]",
+            50, 200, 25, {}, {}, "%");
+
+        leftPane.add_section("[RESOLUTION]");
+        graphics_tuner_control(*this, leftPane, rightPane,
+            GraphicsTunerProps{
+                .option = GraphicsOption::InternalResolution,
+                .title = "[INTERNAL_RESOLUTION]",
+                .helpText = kInternalResolutionHelpText,
+            });
+        graphics_tuner_control(*this, leftPane, rightPane,
+            GraphicsTunerProps{
+                .option = GraphicsOption::ShadowResolution,
+                .title = "[SHADOW_RESOLUTION]",
+                .helpText = kShadowResolutionHelpText,
+            });
+        graphics_tuner_control(*this, leftPane, rightPane,
+            GraphicsTunerProps{
+                .option = GraphicsOption::Resampler,
+                .title = "[OUTPUT_RESAMPLING]",
+                .helpText = kResamplerHelpText,
+            });
+
+        leftPane.add_section("[POST_PROCESSING]");
+        graphics_tuner_control(*this, leftPane, rightPane,
+            GraphicsTunerProps{
+                .option = GraphicsOption::BloomMode,
+                .title = "[BLOOM]",
+                .helpText = kBloomHelpText,
+            });
+        graphics_tuner_control(*this, leftPane, rightPane,
+            GraphicsTunerProps{
+                .option = GraphicsOption::BloomMultiplier,
+                .title = "[BLOOM_BRIGHTNESS]",
+                .helpText = kBloomBrightnessHelpText,
+            });
+        graphics_tuner_control(*this, leftPane, rightPane,
+            GraphicsTunerProps{
+                .option = GraphicsOption::DepthOfFieldMode,
+                .title = "[DEPTH_OF_FIELD]",
+                .helpText = kDepthOfFieldHelpText,
+            });
+
+        leftPane.add_section("[RENDERING]");
+        graphics_tuner_control(*this, leftPane, rightPane,
+            GraphicsTunerProps{
+                .option = GraphicsOption::TextureReplacements,
+                .title = "[USE_TEXTURE_PACK]",
+                .helpText = kTextureReplacementHelpText,
+            });
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "[UNLOCK_FRAMERATE]",
+                .getValue =
+                    [] {
+                        return kInterpolationModes[static_cast<u8>(
+                            getSettings().game.enableFrameInterpolation.getValue())];
+                    },
+                .isModified =
+                    [] {
+                        return getSettings().game.enableFrameInterpolation.getValue() !=
+                               getSettings().game.enableFrameInterpolation.getDefaultValue();
+                    },
+            }),
+            rightPane, [](Pane& pane) {
+                for (int i = 0; i < kInterpolationModes.size(); i++) {
+                    pane.add_button({
+                            .text = kInterpolationModes[i],
+                            .isSelected =
+                                [i] {
+                                    return getSettings().game.enableFrameInterpolation.getValue() ==
+                                           static_cast<FrameInterpMode>(i);
+                                },
+                        })
+                        .on_pressed([i] {
+                            mDoAud_seStartMenu(kSoundItemChange);
+                            getSettings().game.enableFrameInterpolation.setValue(
+                                static_cast<FrameInterpMode>(i));
+                            presentation::update_frame_rate_preference();
+                            config::save();
+                        });
+                }
+                pane.add_rml(kUnlockFramerateHelpText);
+            });
+        config_int_select(leftPane, rightPane, getSettings().video.maxFrameRate,
+            "[FRAMERATE_CAP]", "[LIMIT_THE_FRAMERATE_TO_THE_SPECIFIED_VALUE]", 30, 540, 1,
+            [] {
+                return getSettings().game.enableFrameInterpolation.getValue() !=
+                       FrameInterpMode::Capped;
+            },
+            [](int) { presentation::update_frame_rate_preference(); });
+        config_bool_select(leftPane, rightPane, getSettings().game.enableMapBackground,
+            {
+                .key = "[ENABLE_MINI_MAP_SHADOWS]",
+                .helpText = "[RENDER_A_THICK_SHADOW_AROUND_THE_MINI_MAP_MAY_IMPACT_PERFORMANCE]",
+            });
+        config_bool_select(leftPane, rightPane, getSettings().game.disableCutscenePillarboxing,
+            {
+                .key = "[DISABLE_CUTSCENE_PILLARBOXING]",
+                .helpText = "[DISABLE_BLACK_BARS_ON_THE_LEFT_AND_RIGHT_SIDES_OF_THE_SCREEN_DURING_SOME]",
+            });
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "[DISABLE_LETTERBOXING]",
+                .getValue =
+                    [] {
+                        return kLetterboxModes[static_cast<u8>(getSettings().game.disableLetterboxing.getValue())];
+                    },
+                .isModified =
+                    [] {
+                        return getSettings().game.disableLetterboxing.getValue() !=
+                               getSettings().game.disableLetterboxing.getDefaultValue();
+                    },
+            }),
+            rightPane, [](Pane& pane) {
+                for (int i = 0; i < static_cast<int>(kLetterboxModes.size()); i++) {
+                    pane.add_button({
+                            .text = kLetterboxModes[i],
+                            .isSelected =
+                                [i] {
+                                    return getSettings().game.disableLetterboxing.getValue() == static_cast<LetterboxMode>(i);
+                                },
+                        })
+                        .on_pressed([i] {
+                            mDoAud_seStartMenu(kSoundItemChange);
+                            getSettings().game.disableLetterboxing.setValue(static_cast<LetterboxMode>(i));
+                            config::save();
+                        });
+                }
+                pane.add_rml(
+                    "<br/>[DISABLE_THE_TOP_AND_BOTTOM_BLACK_BARS_DURING_L_TARGETING_AIMING_CUTSCE]"
+                );
+            });
+    });
+
+    add_tab("[INPUT]", [this](Rml::Element* content) {
+        auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
+        auto& rightPane = add_child<Pane>(content, Pane::Type::Uncontrolled);
+
+        auto addOption = [&](const Rml::String& key, ConfigVar<bool>& value,
+                             const Rml::String& helpText, std::function<bool()> isDisabled = {}) {
+            config_bool_select(leftPane, rightPane, value,
+                {
+                    .key = key,
+                    .helpText = helpText,
+                    .isDisabled = std::move(isDisabled),
+                });
+        };
+
+        leftPane.add_section("[CONTROLLER]");
+        leftPane.register_control(
+            leftPane.add_group_button({.text = "[CONFIGURE_CONTROLLER]"}).on_pressed([this] {
+                push(std::make_unique<ControllerConfigWindow>());
+            }),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_text("[OPEN_CONTROLLER_BINDING_CONFIGURATION]");
+            });
+        config_bool_select(leftPane, rightPane, getSettings().game.allowBackgroundInput,
+            {
+                .key = "[ALLOW_BACKGROUND_INPUT]",
+                .helpText = "[ALLOW_CONTROLLER_INPUT_EVEN_WHEN_THE_GAME_WINDOW_IS_NOT_FOCUSED]",
+                .onChange = [](bool value) { aurora_set_background_input(value); },
+            });
+
+#if TOUCH_CONTROLS_AVAILABLE
+        leftPane.add_section("[TOUCH]");
+        addOption("[TOUCH_CONTROLS]", getSettings().game.enableTouchControls,
+            "[ENABLES_CONTROLS_OVERLAY_FOR_TOUCH_SCREENS_PRESS_AND_DRAG_ON_THE_LEFT_SIDE]");
+        auto& customizeTouchLayout = leftPane.add_group_button(GroupButton::Props{
+            .text = "[CUSTOMIZE_LAYOUT]",
+            .isDisabled = [] { return !getSettings().game.enableTouchControls; },
+        });
+        leftPane.register_control(customizeTouchLayout.on_pressed(
+                                      [this] { push(std::make_unique<TouchControlsEditor>()); }),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_text("[OPEN_THE_TOUCH_CONTROLS_LAYOUT_EDITOR]");
+            });
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "[TOUCH_TARGETING]",
+                .getValue =
+                    [] {
+                        return touch_targeting_label(getSettings().game.touchTargeting.getValue());
+                    },
+                .isDisabled = [] { return !getSettings().game.enableTouchControls; },
+                .isModified =
+                    [] {
+                        const auto& targeting = getSettings().game.touchTargeting;
+                        return targeting.getValue() != targeting.getDefaultValue();
+                    },
+            }),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                for (int i = 0; i < static_cast<int>(kTouchTargetingLabels.size()); ++i) {
+                    pane.add_button({
+                            .text = kTouchTargetingLabels[i],
+                            .isSelected =
+                                [i] {
+                                    return getSettings().game.touchTargeting.getValue() ==
+                                           static_cast<TouchTargeting>(i);
+                                },
+                        })
+                        .on_pressed([i] {
+                            mDoAud_seStartMenu(kSoundItemChange);
+                            getSettings().game.touchTargeting.setValue(
+                                static_cast<TouchTargeting>(i));
+                            config::save();
+                        });
+                }
+                pane.add_rml(
+                    fmt::format("<br/>[HYBRID]: {}<br/>[HOLD]: {}<br/>[SWITCH]: {}",
+                        kTouchTargetingDescriptions[0], kTouchTargetingDescriptions[1],
+                        kTouchTargetingDescriptions[2]));
+            });
+        config_percent_select(leftPane, rightPane, getSettings().game.touchCameraXSensitivity,
+            "[TOUCH_CAMERA_X_SENSITIVITY]",
+            "[ADJUSTS_TOUCH_CAMERA_HORIZONTAL_SENSITIVITY_APPLIES_TO_TOUCH_INPUT_ONLY]",
+            25, 400, 5, [] { return !getSettings().game.enableTouchControls; });
+        config_percent_select(leftPane, rightPane, getSettings().game.touchCameraYSensitivity,
+            "[TOUCH_CAMERA_Y_SENSITIVITY]",
+            "[ADJUSTS_TOUCH_CAMERA_VERTICAL_SENSITIVITY_APPLIES_TO_TOUCH_INPUT_ONLY]", 25,
+            400, 5, [] { return !getSettings().game.enableTouchControls; });
+#endif
+
+        leftPane.add_section("[CAMERA]");
+        addOption("[FREE_CAMERA]", getSettings().game.freeCamera,
+            "[ENABLES_TWIN_STICK_CAMERA_CONTROL_LETTING_THE_C_STICK_MOVE_THE_CAMERA_VE]");
+        addOption("[INVERT_CAMERA_X_AXIS]", getSettings().game.invertCameraXAxis,
+            "[INVERT_HORIZONTAL_CAMERA_MOVEMENT]");
+        addOption("[INVERT_CAMERA_Y_AXIS]", getSettings().game.invertCameraYAxis,
+            "[INVERT_VERTICAL_CAMERA_MOVEMENT_WHEN_FREE_CAMERA_IS_ENABLED]",
+            [] { return !getSettings().game.freeCamera; });
+        config_percent_select(leftPane, rightPane, getSettings().game.freeCameraXSensitivity,
+            "[FREE_CAMERA_X_SENSITIVITY]", "[ADJUSTS_TWIN_STICK_CAMERA_X_AXIS_SENSITIVITY]", 50, 200, 5,
+            [] { return !getSettings().game.freeCamera; });
+        config_percent_select(leftPane, rightPane, getSettings().game.freeCameraYSensitivity,
+            "[FREE_CAMERA_Y_SENSITIVITY]", "[ADJUSTS_TWIN_STICK_CAMERA_Y_AXIS_SENSITIVITY]", 50, 200, 5,
+            [] { return !getSettings().game.freeCamera; });
+        addOption("[INVERT_FIRST_PERSON_X_AXIS]", getSettings().game.invertFirstPersonXAxis,
+            "[INVERT_HORIZONTAL_MOVEMENT_WHILE_AIMING_WITH_ITEMS_OR_FIRST_PERSON_CAMERA]");
+        addOption("[INVERT_FIRST_PERSON_Y_AXIS]", getSettings().game.invertFirstPersonYAxis,
+            "[INVERT_VERTICAL_MOVEMENT_WHILE_AIMING_WITH_ITEMS_OR_FIRST_PERSON_CAMERA]");
+
+        leftPane.add_section("[GYRO]");
+        addOption("[GYRO_AIM]", getSettings().game.enableGyroAim,
+            "[ENABLES_GYRO_CONTROLS_WHILE_IN_LOOK_MODE_AIMING_A_HAWK_AND_AIMING_SUPPOR]");
+        addOption("[GYRO_ROLLGOAL]", getSettings().game.enableGyroRollgoal,
+            "[ENABLES_GYRO_CONTROLS_FOR_ROLLGOAL_IN_HENA_S_CABIN]");
+        config_percent_select(leftPane, rightPane, getSettings().game.gyroSensitivityY,
+            "[GYRO_PITCH_SENSITIVITY]", "[CONTROLS_VERTICAL_GYRO_AIMING_SENSITIVITY]", 25, 400, 5,
+            [] { return !gyro_enabled(); });
+        config_percent_select(leftPane, rightPane, getSettings().game.gyroSensitivityX,
+            "[GYRO_YAW_SENSITIVITY]", "[CONTROLS_HORIZONTAL_GYRO_AIMING_SENSITIVITY]", 25, 400, 5,
+            [] { return !gyro_enabled(); });
+        config_percent_select(leftPane, rightPane, getSettings().game.gyroSensitivityRollgoal,
+            "[ROLLGOAL_SENSITIVITY]", "[CONTROLS_HOW_STRONGLY_GYRO_INPUT_TILTS_THE_ROLLGOAL_TABLE]",
+            25, 400, 5,
+            [] { return !getSettings().game.enableGyroRollgoal; });
+        config_percent_select(leftPane, rightPane, getSettings().game.gyroDeadband, "[GYRO_DEADBAND]",
+            "[IGNORES_SMALL_GYRO_MOVEMENT_TO_REDUCE_DRIFT_AND_JITTER]", 0, 50, 1,
+            [] { return !gyro_enabled(); });
+        config_percent_select(leftPane, rightPane, getSettings().game.gyroSmoothing,
+            "[GYRO_SMOOTHING]", "[HIGHER_VALUES_SMOOTH_GYRO_INPUT_OVER_TIME]", 0, 100, 1,
+            [] { return !gyro_enabled(); });
+        addOption("[INVERT_GYRO_PITCH]", getSettings().game.gyroInvertPitch,
+            "[INVERT_VERTICAL_GYRO_AIMING]", [] { return !gyro_enabled(); });
+        addOption("[INVERT_GYRO_YAW]", getSettings().game.gyroInvertYaw,
+            "[INVERT_HORIZONTAL_GYRO_AIMING]", [] { return !gyro_enabled(); });
+
+        leftPane.add_section("[MOUSE]");
+        addOption("[MOUSE_AIM]", getSettings().game.enableMouseAim,
+            "[ENABLES_MOUSE_INPUT_WHILE_IN_LOOK_MODE_AIMING_A_HAWK_AND_AIMING_SUPPORTED_ITEMS]");
+        addOption("[MOUSE_CAMERA]", getSettings().game.enableMouseCamera,
+            "[ENABLES_MOUSE_INPUT_FOR_CONTROLLING_THE_THIRD_PERSON_CAMERA]");
+        config_percent_select(leftPane, rightPane, getSettings().game.mouseAimSensitivity,
+            "[MOUSE_AIM_SENSITIVITY]", "[CONTROLS_MOUSE_AIM_SENSITIVITY]", 25, 400, 5,
+            [] { return !getSettings().game.enableMouseAim; });
+        config_percent_select(leftPane, rightPane, getSettings().game.mouseCameraSensitivity,
+            "[MOUSE_CAMERA_SENSITIVITY]", "[CONTROLS_MOUSE_CAMERA_SENSITIVITY]", 25, 400, 5,
+            [] { return !getSettings().game.enableMouseCamera; });
+        addOption("[INVERT_MOUSE_Y]", getSettings().game.invertMouseY,
+            "[INVERT_VERTICAL_MOUSE_CONTROL_FOR_BOTH_AIMING_AND_CAMERA]",
+            [] { return !getSettings().game.enableMouseAim || !getSettings().game.enableMouseCamera; });
+
+        leftPane.add_section("[GAMEPLAY]");
+        addOption("[MOUSE_TOUCH_IN_MENUS]", getSettings().game.enableMenuPointer,
+            "[ENABLES_MOUSE_AND_TOUCH_INPUT_FOR_SUPPORTED_IN_GAME_MENUS]");
+        addOption("[INVERT_AIR_SWIM_X_AXIS]", getSettings().game.invertAirSwimX,
+            "[INVERT_HORIZONTAL_MOVEMENT_WHILE_FLYING_OR_SWIMMING]");
+        addOption("[INVERT_AIR_SWIM_Y_AXIS]", getSettings().game.invertAirSwimY,
+            "[INVERT_VERTICAL_MOVEMENT_WHILE_FLYING_OR_SWIMMING]");
+        addOption("[SWAP_DIRECT_SELECT_INPUT]", getSettings().game.swapDirectSelect,
+            "[SWAP_THE_CONTROLS_FOR_USING_DIRECT_SELECT_ON_THE_ITEM_WHEEL_MAKING_DIRECT]");
+
+        leftPane.add_section("[TOOLS]");
+        addOption("[TURBO_KEY]", getSettings().game.enableTurboKeybind,
+            "[HOLD_TAB_TO_INCREASE_GAME_SPEED_BY_UP_TO_4X]",
+            [] { return speedrun::isActive(); });
+        addOption(Rml::String{"[RESET_KEY] ("} + Rml::String{hotkeys::DO_RESET} + ")",
+            getSettings().game.enableResetKeybind,
+            "[PRESS] " + Rml::String{hotkeys::DO_RESET} + " [TO_RESET_THE_GAME]");
+    });
+
+    add_tab("[AUDIO]", [this](Rml::Element* content) {
+        auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
+        auto& rightPane = add_child<Pane>(content, Pane::Type::Uncontrolled);
+
+        leftPane.add_section("[OUTPUT]");
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "[OUTPUT_MODE]",
+                .getValue = [] {
+                    const auto idx = static_cast<int>(getSettings().audio.outputMode.getValue());
+                    return Rml::String{kAudioOutputModeNames[idx]};
+                },
+                .isModified = [] {
+                    const auto& setting = getSettings().audio.outputMode;
+                    return setting.getValue() != setting.getDefaultValue();
+                },
+            }), rightPane, [](Pane& pane) {
+                for (int i = 0; i < static_cast<int>(kAudioOutputModeNames.size()); ++i) {
+                    pane.add_button({
+                        .text = kAudioOutputModeNames[i],
+                        .isSelected = [i] {
+                            const auto& setting = getSettings().audio.outputMode;
+                            return setting.getValue() == static_cast<AudioOutputMode>(i);
+                        },
+                    }).on_pressed([i] {
+                        mDoAud_seStartMenu(kSoundItemChange);
+                        getSettings().audio.outputMode.setValue(static_cast<AudioOutputMode>(i));
+                        config::save();
+                        audio::Reinitialize();
+                    });
+                }
+            });
+
+        // TODO: Individual sliders for Sub Music, Sound Effects, and Fanfare.
+        leftPane.add_section("[VOLUME]");
+        leftPane.register_control(
+            leftPane.add_child<NumberButton>(NumberButton::Props{
+                .key = "[MASTER_VOLUME]",
+                .getValue = [] { return getSettings().audio.masterVolume.getValue(); },
+                .setValue =
+                    [](int value) {
+                        getSettings().audio.masterVolume.setValue(value);
+                        config::save();
+                        audio::SetMasterVolume(audio::MasterVolumeToLinear(value / 100.0f));
+                    },
+                .isModified =
+                    [] {
+                        return getSettings().audio.masterVolume.getValue() !=
+                               getSettings().audio.masterVolume.getDefaultValue();
+                    },
+                .max = 100,
+                .suffix = "%",
+            }),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_text("[ADJUSTS_THE_VOLUME_OF_ALL_SOUNDS_IN_THE_GAME]");
+            });
+        leftPane.register_control(
+            leftPane.add_child<NumberButton>(NumberButton::Props{
+                .key = "[MAIN_MUSIC_VOLUME]",
+                .getValue = [] { return getSettings().audio.mainMusicVolume.getValue(); },
+                .setValue =
+                    [](int value) {
+                        getSettings().audio.mainMusicVolume.setValue(value);
+                        config::save();
+                    },
+                .isModified =
+                    [] {
+                        return getSettings().audio.mainMusicVolume.getValue() !=
+                               getSettings().audio.mainMusicVolume.getDefaultValue();
+                    },
+                .max = 100,
+                .suffix = "%",
+            }),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_text("[ADJUSTS_THE_VOLUME_OF_ALL_MUSIC_IN_THE_GAME]");
+            });
+
+        leftPane.add_section("[EFFECTS]");
+        config_bool_select(leftPane, rightPane, getSettings().audio.enableReverb,
+            {
+                .key = "[ENABLE_REVERB]",
+                .helpText = "[ENABLES_THE_REVERB_EFFECT_IN_GAME_AUDIO]",
+                .onChange = [](bool value) { audio::SetEnableReverb(value); },
+            });
+        config_bool_select(leftPane, rightPane, getSettings().audio.menuSounds,
+            {
+                .key = "[DUSKLIGHT_MENU_SOUNDS]",
+                .helpText = "[PLAY_SOUND_EFFECTS_WHEN_NAVIGATING_THE_DUSKLIGHT_MENU]",
+            });
+
+        leftPane.add_section("[TWEAKS]");
+        config_bool_select(leftPane, rightPane, getSettings().game.noLowHpSound,
+            {
+                .key = "[NO_LOW_HP_SOUND]",
+                .helpText = "[DISABLE_THE_BEEPING_SOUND_WHEN_HAVING_LOW_HEALTH]",
+            });
+        config_bool_select(leftPane, rightPane, getSettings().game.midnasLamentNonStop,
+            {
+                .key = "[NON_STOP_MIDNA_S_LAMENT]",
+                .helpText = "[PREVENTS_ENEMY_MUSIC_WHILE_MIDNA_S_LAMENT_IS_PLAYING]",
+            });
+    });
+
+    add_tab("[GAMEPLAY]", [this](Rml::Element* content) {
+        auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
+        auto& rightPane = add_child<Pane>(content, Pane::Type::Uncontrolled);
+
+        auto addOption = [&](const Rml::String& key, ConfigVar<bool>& value,
+                             const Rml::String& helpText) {
+            config_bool_select(leftPane, rightPane, value,
+                {
+                    .key = key,
+                    .helpText = helpText,
+                });
+        };
+        auto addSpeedrunDisabledOption = [&](const Rml::String& key, ConfigVar<bool>& value,
+                                             const Rml::String& helpText) {
+            add_speedrun_disabled_option(leftPane, rightPane, value, key, helpText);
+        };
+
+        leftPane.add_section("[GENERAL]");
+        addOption("[MIRROR_MODE]", getSettings().game.enableMirrorMode,
+            "[MIRRORS_THE_WORLD_HORIZONTALLY_MATCHING_THE_WII_VERSION_OF_THE_GAME]");
+        addOption("[MINIMAL_HUD]", getSettings().game.minimalHUD,
+            "[DISABLES_THE_ELEMENTS_OF_THE_MAIN_HUD_OF_THE_GAME_USEFUL_FOR_A_MORE_IMME]");
+        config_percent_select(leftPane, rightPane, getSettings().game.hudScale,
+            "[HUD_SCALE]",
+            "[SCALES_THE_SIZE_OF_THE_GAMEPLAY_HUD_HEARTS_BUTTONS_MINI_MAP_ETC_DOES_NO]",
+            50, 200, 5,
+            [] { return getSettings().game.minimalHUD.getValue(); });
+        addOption("[RESTORE_WII_1_0_GLITCHES]", getSettings().game.restoreWiiGlitches,
+            "[RESTORES_PATCHED_GLITCHES_FROM_WII_USA_1_0_THE_FIRST_RELEASED_VERSION]");
+        addOption("[ENABLE_ROTATING_LINK_DOLL]", getSettings().game.enableLinkDollRotation,
+            "[ENABLES_ROTATING_LINK_IN_THE_COLLECTION_MENU_WITH_THE_C_STICK]");
+        addOption("[HIDE_OWL_STATUE_MARKERS]", getSettings().game.removeQuestMapMarkers,
+            "[REMOVES_COMPLETED_OWL_STATUE_MARKERS_FROM_THE_MAP_AND_MINIMAP]");
+
+        leftPane.add_section("[DIFFICULTY]");
+        leftPane.register_control(
+            leftPane.add_child<NumberButton>(NumberButton::Props{
+                .key = "[DAMAGE_MULTIPLIER]",
+                .getValue = [] { return getSettings().game.damageMultiplier.getValue(); },
+                .setValue =
+                    [](int value) {
+                        getSettings().game.damageMultiplier.setValue(value);
+                        config::save();
+                    },
+                .isDisabled = [] { return speedrun::isActive(); },
+                .isModified =
+                    [] {
+                        return getSettings().game.damageMultiplier.getValue() !=
+                               getSettings().game.damageMultiplier.getDefaultValue();
+                    },
+                .min = 1,
+                .max = 8,
+                .suffix = "×",
+            }),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_text("[MULTIPLIES_INCOMING_DAMAGE]");
+            });
+        addSpeedrunDisabledOption(
+            "[INSTANT_DEATH]", getSettings().game.instantDeath, "[ANY_HIT_WILL_INSTANTLY_KILL_YOU]");
+        addSpeedrunDisabledOption("[NO_HEART_DROPS]", getSettings().game.noHeartDrops,
+            "[HEARTS_WILL_NEVER_DROP_FROM_ENEMIES_POTS_AND_VARIOUS_OTHER_PLACES]");
+
+        leftPane.add_section("[QUALITY_OF_LIFE]");
+        addOption("[BIGGER_WALLETS]", getSettings().game.biggerWallets,
+            "[WALLET_SIZES_ARE_LIKE_IN_THE_HD_VERSION_500_1000_2000]");
+        addOption("[DISABLE_RUPEE_CUTSCENES]", getSettings().game.disableRupeeCutscenes,
+            "[RUPEES_WILL_NOT_PLAY_CUTSCENES_AFTER_YOU_HAVE_COLLECTED_THEM_THE_FIRST_T]");
+        addSpeedrunDisabledOption("[FASTER_SCENE_TRANSITIONS]", getSettings().game.fastTransitions,
+            "[REDUCES_HOW_LONG_THE_TRANSITIONS_TAKE_WHEN_CHANGING_MAPS]");
+        addOption("[FASTER_CLIMBING]", getSettings().game.fastClimbing,
+            "[QUICKER_CLIMBING_ON_LADDERS_AND_VINES_LIKE_THE_HD_VERSION]");
+        addOption("[FASTER_TEARS_OF_LIGHT]", getSettings().game.fastTears,
+            "[TEARS_OF_LIGHT_DROPPED_BY_SHADOW_INSECTS_POP_OUT_FASTER_LIKE_THE_HD_VERS]");
+        addSpeedrunDisabledOption("[AUTOSAVE]", getSettings().game.autoSave,
+            "[AUTOSAVES_THE_GAME_WHEN_GOING_TO_A_NEW_AREA_OPENING_A_DUNGEON_DOOR_OR_GE]");
+        addOption("[INSTANT_SAVES]", getSettings().game.instantSaves,
+            "[SKIPS_THE_DELAY_WHEN_WRITING_TO_THE_MEMORY_CARD]");
+        addOption("[HOLD_B_FOR_INSTANT_TEXT]", getSettings().game.instantText,
+            "[MAKES_TEXT_SCROLL_IMMEDIATELY_BY_HOLDING_B]");
+        addSpeedrunDisabledOption("[HOLD_BUTTON_TO_MASH]", getSettings().game.holdToMash,
+            "[HOLD_THE_INDICATED_BUTTON_TO_MASH_AUTOMATICALLY]");
+        addOption("[NO_CLIMBING_MISS_ANIMATION]", getSettings().game.noMissClimbing,
+            "[PREVENTS_LINK_FROM_PLAYING_A_STRUGGLE_ANIMATION_WHEN_GRABBING_LEDGES_OR]");
+        addOption("[NO_RUPEE_RETURNS]", getSettings().game.noReturnRupees,
+            "[ALWAYS_COLLECT_RUPEES_EVEN_IF_YOUR_WALLET_IS_TOO_FULL]");
+        addOption("[NO_SWORD_RECOIL]", getSettings().game.noSwordRecoil,
+            "[LINK_WILL_NOT_RECOIL_WHEN_HIS_SWORD_HITS_WALLS]");
+        addOption("[NO_2ND_FISH_FOR_CAT]", getSettings().game.no2ndFishForCat,
+            "[SKIP_NEEDING_TO_CATCH_A_SECOND_FISH_FOR_SERA_S_CAT]");
+        addOption("[BUTTON_FISHING]", getSettings().game.buttonFishing,
+            "[ALLOW_FISHING_WITH_THE_FISHING_ROD_USING_THE_BUTTON_THE_ITEM_IS_ASSIGNED]");
+        addOption("[SHOW_POE_COUNT_ON_MAP]", getSettings().game.enhancedMapMenus,
+            "[DISPLAYS_COLLECTED_TOTAL_NUMBER_OF_POE_SOULS_FOR_A_REGION_ON_THE_MAP]");
+        addSpeedrunDisabledOption("[SUN_S_SONG_R_X]", getSettings().game.sunsSong,
+            "[ALLOWS_WOLF_LINK_TO_HOWL_AND_CHANGE_THE_TIME_OF_DAY]");
+        addOption("[QUICK_TRANSFORM_R_Y]", getSettings().game.enableQuickTransform,
+            "[TRANSFORM_INSTANTLY_BY_PRESSING_R_AND_Y_SIMULTANEOUSLY]");
+        addOption("[AIMING_RETICLE]", getSettings().game.aimingReticle,
+            "[SHOWS_THE_AIMING_RETICLE_FOR_BOW_AND_SLINGSHOT]");
+        addOption("[NO_HIT_STUN]", getSettings().game.noHitStun,
+            "[DISABLES_HIT_STUN_FRAMES_AFTER_ATTACKS]");
+
+        leftPane.add_section("[SPEEDRUNNING]");
+        config_bool_select(leftPane, rightPane, getSettings().game.speedrunMode,
+            {
+                .key = "[SPEEDRUN_MODE]",
+                .helpText = "[ENABLES_SPEEDRUNNING_OPTIONS_WHILE_RESTRICTING_CERTAIN_GAMEPLAY_MODIFIER]",
+                .onChange =
+                    [this](bool enabled) {
+                        if (enabled) {
+                            speedrun::registerSpeedrunGameMode();
+                        } else {
+                            if (speedrun::isActive()) {
+                                pop();
+                            }
+                            speedrun::unregisterSpeedrunGameMode();
+                        }
+                        MenuBar::refresh_tabs();
+                    },
+            });
+        config_bool_select(leftPane, rightPane, getSettings().game.liveSplitEnabled,
+            {
+                .key = "[LIVESPLIT_CONNECTION]",
+                .helpText = "[CONNECT_TO_LIVESPLIT_SERVER_ON_LOCALHOST_16834_FOR_THIS_TO_WORK_YOU]",
+                .onChange =
+                    [](bool enabled) {
+                        if (enabled) {
+                            speedrun::connectLiveSplit();
+                        } else {
+                            speedrun::disconnectLiveSplit();
+                        }
+                    },
+                .isDisabled = [] { return IsMobile || !speedrun::isActive(); },
+            });
+        config_bool_select(leftPane, rightPane, getSettings().game.showSpeedrunRTATimer,
+            {
+                .key = "[SHOW_RTA]",
+                .helpText = "[DISPLAY_THE_RTA_TIMER_IGT_IS_ALWAYS_VISIBLE]",
+                .isDisabled = [] { return !speedrun::isActive(); },
+            });
+    });
+
+    add_tab("[CHEATS]", [this](Rml::Element* content) {
+        auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
+        auto& rightPane = add_child<Pane>(content, Pane::Type::Uncontrolled);
+
+        auto addCheat = [&](const Rml::String& key, ConfigVar<bool>& value,
+                            const Rml::String& helpText) {
+            add_speedrun_disabled_option(leftPane, rightPane, value, key, helpText);
+        };
+
+        leftPane.add_section("[RESOURCES]");
+        addCheat("[CHEAT_INFINITE_HEARTS]", getSettings().game.infiniteHearts,
+            "[CHEAT_INFINITE_HEARTS_HELP]");
+        addCheat("[CHEAT_INFINITE_ARROWS]", getSettings().game.infiniteArrows,
+            "[CHEAT_INFINITE_ARROWS_HELP]");
+        addCheat("[CHEAT_INFINITE_SEEDS]", getSettings().game.infiniteSeeds,
+            "[CHEAT_INFINITE_SEEDS_HELP]");
+        addCheat("[CHEAT_INFINITE_BOMBS]", getSettings().game.infiniteBombs,
+            "[CHEAT_INFINITE_BOMBS_HELP]");
+        addCheat("[CHEAT_INFINITE_OIL]", getSettings().game.infiniteOil,
+            "[CHEAT_INFINITE_OIL_HELP]");
+        addCheat("[CHEAT_INFINITE_OXYGEN]", getSettings().game.infiniteOxygen,
+            "[CHEAT_INFINITE_OXYGEN_HELP]");
+        addCheat("[CHEAT_INFINITE_RUPEES]", getSettings().game.infiniteRupees,
+            "[CHEAT_INFINITE_RUPEES_HELP]");
+        addCheat("[CHEAT_NO_ITEM_TIMER]", getSettings().game.enableIndefiniteItemDrops,
+            "[CHEAT_NO_ITEM_TIMER_HELP]");
+
+        leftPane.add_section("[ABILITIES]");
+
+        addCheat(
+            "[CHEAT_MOON_JUMP_R_A]", getSettings().game.moonJump, "[CHEAT_MOON_JUMP_R_A_HELP]");
+        addCheat("[CHEAT_EASY_QUICK_SPIN_R_B]", getSettings().game.easyQuickSpin,
+            "[CHEAT_EASY_QUICK_SPIN_R_B_HELP]");
+
+        addCheat("[CHEAT_SUPER_CLAWSHOT]", getSettings().game.superClawshot,
+            "[CHEAT_SUPER_CLAWSHOT_HELP]");
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "[CHEAT_ALWAYS_GREATSPIN]",
+                .getValue =
+                    [] {
+                        return kAlwaysGreatspinModes[static_cast<u8>(
+                            getSettings().game.alwaysGreatspin.getValue())];
+                    },
+                .isDisabled = [] { return dusk::speedrun::isActive(); },
+                .isModified =
+                    [] {
+                        return getSettings().game.alwaysGreatspin.getValue() !=
+                               getSettings().game.alwaysGreatspin.getDefaultValue();
+                    },
+            }),
+            rightPane, [](Pane& pane) {
+                for (int i = 0; i < static_cast<int>(kAlwaysGreatspinModes.size()); i++) {
+                    pane.add_button({
+                            .text = kAlwaysGreatspinModes[i],
+                            .isSelected =
+                                [i] {
+                                    return getSettings().game.alwaysGreatspin.getValue() ==
+                                           static_cast<AlwaysGreatspinMode>(i);
+                                },
+                        })
+                        .on_pressed([i] {
+                            mDoAud_seStartMenu(kSoundItemChange);
+                            getSettings().game.alwaysGreatspin.setValue(
+                                static_cast<AlwaysGreatspinMode>(i));
+                            config::save();
+                        });
+                }
+                pane.add_rml("<br/>[CHEAT_ALWAYS_GREATSPIN_HELP]");
+            });
+        addCheat("[CHEAT_FAST_IRON_BOOTS]", getSettings().game.enableFastIronBoots,
+            "[CHEAT_FAST_IRON_BOOTS_HELP]");
+        addCheat("[CHEAT_CAN_TRANSFORM_ANYWHERE]", getSettings().game.canTransformAnywhere,
+            "[CHEAT_CAN_TRANSFORM_ANYWHERE_HELP]");
+        addCheat("[CHEAT_FAST_ROLL]", getSettings().game.fastRoll, "[CHEAT_FAST_ROLL_HELP]");
+        addCheat("[CHEAT_FAST_SPINNER]", getSettings().game.fastSpinner,
+            "[CHEAT_FAST_SPINNER_HELP]");
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "[MAGIC_ARMOR_BEHAVIOR]",
+                .getValue =
+                    [] {
+                        return kMagicArmorModes[static_cast<u8>(
+                            getSettings().game.armorRupeeDrain.getValue())];
+                    },
+                .isDisabled = [] { return speedrun::isActive(); },
+                .isModified =
+                    [] {
+                        return getSettings().game.armorRupeeDrain.getValue() !=
+                               getSettings().game.armorRupeeDrain.getDefaultValue();
+                    },
+            }),
+            rightPane, [](Pane& pane) {
+                for (int i = 0; i < kMagicArmorModes.size(); i++) {
+                    pane.add_button({
+                            .text = kMagicArmorModes[i],
+                            .isSelected =
+                                [i] {
+                                    return getSettings().game.armorRupeeDrain.getValue() == static_cast<MagicArmorMode>(i);
+                                },
+                        })
+                        .on_pressed([i] {
+                            mDoAud_seStartMenu(kSoundItemChange);
+                            getSettings().game.armorRupeeDrain.setValue(static_cast<MagicArmorMode>(i));
+                            config::save();
+                        });
+                }
+                pane.add_rml(
+                    "[CONTROL_THE_BEHAVIOR_OF_THE_MAGIC_ARMOR]");
+            });
+        addCheat("[CHEAT_INVINCIBLE_ENEMIES]", getSettings().game.invincibleEnemies,
+            "[CHEAT_INVINCIBLE_ENEMIES_HELP]");
+        addCheat("[CHEAT_INFINITE_EPONA_STAMINA]", getSettings().game.infiniteEponaStamina,
+            "[CHEAT_INFINITE_EPONA_STAMINA_HELP]");
+    });
+
+    add_tab("[INTERFACE]", [this](Rml::Element* content) {
+        auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
+        auto& rightPane = add_child<Pane>(content, Pane::Type::Uncontrolled);
+
+        leftPane.add_section("[DUSKLIGHT]");
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "[UI_LANGUAGE]",
+                .getValue =
+                    [] {
+                        const int idx =
+                            ui_language_index(getSettings().backend.uiLanguage.getValue());
+                        return Rml::String{kUiLanguageTokenNames[idx]};
+                    },
+                .isModified =
+                    [] {
+                        return getSettings().backend.uiLanguage.getValue() !=
+                               getSettings().backend.uiLanguage.getDefaultValue();
+                    },
+            }),
+            rightPane, [](Pane& pane) {
+                for (int i = 0; i < static_cast<int>(kUiLanguageIds.size()); ++i) {
+                    pane
+                        .add_button({
+                            .text = kUiLanguageTokenNames[i],
+                            .isSelected =
+                                [i] {
+                                    return ui_language_index(
+                                               getSettings().backend.uiLanguage.getValue()) == i;
+                                },
+                        })
+                        .on_pressed([i] {
+                            mDoAud_seStartMenu(kSoundItemChange);
+                            getSettings().backend.uiLanguage.setValue(kUiLanguageIds[i]);
+                            i18n::set_language(kUiLanguageIds[i]);
+                            config::save();
+                            close_all_documents();
+                            push_document(std::make_unique<MenuBar>());
+                        });
+                }
+                pane.add_rml("[APPLIES_TO_DUSKLIGHT_UI_TEXT]");
+            });
+#if DUSK_CAN_OPEN_DATA_FOLDER
+        leftPane.register_control(
+            leftPane.add_button("[OPEN_DATA_FOLDER]").on_pressed([] {
+                mDoAud_seStartMenu(kSoundClick);
+                data::open_data_path();
+            }),
+            rightPane, [](Pane& pane) {
+                pane.add_text("[OPEN_THE_FOLDER_WHERE_DUSKLIGHT_STORES_SETTINGS_SAVES_LOGS_TEXTURE_REPLA]");
+            });
+#endif
+        leftPane.register_control(leftPane.add_button("[RESTART_TO_MAIN_MENU]").on_pressed([this] {
+            mDoAud_seStartMenu(kSoundClick);
+            pop();
+            prelaunch_state().returnToPrelaunchOnReset = true;
+            JUTGamePad::C3ButtonReset::sResetSwitchPushing = true;
+        }),
+            rightPane, [](Pane& pane) {
+                pane.add_text(
+                    "[RESTART_DUSKLIGHT_TO_THE_PRE_LAUNCH_MENU_TO_CHANGE_SETTINGS_GAME]");
+            });
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "[NOTIFICATIONS]",
+                .getValue = [] {
+                    const bool ach = getSettings().game.enableAchievementToasts.getValue();
+                    const bool ctl = getSettings().game.enableControllerToasts.getValue();
+                    if (!ach && !ctl) {
+                        return Rml::String{"[OFF]"};
+                    }
+                    if (ach && ctl) {
+                        return Rml::String{"[ALL]"};
+                    }
+                    return Rml::String{"[SOME]"};
+                },
+                .isModified = [] {
+                    const auto& ach = getSettings().game.enableAchievementToasts;
+                    const auto& ctl = getSettings().game.enableControllerToasts;
+                    return ach.getValue() != ach.getDefaultValue() || ctl.getValue() != ctl.getDefaultValue();
+                },
+            }),
+            rightPane, [](Pane& pane) {
+                pane.clear();
+                pane.add_button("[SELECT_ALL]").on_pressed([] {
+                    mDoAud_seStartMenu(kSoundItemChange);
+                    getSettings().game.enableAchievementToasts.setValue(true);
+                    getSettings().game.enableControllerToasts.setValue(true);
+                    config::save();
+                });
+                pane.add_button("[SELECT_NONE]").on_pressed([] {
+                    mDoAud_seStartMenu(kSoundItemChange);
+                    getSettings().game.enableAchievementToasts.setValue(false);
+                    getSettings().game.enableControllerToasts.setValue(false);
+                    config::save();
+                });
+
+                pane.add_section("[TYPES]");
+                pane.add_button(
+                    {
+                        .text = "[ACHIEVEMENTS]",
+                        .isSelected =
+                        [] {
+                            return getSettings().game.enableAchievementToasts.getValue();
+                        },
+                    })
+                    .on_pressed([] {
+                        mDoAud_seStartMenu(kSoundItemChange);
+                        auto& v = getSettings().game.enableAchievementToasts;
+                        v.setValue(!v.getValue());
+                        config::save();
+                    });
+                pane.add_button(
+                    {
+                        .text = "[CONTROLLER]",
+                        .isSelected =
+                            [] { return getSettings().game.enableControllerToasts.getValue(); },
+                    })
+                    .on_pressed([] {
+                        mDoAud_seStartMenu(kSoundItemChange);
+                        auto& v = getSettings().game.enableControllerToasts;
+                        v.setValue(!v.getValue());
+                        config::save();
+                    });
+                pane.add_rml("[CHOOSE_WHICH_NOTIFICATIONS_CAN_BE_DISPLAYED]");
+            });
+#if BOREALIS_HAS_SENTRY
+        auto& crashReporting = leftPane.add_child<BoolButton>(BoolButton::Props{
+            .key = "[CRASH_REPORTING]",
+            .getValue =
+                [] { return borealis::sentry::get_consent() == borealis::sentry::Consent::Given; },
+            .setValue = [](bool enabled) { borealis::sentry::set_consent(enabled); },
+            .isDisabled =
+                [] {
+                    return borealis::sentry::get_consent() ==
+                           borealis::sentry::Consent::Unavailable;
+                },
+            .isModified = [] { return false; },
+        });
+        leftPane.register_control(crashReporting, rightPane, [](Pane& pane) {
+            pane.clear();
+            pane.add_rml("[DUSKLIGHT_CAN_AUTOMATICALLY_SEND_CRASH_REPORTS_TO_THE_DEVELOPERS_CRASH_R]");
+        });
+#endif
+        config_bool_select(leftPane, rightPane, getSettings().backend.skipPreLaunchUI,
+            {
+                .key = "[SKIP_DUSKLIGHT_MAIN_MENU]",
+                .helpText = "[WHEN_STARTING_DUSKLIGHT_SKIP_THE_MAIN_MENU_AND_BOOT_STRAIGHT_INTO_THE_GA]",
+            });
+        config_bool_select(leftPane, rightPane, getSettings().backend.showPipelineCompilation,
+            {
+                .key = "[SHOW_SHADER_COMPILATION]",
+                .helpText =
+                    "[SHOW_AN_OVERLAY_WHEN_SHADERS_ARE_BEING_COMPILED_FOR_YOUR_HARDWARE]",
+            });
+        config_bool_select(leftPane, rightPane, getSettings().backend.checkForUpdates,
+            {
+                .key = "[CHECK_FOR_UPDATES]",
+                .helpText = "[CHECKS_GITHUB_RELEASES_FOR_A_NEW_DUSKLIGHT_VERSION_ON_STARTUP_NO_PERSONA]",
+            });
+#if BOREALIS_HAS_DISCORD
+        config_bool_select(leftPane, rightPane, getSettings().game.enableDiscordPresence,
+            {
+                .key = "[ENABLE_DISCORD_RICH_PRESENCE]",
+                .helpText = "[ENABLE_DUSK_TO_INTEGRATE_WITH_DISCORD_RICH_PRESENCE_THIS_ALLOWS_DISCO]",
+                .onChange = [](bool enabled) {
+                    if (enabled) {
+                        discord::initialize();
+                    } else {
+                        discord::shutdown();
+                    }
+                },
+            });
+#endif
+        config_bool_select(leftPane, rightPane, getSettings().backend.enableAdvancedSettings,
+            {
+                .key = "[ENABLE_ADVANCED_SETTINGS]",
+                .icon = "warning",
+                .helpText = "[SHOW_ADVANCED_SETTINGS_AND_DEBUGGING_TOOLS_WITH_SHIFT_F1_WARNING_DEBUGGING]",
+                .onChange = [](bool) { MenuBar::refresh_tabs(); },
+                .isDisabled = [] { return speedrun::isActive(); },
+            });
+        config_bool_select(leftPane, rightPane, getSettings().game.showInputViewer,
+            {
+                .key = "[SHOW_INPUT_VIEWER]",
+                .helpText = "[DISPLAY_A_CONTROLLER_INPUT_OVERLAY_WHILE_PLAYING]",
+            });
+        config_bool_select(leftPane, rightPane, getSettings().game.showInputViewerGyro,
+            {
+                .key = "[SHOW_GYRO_INPUT_VIEWER]",
+                .helpText = "[SHOW_GYRO_SENSOR_VALUES_IN_THE_INPUT_VIEWER]",
+                .isDisabled = [] { return !getSettings().game.showInputViewer; },
+            });
+
+        leftPane.add_section("[GAME]");
+        config_bool_select(leftPane, rightPane, getSettings().game.enableChineseNameKeyboard,
+            {
+                .key = "[CHINESE_NAME_KEYBOARD]",
+                .helpText = "[REPLACES_THE_NAME_ENTRY_KEYBOARD_WITH_COMMON_CHINESE_CHARACTERS]",
+            });
+        leftPane.register_control(
+            leftPane.add_select_button({
+                .key = "[MENU_SCALING_MODE]",
+                .getValue =
+                    [] {
+                        return kMenuScalingModeLabels[static_cast<u8>(
+                            getSettings().game.menuScalingMode.getValue())];
+                    },
+                .isModified =
+                    [] {
+                        const auto& mode = getSettings().game.menuScalingMode;
+                        return mode.getValue() != mode.getDefaultValue();
+                    },
+            }),
+            rightPane, [](Pane& pane) {
+                for (int i = 0; i < static_cast<int>(kMenuScalingModeLabels.size()); ++i) {
+                    pane
+                        .add_button({
+                            .text = kMenuScalingModeLabels[i],
+                            .isSelected =
+                                [i] {
+                                    return getSettings().game.menuScalingMode.getValue() ==
+                                           static_cast<MenuScaling>(i);
+                                },
+                        })
+                        .on_pressed([i] {
+                            mDoAud_seStartMenu(kSoundItemChange);
+                            getSettings().game.menuScalingMode.setValue(
+                                static_cast<MenuScaling>(i));
+                            config::save();
+                        });
+                }
+                pane.add_rml("[CHANGES_HOW_THE_COLLECTION_AND_FILE_SELECT_MENUS_SCALE_TO_YOUR_ASPECT_RATIO]");
+            });
+        config_bool_select(leftPane, rightPane, getSettings().game.hideTvSettingsScreen,
+            {
+                .key = "[SKIP_TV_SETTINGS_SCREEN]",
+                .helpText = "[SKIPS_THE_TV_CALIBRATION_SCREEN_SHOWN_WHEN_LOADING_A_SAVE]",
+            });
+        add_speedrun_disabled_option(leftPane, rightPane, getSettings().game.recordingMode,
+            "[RECORDING_MODE]",
+            "[DISABLES_THE_GAME_HUD_AND_ALL_BACKGROUND_MUSIC_USEFUL_FOR_RECORDING_FOOTAGE]");
+    });
+
+    add_tab("[TOOLS]", [this](Rml::Element* content) {
+        auto& leftPane = add_child<Pane>(content, Pane::Type::Controlled);
+        auto& rightPane = add_child<Pane>(content, Pane::Type::Uncontrolled);
+
+        leftPane.add_section("[LINK]");
+        add_speedrun_disabled_option(leftPane, rightPane, getSettings().game.enableMoveLinkCombo,
+            "[MOVE_LINK_L_R_Y]",
+            "[ENABLES_THE_L_R_Y_BUTTON_COMBO_TO_TOGGLE_FREELY_REPOSITIONING_LINK]");
+        add_speedrun_disabled_option(leftPane, rightPane, getSettings().game.enableTeleportCombo,
+            "[TELEPORT_R_D_PAD_UP_DOWN]",
+            "[R_D_PAD_UP_STORES_LINK_S_CURRENT_POSITION_R_D_PAD_DOWN_TELEPORTS_LINK_BACK]");
+    });
+}
+
+void SettingsWindow::update() {
+    if (mPrelaunch && top_document() == this) {
+        try_push_verification_modal(*this);
+        try_push_language_unavailable_modal(*this);
+    }
+
+    i18n::set_language(getSettings().backend.uiLanguage.getValue());
+
+    Window::update();
+}
+
+void SettingsWindow::hide(bool close) {
+    config::save();
+    Window::hide(close);
+}
+
+}  // namespace dusk::ui
