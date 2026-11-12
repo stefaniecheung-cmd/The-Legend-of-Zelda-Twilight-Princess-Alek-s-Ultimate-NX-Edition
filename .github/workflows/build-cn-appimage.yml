@@ -1,0 +1,47 @@
+name: Build CN AppImage (from imported branch)
+
+# 构建来自 snnh-cn-enhancements 分支（由 align-snnh.yml 导入）的 Linux x86_64 AppImage。
+# 这个 workflow 定义稳定放在 main：导入分支里不含 .github/workflows，
+# 因此 force-push 覆盖分支不会影响它，也不会受 GitHub App 的 workflows 权限限制。
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  appimage:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout the imported upstream tree
+        uses: actions/checkout@v4
+        with:
+          ref: snnh-cn-enhancements
+          submodules: recursive
+          fetch-depth: 1
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install ninja-build clang lld mold openssl libcurl4-openssl-dev \
+            zlib1g-dev libglu1-mesa-dev libdbus-1-dev libvulkan-dev libxi-dev libxrandr-dev libasound2-dev \
+            libpulse-dev libudev-dev libpng-dev libncurses5-dev libx11-xcb-dev libfreetype-dev \
+            libxinerama-dev libxcursor-dev python3-markupsafe libgtk-3-dev libssl-dev \
+            libxss-dev libfuse2 libusb-1.0-0-dev libdecor-0-dev libpipewire-0.3-dev libunwind-dev
+
+      - name: Configure CMake
+        run: cmake --preset x-linux-ci-gcc
+
+      - name: Build
+        run: cmake --build --preset x-linux-ci-gcc
+
+      - name: Generate AppImage
+        run: ci/build-appimage.sh
+
+      - name: Upload AppImage
+        uses: actions/upload-artifact@v4
+        with:
+          name: dusklight-appimage-cn
+          path: build/install/Dusklight-*.AppImage
+          if-no-files-found: error
+          retention-days: 7
