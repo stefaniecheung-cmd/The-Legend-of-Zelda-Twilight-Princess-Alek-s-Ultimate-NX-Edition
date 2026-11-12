@@ -29,6 +29,9 @@ jobs:
             libxinerama-dev libxcursor-dev python3-markupsafe libgtk-3-dev libssl-dev \
             libxss-dev libfuse2 libusb-1.0-0-dev libdecor-0-dev libpipewire-0.3-dev libunwind-dev
 
+      - name: Setup sccache (required by x-linux-ci-gcc preset)
+        uses: mozilla-actions/sccache-action@v0.0.10
+
       - name: Configure CMake
         run: cmake --preset x-linux-ci-gcc
 
