@@ -1,0 +1,43 @@
+name: Align snnh/dusk-cn (branch import)
+
+# 把 snnh/dusk-cn 的 cn-enhancements 树原样导入本 fork 的独立分支
+# snnh-cn-enhancements。两个仓库没有共同 git 历史（parent 不同、main 仅 85 个提交），
+# 直接 merge 会 unrelated histories 且冲掉本 fork 的汉化与 Switch 代码，
+# 因此用「单提交快照」方式导入，main 完全不动。
+# 导入后由 ci_build_fetch.py 在该分支上 dispatch build.yml 产出 Linux x86_64 AppImage。
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout upstream cn-enhancements
+        uses: actions/checkout@v4
+        with:
+          repository: snnh/dusk-cn
+          ref: cn-enhancements
+          fetch-depth: 1
+          submodules: false
+          path: upstream
+
+      - name: Import as a single-commit snapshot branch
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          cd upstream
+          SRC_SHA="$(git rev-parse HEAD)"
+          rm -rf .git
+          git init -q
+          git checkout -q --orphan snnh-cn-enhancements
+          git add -A
+          git -c user.name="workbuddy-sync" -c user.email="sync@local" \
+              commit -q -m "Import snnh/dusk-cn@cn-enhancements ${SRC_SHA}"
+          git remote add fork "https://x-access-token:${TOKEN}@github.com/${{ github.repository }}.git"
+          git push --force fork HEAD:refs/heads/snnh-cn-enhancements
+          echo "IMPORTED_FROM=${SRC_SHA}"
+          echo "BRANCH=snnh-cn-enhancements"
