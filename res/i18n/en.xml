@@ -153,6 +153,7 @@
   <entry key="Attempted to register a game mode with no ID">Attempted to register a game mode with no ID</entry>
   <entry key="Audio">Audio</entry>
   <entry key="Auru's Memo">Auru's Memo</entry>
+  <entry key="Auto">Auto</entry>
   <entry key="Auto (only when the GPU is tight)">Auto (only when the GPU is tight)</entry>
   <entry key="Automatic update checks are off.">Automatic update checks are off.</entry>
   <entry key="Autosave">Autosave</entry>
@@ -290,6 +291,7 @@
   <entry key="Create">Create</entry>
   <entry key="Cross">Cross</entry>
   <entry key="Current data folder:">Current data folder:</entry>
+  <entry key="Custom">Custom</entry>
   <entry key="Customize Layout">Customize Layout</entry>
   <entry key="DRS stress not started">DRS stress not started</entry>
   <entry key="DT_GNU_HASH buckets outside the image">DT_GNU_HASH buckets outside the image</entry>
@@ -747,7 +749,9 @@
   <entry key="Notifications">Notifications</entry>
   <entry key="Null">Null</entry>
   <entry key="Obtained Items">Obtained Items</entry>
+  <entry key="Off">Off</entry>
   <entry key="Oil">Oil</entry>
+  <entry key="On">On</entry>
   <entry key="On Damage">On Damage</entry>
   <entry key="Online mod updates are unavailable.">Online mod updates are unavailable.</entry>
   <entry key="Only During Cutscenes">Only During Cutscenes</entry>

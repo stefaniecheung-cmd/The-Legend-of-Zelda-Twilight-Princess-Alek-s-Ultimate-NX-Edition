@@ -327,7 +327,21 @@ int translate(Rml::String& translated, const Rml::String& input) {
         }
     }
 
-    // 3. "[TOKEN]" substitution, for strings built by concatenation.
+    // 3. Select values carrying the modified bullet marker, "\u2022\u00a0" + value
+    //    (SelectButton::value_label): translate the value part, keep the marker.
+    constexpr std::string_view kBulletNbsp = "\xE2\x80\xA2\xC2\xA0";  // U+2022 + U+00A0
+    if (input.size() > kBulletNbsp.size() &&
+        input.compare(0, kBulletNbsp.size(), kBulletNbsp.data(), kBulletNbsp.size()) == 0) {
+        const Rml::String valueText = trim_ascii(std::string_view(input).substr(kBulletNbsp.size()));
+        Rml::String valueTranslation;
+        if (find_exact(valueText, valueTranslation)) {
+            translated.assign(kBulletNbsp.data(), kBulletNbsp.size());
+            translated += valueTranslation;
+            return 1;
+        }
+    }
+
+    // 4. "[TOKEN]" substitution, for strings built by concatenation.
     translated.clear();
     translated.reserve(input.size());
 
