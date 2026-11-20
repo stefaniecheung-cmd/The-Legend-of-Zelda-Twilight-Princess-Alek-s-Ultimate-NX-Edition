@@ -7,7 +7,7 @@
   call site is tokenised, which is what keeps this file independent of
   upstream edits: a string that is not listed here simply stays English.
 
-  1222 of 1449 strings translated plus 233/233 [TOKEN] entries; the rest fall back to English.
+  1538 of 1805 strings translated plus 233/233 [TOKEN] entries; the rest fall back to English.
 -->
 <i18n language="zh-cn">
 
@@ -43,6 +43,15 @@
   <entry key=", not ELF64">, not ELF64</entry>
   <entry key=", not a shared object (ET_DYN)">, not a shared object (ET_DYN)</entry>
   <entry key=", which it did not open here; refused (EBADF), the game keeps it">, which it did not open here; refused (EBADF), the game keeps it</entry>
+  <entry key="/&gt;
+    &lt;/window&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML">/&gt;
+    &lt;/window&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML</entry>
   <entry key="0: libstdc++ always uses atomics">0: libstdc++ always uses atomics</entry>
   <entry key="20 Hearts">20颗心</entry>
   <entry key="3 Hearts">3颗心</entry>
@@ -56,9 +65,37 @@
   <entry key=": the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT and RELATIVE">: the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT and RELATIVE</entry>
   <entry key=": the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT, RELATIVE, TLSDESC, TLS_DTPMOD64 and TLS_DTPREL64">: the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT, RELATIVE, TLSDESC, TLS_DTPMOD64 and TLS_DTPREL64</entry>
   <entry key="; the entry there did not match and was replaced">; the entry there did not match and was replaced</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;&lt;b&gt;&lt;span id=&quot;shader-prep-counter&quot;&gt;0 / 0&lt;/span&gt;&lt;/b&gt; - &lt;span id=&quot;shader-prep-eta&quot;&gt;&lt;/span&gt;&lt;br/&gt;&lt;progress id=&quot;shader-prep-bar&quot; class=&quot;info&quot; value=&quot;0&quot; /&gt;&lt;br/&gt;Skipping is safe: preparation continues in the background, but the game may stutter now and then until it finishes. What is already done is kept if you close the game.">&lt;br/&gt;&lt;br/&gt;&lt;b&gt;&lt;span id=&quot;shader-prep-counter&quot;&gt;0 / 0&lt;/span&gt;&lt;/b&gt; - &lt;span id=&quot;shader-prep-eta&quot;&gt;&lt;/span&gt;&lt;br/&gt;&lt;progress id=&quot;shader-prep-bar&quot; class=&quot;info&quot; value=&quot;0&quot; /&gt;&lt;br/&gt;跳过是安全的：准备工作会在后台继续，但完成前游戏可能偶尔卡顿。即使关闭游戏，已完成的部分也会保留。</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Last result&lt;/b&gt;&lt;br/&gt;">&lt;br/&gt;&lt;br/&gt;&lt;b&gt;上次结果&lt;/b&gt;&lt;br/&gt;</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Press Start&lt;/b&gt; to stop. Nothing is written to your save, achievements are paused, and you are returned to where you were.">&lt;br/&gt;&lt;br/&gt;&lt;b&gt;按 Start&lt;/b&gt; 即可停止。不会写入存档，成就将暂停，随后返回原处。</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;Controls are locked; &lt;b&gt;press Start&lt;/b&gt; to cancel. Nothing is written to your save, achievements are paused, and you are returned to where you were.">&lt;br/&gt;&lt;br/&gt;控制已锁定； &lt;b&gt;按 Start&lt;/b&gt; 即可取消。不会写入存档，成就将暂停，随后返回原处。</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;Disabled after a crash or a failure while playing:">&lt;br/&gt;&lt;br/&gt;在崩溃或游玩中失败后已禁用：</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;Rest the controllers still, as you hold them to play, then press this: it re-estimates the resting pose and holds gestures for a moment.">&lt;br/&gt;&lt;br/&gt;按平时握持游玩的姿势让手柄保持静止，然后按此键：会重新估算静止姿态，并短暂保持手势。</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;You may proceed at your own risk.">&lt;br/&gt;&lt;br/&gt;你可以继续，但需自行承担风险。</entry>
+  <entry key="&lt;br/&gt;Allows the Great Spin attack without requiring full health.">&lt;br/&gt;无需满生命值即可使用大回旋斩。</entry>
+  <entry key="&lt;br/&gt;Changes how the Collection and File Select menus scale to your aspect ratio.">&lt;br/&gt;调整收藏品菜单与存档选择菜单随宽高比缩放的方式。</entry>
+  <entry key="&lt;br/&gt;Changes require a restart.">&lt;br/&gt;Changes require a restart.</entry>
+  <entry key="&lt;br/&gt;Choose which notifications can be displayed.">&lt;br/&gt;选择可以显示哪些通知。</entry>
+  <entry key="&lt;br/&gt;Control the behavior of the Magic Armor.">&lt;br/&gt;设置魔法铠甲的行为。</entry>
+  <entry key="&lt;br/&gt;Disable the top and bottom black bars during L-targeting, aiming, cutscenes, dialogue, etc.">&lt;br/&gt;在 L 键锁定、瞄准、过场动画、对话等场景中禁用屏幕上下黑边。</entry>
+  <entry key="&lt;br/&gt;Display the current framerate in a corner of the screen while playing.">&lt;br/&gt;在游戏过程中于屏幕一角显示当前帧率。</entry>
+  <entry key="&lt;br/&gt;Fast leaves particles, rain, snow, clouds, material effects and model deformation out of interpolation, so they only change on game ticks.&lt;br/&gt;&lt;br/&gt;Fancy interpolates them too: smoother, and more CPU.">&lt;br/&gt;「快速」不把粒子、雨、雪、云、材质效果与模型形变纳入插帧，因此这些效果只在游戏帧更新时变化。&lt;br/&gt;&lt;br/&gt;「精致」也会对这些效果插帧：画面更平滑，但更耗 CPU。</entry>
+  <entry key="&lt;br/&gt;Uses inter-frame interpolation to enable higher frame rates.&lt;br/&gt;&lt;br/&gt;May introduce minor visual artifacts or animation glitches.">&lt;br/&gt;通过帧间插帧实现更高的帧率。&lt;br/&gt;&lt;br/&gt;可能带来轻微的画面瑕疵或动画异常。</entry>
+  <entry key="&lt;br/&gt;Which detached Joy-Con swings the sword; the other one is the Nunchuk (spin attack and shield bash). It only chooses the sensor: Link and the world are not mirrored. With a single controller this does nothing.">&lt;br/&gt;选择由哪只拆下的 Joy-Con 挥剑，另一只作为 Nunchuk（回旋攻击与盾击）。此项仅指定传感器：林克与场景不会镜像翻转。只连接一个手柄时此项无效。</entry>
+  <entry key="&lt;br/&gt;deko3d: the console's own graphics API. Mods that draw with the gfx service need Vulkan: with such a mod enabled, Vulkan is used and a message says why. If deko3d fails to start twice, Vulkan is used from then on.">&lt;br/&gt;deko3d 是主机自带的图形 API。使用 gfx 服务绘制的模组需要 Vulkan：启用此类模组后会改用 Vulkan，并提示原因。若 deko3d 连续两次启动失败，此后将一直使用 Vulkan。</entry>
   <entry key="&gt;
                     &lt;update-download-label id=">&gt;
                     &lt;update-download-label id=</entry>
+  <entry key="&gt;
+                &lt;eyebrow&gt;&lt;studio-name&gt;Twilit Realm&lt;/studio-name&gt; presents&lt;/eyebrow&gt;
+                &lt;img src=">&gt;
+                &lt;eyebrow&gt;&lt;studio-name&gt;Twilit Realm&lt;/studio-name&gt; 出品&lt;/eyebrow&gt;
+                &lt;img src=</entry>
+  <entry key="&gt;
+                &lt;icon /&gt;
+                &lt;disc-status-label id=">&gt;
+                &lt;icon /&gt;
+                &lt;disc-status-label id=</entry>
   <entry key="&gt;
                 &lt;update-message id=">&gt;
                 &lt;update-message id=</entry>
@@ -94,11 +131,99 @@
         &lt;speedrun-rta id=">&gt;
         &lt;speedrun-rta id=</entry>
   <entry key="&gt;
+        &lt;status&gt;
+            &lt;icon /&gt;
+            &lt;status-label id=">&gt;
+        &lt;status&gt;
+            &lt;icon /&gt;
+            &lt;status-label id=</entry>
+  <entry key="&gt;
+        &lt;stick-ring /&gt;
+        &lt;stick-knob id=">&gt;
+        &lt;stick-ring /&gt;
+        &lt;stick-knob id=</entry>
+  <entry key="&gt;
+    &lt;/mods-display&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML">&gt;
+    &lt;/mods-display&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML</entry>
+  <entry key="&gt;
     &lt;touch-stick id=">&gt;
     &lt;touch-stick id=</entry>
+  <entry key="&gt;&lt;/count&gt;&lt;span&gt;X&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=">&gt;&lt;/count&gt;&lt;span&gt;X&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=</entry>
+  <entry key="&gt;&lt;/count&gt;&lt;span&gt;Y&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=">&gt;&lt;/count&gt;&lt;span&gt;Y&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=</entry>
+  <entry key="&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=">&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=</entry>
+  <entry key="&gt;&lt;/output&gt;
+        &lt;input id=">&gt;&lt;/output&gt;
+        &lt;input id=</entry>
+  <entry key="&gt;&lt;/update-download-label&gt;
+                    &amp;nbsp;&lt;icon /&gt;
+                &lt;/button&gt;
+            &lt;/update-status&gt;
+        &lt;/version-info&gt;
+    &lt;/content&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML">&gt;&lt;/update-download-label&gt;
+                    &amp;nbsp;&lt;icon /&gt;
+                &lt;/button&gt;
+            &lt;/update-status&gt;
+        &lt;/version-info&gt;
+    &lt;/content&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML</entry>
+  <entry key="&gt;&lt;/update-message&gt;
+                &lt;button id=">&gt;&lt;/update-message&gt;
+                &lt;button id=</entry>
+  <entry key="&gt;&lt;/version-number&gt;&lt;/version-label&gt;
+            &lt;update-status id=">&gt;&lt;/version-number&gt;&lt;/version-label&gt;
+            &lt;update-status id=</entry>
   <entry key="&gt;&lt;div id=">&gt;&lt;div id=</entry>
   <entry key="&gt;&lt;img id=">&gt;&lt;img id=</entry>
   <entry key="&gt;&lt;oil-fill id=">&gt;&lt;oil-fill id=</entry>
+  <entry key="&gt;&lt;span&gt;Cancel&lt;/span&gt;&lt;/button&gt;
+    &lt;/editor-toolbar&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML">&gt;&lt;span&gt;Cancel&lt;/span&gt;&lt;/button&gt;
+    &lt;/editor-toolbar&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML</entry>
+  <entry key="&gt;&lt;span&gt;L&lt;/span&gt;&lt;/button&gt;
+    &lt;action-bar id=">&gt;&lt;span&gt;L&lt;/span&gt;&lt;/button&gt;
+    &lt;action-bar id=</entry>
+  <entry key="&gt;&lt;span&gt;R&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=">&gt;&lt;span&gt;R&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=</entry>
+  <entry key="&gt;&lt;span&gt;Reset&lt;/span&gt;&lt;/button&gt;
+        &lt;button id=">&gt;&lt;span&gt;Reset&lt;/span&gt;&lt;/button&gt;
+        &lt;button id=</entry>
+  <entry key="&gt;&lt;span&gt;Save&lt;/span&gt;&lt;/button&gt;
+        &lt;button id=">&gt;&lt;span&gt;保存&lt;/span&gt;&lt;/button&gt;
+        &lt;button id=</entry>
+  <entry key="&gt;Alek's Ultimate NX Edition&lt;/span&gt;
+        &lt;span id=">&gt;Alek's Ultimate NX Edition&lt;/span&gt;
+        &lt;span id=</entry>
+  <entry key="&gt;Starting&lt;/span&gt;
+        &lt;div id=">&gt;Starting&lt;/span&gt;
+        &lt;div id=</entry>
+  <entry key="&gt;by Alexgg1014&lt;/span&gt;
+        &lt;span id=">&gt;by Alexgg1014&lt;/span&gt;
+        &lt;span id=</entry>
   <entry key="A button bound to any action here will REPLACE the default control for that action. Only bind buttons here that aren't used anywhere else. The glyphs shown for in game actions will not change. This is not recommended for  regular Gamecube controllers.">在此为任意操作绑定按键，将覆盖该操作的默认按键设置。只绑定其他地方没有用到的按键。游戏内操作显示的按键图案不会改变。不建议在普通 GameCube 手柄上这样使用。</entry>
   <entry key="A development directory cannot be replaced">开发目录无法被替换</entry>
   <entry key="A key bound to any action here will REPLACE the default control for that action. Only bind buttons here that aren't used anywhere else.">在此为任意操作绑定按键，将覆盖该操作的默认按键设置。请绑定未被占用的按键。</entry>
@@ -106,25 +231,41 @@
   <entry key="A mod with native code is reloaded by restarting the game">含原生代码的模组需重启游戏才会重新加载</entry>
   <entry key="A newer version is already installed">已安装更新版本</entry>
   <entry key="A required provider is unavailable">所需的提供者不可用</entry>
+  <entry key="A restart is required to apply selected options.">需要重启才能应用所选设置。</entry>
+  <entry key="A restart is required to apply selected options.&lt;br/&gt;&lt;br/&gt;Close and reopen Dusklight to apply them.">需要重启才能应用所选设置。&lt;br/&gt;&lt;br/&gt;请关闭并重新打开 Dusklight 以应用。</entry>
+  <entry key="A restart is required to apply selected options.&lt;br/&gt;&lt;br/&gt;Restart now to apply them immediately?">需要重启才能应用所选设置。&lt;br/&gt;&lt;br/&gt;立即重启以应用？</entry>
   <entry key="Abilities">能力</entry>
   <entry key="Accept">Accept</entry>
   <entry key="Accept-Encoding">Accept-Encoding</entry>
   <entry key="Achievements">成就</entry>
   <entry key="Action">动作</entry>
   <entry key="Actions">操作</entry>
+  <entry key="Activating…">正在启用…</entry>
+  <entry key="Activation failed">激活失败</entry>
+  <entry key="Active">已启用</entry>
   <entry key="Actor profile could not be removed during mod deactivation">停用模组时无法移除角色配置</entry>
+  <entry key="Adjusts horizontal free camera sensitivity.">调整自由视角的水平灵敏度。</entry>
+  <entry key="Adjusts horizontal free camera sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">调整自由视角的水平灵敏度。&lt;br/&gt;&lt;br/&gt;仅适用于摇杆。</entry>
   <entry key="Adjusts the volume of all music in the game.">调整游戏中所有音乐的音量。</entry>
   <entry key="Adjusts the volume of all sounds in the game.">调整游戏中所有声音的音量。</entry>
+  <entry key="Adjusts touch camera horizontal sensitivity.">调整触控视角的水平灵敏度。</entry>
+  <entry key="Adjusts touch camera horizontal sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to touch input only.">调整触控视角的水平灵敏度。&lt;br/&gt;&lt;br/&gt;仅适用于触控输入。</entry>
+  <entry key="Adjusts touch camera vertical sensitivity.">调整触控视角的垂直灵敏度。</entry>
+  <entry key="Adjusts touch camera vertical sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to touch input only.">调整触控视角的垂直灵敏度。&lt;br/&gt;&lt;br/&gt;仅适用于触控输入。</entry>
+  <entry key="Adjusts vertical free camera sensitivity.">调整自由视角的垂直灵敏度。</entry>
+  <entry key="Adjusts vertical free camera sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">调整自由视角的垂直灵敏度。&lt;br/&gt;&lt;br/&gt;仅适用于摇杆。</entry>
   <entry key="After Learning Skill">学会技能后</entry>
   <entry key="Aiming Reticle">瞄准准星</entry>
   <entry key="Aleks">Aleks</entry>
   <entry key="All">全部</entry>
   <entry key="All 60">全部60个</entry>
   <entry key="All Files">全部文件</entry>
+  <entry key="All mods">全部模组</entry>
   <entry key="Allow Background Inputs">允许后台输入</entry>
   <entry key="Allow fishing with the Fishing Rod using the button the item is assigned to.">允许用钓竿所绑定的按键钓鱼。</entry>
   <entry key="Allow inputs even when the game window is not focused.">即使游戏窗口没有焦点也接受输入。</entry>
   <entry key="Allows Wolf Link to howl and change the time of day.">允许狼形态林克嚎叫并改变时间。</entry>
+  <entry key="Allows the Great Spin attack without requiring full health.">无需满生命值即可使用大回旋斩。</entry>
   <entry key="Allows transforming even if NPCs are looking.">即使NPC在看也能变身。</entry>
   <entry key="Already in the install queue">已在安装队列中</entry>
   <entry key="Also offer versions GitHub marks as pre-releases (betas and release candidates).">同时提供GitHub标记为预发布的版本（测试版与候选发布版）。</entry>
@@ -133,6 +274,7 @@
   <entry key="Always collect Rupees even if your Wallet is too full.">即使钱包已满仍继续收集卢比。</entry>
   <entry key="Amounts">数量</entry>
   <entry key="An in-place native library cannot be reloaded">就地加载的原生库无法重新加载</entry>
+  <entry key="Analog">模拟</entry>
   <entry key="Ancient Sky Book">天空的古书</entry>
   <entry key="Ancient Sky Book (Filled)">天空的古书(已解封)</entry>
   <entry key="Ancient Sky Book (Partial)">天空的古书(未补全)</entry>
@@ -140,9 +282,15 @@
   <entry key="Ant (F)">蚂蚁(雌性)</entry>
   <entry key="Ant (M)">蚂蚁(雄性)</entry>
   <entry key="Any hit will instantly kill you.">任何攻击都会立即杀死你。</entry>
+  <entry key="Applies to handheld mode, Joy-Con and the Pro Controller. A GameCube controller adapter keeps its classic rumble.">适用于掌机模式、Joy-Con 与 Pro 手柄。GameCube 手柄转接器仍保留其经典震动。</entry>
+  <entry key="Applies to the control stick only.">仅适用于摇杆。</entry>
+  <entry key="Applies to touch input only.">仅适用于触控输入。</entry>
   <entry key="Apply Options">应用选项</entry>
+  <entry key="Apply configured dead zones to the sticks and analog triggers.">将配置的死区应用到摇杆和模拟扳机。</entry>
+  <entry key="Applying package">正在应用补丁包</entry>
   <entry key="Archive is not a valid mod package">压缩包不是有效的模组包</entry>
   <entry key="Are you sure?">确定吗？</entry>
+  <entry key="Area">区域</entry>
   <entry key="Arrows (1)">箭矢(1支)</entry>
   <entry key="Arrows (10)">箭矢(10支)</entry>
   <entry key="Arrows (20)">箭矢(20支)</entry>
@@ -153,16 +301,22 @@
   <entry key="Attempted to register a game mode with no ID">尝试注册未带ID的游戏模式</entry>
   <entry key="Audio">音频</entry>
   <entry key="Auru's Memo">拉夫雷尔的备忘录</entry>
-  <entry key="Auto">Auto</entry>
+  <entry key="Auto">自动</entry>
   <entry key="Auto (only when the GPU is tight)">自动（仅在 GPU 吃紧时）</entry>
   <entry key="Automatic update checks are off.">自动检查更新已关闭。</entry>
   <entry key="Autosave">自动存档</entry>
   <entry key="Autosaves the game when going to a new area or opening a dungeon door.">在进入新区域或打开迷宫门时自动存档。</entry>
+  <entry key="Available">可用</entry>
+  <entry key="Back">返回</entry>
   <entry key="Back Slice">背后斩</entry>
+  <entry key="Backup successfully created.">备份创建成功。</entry>
+  <entry key="Backups">备份</entry>
   <entry key="Ball and Chain">链锤</entry>
   <entry key="Barnes 1">巴恩1</entry>
   <entry key="Barnes 2">巴恩2</entry>
   <entry key="Barnes Bombs">巴恩的炸弹</entry>
+  <entry key="Based on Dusklight by Twilit Realm &amp;#183; Powered by Aurora">基于 Twilit Realm 的 Dusklight · 由 Aurora 驱动</entry>
+  <entry key="Based on Dusklight by Twilit Realm · Powered by Aurora">基于 Twilit Realm 的 Dusklight · 由 Aurora 驱动</entry>
   <entry key="Bedroom Key">卧室钥匙</entry>
   <entry key="Bee Larva">蜂蛹</entry>
   <entry key="Bee Larve (Shop)">蜂蛹(购买)</entry>
@@ -175,6 +329,7 @@
   <entry key="Big Wallet">大钱包</entry>
   <entry key="Bigger Wallets">更大的钱包</entry>
   <entry key="Biggest">最大</entry>
+  <entry key="Bilinear">双线性</entry>
   <entry key="Black Chu Jelly">黑色丘丘胶</entry>
   <entry key="Bloom">泛光</entry>
   <entry key="Bloom Brightness">泛光亮度</entry>
@@ -197,15 +352,19 @@
   <entry key="Boss Key">首领房间的钥匙</entry>
   <entry key="Bottom Left">左下角</entry>
   <entry key="Bottom Right">右下角</entry>
+  <entry key="Browse Mods">浏览模组</entry>
   <entry key="Browse online mods">浏览在线模组</entry>
   <entry key="Bulblin Camp Key">波布林营地钥匙</entry>
   <entry key="Butterfly">蝴蝶</entry>
   <entry key="Butterfly (F)">蝴蝶(雌性)</entry>
   <entry key="Butterfly (M)">蝴蝶(雄性)</entry>
   <entry key="Button Fishing">按键钓鱼</entry>
+  <entry key="Buttons">按键</entry>
+  <entry key="C Stick">C摇杆</entry>
   <entry key="CARD backing storage is unavailable for mod save sidecars">模组存档附属文件所需的CARD存储不可用</entry>
   <entry key="Camera">视角</entry>
   <entry key="Can Transform Anywhere">随时变身</entry>
+  <entry key="Cancel">取消</entry>
   <entry key="Canceled">已取消</entry>
   <entry key="Canceling...">正在取消…</entry>
   <entry key="Cancelling...">正在取消...</entry>
@@ -213,9 +372,13 @@
   <entry key="Capacities">容量</entry>
   <entry key="Capped">限制</entry>
   <entry key="Card Image">Card镜像</entry>
+  <entry key="Catalog unavailable">目录不可用</entry>
+  <entry key="Category">分类</entry>
   <entry key="Caught">已捕获</entry>
   <entry key="Challenge">挑战</entry>
   <entry key="Change Data Folder">更改数据文件夹</entry>
+  <entry key="Changes how the Collection and File Select menus scale to your aspect ratio.">调整收藏品菜单与存档选择菜单随宽高比缩放的方式。</entry>
+  <entry key="Changes require a restart.">更改后需要重启。</entry>
   <entry key="Cheats">作弊</entry>
   <entry key="Check for Dusklight Updates">检查 Dusklight 更新</entry>
   <entry key="Check for Updates">检查更新</entry>
@@ -227,8 +390,18 @@
   <entry key="Check tour not started">检查巡游未开始</entry>
   <entry key="Checking for mod updates…">正在检查模组更新……</entry>
   <entry key="Checking for updates...">正在检查更新...</entry>
+  <entry key="Checking package integrity">正在检查补丁包完整性</entry>
+  <entry key="Checking…">正在检查…</entry>
+  <entry key="Checks GitHub releases for a new Dusklight version on startup.">启动时检查 GitHub Release 是否有新版 Dusklight。</entry>
+  <entry key="Checks GitHub releases for a new Dusklight version on startup.&lt;br/&gt;&lt;br/&gt;No personal information is transmitted or collected.">启动时检查 GitHub Release 是否有新版 Dusklight。&lt;br/&gt;&lt;br/&gt;不会传输或收集任何个人信息。</entry>
+  <entry key="Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day, and says so if there is one. Nothing is downloaded until you choose to.">Dusklight 启动时检查本移植版 GitHub Release 是否有新版本，每天最多一次，如有则提示。在你选择下载之前不会下载任何内容。</entry>
+  <entry key="Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day, and says so if there is one. Nothing is downloaded until you choose to.&lt;br/&gt;&lt;br/&gt;No personal information is transmitted or collected.">Dusklight 启动时检查本移植版 GitHub Release 是否有新版本，每天最多一次，如有则提示。在你选择下载之前不会下载任何内容。&lt;br/&gt;&lt;br/&gt;不会传输或收集任何个人信息。</entry>
+  <entry key="Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day. Nothing is downloaded until you choose to.">Dusklight 启动时检查本移植版 GitHub Release 是否有新版本，每天最多一次。在你选择下载之前不会下载任何内容。</entry>
+  <entry key="Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day. Nothing is downloaded until you choose to.&lt;br/&gt;&lt;br/&gt;No personal information is transmitted or collected.">Dusklight 启动时检查本移植版 GitHub Release 是否有新版本，每天最多一次。在你选择下载之前不会下载任何内容。&lt;br/&gt;&lt;br/&gt;不会传输或收集任何个人信息。</entry>
   <entry key="Choose a preset to get started. You can change any setting later from the Settings menu.">选择一个预设开始。你可以稍后在设置菜单&lt;br/&gt;中更改任何设置。</entry>
   <entry key="Choose disc image">选择光盘镜像</entry>
+  <entry key="Choose the saves to import. Existing saves will be backed up first.">选择要导入的存档。现有存档会先备份。</entry>
+  <entry key="Choose which notifications can be displayed.">选择可以显示哪些通知。</entry>
   <entry key="Circle">圆圈</entry>
   <entry key="City in the Sky">天空都市</entry>
   <entry key="Classic">经典</entry>
@@ -239,6 +412,7 @@
   <entry key="Clear None">全部清除</entry>
   <entry key="Clear?">清除？</entry>
   <entry key="Close">关闭</entry>
+  <entry key="Close and reopen Dusklight to apply them.">请关闭并重新打开 Dusklight 以应用。</entry>
   <entry key="Close and reopen Dusklight to play from it.">关闭并重新打开 Dusklight 即可开始游戏。</entry>
   <entry key="Clothes">衣服</entry>
   <entry key="Clothing">服装</entry>
@@ -254,6 +428,7 @@
   <entry key="Companion Resolution">副屏分辨率</entry>
   <entry key="Companion Screen">副屏</entry>
   <entry key="Compass">罗盘</entry>
+  <entry key="Compatible only">仅显示兼容项</entry>
   <entry key="Completed">已完成</entry>
   <entry key="Config">设置</entry>
   <entry key="Configure Inputs">配置输入</entry>
@@ -263,16 +438,23 @@
   <entry key="Configure the resolution used for rendering the game. Higher values are more demanding on your graphics hardware.">设置游戏渲染分辨率，数值越高对显卡性能要求越高。</entry>
   <entry key="Configure the sampling method used when scaling the internal resolution for final presentation.">设置将内部分辨率缩放到最终画面时使用的采样方式。</entry>
   <entry key="Configure the shadow-map resolution. Higher values improve shadow quality but increase GPU and memory usage.">设置阴影贴图分辨率，数值越高阴影画质越好，但会增加显卡与内存占用。</entry>
+  <entry key="Configure your desired rumble intensities, then run a test to check how they feel.">设置震动强度，再进行测试确认效果。</entry>
   <entry key="Connect to LiveSplit server on localhost:16834. For this to work you must right click LiveSplit, and turn on Control -&gt; Start TCP Server. To see IGT in LiveSplit you must change your comparison to Game Time.">连接 localhost:16834 上的 LiveSplit 服务器。需要先右键 LiveSplit，打开 Control -&gt; Start TCP Server。要在 LiveSplit 中显示游戏内时间，请把比较对象改为 Game Time。</entry>
   <entry key="Connection">Connection</entry>
+  <entry key="Contains native code; requires bundling.">包含原生代码；需要打包。</entry>
   <entry key="Content-Length">Content-Length</entry>
   <entry key="Content-Type">Content-Type</entry>
+  <entry key="Continue anyway">仍然继续</entry>
+  <entry key="Control Stick">控制摇杆</entry>
+  <entry key="Control the behavior of the Magic Armor.">设置魔法铠甲的行为。</entry>
+  <entry key="Controls are locked;">控制已锁定；</entry>
   <entry key="Controls horizontal gyro aiming sensitivity.">调节陀螺仪水平瞄准灵敏度。</entry>
   <entry key="Controls how strongly gyro input tilts the Rollgoal table.">控制陀螺仪输入倾斜滚弹珠桌面的力度。</entry>
   <entry key="Controls mouse aim sensitivity.">调整鼠标瞄准灵敏度。</entry>
   <entry key="Controls mouse camera sensitivity.">调整鼠标瞄准视角灵敏度。</entry>
   <entry key="Controls vertical gyro aiming sensitivity.">调节陀螺仪垂直瞄准灵敏度。</entry>
   <entry key="Copied to clipboard">已复制到剪贴板</entry>
+  <entry key="Copy">复制</entry>
   <entry key="Copy Failed">复制失败</entry>
   <entry key="Copy color">复制颜色</entry>
   <entry key="Copy to Profile">复制到配置档</entry>
@@ -283,16 +465,26 @@
   <entry key="Could not copy the local package">无法复制本地补丁包</entry>
   <entry key="Could not enqueue this update.">无法将此更新加入队列。</entry>
   <entry key="Could not inspect packages">无法检查安装包</entry>
+  <entry key="Could not load mods">无法加载模组</entry>
+  <entry key="Could not open folder">无法打开文件夹</entry>
   <entry key="Could not open the downloaded package">无法打开已下载的补丁包</entry>
   <entry key="Could not queue update">无法将更新加入队列</entry>
   <entry key="Could not read the downloaded package">无法读取已下载的补丁包</entry>
   <entry key="Could not stage the local package">无法暂存本地补丁包</entry>
+  <entry key="Could not start download">无法开始下载</entry>
   <entry key="Crash Reporting">崩溃报告</entry>
   <entry key="Create">创建</entry>
+  <entry key="Create Backup">创建备份</entry>
   <entry key="Cross">叉键</entry>
   <entry key="Current data folder:">当前数据文件夹：</entry>
-  <entry key="Custom">Custom</entry>
+  <entry key="Custom">自定义</entry>
+  <entry key="Custom Action Bindings">自定义按键绑定</entry>
   <entry key="Customize Layout">自定义布局</entry>
+  <entry key="D-Pad">十字键</entry>
+  <entry key="D-pad down">十字键下</entry>
+  <entry key="D-pad left">十字键左</entry>
+  <entry key="D-pad right">十字键右</entry>
+  <entry key="D-pad up">十字键上</entry>
   <entry key="DRS stress not started">动态分辨率压测未开始</entry>
   <entry key="DT_GNU_HASH buckets outside the image">DT_GNU_HASH buckets outside the image</entry>
   <entry key="DT_GNU_HASH chain does not terminate">DT_GNU_HASH chain does not terminate</entry>
@@ -305,25 +497,40 @@
   <entry key="DT_NEEDED name outside DT_STRTAB">DT_NEEDED name outside DT_STRTAB</entry>
   <entry key="DT_PLTREL is not DT_RELA">DT_PLTREL is not DT_RELA</entry>
   <entry key="DT_SONAME outside DT_STRTAB">DT_SONAME outside DT_STRTAB</entry>
+  <entry key="DT_STRTAB/DT_STRSZ is not inside the file-backed image">DT_STRTAB/DT_STRSZ is not inside the file-backed image</entry>
+  <entry key="DT_SYMENT/DT_RELAENT are not ELF64's">DT_SYMENT/DT_RELAENT are not ELF64's</entry>
   <entry key="DT_SYMTAB is not inside the file-backed image">DT_SYMTAB is not inside the file-backed image</entry>
   <entry key="DT_VERSYM is not inside the file-backed image">DT_VERSYM is not inside the file-backed image</entry>
   <entry key="Damage Multiplier">伤害倍率</entry>
+  <entry key="Danger Zone">危险操作区</entry>
   <entry key="Data Folder">数据文件夹</entry>
   <entry key="Data Folder Not Changed">数据文件夹未更改</entry>
   <entry key="Data will be migrated automatically on restart.">重启后数据将自动迁移。</entry>
   <entry key="Day">天</entry>
   <entry key="Dayfly">蜉蝣</entry>
   <entry key="Deadzone">死区</entry>
+  <entry key="Debug">调试</entry>
   <entry key="Default">默认</entry>
   <entry key="Default All">全部恢复默认</entry>
+  <entry key="Delete">删除</entry>
+  <entry key="Delete Backup">删除备份</entry>
+  <entry key="Delete Failed">删除失败</entry>
+  <entry key="Delete Mod Data">删除模组数据</entry>
+  <entry key="Delete Save">删除存档</entry>
+  <entry key="Delete Save...">删除存档……</entry>
+  <entry key="Delete This Backup...">删除此备份……</entry>
+  <entry key="Dependencies">依赖项</entry>
   <entry key="Depth of Field">景深</entry>
   <entry key="Destination">目的地</entry>
   <entry key="Development directories cannot be updated in-game.">开发目录不支持在游戏内更新。</entry>
   <entry key="Device">设备</entry>
   <entry key="Device Connected">设备已连接</entry>
   <entry key="Device Disconnected">设备已断开</entry>
+  <entry key="Diagnostic. Replays the pipeline a draw resolved before instead of looking it up again.">诊断项。重新演算一次绘制此前解析出的管线，而不是直接查表复用。</entry>
+  <entry key="Diagnostic. Replays the pipeline a draw resolved before instead of looking it up again. &lt;b&gt;Off is exactly H30.&lt;/b&gt; Output is identical; only CPU time changes. Safe to flip while playing; the benchmark report records which one it ran with.">诊断项。重新演算一次绘制此前解析出的管线，而不是直接查表复用。&lt;b&gt;关闭时与 H30 完全一致。&lt;/b&gt;输出画面相同，仅 CPU 耗时变化。可在游戏过程中随时切换；基准测试报告会记录所用模式。</entry>
   <entry key="Diagnostics (Aleks, developer mode)">诊断（Aleks，开发者模式）</entry>
   <entry key="Difficulty">难度设置</entry>
+  <entry key="Digital">数字</entry>
   <entry key="Disable">禁用</entry>
   <entry key="Disable Cutscene Pillarboxing">去除过场动画黑边</entry>
   <entry key="Disable Letterboxing">去除黑边</entry>
@@ -331,6 +538,13 @@
   <entry key="Disable Water Refraction">关闭水面折射</entry>
   <entry key="Disable black bars on the left and right sides of the screen during some cutscenes, particularly on ultra-wide displays. Visuals beyond the original intended framing may appear buggy.">在部分过场动画中禁用屏幕左右两侧的黑边&lt;br/&gt;，特别是在超宽显示器上。超出原始构图范&lt;br/&gt;围的画面可能出现异常。</entry>
   <entry key="Disable the beeping sound when having low health.">关闭低血量时的哔哔声。</entry>
+  <entry key="Disable the top and bottom black bars during L-targeting, aiming, cutscenes, dialogue, etc.">在 L 键锁定、瞄准、过场动画、对话等场景中禁用屏幕上下黑边。</entry>
+  <entry key="Disabled">已禁用</entry>
+  <entry key="Disabled after a crash or a failure while playing:">在崩溃或游玩中失败后已禁用：</entry>
+  <entry key="Disables the elements of the main HUD of the game.">隐藏游戏主 HUD 的各项元素。</entry>
+  <entry key="Disables the elements of the main HUD of the game.&lt;br/&gt;Useful for a more immersive experience.">隐藏游戏主 HUD 的各项元素。&lt;br/&gt;适合追求更强沉浸感的体验。</entry>
+  <entry key="Disables the game HUD, all background music and the FPS counter.">隐藏游戏 HUD、全部背景音乐与 FPS 计数器。</entry>
+  <entry key="Disables the game HUD, all background music and the FPS counter.&lt;br/&gt;&lt;br/&gt;Useful for recording footage.">隐藏游戏 HUD、全部背景音乐与 FPS 计数器。&lt;br/&gt;&lt;br/&gt;适合录制视频素材。</entry>
   <entry key="Disc Image">光盘镜像</entry>
   <entry key="Disc hash mismatch.">光盘哈希值不匹配。</entry>
   <entry key="Disc image changed">光盘镜像已更改</entry>
@@ -346,12 +560,15 @@
   <entry key="Display">显示</entry>
   <entry key="Display a controller input overlay while playing.">在游戏时显示手柄输入叠加层。</entry>
   <entry key="Display the RTA timer. IGT is always visible.">显示RTA计时器。IGT始终可见。</entry>
+  <entry key="Display the current framerate in a corner of the screen while playing.">在游戏过程中于屏幕一角显示当前帧率。</entry>
+  <entry key="Displays collected/total number of Poe Souls for a region on the map.">在地图上显示某区域幽灵之魂的已收集数/总数。</entry>
   <entry key="Do not send crash reports. This may make it more difficult to resolve issues you encounter.">不发送崩溃报告。&lt;br/&gt;这可能会使解决你遇到的问题&lt;br/&gt;变得更加困难。</entry>
   <entry key="Dominion Rod">操纵杖</entry>
   <entry key="Dominion Rod (Uncharged)">操纵杖(无魔力)</entry>
   <entry key="Double Clawshots">双勾爪</entry>
   <entry key="Double Defense">双倍防御</entry>
   <entry key="Download and install">下载并安装</entry>
+  <entry key="Download community mods and check for updates.">下载社区模组并检查更新。</entry>
   <entry key="Downloading">下载中</entry>
   <entry key="Downloads &amp; installs">下载 / 安装</entry>
   <entry key="Dragonfly">蜻蜓</entry>
@@ -364,9 +581,13 @@
   <entry key="Dusklight">暮色之光</entry>
   <entry key="Dusklight Menu Sounds">暮色之光菜单音效</entry>
   <entry key="Dusklight Update">Dusklight 更新</entry>
-  <entry key="Dusklight can automatically send crash reports to the developers. Crash reports contain the following:">Dusklight can automatically send crash reports to the developers. Crash reports contain the following:</entry>
+  <entry key="Dusklight can automatically send crash reports to the developers. Crash reports contain the following:">Dusklight 可自动向开发者发送崩溃报告。报告包含以下内容：</entry>
+  <entry key="Dusklight can automatically send crash reports to the developers. Crash reports contain the following:&lt;br/&gt;• Operating system version&lt;br/&gt;• CPU architecture&lt;br/&gt;• GPU model &amp; driver version&lt;br/&gt;• File paths (may include account username)&lt;br/&gt;• Stack trace">Dusklight 可自动向开发者发送崩溃报告。报告包含以下内容：&lt;br/&gt;• 操作系统版本&lt;br/&gt;• CPU 架构&lt;br/&gt;• GPU 型号与驱动版本&lt;br/&gt;• 文件路径（可能包含账户用户名）&lt;br/&gt;• 堆栈跟踪</entry>
   <entry key="Dusklight could not open the folder picker.">Dusklight 无法打开文件夹选择器。</entry>
   <entry key="Dusklight does not currently support the Wii's Korean version.">Dusklight 目前不支持 Wii 韩版光盘。</entry>
+  <entry key="Dusklight is optimizing the graphics for this console. This should only be needed once, or after a major graphics update.">Dusklight 正在为本机优化图形。此过程通常只需一次，或在重大图形更新后进行。</entry>
+  <entry key="Dusklight is optimizing the graphics for this console. This should only be needed once, or after a major graphics update.&lt;br/&gt;&lt;br/&gt;">Dusklight 正在为本机优化图形。此过程通常只需一次，或在重大图形更新后进行。&lt;br/&gt;&lt;br/&gt;</entry>
+  <entry key="Dusklight services">Dusklight 服务</entry>
   <entry key="Dynamic Resolution">动态分辨率</entry>
   <entry key="ELF version is not 1">ELF version is not 1</entry>
   <entry key="Easy Quick Spin (R+B)">简易快速旋转（R+B）</entry>
@@ -376,6 +597,7 @@
   <entry key="Empty Bomb Bag">空炸弹袋</entry>
   <entry key="Empty Bottle">空瓶子</entry>
   <entry key="Emulate Triggers">模拟扳机键</entry>
+  <entry key="Emulated Trigger Thresholds">模拟扳机阈值</entry>
   <entry key="Enable">启用</entry>
   <entry key="Enable Advanced Settings">启用高级设置</entry>
   <entry key="Enable Dead Zones">启用死区</entry>
@@ -390,10 +612,16 @@
   <entry key="Enable Vibration">开启震动</entry>
   <entry key="Enable installed texture replacements.">启用已安装的纹理替换。</entry>
   <entry key="Enables Speedrun game mode option in the Dusklight launch menu.">在 Dusklight 启动菜单中启用速通游戏模式选项。</entry>
+  <entry key="Enables controls overlay for touch screens.">为触屏启用虚拟按键浮层。</entry>
+  <entry key="Enables controls overlay for touch screens.&lt;br/&gt;&lt;br/&gt;Press and drag on the left side of the screen to move, and on the right side of the screen to control the camera.">为触屏启用虚拟按键浮层。&lt;br/&gt;&lt;br/&gt;在屏幕左侧按住并拖动可移动，在右侧拖动可控制视角。</entry>
   <entry key="Enables free camera control, letting you control the camera fully with the C-Stick.">开启自由视角，可用右摇杆完整控制镜头。</entry>
   <entry key="Enables gyro controls for Rollgoal in Hena's Cabin.">在海娜的小屋中为滚弹珠小游戏启用陀螺仪&lt;br/&gt;控制。</entry>
+  <entry key="Enables gyro controls while in look mode, aiming a hawk, and aiming supported items.">在注视模式、操控鹰瞄准以及使用受支持道具瞄准时启用体感控制。</entry>
+  <entry key="Enables gyro controls while in look mode, aiming a hawk, and aiming supported items.&lt;br/&gt;&lt;br/&gt;Supported items include the Slingshot, Gale Boomerang, Hero's Bow, Clawshot(s), Ball and Chain, and Dominion Rod.">在注视模式、操控鹰瞄准以及使用受支持道具瞄准时启用体感控制。&lt;br/&gt;&lt;br/&gt;受支持道具包括弹弓、疾风回旋镖、英雄之弓、钩爪（单/双）、链球与支配之杖。</entry>
   <entry key="Enables mouse and touch input for supported in-game menus.">在支持的游戏内菜单中启用鼠标和触控输入。</entry>
   <entry key="Enables mouse input for controlling the third-person camera.">使用鼠标控制第三人称视角。</entry>
+  <entry key="Enables mouse input while in look mode, aiming a hawk, and aiming supported items.">在注视模式、操控鹰瞄准以及使用受支持道具瞄准时启用鼠标输入。</entry>
+  <entry key="Enables mouse input while in look mode, aiming a hawk, and aiming supported items.&lt;br/&gt;&lt;br/&gt;Supported items include the Slingshot, Gale Boomerang, Hero's Bow, Clawshot(s), Ball and Chain, and Dominion Rod.">在注视模式、操控鹰瞄准以及使用受支持道具瞄准时启用鼠标输入。&lt;br/&gt;&lt;br/&gt;受支持道具包括弹弓、疾风回旋镖、英雄之弓、钩爪（单/双）、链球与支配之杖。</entry>
   <entry key="Enables rotating Link in the collection menu with the C-Stick.">在收藏菜单中用C摇杆旋转林克。</entry>
   <entry key="Enables the L+R+Y button combo to toggle freely repositioning Link.">启用 L+R+Y 组合键，切换自由移动林克。</entry>
   <entry key="Enables the reverb effect in game audio.">启用游戏音频中的混响效果。</entry>
@@ -403,20 +631,30 @@
   <entry key="Equip X">装备到X键</entry>
   <entry key="Equip Y">装备到Y键</entry>
   <entry key="Equipment">装备</entry>
+  <entry key="Error">错误</entry>
   <entry key="Executable Memory">可执行内存</entry>
+  <entry key="Export Failed">导出失败</entry>
+  <entry key="Export Full Card Image (.raw)">导出完整存储卡镜像（.raw）</entry>
+  <entry key="Export Save...">导出存档……</entry>
+  <entry key="Export a portable Dusklight archive with mod data, or a standard GCI for other tools.">导出含模组数据的 Dusklight 便携存档包，或供其他工具使用的标准 GCI 文件。</entry>
   <entry key="Extends Clawshot behavior beyond the normal game rules.">强化钩爪性能，突破原版游戏限制。</entry>
   <entry key="Failed">加载失败</entry>
   <entry key="Failed to check for updates">检查更新失败</entry>
   <entry key="Failed to publish download">发布下载失败</entry>
   <entry key="Fairy">精灵</entry>
   <entry key="Fancy">精致</entry>
+  <entry key="Fancy interpolates them too: smoother, and more CPU.">「精致」也会对这些效果插帧：画面更平滑，但更耗 CPU。</entry>
   <entry key="Fast">快速</entry>
   <entry key="Fast Iron Boots">快速铁靴</entry>
   <entry key="Fast Roll">快速翻滚</entry>
   <entry key="Fast Spinner">快速齿轮陀螺</entry>
+  <entry key="Fast leaves particles, rain, snow, clouds, material effects and model deformation out of interpolation, so they only change on game ticks.">「快速」不把粒子、雨、雪、云、材质效果与模型形变纳入插帧，因此这些效果只在游戏帧更新时变化。</entry>
   <entry key="Faster Climbing">更快地攀爬</entry>
   <entry key="Faster Scene Transitions">更快的场景切换</entry>
   <entry key="Faster Tears of Light">更快的光之滴</entry>
+  <entry key="Featured">精选</entry>
+  <entry key="Fetching mod details and images...">正在获取模组详情与图片……</entry>
+  <entry key="Fetching published mods...">正在获取已发布的模组……</entry>
   <entry key="Fishing Log">钓鱼日志</entry>
   <entry key="Fishing Rod">钓竿</entry>
   <entry key="Fishing Rod (Bee Larva)">钓竿(蜂蛹)</entry>
@@ -430,9 +668,11 @@
   <entry key="Forest Temple">森之神殿</entry>
   <entry key="Form">形态</entry>
   <entry key="Framerate Cap">帧率上限</entry>
+  <entry key="Free &amp;#8212; if you paid for this, you got scammed">免费 —— 如果你为它付了钱，那就是被骗了</entry>
   <entry key="Free Camera">自由视角</entry>
   <entry key="Free Camera X Sensitivity">自由视角X灵敏度</entry>
   <entry key="Free Camera Y Sensitivity">自由视角Y灵敏度</entry>
+  <entry key="Free — if you paid for this, you got scammed">免费 —— 如果你为它付了钱，那就是被骗了</entry>
   <entry key="From Jr.">来自Jr.</entry>
   <entry key="Fruit-Pop-Flight Score">水果气球得分</entry>
   <entry key="Fused Shadows">融合暗影</entry>
@@ -526,6 +766,10 @@
   <entry key="Hotspring Water">温泉水</entry>
   <entry key="Hotspring Water (Shop)">温泉水(商店)</entry>
   <entry key="Hour">时</entry>
+  <entry key="How large the second screen is rendered, in pixels on its longest side.">第二屏幕的渲染尺寸，以最长边的像素数计。</entry>
+  <entry key="How large the second screen is rendered, in pixels on its longest side. &lt;b&gt;720&lt;/b&gt; matches the panel exactly; &lt;b&gt;640&lt;/b&gt; is the default.&lt;br/&gt;&lt;br/&gt;The shape never changes -- only how finely it is drawn, and the final blit smooths the difference. Lower this before lowering the game's own resolution: the companion is flat 2D and text.">第二屏幕的渲染尺寸，以最长边的像素数计。&lt;b&gt;720&lt;/b&gt; 与面板完全吻合；&lt;b&gt;640&lt;/b&gt; 为默认值。&lt;br/&gt;&lt;br/&gt;形状不会改变，只影响绘制精细度，最终合成时会抹平差异。建议先降低此项，再降低游戏本身的分辨率：副屏只是平面 2D 画面和文字。</entry>
+  <entry key="How often the field minimap is redrawn, in game frames.">野外小地图的重绘频率，以游戏帧数计。</entry>
+  <entry key="How often the field minimap is redrawn, in game frames. &lt;b&gt;1&lt;/b&gt; is every frame, as the game does.&lt;br/&gt;&lt;br/&gt;With the full HUD the minimap redraws its whole picture every frame, about 800 draws in Hyrule Field and Castle Town: the main cost there. &lt;b&gt;2&lt;/b&gt; halves it. Experimental: if the map flickers or goes blank, set it back to 1. Minimal HUD hides the map and has no such cost.">野外小地图的重绘频率，以游戏帧数计。&lt;b&gt;1&lt;/b&gt; 表示每帧重绘，与游戏原本一致。&lt;br/&gt;&lt;br/&gt;使用完整 HUD 时，小地图每帧都会重绘整幅画面，在海拉尔平原和城邑约需 800 次绘制，是此处的主要开销。&lt;b&gt;2&lt;/b&gt; 可减半。实验性功能：若地图闪烁或变空白，请改回 1。精简 HUD 会隐藏地图，没有此项开销。</entry>
   <entry key="How strong every vibration is, HD Rumble and the classic one alike. 0 % turns it off.">所有震动的强度，HD震动与普通震动一并生效。设为0%即关闭。</entry>
   <entry key="Human">人类形态</entry>
   <entry key="Hybrid">混合</entry>
@@ -538,7 +782,15 @@
   <entry key="If-Range">If-Range</entry>
   <entry key="Ignores small gyro movement to reduce drift and jitter.">忽略陀螺仪的微小移动以减少漂移和抖动。</entry>
   <entry key="Ilia's Charm">伊莉娅的首饰</entry>
+  <entry key="Import">导入</entry>
+  <entry key="Import Anyway">仍然导入</entry>
+  <entry key="Import Failed">导入失败</entry>
+  <entry key="Import Save">导入存档</entry>
+  <entry key="Import a save or start this mode to create one.">请导入存档或进入该模式以创建一个。</entry>
+  <entry key="Import, export, back up, and remove saves for the configured disc.">针对当前配置的光盘导入、导出、备份和删除存档。</entry>
   <entry key="Include Beta Versions">包含测试版</entry>
+  <entry key="Included mod data:">包含的模组数据：</entry>
+  <entry key="Incompatible with this build">与本版本不兼容</entry>
   <entry key="Incomplete update response">更新响应不完整</entry>
   <entry key="Infinite Arrows">无限箭矢</entry>
   <entry key="Infinite Bombs">无限炸弹</entry>
@@ -547,15 +799,19 @@
   <entry key="Infinite Oxygen">无限氧气</entry>
   <entry key="Infinite Rupees">无限卢比</entry>
   <entry key="Infinite Seeds">无限种子</entry>
+  <entry key="Info">信息</entry>
   <entry key="Input">输入</entry>
   <entry key="Inputs">输入</entry>
+  <entry key="Install">安装</entry>
   <entry key="Install mods?">安装模组？</entry>
   <entry key="Installed">已安装</entry>
+  <entry key="Installed mod will be removed. Settings and saved data are kept.">将移除已安装的模组。设置与存档数据会保留。</entry>
   <entry key="Installed mod will be reverted back to the bundled version. Settings and saved data are kept.">将回退到内置版本的模组。设置与存档数据会保留。</entry>
   <entry key="Installed mods changed. Check again.">已安装模组发生变化，请重新检查。</entry>
   <entry key="Installed mods changed. Checking again…">已安装模组发生变化，正在重新检查……</entry>
   <entry key="Installed, disabled by config">已安装，配置中禁用</entry>
   <entry key="Installing">安装中</entry>
+  <entry key="Installing…">正在安装…</entry>
   <entry key="Instant Death">一击即死</entry>
   <entry key="Instant Saves">快速保存存档</entry>
   <entry key="Interface">界面</entry>
@@ -569,6 +825,8 @@
   <entry key="Invalid service import descriptor">Invalid service import descriptor</entry>
   <entry key="Invalid update download">更新下载内容无效</entry>
   <entry key="Inventory">物品栏</entry>
+  <entry key="Invert Air/Swim X Axis">反转飞行/游泳X轴</entry>
+  <entry key="Invert Air/Swim Y Axis">反转飞行/游泳Y轴</entry>
   <entry key="Invert Camera X Axis">反转视角X轴</entry>
   <entry key="Invert Camera Y Axis">反转视角Y轴</entry>
   <entry key="Invert First Person X Axis">反转第一人称X轴</entry>
@@ -576,10 +834,18 @@
   <entry key="Invert Gyro Pitch">反转陀螺仪俯仰轴</entry>
   <entry key="Invert Gyro Yaw">反转陀螺仪偏航轴</entry>
   <entry key="Invert Mouse Y">反转鼠标Y轴</entry>
+  <entry key="Invert horizontal camera movement.">反转视角的水平移动。</entry>
+  <entry key="Invert horizontal camera movement.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">反转视角的水平移动。&lt;br/&gt;&lt;br/&gt;仅适用于摇杆。</entry>
   <entry key="Invert horizontal gyro aiming.">反转陀螺仪水平瞄准。</entry>
+  <entry key="Invert horizontal movement while aiming with items or first person camera.">使用道具瞄准或第一人称视角时反转水平移动。</entry>
+  <entry key="Invert horizontal movement while aiming with items or first person camera.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">使用道具瞄准或第一人称视角时反转水平移动。&lt;br/&gt;&lt;br/&gt;仅适用于摇杆。</entry>
   <entry key="Invert horizontal movement while flying or swimming.">飞行或游泳时反转水平移动。</entry>
+  <entry key="Invert vertical camera movement.">反转视角的垂直移动。</entry>
+  <entry key="Invert vertical camera movement.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">反转视角的垂直移动。&lt;br/&gt;&lt;br/&gt;仅适用于摇杆。</entry>
   <entry key="Invert vertical gyro aiming.">反转陀螺仪垂直瞄准。</entry>
   <entry key="Invert vertical mouse control for both aiming and camera.">瞄准与视角上下操作全部反向。</entry>
+  <entry key="Invert vertical movement while aiming with items or first person camera.">使用道具瞄准或第一人称视角时反转垂直移动。</entry>
+  <entry key="Invert vertical movement while aiming with items or first person camera.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">使用道具瞄准或第一人称视角时反转垂直移动。&lt;br/&gt;&lt;br/&gt;仅适用于摇杆。</entry>
   <entry key="Invert vertical movement while flying or swimming.">飞行或游泳时反转垂直移动。</entry>
   <entry key="Invincible">无敌</entry>
   <entry key="Invincible Enemies">敌人无敌</entry>
@@ -603,6 +869,7 @@
   <entry key="Key Shard (1)">钥匙碎片(1)</entry>
   <entry key="Key Shard (2)">钥匙碎片(2)</entry>
   <entry key="Key Shard (3)">钥匙碎片(3)</entry>
+  <entry key="Keyboard">键盘</entry>
   <entry key="L Threshold">左扳机阈值</entry>
   <entry key="L stays held only while your finger is on the button.">只有手指按住按钮时 L 才会保持按下。</entry>
   <entry key="Ladybug">瓢虫</entry>
@@ -611,6 +878,7 @@
   <entry key="Lakebed Temple">湖底神殿</entry>
   <entry key="Lanayru Tourism">拉聂尔特产</entry>
   <entry key="Language">语言</entry>
+  <entry key="Language unavailable">语言不可用</entry>
   <entry key="Lantern">提灯</entry>
   <entry key="Lantern (Reclaimed)">提灯(取回)</entry>
   <entry key="Lantern Oil">灯油</entry>
@@ -620,9 +888,13 @@
   <entry key="Lantern Refill (Shop)">提灯补油(商店购买)</entry>
   <entry key="Lantern Refill (Yellow Chu)">提灯补油(黄色丘丘)</entry>
   <entry key="Large Magic">大型魔力</entry>
+  <entry key="Last result">上次结果</entry>
+  <entry key="Last updated">最后更新</entry>
   <entry key="Layer">层</entry>
   <entry key="Left Joy-Con">左 Joy-Con</entry>
+  <entry key="Left Stick">左摇杆</entry>
   <entry key="Left Trigger">左扳机</entry>
+  <entry key="License">许可证</entry>
   <entry key="Light Arrow">光之箭</entry>
   <entry key="Light Sword">光之剑</entry>
   <entry key="Limit the framerate to the specified value.">将帧率限制为指定数值。</entry>
@@ -632,6 +904,7 @@
   <entry key="LiveSplit Connection">LiveSplit连接</entry>
   <entry key="LiveSplit connected">LiveSplit已连接</entry>
   <entry key="LiveSplit disconnected">LiveSplit已断开</entry>
+  <entry key="Loading catalog">正在加载目录</entry>
   <entry key="Location">位置</entry>
   <entry key="Lock 4:3 Aspect Ratio">锁定4:3宽高比</entry>
   <entry key="Lock the game's aspect ratio to the original. Flip Grip forces 4:3 while it is in effect whatever this says; this setting is untouched and applies again when you leave it.">将画面宽高比锁定为原版。Flip Grip生效期间一律强制4:3，与此设置无关；离开Flip Grip后本设置重新生效。</entry>
@@ -657,6 +930,7 @@
   <entry key="Max Health">最大生命值</entry>
   <entry key="Max Life">最大生命</entry>
   <entry key="Max Oil">最大灯油量</entry>
+  <entry key="May introduce minor visual artifacts or animation glitches.">可能带来轻微的画面瑕疵或动画异常。</entry>
   <entry key="Mayfly (F)">蜉蝣(雌性)</entry>
   <entry key="Mayfly (M)">蜉蝣(雄性)</entry>
   <entry key="Medicine Scent">药物的气味</entry>
@@ -708,22 +982,36 @@
   <entry key="Mono">单声道</entry>
   <entry key="Moon Jump (R+A)">月亮跳（R+A）</entry>
   <entry key="Mortal Draw">居合斩</entry>
+  <entry key="Most downloaded">下载最多</entry>
   <entry key="Motion Sword Hand">体感持剑手</entry>
   <entry key="Mouse">鼠标</entry>
   <entry key="Mouse Aim">鼠标瞄准</entry>
   <entry key="Mouse Aim Sensitivity">鼠标瞄准灵敏度</entry>
   <entry key="Mouse Camera">鼠标控制视角</entry>
   <entry key="Mouse Camera Sensitivity">鼠标视角灵敏度</entry>
+  <entry key="Mouse Left">鼠标左键</entry>
+  <entry key="Mouse Middle">鼠标中键</entry>
+  <entry key="Mouse Right">鼠标右键</entry>
+  <entry key="Mouse X1">鼠标侧键1</entry>
+  <entry key="Mouse X2">鼠标侧键2</entry>
+  <entry key="Mouse/Touch in Menus">菜单鼠标/触控</entry>
   <entry key="Move Axis or press a Key or Button...">推动摇杆，或按下按键…</entry>
   <entry key="Move Link (L+R+Y)">移动林克（L+R+Y）</entry>
   <entry key="Multiplies incoming damage.">受到伤害倍率加成。</entry>
+  <entry key="Name">名字</entry>
   <entry key="Nasty Soup">恶心的汤</entry>
   <entry key="Native Mods">原生模组</entry>
   <entry key="Native Mods: Loader Mode">原生模组：加载器模式</entry>
   <entry key="Native mod updates are not supported on this device.">此设备不支持原生模组更新。</entry>
   <entry key="Native mods cannot be installed on this platform">此平台无法安装原生模组</entry>
+  <entry key="Network">网络</entry>
+  <entry key="Network error · keeps retrying itself">网络错误 · 自动重试中</entry>
   <entry key="New">新建</entry>
+  <entry key="Newest">最新</entry>
+  <entry key="Next">下一页</entry>
   <entry key="Next Start Without Mods">下次启动不加载模组</entry>
+  <entry key="Next · view downloads">下一个 · 查看下载</entry>
+  <entry key="No .iso, .gcm, .rvz, .wia or .gcz file was found.">未找到 .iso、.gcm、.rvz、.wia 或 .gcz 文件。</entry>
   <entry key="No 2nd Fish for Cat">无需为猫钓第二条鱼</entry>
   <entry key="No Climbing Miss Animation">攀爬无失误</entry>
   <entry key="No Device Assigned">未分配设备</entry>
@@ -734,26 +1022,41 @@
   <entry key="No Low HP Sound">无低血量音效</entry>
   <entry key="No Rupee Returns">禁止卢比回收</entry>
   <entry key="No Sword Recoil">剑击无硬直后仰</entry>
+  <entry key="No backups yet">暂无备份</entry>
+  <entry key="No changelog was provided.">未提供更新日志。</entry>
+  <entry key="No description provided.">未提供描述。</entry>
   <entry key="No disc image found.">未找到光盘镜像。</entry>
   <entry key="No installed package to remove">没有可移除的已安装包</entry>
   <entry key="No items">暂无项目</entry>
+  <entry key="No mods found">未找到模组</entry>
+  <entry key="No mods installed.">未安装任何模组。</entry>
   <entry key="No other updates available.">暂无其他可用更新。</entry>
+  <entry key="No personal information is transmitted or collected.">不会传输或收集任何个人信息。</entry>
+  <entry key="No registered game mode uses these saves.">没有已注册的游戏模式使用这些存档。</entry>
+  <entry key="No save file">无存档文件</entry>
   <entry key="No updates ready to install.">暂无待安装的更新。</entry>
   <entry key="No writable mods directory is configured">未配置可写的模组目录</entry>
   <entry key="Non-Stop Midna's Lament">米多娜的悲歌不间断</entry>
+  <entry key="None">无</entry>
   <entry key="None of them can be used.">这些都无法使用。</entry>
   <entry key="Normal">正常</entry>
   <entry key="Normal Bombs Max">普通炸弹上限</entry>
   <entry key="Not Bound">未绑定</entry>
+  <entry key="Not Supported">不支持</entry>
   <entry key="Not available">不可用</entry>
+  <entry key="Not installed">未安装</entry>
+  <entry key="Note: If any mods register game modes, this option will be ignored.">注意：若有模组注册了自定义游戏模式，此选项将被忽略。</entry>
   <entry key="Notifications">通知</entry>
   <entry key="Null">空</entry>
   <entry key="Obtained Items">已获得物品</entry>
-  <entry key="Off">Off</entry>
+  <entry key="Off">关闭</entry>
+  <entry key="Off is exactly H30.">关闭时与 H30 完全一致。</entry>
+  <entry key="Official">官方</entry>
   <entry key="Oil">灯油</entry>
-  <entry key="On">On</entry>
+  <entry key="On">开启</entry>
   <entry key="On Damage">受伤时消耗</entry>
   <entry key="Online mod updates are unavailable.">在线模组更新不可用。</entry>
+  <entry key="Online mods">在线模组</entry>
   <entry key="Only During Cutscenes">仅在过场动画中</entry>
   <entry key="Only During Gameplay">仅在游戏中</entry>
   <entry key="Only install mods from trusted authors.">请只安装来自可信作者的模组。</entry>
@@ -765,6 +1068,10 @@
   <entry key="Ooccoo Sr. (First Time)">阿姨Sr.(第一次)</entry>
   <entry key="Ooccoo's Note">阿姨的笔记</entry>
   <entry key="Open Data Folder">打开数据文件夹</entry>
+  <entry key="Open Save Folder">打开存档文件夹</entry>
+  <entry key="Open Save Manager">打开存档管理器</entry>
+  <entry key="Open folder">打开文件夹</entry>
+  <entry key="Open in browser">在浏览器中打开</entry>
   <entry key="Open input binding configuration.">打开按键绑定设置。</entry>
   <entry key="Open the folder where Dusklight stores settings, saves, logs, texture replacements, and other app data.">打开暮色之光存储设置、存档、日志、纹理替换和其他应用数据的文件夹。</entry>
   <entry key="Open the touch controls layout editor.">打开触控操作布局编辑器。</entry>
@@ -783,12 +1090,14 @@
   <entry key="Output">输出</entry>
   <entry key="Output Mode">输出模式</entry>
   <entry key="Output Resampling">输出重采样</entry>
+  <entry key="Output is identical; only CPU time changes. Safe to flip while playing; the benchmark report records which one it ran with.">输出画面相同，仅 CPU 耗时变化。可在游戏过程中随时切换；基准测试报告会记录所用模式。</entry>
   <entry key="Overlay received focus">叠加层获得焦点</entry>
   <entry key="Owned">已拥有</entry>
   <entry key="PT_DYNAMIC has too many entries">PT_DYNAMIC has too many entries</entry>
   <entry key="PT_DYNAMIC is not inside the file">PT_DYNAMIC is not inside the file</entry>
   <entry key="Package ID does not match the catalog entry">补丁包 ID 与目录条目不符</entry>
   <entry key="Package checksum mismatch">补丁包校验和不匹配</entry>
+  <entry key="Package preparation failed">补丁包准备失败</entry>
   <entry key="Package size mismatch">补丁包大小不匹配</entry>
   <entry key="Package verification failed">补丁包校验失败</entry>
   <entry key="Package version does not match the catalog entry">补丁包版本与目录条目不符</entry>
@@ -833,11 +1142,14 @@
   <entry key="Prepare Shaders">准备着色器</entry>
   <entry key="Preparing shaders">正在准备着色器</entry>
   <entry key="Presets">预设</entry>
+  <entry key="Press Start">按 Start</entry>
   <entry key="Press a Key or Button...">请按下按键…</entry>
   <entry key="Press a Key or Mouse Button...">请按下按键或鼠标键…</entry>
+  <entry key="Press and drag on the left side of the screen to move, and on the right side of the screen to control the camera.">在屏幕左侧按住并拖动可移动，在右侧拖动可控制视角。</entry>
   <entry key="Prevents Link from playing a struggle animation when grabbing ledges or climbing on vines.">林克在抓住边缘或攀爬藤蔓时不会播放挣扎&lt;br/&gt;动画。</entry>
   <entry key="Prevents enemies from taking damage.">敌人不会受到伤害。</entry>
   <entry key="Prevents enemy music while Midna's Lament is playing.">在米多娜的悲歌播放时屏蔽敌人音乐。</entry>
+  <entry key="Previous">上一页</entry>
   <entry key="Princess Agitha">凤蝶公主</entry>
   <entry key="Profile matrix not started">配置矩阵未开始</entry>
   <entry key="Pumpkin Scent">南瓜的气味</entry>
@@ -858,12 +1170,22 @@
   <entry key="Quiver">箭筒</entry>
   <entry key="R + Start">R + Start</entry>
   <entry key="R Threshold">右扳机阈值</entry>
+  <entry key="R+D-pad Down teleports Link back to it.">R+十字键下 将林克传送回该位置。</entry>
+  <entry key="R+D-pad Up stores Link's current position.">R+十字键上 记录林克当前位置。</entry>
+  <entry key="R+D-pad Up stores Link's current position.&lt;br/&gt;R+D-pad Down teleports Link back to it.">R+十字键上 记录林克当前位置。&lt;br/&gt;R+十字键下 将林克传送回该位置。</entry>
   <entry key="RML(
     &lt;button id=">RML(
     &lt;button id=</entry>
   <entry key="RML(
     &lt;selection-frame id=">RML(
     &lt;selection-frame id=</entry>
+  <entry key="RML(
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML">RML(
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML</entry>
   <entry key="RML(
 &lt;rml&gt;
 &lt;head&gt;
@@ -875,11 +1197,15 @@
   <entry key="R_AARCH64_TLS_TPREL64 x">R_AARCH64_TLS_TPREL64 x</entry>
   <entry key="R_AARCH64_unknown">R_AARCH64_unknown</entry>
   <entry key="Rainbow">彩虹</entry>
+  <entry key="Randomizer 1.0.6 from 1.0.0-beta.1/beta.2">Randomizer 1.0.6 from 1.0.0-beta.1/beta.2</entry>
   <entry key="Range">Range</entry>
   <entry key="Rare Chu Jelly">珍贵丘丘胶</entry>
+  <entry key="Raw memory card">存储卡原始镜像</entry>
   <entry key="Ready.">就绪。</entry>
+  <entry key="Reason">原因</entry>
   <entry key="Recent">最近</entry>
   <entry key="Recenter Motion Sensors">重置体感中心</entry>
+  <entry key="Recently updated">最近更新</entry>
   <entry key="Recording Mode">录制模式</entry>
   <entry key="Records">记录</entry>
   <entry key="Red Chu Jelly">红色丘丘胶</entry>
@@ -890,14 +1216,18 @@
   <entry key="Reekfish">臭鳟鱼</entry>
   <entry key="Reekfish Scent">臭鳟鱼的气味</entry>
   <entry key="Region">区域</entry>
+  <entry key="Reload">重新加载</entry>
   <entry key="Remember Window Size">记住窗口大小</entry>
+  <entry key="Remove update">移除更新</entry>
   <entry key="Removes completed Owl Statue markers from the map and Minimap.">从地图和小地图中移除已完成的猫头鹰石像&lt;br/&gt;标记。</entry>
   <entry key="Renado">雷纳德</entry>
   <entry key="Renado's Letter">雷纳德的信</entry>
   <entry key="Render a thick shadow around the mini-map. May impact performance.">在小地图周围渲染较粗的阴影。可能影响性&lt;br/&gt;能。</entry>
   <entry key="Rendering">渲染</entry>
   <entry key="Replace">替换</entry>
+  <entry key="Replace the current save and mod data with this backup?">用此备份替换当前的存档与模组数据？</entry>
   <entry key="Replace the entire memory card image? All saves on the current card will be replaced. Existing saves for the configured disc will be backed up first.">替换整个存储卡镜像？当前卡上的所有存档都会被替换。当前配置光盘的现有存档会先备份。</entry>
+  <entry key="Requires bundling">需要打包。</entry>
   <entry key="Rescan">重新扫描</entry>
   <entry key="Reserved">保留项</entry>
   <entry key="Reset">重置</entry>
@@ -909,23 +1239,38 @@
   <entry key="Reset to Default">重置为默认</entry>
   <entry key="Reset to default">恢复默认</entry>
   <entry key="Reset to the main menu before copying saves.">复制存档前请先回到主菜单。</entry>
+  <entry key="Reset to the main menu before importing saves.">导入存档前请先回到主菜单。</entry>
   <entry key="Resolution">分辨率</entry>
   <entry key="Resources">资源</entry>
+  <entry key="Rest the controllers still, as you hold them to play, then press this: it re-estimates the resting pose and holds gestures for a moment.">按平时握持游玩的姿势让手柄保持静止，然后按此键：会重新估算静止姿态，并短暂保持手势。</entry>
   <entry key="Restart Dusklight to the pre-launch menu to change settings, game modes, or mods.">重启暮色之光回到启动前菜单，以更改设置、&lt;br/&gt;游戏模式或 mod。</entry>
   <entry key="Restart by hand">手动重启</entry>
   <entry key="Restart later">稍后重启</entry>
   <entry key="Restart now">立即重启</entry>
+  <entry key="Restart now to apply them immediately?">立即重启以应用？</entry>
   <entry key="Restart required">需要重启</entry>
   <entry key="Restart to Main Menu">重启至主菜单</entry>
   <entry key="Restart to Update">重启以更新</entry>
+  <entry key="Restart to finish">重启以完成</entry>
+  <entry key="Restore">恢复</entry>
+  <entry key="Restore Backup">恢复备份</entry>
+  <entry key="Restore Default Controls">恢复默认控制</entry>
   <entry key="Restore Default Window Size">恢复默认窗口大小</entry>
+  <entry key="Restore This Backup...">恢复此备份……</entry>
   <entry key="Restore Wii 1.0 Glitches">恢复Wii 1.0漏洞</entry>
+  <entry key="Restore a backup or import this save to use it again.">请恢复备份或重新导入此存档以再次使用。</entry>
+  <entry key="Restores all binding configurations for the currently selected device to their defaults.">将当前所选设备的所有按键绑定恢复为默认&lt;br/&gt;值。</entry>
   <entry key="Restores patched glitches from Wii USA 1.0, the first released version.">恢复Wii美版1.0（首个发布版本）中已被&lt;br/&gt;修复的漏洞。</entry>
   <entry key="Resume">继续</entry>
   <entry key="Resume all">全部继续</entry>
   <entry key="Retry">重试</entry>
+  <entry key="Retry activation">重试激活</entry>
+  <entry key="Retry download">重试下载</entry>
+  <entry key="Retry package">重试补丁包</entry>
   <entry key="Retry-After">Retry-After</entry>
+  <entry key="Retrying mod activation">正在重试模组激活</entry>
   <entry key="Right Joy-Con">右 Joy-Con</entry>
+  <entry key="Right Stick">右摇杆</entry>
   <entry key="Right Trigger">右扳机</entry>
   <entry key="Rollgoal Sensitivity">滚弹珠灵敏度</entry>
   <entry key="Room">房间</entry>
@@ -940,28 +1285,40 @@
   <entry key="Rupees">卢比</entry>
   <entry key="Rupees will not play cutscenes after you have collected them the first time.">卢比在首次收集后不再播放过场动画。</entry>
   <entry key="STAR Game Time (ms)">明星游戏时间(毫秒)</entry>
+  <entry key="Save">保存</entry>
+  <entry key="Save + mod data (.dusksave)">存档 + 模组数据（.dusksave）</entry>
   <entry key="Save Exported">存档已导出</entry>
   <entry key="Save File Type">存档文件类型</entry>
+  <entry key="Save Files">存档文件</entry>
+  <entry key="Save Import">存档导入</entry>
   <entry key="Save Location">存档位置</entry>
   <entry key="Save and restore the previous session's window size when opening Dusklight.">打开 Dusklight 时保存并恢复上次会话的窗口大小。</entry>
   <entry key="Save file">存档文件</entry>
   <entry key="Save files">存档文件</entry>
+  <entry key="Save only (.gci)">仅存档（.gci）</entry>
+  <entry key="Save present">已有存档</entry>
   <entry key="Scales the Dusklight interface relative to the display's DPI scale. Has no effect on the game's UI and HUD.">按显示器的 DPI 缩放比例调整暮色之光界面的&lt;br/&gt;大小，不影响游戏内界面和 HUD。</entry>
   <entry key="Scales the size of the gameplay HUD (hearts, buttons, mini-map, etc.). Does not affect dialog boxes or menus.">调整游戏内HUD（心数、按键提示、小地图等）的缩放，不影响对话框与菜单。</entry>
   <entry key="Scent">气味</entry>
   <entry key="Scent of Ilia">伊莉娅的气味</entry>
   <entry key="Screen Layout">屏幕布局</entry>
+  <entry key="Screenshots">截图</entry>
+  <entry key="Search">搜索</entry>
   <entry key="Sec-WebSocket-Extensions">Sec-WebSocket-Extensions</entry>
   <entry key="Sec-WebSocket-Key">Sec-WebSocket-Key</entry>
   <entry key="Sec-WebSocket-Protocol">Sec-WebSocket-Protocol</entry>
   <entry key="Sec-WebSocket-Version">Sec-WebSocket-Version</entry>
   <entry key="Select">选择</entry>
   <entry key="Select All">全选</entry>
+  <entry key="Select Disc Image">选择光盘镜像</entry>
   <entry key="Select None">全部取消</entry>
   <entry key="Send Crash Reports">发送崩溃报告</entry>
   <entry key="Send crash reports to Dusklight developers. Reports will include the information described above.">向暮色之光开发者发送崩溃报告。&lt;br/&gt;报告将包含上述信息。</entry>
   <entry key="Sensor">传感器</entry>
   <entry key="Service export registration failed">服务导出注册失败</entry>
+  <entry key="Set the disc image that Dusklight uses to launch the game.">设置 Dusklight 用于启动游戏的光盘镜像。</entry>
+  <entry key="Set the disc image that Dusklight uses to launch the game.&lt;br/&gt;&lt;br/&gt;Changes require a restart.">设置 Dusklight 用于启动游戏的光盘镜像。&lt;br/&gt;&lt;br/&gt;更改后需要重启。</entry>
+  <entry key="Sets the controller's lighting color based on the game's state.">根据游戏状态设置手柄灯光颜色。</entry>
   <entry key="Settings">设置</entry>
   <entry key="Shad">夏德</entry>
   <entry key="Shader preparation not started">着色器准备未开始</entry>
@@ -979,6 +1336,8 @@
   <entry key="Show Profiler Overlay">显示性能分析叠加层</entry>
   <entry key="Show RTA">显示RTA</entry>
   <entry key="Show Shader Compilation">显示着色器编译</entry>
+  <entry key="Show advanced settings and debugging tools with Shift+F1.">使用 Shift+F1 显示高级设置与调试工具。</entry>
+  <entry key="Show advanced settings and debugging tools with Shift+F1.&lt;br/&gt;&lt;br/&gt;&lt;icon class=&quot;warning&quot;/&gt; WARNING: Debugging tools can easily break your game. Do not use on a regular save!">使用 Shift+F1 显示高级设置与调试工具。&lt;br/&gt;&lt;br/&gt;&lt;icon class=&quot;warning&quot;/&gt; 警告：调试工具很容易破坏游戏，请勿在常用存档上使用！</entry>
   <entry key="Show an overlay when shaders are being compiled for your hardware.">当为你的硬件编译着色器时显示叠加层。</entry>
   <entry key="Show changelog">显示更新日志</entry>
   <entry key="Show gyro sensor values in the input viewer.">在输入查看器中显示陀螺仪传感器数值。</entry>
@@ -993,6 +1352,7 @@
   <entry key="Skip Dusklight Main Menu">跳过暮色之光主菜单</entry>
   <entry key="Skip TV Settings Screen">跳过电视设置画面</entry>
   <entry key="Skip needing to catch a second fish for Sera's cat.">跳过为塞拉的猫钓第二条鱼的需求。</entry>
+  <entry key="Skipping is safe: preparation continues in the background, but the game may stutter now and then until it finishes. What is already done is kept if you close the game.">跳过是安全的：准备工作会在后台继续，但完成前游戏可能偶尔卡顿。即使关闭游戏，已完成的部分也会保留。</entry>
   <entry key="Skips the TV calibration screen shown when loading a save.">跳过加载存档时显示的电视校准画面。</entry>
   <entry key="Skips the delay when writing to the Memory Card.">跳过保存存档时的延迟。</entry>
   <entry key="Slingshot">弹弓</entry>
@@ -1009,6 +1369,7 @@
   <entry key="Snowpeak Ruins">雪山废墟</entry>
   <entry key="Some">部分</entry>
   <entry key="Some updates could not be queued">部分更新未能加入队列</entry>
+  <entry key="Sort by">排序方式</entry>
   <entry key="Sound">音效</entry>
   <entry key="South Faron Gate Key">费罗尼地区南大门钥匙</entry>
   <entry key="Spawn ID">生成 ID</entry>
@@ -1022,24 +1383,32 @@
   <entry key="Stag Beetle (F)">锹形虫(雌性)</entry>
   <entry key="Stag Beetle (M)">锹形虫(雄性)</entry>
   <entry key="Stage">关卡</entry>
+  <entry key="Start">开始</entry>
+  <entry key="Starting">正在启动</entry>
   <entry key="Starting the game">正在启动游戏</entry>
   <entry key="Static service export has null service pointer">静态服务导出的服务指针为空</entry>
   <entry key="Status">状态</entry>
   <entry key="Stereo">立体声</entry>
   <entry key="Stereo (Headphones)">立体声（耳机）</entry>
   <entry key="Stereo (Speakers)">立体声（扬声器）</entry>
+  <entry key="Sticks">摇杆</entry>
+  <entry key="Stop">停止</entry>
+  <entry key="Storage and Recovery">存储与恢复</entry>
   <entry key="Sun's Song (R+X)">太阳之歌（R+X）</entry>
   <entry key="Super Clawshot">超级钩爪</entry>
   <entry key="Superb Soup">极好的汤</entry>
   <entry key="Superseded by a newer lifecycle request">已被更新的生命周期请求取代</entry>
+  <entry key="Supported items include the Slingshot, Gale Boomerang, Hero's Bow, Clawshot(s), Ball and Chain, and Dominion Rod.">受支持道具包括弹弓、疾风回旋镖、英雄之弓、钩爪（单/双）、链球与支配之杖。</entry>
   <entry key="Surf Leaf">滑行叶片</entry>
   <entry key="Surround">环绕声</entry>
+  <entry key="Suspended">已挂起</entry>
   <entry key="Swap Direct Select Input">交换快捷选择输入</entry>
   <entry key="Swap Swing Sides">交换挥剑方向</entry>
   <entry key="Swap the controls for using Direct Select on the item wheel, making Direct Select the default and holding L to scroll the wheel.">交换物品轮盘上使用快捷选择的控制方式，&lt;br/&gt;使快捷选择成为默认操作，按住L键滚动轮&lt;br/&gt;盘。</entry>
   <entry key="Swaps which slash a left-to-right swing plays, in case it looks reversed. Works together with Mirror Mode (turning on both cancels out).">交换从左向右挥剑时播放的斩击动作，用于修正观感反转。与镜像模式配合生效（两者同开会互相抵消）。</entry>
   <entry key="Swing Direction Animations">挥剑方向动画</entry>
   <entry key="Switch">切换</entry>
+  <entry key="Switch build included">已包含 Switch 版本</entry>
   <entry key="Sword">剑</entry>
   <entry key="Swords">剑</entry>
   <entry key="Synchronizes the frame rate to your monitor's refresh rate.">将帧率与显示器刷新率同步。</entry>
@@ -1049,11 +1418,15 @@
   <entry key="Target Type">锁定类型</entry>
   <entry key="Tear of Light">光之滴</entry>
   <entry key="Tears of Light dropped by Shadow Insects pop out faster like the HD version.">暗影昆虫掉落的光之滴弹出速度更快，与&lt;br/&gt;HD版本一样。</entry>
+  <entry key="Teleport (R+D-pad Up/Down)">传送（R+十字键上/下）</entry>
   <entry key="Telma">托尔玛</entry>
   <entry key="Temple of Time">时光之神殿</entry>
   <entry key="Test Rumble">测试震动</entry>
   <entry key="That image changed since it was listed and can no longer be used.">该镜像在列出后已被改动，无法再使用。</entry>
   <entry key="The Postman">邮递员</entry>
+  <entry key="The backup was restored.">备份已恢复。</entry>
+  <entry key="The card image does not contain saves for the configured disc.">该存储卡镜像中没有当前配置光盘的存档。</entry>
+  <entry key="The catalog download descriptor is invalid.">目录下载描述符无效。</entry>
   <entry key="The catalog request failed.">目录请求失败。</entry>
   <entry key="The catalog response was invalid.">目录响应无效。</entry>
   <entry key="The console went to sleep; the connection was lost">主机进入睡眠，连接已断开</entry>
@@ -1067,14 +1440,19 @@
   <entry key="The install source is not a URL">安装来源不是 URL</entry>
   <entry key="The install source is not a local file">安装来源不是本地文件</entry>
   <entry key="The installed mod inventory exceeds the catalog limit.">已安装模组数量超出目录上限。</entry>
+  <entry key="The installed version cannot be compared.">无法比较已安装版本。</entry>
   <entry key="The installed version changed.">已安装版本已变更。</entry>
   <entry key="The installed version changed. Check for updates again.">已安装版本已变更，请重新检查更新。</entry>
   <entry key="The loader rejected the package">加载器拒绝了该安装包</entry>
   <entry key="The local package changed after confirmation">本地补丁包在确认后已发生变更</entry>
   <entry key="The local save changed since it was last checked.">本地存档在上次检查后已发生变化。</entry>
+  <entry key="The memory card image was imported.">存储卡镜像已导入。</entry>
+  <entry key="The menu still shows when the disc image cannot be used or that game mode is no longer available.">当光盘镜像不可用或该游戏模式已失效时，仍会显示主菜单。</entry>
   <entry key="The mod could not be loaded">模组无法加载</entry>
+  <entry key="The mod data was deleted.">模组数据已删除。</entry>
   <entry key="The mod depends on a library this build does not provide.">模组依赖的库在此版本中不存在。</entry>
   <entry key="The mod failed to activate">模组启用失败</entry>
+  <entry key="The mod folder could not be opened in the file browser.">无法在文件浏览器中打开该模组文件夹。</entry>
   <entry key="The mod is no longer installed">该模组已不再安装</entry>
   <entry key="The mod is no longer installed.">该模组已不再安装。</entry>
   <entry key="The mod needs a game function another enabled mod already replaces.">模组需要的游戏函数已被另一个启用的模组替换。</entry>
@@ -1090,12 +1468,17 @@
   <entry key="The package is not in the mod staging directory">该包不在模组暂存目录中</entry>
   <entry key="The package version is invalid">包版本无效</entry>
   <entry key="The package was not found">未找到该包</entry>
+  <entry key="The save contains an unsupported filename.">该存档的文件名不受支持。</entry>
+  <entry key="The save file could not be exported.">存档文件无法导出。</entry>
+  <entry key="The save file picker could not be opened.">无法打开存档文件选择器。</entry>
+  <entry key="The save folder could not be opened in the file browser.">无法在文件浏览器中打开存档文件夹。</entry>
   <entry key="The save name is invalid.">存档名称无效。</entry>
   <entry key="The selected disc image could not be validated.">所选光盘镜像验证失败。</entry>
   <entry key="The selected disc image did not pass hash verification. It may be corrupt or modified.">所选光盘镜像未通过哈希校验，文件可能已损坏或被修改。</entry>
   <entry key="The selected disc image is valid.">所选光盘镜像校验通过。</entry>
   <entry key="The selected file is not a valid disc image.">所选文件并非有效光盘镜像。</entry>
   <entry key="The selected game is not supported by Dusklight.">所选游戏不受暮色之光（dusklight）支持。</entry>
+  <entry key="The shape never changes -- only how finely it is drawn, and the final blit smooths the difference. Lower this before lowering the game's own resolution: the companion is flat 2D and text.">形状不会改变，只影响绘制精细度，最终合成时会抹平差异。建议先降低此项，再降低游戏本身的分辨率：副屏只是平面 2D 画面和文字。</entry>
   <entry key="The snapshot comes from another region or platform.">该存档快照来自其他区域或平台。</entry>
   <entry key="The snapshot is not an individual save.">该快照不是单个存档。</entry>
   <entry key="The sword follows the way you swing: a downward chop is the vertical cut and a sideways swing is the left or right slash. Ordinary cuts only: finishers and special attacks keep their own animation. Off plays whichever cut the game picks.">剑招跟随挥动手势：向下挥是纵斩，横向挥是左斩或右斩。仅对普通斩击生效：终结技与特殊攻击保持原有动画。关闭时由游戏自行选择出招。</entry>
@@ -1105,12 +1488,15 @@
   <entry key="There is no other game mode to copy this save to.">没有其他游戏模式可以复制此存档。</entry>
   <entry key="There is no save file.">没有存档文件。</entry>
   <entry key="There is no save to copy.">没有可复制的存档。</entry>
+  <entry key="This build has no HTTP backend.">此构建不含 HTTP 后端。</entry>
   <entry key="This can be changed in the Settings menu at any time.">可随时在设置菜单中更改。</entry>
   <entry key="This mod already has an active install">该模组已有进行中的安装任务</entry>
   <entry key="This release does not support this device.">此版本不支持该设备。</entry>
   <entry key="This release introduces a required dependency cycle.">此版本引入了必需依赖的循环引用。</entry>
   <entry key="This release requires a different Dusklight ABI.">此版本需要不同的 Dusklight ABI。</entry>
+  <entry key="This save does not match the configured disc.">此存档与当前配置的光盘不符。</entry>
   <entry key="This version is already installed or older.">此版本已安装或更旧。</entry>
+  <entry key="Tip: You can also reset by holding Start+X+B">提示：也可以按住 Start+X+B 来重置</entry>
   <entry key="Toggle Fullscreen">切换全屏</entry>
   <entry key="Tools">工具</entry>
   <entry key="Top Left">左上角</entry>
@@ -1120,15 +1506,21 @@
   <entry key="Touch Camera Y Sensitivity">触控视角Y灵敏度</entry>
   <entry key="Touch Controls">触控操作</entry>
   <entry key="Touch Targeting">触摸瞄准</entry>
+  <entry key="Trace">跟踪</entry>
   <entry key="Trailer takes not started">预告片段未开始</entry>
+  <entry key="Transfer">传输</entry>
   <entry key="Transform Level">变身等级</entry>
   <entry key="Transform instantly by pressing R and Y simultaneously.">同时按下R键和Y键立即变身。</entry>
+  <entry key="Treat analog trigger movement as digital L and R button input.">将摇杆模拟触发视为L/R按键数字输入。</entry>
   <entry key="Triangle">三角键</entry>
+  <entry key="Triggers">扳机键</entry>
   <entry key="Triple Hearts">三倍心心</entry>
+  <entry key="Try changing the search or category.">请尝试更改搜索词或分类。</entry>
   <entry key="Turbo Key">连发键</entry>
   <entry key="Turns off the effect that bends what you see through water, such as Link's legs when he stands in it. Saves some GPU time.">关闭光线穿过水面时的弯折效果，比如林克站在水中时腿部的折射画面。可以节省一些 GPU 算力。</entry>
   <entry key="Tweaks">功能微调</entry>
   <entry key="Twilight Clear Level">黄昏通关等级</entry>
+  <entry key="Twilit Essentials 2.5.0 from 1.0.0-beta.1/beta.2">Twilit Essentials 2.5.0 from 1.0.0-beta.1/beta.2</entry>
   <entry key="Types">类型</entry>
   <entry key="UI Scale">界面缩放</entry>
   <entry key="UiService v1 dialog_add_action is no longer supported">UiService v1 的 dialog_add_action 已不再支持</entry>
@@ -1137,7 +1529,9 @@
   <entry key="Unable to read the selected file.">无法读取所选文件。</entry>
   <entry key="Unavailable">不可用</entry>
   <entry key="Unavailable updates">不可用的更新</entry>
+  <entry key="Uncategorized">未分类</entry>
   <entry key="Uniform Reuse (H35)">Uniform 复用（H35）</entry>
+  <entry key="Uninstall">卸载</entry>
   <entry key="Unknown">未知</entry>
   <entry key="Unknown bundle validation error">未知的包校验错误</entry>
   <entry key="Unknown exception in config change callback">配置变更回调中出现未知异常</entry>
@@ -1151,9 +1545,11 @@
   <entry key="Unlock Framerate">解锁帧率</entry>
   <entry key="Unlocked">已解锁</entry>
   <entry key="Unsaved progress will be lost.">未保存的进度将会丢失。</entry>
+  <entry key="Unsaved progress will be lost.&lt;br/&gt;&lt;modal-tip&gt;Tip: You can also reset by holding Start+X+B&lt;/modal-tip&gt;">未保存的进度将会丢失。&lt;br/&gt;&lt;modal-tip&gt;提示：也可以按住 Start+X+B 来重置&lt;/modal-tip&gt;</entry>
   <entry key="Up to Date">已是最新</entry>
   <entry key="Update">更新</entry>
   <entry key="Update all">全部更新</entry>
+  <entry key="Update available">有可用更新</entry>
   <entry key="Update available!">有可用更新！</entry>
   <entry key="Update is available, but the release did not include a download URL">有可用更新，但该发布未提供下载地址</entry>
   <entry key="Update ready!">更新已就绪！</entry>
@@ -1163,29 +1559,44 @@
   <entry key="Upper limit for anisotropic texture filtering. Lower values cost less GPU time; textures seen at an angle look softer.">各向异性纹理过滤的上限。数值越低GPU开销越小，斜视时的纹理越模糊。</entry>
   <entry key="Use Device Haptics">使用设备触感</entry>
   <entry key="Use native device haptics instead of controller rumble. Useful for devices with built-in gamepads.">使用设备原生触感代替手柄震动。适用于内置手柄的设备。</entry>
+  <entry key="Useful for a more immersive experience.">适合追求更强沉浸感的体验。</entry>
+  <entry key="Useful for recording footage.">适合录制视频素材。</entry>
   <entry key="User update removed">用户更新已移除</entry>
   <entry key="User-Agent">User-Agent</entry>
+  <entry key="Uses inter-frame interpolation to enable higher frame rates.">通过帧间插帧实现更高的帧率。</entry>
+  <entry key="Uses the Switch controllers' HD Rumble: sharp hits, heavy thuds, rolling quakes and Epona's gallop from side to side, instead of the original on/off motor.">使用 Switch 手柄的 HD 震动：以清脆的打击、沉重的撞击、连续的震动和艾波娜左右奔驰的马蹄感，取代原本只有开/关的马达。</entry>
+  <entry key="Uses the Switch controllers' HD Rumble: sharp hits, heavy thuds, rolling quakes and Epona's gallop from side to side, instead of the original on/off motor.&lt;br/&gt;&lt;br/&gt;Applies to handheld mode, Joy-Con and the Pro Controller. A GameCube controller adapter keeps its classic rumble.">使用 Switch 手柄的 HD 震动：以清脆的打击、沉重的撞击、连续的震动和艾波娜左右奔驰的马蹄感，取代原本只有开/关的马达。&lt;br/&gt;&lt;br/&gt;适用于掌机模式、Joy-Con 与 Pro 手柄。GameCube 手柄转接器仍保留其经典震动。</entry>
   <entry key="Value">数值</entry>
   <entry key="Verify">校验</entry>
   <entry key="Verifying">正在验证</entry>
   <entry key="Verifying disc image">正在验证光盘镜像</entry>
+  <entry key="Verifying…">正在校验…</entry>
+  <entry key="Version">版本</entry>
   <entry key="Vessel of Light (Eldin)">光之容器(奥尔汀)</entry>
   <entry key="Vessel of Light (Faron)">光之容器(费罗尼)</entry>
   <entry key="Vessel of Light (Filled)">光之容器(已装满)</entry>
   <entry key="Vessel of Light (Lanayru)">光之容器(拉聂尔)</entry>
   <entry key="Video">视频</entry>
   <entry key="View">查看</entry>
+  <entry key="View Backups">查看备份</entry>
+  <entry key="View compatible update">查看兼容更新</entry>
+  <entry key="View download">查看下载</entry>
+  <entry key="View downloads &amp; installs">查看下载与安装数</entry>
   <entry key="Volume">音量</entry>
   <entry key="Vulkan">Vulkan</entry>
   <entry key="Vulkan — best mod compatibility">Vulkan — 模组兼容性最好</entry>
+  <entry key="WARNING: Debugging tools can easily break your game. Do not use on a regular save!"> 警告：调试工具很容易破坏游戏，请勿在常用存档上使用！</entry>
   <entry key="WIA (experimental)">WIA（实验性）</entry>
   <entry key="Waiting for mods to initialize.">正在等待模组初始化。</entry>
+  <entry key="Waiting on">等待中：</entry>
+  <entry key="Waiting...">等待中...</entry>
   <entry key="Waits for the display before showing each frame (60 Hz on the Switch), so frames never tear.">每帧显示前等待显示器刷新（Switch为60Hz），因此画面不会撕裂。</entry>
   <entry key="Wallet">钱包</entry>
   <entry key="Wallet Size">钱包容量</entry>
   <entry key="Wallet sizes are like in the HD version. (500, 1000, 2000)">钱包容量与HD版本一样。（500、1000、&lt;br/&gt;2000）</entry>
   <entry key="Warm All Shaders">预热所有着色器</entry>
   <entry key="Warming every shader">正在预热所有着色器</entry>
+  <entry key="Warn">警告</entry>
   <entry key="Warp">传送</entry>
   <entry key="Warp to the selected destination.">传送到选定的目的地。</entry>
   <entry key="Water Bombs">水中炸弹</entry>
@@ -1199,10 +1610,17 @@
   <entry key="WebGPU, run with deko3d when it renders">WebGPU，绘制时由deko3d执行</entry>
   <entry key="Welcome to Dusklight">欢迎来到暮色之光</entry>
   <entry key="What teh fuck?">什么鬼？</entry>
+  <entry key="When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available, in the game mode you chose last (Play or Randomizer).">启动 Dusklight 时，若存在可用的光盘镜像，则跳过主菜单，直接以上次选择的游戏模式（普通游戏或随机化）进入游戏。</entry>
+  <entry key="When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available, in the game mode you chose last (Play or Randomizer).&lt;br/&gt;&lt;br/&gt;The menu still shows when the disc image cannot be used or that game mode is no longer available.">启动 Dusklight 时，若存在可用的光盘镜像，则跳过主菜单，直接以上次选择的游戏模式（普通游戏或随机化）进入游戏。&lt;br/&gt;&lt;br/&gt;当光盘镜像不可用或该游戏模式已失效时，仍会显示主菜单。</entry>
+  <entry key="When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available.">启动 Dusklight 时，若存在可用的光盘镜像，则跳过主菜单直接进入游戏。</entry>
+  <entry key="When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available.&lt;br/&gt;&lt;br/&gt;Note: If any mods register game modes, this option will be ignored.">启动 Dusklight 时，若存在可用的光盘镜像，则跳过主菜单直接进入游戏。&lt;br/&gt;&lt;br/&gt;注意：若有模组注册了自定义游戏模式，此选项将被忽略。</entry>
+  <entry key="Which detached Joy-Con swings the sword; the other one is the Nunchuk (spin attack and shield bash). It only chooses the sensor: Link and the world are not mirrored. With a single controller this does nothing.">选择由哪只拆下的 Joy-Con 挥剑，另一只作为 Nunchuk（回旋攻击与盾击）。此项仅指定传感器：林克与场景不会镜像翻转。只连接一个手柄时此项无效。</entry>
   <entry key="Wii">Wii</entry>
   <entry key="Wii U Style">Wii U 风格</entry>
   <entry key="Wii-style Motion">Wii 体感</entry>
   <entry key="Wii-style Motion Controls (Experimental)">Wii 体感操作（实验性）</entry>
+  <entry key="With Unlock Framerate on, skip an interpolated frame that would not finish before the next game tick, so heavy places give a clean 30 instead of 33/50 ms judder. Costs nothing where 60 already fits.">开启「解锁帧率」时，跳过无法在下一个游戏帧前完成的插帧，使高负载场景保持稳定的 30 帧，而不是 33/50 毫秒的抖动。原本能达到 60 帧的场景不会产生额外开销。</entry>
+  <entry key="With the full HUD the minimap redraws its whole picture every frame, about 800 draws in Hyrule Field and Castle Town: the main cost there.">使用完整 HUD 时，小地图每帧都会重绘整幅画面，在海拉尔平原和城邑约需 800 次绘制，是此处的主要开销。</entry>
   <entry key="Wolf">狼形态</entry>
   <entry key="Wooden Shield">木盾</entry>
   <entry key="Wooden Statue">木雕像</entry>
@@ -1213,6 +1631,7 @@
   <entry key="Yellow Chu Jelly">黄色丘丘胶</entry>
   <entry key="Yellow Rupee">黄卢比</entry>
   <entry key="Yeta">耶塔</entry>
+  <entry key="You may proceed at your own risk.">你可以继续，但需自行承担风险。</entry>
   <entry key="Your mods are up to date.">模组均为最新版本。</entry>
   <entry key="Your mods changed; checking again.">模组有变动，正在重新检查。</entry>
   <entry key="Youth's Scent">孩子们的气味</entry>
@@ -1254,8 +1673,10 @@
   <entry key="cannot check file equivalence">无法检查两个文件是否相同</entry>
   <entry key="cannot determine the running image's build id; ignoring symbol manifest">cannot determine the running image's build id; ignoring symbol manifest</entry>
   <entry key="catalog response is for a different game">目录响应属于另一款游戏</entry>
+  <entry key="changed its service imports/exports; rebuilding mod dependency graph">changed its service imports/exports; rebuilding mod dependency graph</entry>
   <entry key="closedir, releasing the glibc-layout entry">closedir, releasing the glibc-layout entry</entry>
   <entry key="compiled into this build; loading">已编入此版本，正在加载</entry>
+  <entry key="compiled without the glibc-layout &lt;fstream&gt; copy (cmake/LinuxStreams.cmake)">compiled without the glibc-layout &lt;fstream&gt; copy (cmake/LinuxStreams.cmake)</entry>
   <entry key="context menu">右键菜单</entry>
   <entry key="context menu action">右键菜单操作</entry>
   <entry key="control getter">控件读取器</entry>
@@ -1272,12 +1693,15 @@
   <entry key="decompressed symbol manifest is malformed">decompressed symbol manifest is malformed</entry>
   <entry key="deko3d (Experimental)">deko3d（实验性）</entry>
   <entry key="deko3d (recommended)">deko3d（推荐）</entry>
+  <entry key="deko3d: the console's own graphics API. Mods that draw with the gfx service need Vulkan: with such a mod enabled, Vulkan is used and a message says why. If deko3d fails to start twice, Vulkan is used from then on.">deko3d 是主机自带的图形 API。使用 gfx 服务绘制的模组需要 Vulkan：启用此类模组后会改用 Vulkan，并提示原因。若 deko3d 连续两次启动失败，此后将一直使用 Vulkan。</entry>
   <entry key="dialog action callback">对话框按钮回调</entry>
   <entry key="dialog action is_disabled callback">对话框按钮禁用状态回调</entry>
   <entry key="dialog on_dismiss callback">对话框关闭回调</entry>
   <entry key="disabled by config">配置中禁用</entry>
   <entry key="disabled; its code stops in the main menu or after a restart">已禁用；其代码会在回到主菜单或重启后停止</entry>
   <entry key="dusk-libcache 1">dusk-libcache 1</entry>
+  <entry key="e_ehsize/e_phentsize are not ELF64's">e_ehsize/e_phentsize are not ELF64's</entry>
+  <entry key="emulated over loopback sockets (DM3: there is no pipe/eventfd/epoll here)">emulated over loopback sockets (DM3: there is no pipe/eventfd/epoll here)</entry>
   <entry key="enabled; its code starts in the main menu or after a restart">已启用；其代码会在回到主菜单或重启后开始运行</entry>
   <entry key="errno of the calling thread (newlib's errno)">errno of the calling thread (newlib's errno)</entry>
   <entry key="exit from a mod: logged, then a crash report">从模组中退出：先记录日志，再生成崩溃报告</entry>
@@ -1285,6 +1709,7 @@
   <entry key="facet in a new stream's locale">新流locale中的facet</entry>
   <entry key="facet in classic() for Linux modules">Linux模块 classic() 中的facet</entry>
   <entry key="facet in the global locale">全局locale中的facet</entry>
+  <entry key="facet toupper/tolower">facet toupper/tolower</entry>
   <entry key="failed to load">加载失败</entry>
   <entry key="failed to register service exports">注册服务导出失败</entry>
   <entry key="failed to resolve service imports">解析服务导入失败</entry>
@@ -1305,10 +1730,13 @@
   <entry key="gfx stage callback returned with its offscreen pass still open">gfx阶段回调返回时离屏渲染通道仍未关闭</entry>
   <entry key="glibc 1024-bit fd_set, on poll (DM3)">glibc 1024-bit fd_set, on poll (DM3)</entry>
   <entry key="glibc AF_* values (DM3)">glibc AF_* values (DM3)</entry>
+  <entry key="glibc AF_*/SOCK_* values, glibc errno (DM3)">glibc AF_*/SOCK_* values, glibc errno (DM3)</entry>
   <entry key="glibc EAI_* values (DM3)">glibc EAI_* values (DM3)</entry>
+  <entry key="glibc FIONBIO/FIONREAD (DM3)">glibc FIONBIO/FIONREAD (DM3)</entry>
   <entry key="glibc F_* commands and O_* flags; glibc errno (DM2-d)">glibc F_* commands and O_* flags; glibc errno (DM2-d)</entry>
   <entry key="glibc O_* flags; glibc errno (DM2-d)">glibc O_* flags; glibc errno (DM2-d)</entry>
   <entry key="glibc POLL* bits (DM3)">glibc POLL* bits (DM3)</entry>
+  <entry key="glibc SOL_*/SO_*/IP_*/TCP_* values (DM3)">glibc SOL_*/SO_*/IP_*/TCP_* values (DM3)</entry>
   <entry key="glibc addrinfo list (DM3)">glibc addrinfo list (DM3)</entry>
   <entry key="glibc addrinfo list, IPv4 (DM3)">glibc addrinfo list, IPv4 (DM3)</entry>
   <entry key="glibc assert: logged, then a crash report">glibc assert: logged, then a crash report</entry>
@@ -1324,6 +1752,7 @@
   <entry key="glibc msghdr, no ancillary data (DM3)">glibc msghdr, no ancillary data (DM3)</entry>
   <entry key="glibc sockaddr and NI_* flags (DM3)">glibc sockaddr and NI_* flags (DM3)</entry>
   <entry key="glibc sockaddr and flags, glibc errno (DM3 sockets layer)">glibc sockaddr and flags, glibc errno (DM3 sockets layer)</entry>
+  <entry key="glibc struct tm with tm_gmtoff/tm_zone (DM2-d)">glibc struct tm with tm_gmtoff/tm_zone (DM2-d)</entry>
   <entry key="glibc table = C ctype for 256 bytes">glibc table = C ctype for 256 bytes</entry>
   <entry key="glibc utsname describing Horizon (DM3)">glibc utsname describing Horizon (DM3)</entry>
   <entry key="glibc's FILE internals">glibc's FILE internals</entry>
@@ -1331,17 +1760,22 @@
   <entry key="glibc-built pthread object on newlib: zero-initialised mutexes and condition variables match; static recursive-mutex initialisers act as normal mutexes">glibc-built pthread object on newlib: zero-initialised mutexes and condition variables match; static recursive-mutex initialisers act as normal mutexes</entry>
   <entry key="glibc-built sem_t on newlib: layouts differ unless sem_init is called">glibc-built sem_t on newlib: layouts differ unless sem_init is called</entry>
   <entry key="graphics deko3d cannot draw">图形后端deko3d无法绘制</entry>
+  <entry key="halves it. Experimental: if the map flickers or goes blank, set it back to 1. Minimal HUD hides the map and has no such cost."> 可减半。实验性功能：若地图闪烁或变空白，请改回 1。精简 HUD 会隐藏地图，没有此项开销。</entry>
   <entry key="has PT_INTERP: an executable, not a library">has PT_INTERP: an executable, not a library</entry>
   <entry key="has text relocations (DT_TEXTREL)">has text relocations (DT_TEXTREL)</entry>
+  <entry key="has thread-local storage (PT_TLS / TLS symbols), which the loader does not provide">has thread-local storage (PT_TLS / TLS symbols), which the loader does not provide</entry>
   <entry key="id does not match the file name">ID与文件名不一致</entry>
   <entry key="image dimensions are too large">图像尺寸过大</entry>
   <entry key="image has no sources">图像没有数据源</entry>
   <entry key="image source width is too large">图像数据源宽度过大</entry>
   <entry key="indirect function '">indirect function '</entry>
+  <entry key="init/fini array is malformed or outside the image">init/fini array is malformed or outside the image</entry>
   <entry key="installed at runtime">运行时安装</entry>
   <entry key="installed disabled by config">已安装，但配置中禁用</entry>
   <entry key="invalid image">无效图像</entry>
   <entry key="is disabled">已禁用</entry>
+  <entry key="is every frame, as the game does."> 表示每帧重绘，与游戏原本一致。</entry>
+  <entry key="is the default."> 为默认值。</entry>
   <entry key="it did not load">它没有加载</entry>
   <entry key="it is tried again after a restart">重启后会再试一次</entry>
   <entry key="lib cache: cannot read the package to hash it; extracting as before">lib cache: cannot read the package to hash it; extracting as before</entry>
@@ -1362,6 +1796,7 @@
   <entry key="malformed section header table">malformed section header table</entry>
   <entry key="malformed section name table">malformed section name table</entry>
   <entry key="malloc, without devkitPro's memalign(32) when malloc_direct is on">malloc，开启 malloc_direct 时不走devkitPro的 memalign(32)</entry>
+  <entry key="matches the panel exactly;"> 与面板完全吻合；</entry>
   <entry key="memory card">记忆卡</entry>
   <entry key="menu tab">菜单标签页</entry>
   <entry key="menu tab on_selected callback">菜单标签页选中回调</entry>
@@ -1398,6 +1833,7 @@
   <entry key="no mod search directories configured; mod loading skipped">未配置模组搜索目录，已跳过模组加载</entry>
   <entry key="no mods found">未找到模组</entry>
   <entry key="no result">无结果</entry>
+  <entry key="no romfs:/dusklight.symdb in this NRO (built with ALEKS2_SYMBOL_MANIFEST=OFF?); native mods cannot hook by name">no romfs:/dusklight.symdb in this NRO (built with ALEKS2_SYMBOL_MANIFEST=OFF?); native mods cannot hook by name</entry>
   <entry key="no symbol manifest embedded; by-name resolution unavailable">no symbol manifest embedded; by-name resolution unavailable</entry>
   <entry key="no symbol manifest for this build">no symbol manifest for this build</entry>
   <entry key="no thread-local key left for module TLS (pthread_key_create failed; libnx has a fixed number of slots): the module is not loaded">no thread-local key left for module TLS (pthread_key_create failed; libnx has a fixed number of slots): the module is not loaded</entry>
@@ -1411,11 +1847,14 @@
   <entry key="nothing yet">暂无</entry>
   <entry key="null link-time target">链接期目标为空</entry>
   <entry key="null pointer-to-member target">成员指针目标为空</entry>
+  <entry key="only the Linux C/C++ runtime libraries are stood in for by the game image">only the Linux C/C++ runtime libraries are stood in for by the game image</entry>
   <entry key="open failed">打开失败</entry>
   <entry key="out of memory for a module's TLS block">out of memory for a module's TLS block</entry>
   <entry key="out of memory for a thread's TLS state (first module TLS access in this thread)">线程TLS状态内存不足（该线程首次访问模块TLS）</entry>
   <entry key="out of memory for a thread's TLS table">out of memory for a thread's TLS table</entry>
   <entry key="prepatch support is not available in this build">此版本不提供预补丁支持</entry>
+  <entry key="presents">出品</entry>
+  <entry key="press Start">按 Start</entry>
   <entry key="program header table is not inside the file">program header table is not inside the file</entry>
   <entry key="pthread_create, the thread counted while it runs">pthread_create, the thread counted while it runs</entry>
   <entry key="pthread_setspecific failed for a thread's TLS state (first module TLS access in this thread)">pthread_setspecific failed for a thread's TLS state (first module TLS access in this thread)</entry>
@@ -1440,7 +1879,9 @@
   <entry key="suspended: a required provider is disabled">已暂停：所需的提供者被禁用</entry>
   <entry key="symbol '">symbol '</entry>
   <entry key="symbol manifest descriptor is corrupt">symbol manifest descriptor is corrupt</entry>
+  <entry key="symbol manifest has wrong magic/version">symbol manifest has wrong magic/version</entry>
   <entry key="symbol manifest is malformed">symbol manifest is malformed</entry>
+  <entry key="symbol manifest: romfs:/dusklight.symdb, read when a native mod first needs it">symbol manifest: romfs:/dusklight.symdb, read when a native mod first needs it</entry>
   <entry key="symbol version tables are malformed">symbol version tables are malformed</entry>
   <entry key="target has no valid gateway">目标没有有效网关</entry>
   <entry key="the C library's stderr stream">C库的标准错误流</entry>
@@ -1470,9 +1911,12 @@
   <entry key="thread-local storage is not provided">不提供线程局部存储</entry>
   <entry key="thread-local symbol '">thread-local symbol '</entry>
   <entry key="thread_local destructors, run at thread exit before the thread's TLS blocks are freed (TLS-lab)">thread_local destructors, run at thread exit before the thread's TLS blocks are freed (TLS-lab)</entry>
+  <entry key="to cancel. Nothing is written to your save, achievements are paused, and you are returned to where you were.">即可取消。不会写入存档，成就将暂停，随后返回原处。</entry>
   <entry key="to open menu">打开菜单</entry>
+  <entry key="to stop. Nothing is written to your save, achievements are paused, and you are returned to where you were.">即可停止。不会写入存档，成就将暂停，随后返回原处。</entry>
   <entry key="too many DT_NEEDED entries">too many DT_NEEDED entries</entry>
   <entry key="trailing bytes">尾部多余字节</entry>
+  <entry key="tried to hook undeclared target {:p}; hook targets must be declared with DEFINE_HOOK/DEFINE_HOOK_SYMBOL">tried to hook undeclared target {:p}; hook targets must be declared with DEFINE_HOOK/DEFINE_HOOK_SYMBOL</entry>
   <entry key="truncated export record">truncated export record</entry>
   <entry key="truncated extended hook record">truncated extended hook record</entry>
   <entry key="truncated header record">truncated header record</entry>
@@ -1508,11 +1952,11 @@
   <entry key="write failed">写入失败</entry>
   <entry key="you asked to start without mods">你选择了不加载模组启动</entry>
   <entry key="{:.0f} FPS">{:.0f} 帧</entry>
-  <entry key="• CPU architecture">• CPU架构</entry>
+  <entry key="• CPU architecture">• CPU 架构</entry>
   <entry key="• File paths (may include account username)">• 文件路径（可能包含账户用户名）</entry>
-  <entry key="• GPU model &amp; driver version">• GPU型号与驱动版本</entry>
+  <entry key="• GPU model &amp; driver version">• GPU 型号与驱动版本</entry>
   <entry key="• Operating system version">• 操作系统版本</entry>
-  <entry key="• Stack trace">• 堆栈回溯</entry>
+  <entry key="• Stack trace">• 堆栈跟踪</entry>
   <entry key="← Return">← 返回</entry>
   <entry key="ACTIVATION_FAILED">激活失败</entry>
   <entry key="ALL">全部</entry>

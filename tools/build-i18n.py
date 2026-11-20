@@ -55,6 +55,17 @@ def main() -> int:
     keys = json.loads(strings_path.read_text(encoding="utf-8"))
     translations = json.loads(translations_path.read_text(encoding="utf-8"))
 
+    # ci/i18n/extra-seed.json is the curated seed for strings the extractor
+    # cannot see (runtime-built keys, legacy UI text). It used to be an orphan
+    # file that no script read; fold it into the build here so a regenerated
+    # translations file can never silently lose those entries. Explicit
+    # translations.json values always win.
+    seed_path = translations_path.parent / "extra-seed.json"
+    if seed_path.exists():
+        seed = json.loads(seed_path.read_text(encoding="utf-8"))
+        for key, value in seed.items():
+            translations.setdefault(key, value)
+
     # [TOKEN] entries: some call sites render "[TOKEN]" strings (built by
     # concatenation or replaced wholesale); i18n::translate() strips the
     # brackets and looks the bare token up in the same dictionary. tokens.json

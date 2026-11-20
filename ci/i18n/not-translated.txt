@@ -297,3 +297,55 @@ Interpolated into a bigger RML string before rendering, so the callback only
 ever sees the finished sentence (settings.cpp, LAN listen help).
 
 - `this console's address (Settings > Internet on the console)`
+
+## Proper nouns and key combinations (9)
+
+Brand names, graphics API names and controller button combinations are
+kept in English by convention. Recorded here so the fallback is deliberate,
+not an oversight (these 9 were previously missing from the reviewed list).
+
+- `Aleks`
+- `GameCube`
+- `Metal`
+- `OpenGL`
+- `OpenGL ES`
+- `R + Start`
+- `Vulkan`
+- `WebGPU`
+- `Wii`
+
+## Newly extracted non-UI diagnostics (20)
+
+Relaxing `keep()` also admits strings containing `/`. These are loader and
+mod-layer diagnostics written to the log, never shown in the UI; reviewed
+and deliberately left in English.
+
+- `DT_STRTAB/DT_STRSZ is not inside the file-backed image`
+- `DT_SYMENT/DT_RELAENT are not ELF64's`
+- `Randomizer 1.0.6 from 1.0.0-beta.1/beta.2`
+- `Twilit Essentials 2.5.0 from 1.0.0-beta.1/beta.2`
+- `changed its service imports/exports; rebuilding mod dependency graph`
+- `compiled without the glibc-layout <fstream> copy (cmake/LinuxStreams.cmake)`
+- `e_ehsize/e_phentsize are not ELF64's`
+- `emulated over loopback sockets (DM3: there is no pipe/eventfd/epoll here)`
+- `facet toupper/tolower`
+- `glibc AF_*/SOCK_* values, glibc errno (DM3)`
+- `glibc FIONBIO/FIONREAD (DM3)`
+- `glibc SOL_*/SO_*/IP_*/TCP_* values (DM3)`
+- `glibc struct tm with tm_gmtoff/tm_zone (DM2-d)`
+- `has thread-local storage (PT_TLS / TLS symbols), which the loader does not provide`
+- `init/fini array is malformed or outside the image`
+- `no romfs:/dusklight.symdb in this NRO (built with ALEKS2_SYMBOL_MANIFEST=OFF?); native mods cannot hook by name`
+- `only the Linux C/C++ runtime libraries are stood in for by the game image`
+- `symbol manifest has wrong magic/version`
+- `symbol manifest: romfs:/dusklight.symdb, read when a native mod first needs it`
+- `tried to hook undeclared target {:p}; hook targets must be declared with DEFINE_HOOK/DEFINE_HOOK_SYMBOL`
+
+## Proper nouns kept in English, second batch (3)
+
+Reviewed 2026-11-20: brand/work/author names are kept verbatim by
+convention. Recorded here so the English fallback is deliberate.
+
+- `Twilit Realm` — Studio / team name
+- `Alek's Ultimate NX Edition` — Work / edition title
+- `by Alexgg1014` — Author credit (personal name)

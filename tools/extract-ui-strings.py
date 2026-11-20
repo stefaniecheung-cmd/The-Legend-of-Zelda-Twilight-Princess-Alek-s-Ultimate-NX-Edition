@@ -30,12 +30,20 @@ ESCAPES = {
 }
 
 # Anything that is clearly not interface copy.
+#
+# Disc-image extensions (.iso/.rvz/.wia/.gcz) used to be in this list, but they
+# also appear in real UI copy ("No .iso, ... file was found."). Rejecting the
+# whole sentence lost the string. A bare filename still fails the no-space
+# rules in keep() below.
 REJECT_SUBSTRINGS = (
     "%s", "%d", "{}", "{0}", "{1}", "http://", "https://", "::",
-    "sdmc:", "switch/", ".rcss", ".rml", ".ttf", ".png", ".json", ".iso",
-    ".rvz", ".wia", ".gcz", "TARGET_PC", "__SWITCH__", "#shader", "#",
+    "sdmc:", "switch/", ".rcss", ".rml", ".ttf", ".png", ".json",
+    "TARGET_PC", "__SWITCH__", "#shader", "#",
 )
-REJECT_EXACT = {"OK", "Yes", "No", "On", "Off", "Auto", "None", "Custom", "Back", "Cancel"}
+
+# Short labels (None / Back / Cancel / On / Off / Auto / Custom / OK / Yes / No)
+# are real UI text. They used to be dropped by REJECT_EXACT, which left them
+# untranslatable; keep them in the extracted source list instead.
 
 
 def strip_comments(text: str) -> str:
@@ -143,15 +151,17 @@ def reassemble_utf8(s: str) -> str:
 def keep(s: str) -> bool:
     if not (3 <= len(s) <= 400):
         return False
-    if s in REJECT_EXACT:
-        return False
     if not re.search(r"[A-Za-z]{2}", s):
         return False
     for bad in REJECT_SUBSTRINGS:
         if bad in s:
             return False
+    # A slash used to reject the entire string, which also killed every help
+    # text containing "<br/>" and labels like "Invert Air/Swim X Axis". Only
+    # path/identifier-shaped tokens are noise; anything with a space is prose.
     if "/" in s or "\\" in s:
-        return False
+        if re.fullmatch(r"[A-Za-z0-9_./:+-]+", s) and " " not in s:
+            return False
     if s != s.strip():
         return False
     # Needs a space, or to be a capitalised word that is not an identifier.

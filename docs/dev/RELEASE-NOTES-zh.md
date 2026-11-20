@@ -4,9 +4,9 @@
 |---|---|
 | 上游 | [Alexgg1014/The-Legend-of-Zelda-Twilight-Princess-Alek-s-Ultimate-NX-Edition](https://github.com/Alexgg1014/The-Legend-of-Zelda-Twilight-Princess-Alek-s-Ultimate-NX-Edition) `main`，基线版本 **1.1.3**（合并上游 tag `v1.1.3`） |
 | 发布 tag | `v1.1.3-cn`（annotated tag，指向发布时的 `main`） |
-| 产物 | `dusklight-1.1.3-cn.nro`，108,041,097 字节（103.0 MiB） |
-| SHA256 | `e702c03c7f8519e36f1d52b1a5017a103c54fcfddc81fb2487c046b9d3fd9c8b` |
-| 构建 | GitHub Actions run `42860215054`（success），`devkitpro/devkita64` 容器 |
+| 产物 | `dusklight-1.1.3-cn.nro`，107,806,665 字节（102.8 MiB）；2026-11-20 已替换为本机编译的完整汉化修复版 |
+| SHA256 | `19656c261aa518d8a92828dd7755272716d27db33658eeddf3322c1cf6bb188a` |
+| 构建 | 2026-11-20 本机 devkitPro / devkitA64 离线依赖树编译（`bash build_offline.sh 12`，`BUILD_RC=0`，0 错误）；原主包由 GitHub Actions run `42860215054` 构建，已被替换 |
 
 > 这是上游的个人汉化分支，不是官方版本。只汉化**移植层界面**，游戏内剧情对话、道具名等原版游戏资源不在范围内。
 
@@ -44,12 +44,12 @@ RmlUi 渲染文本 → TranslateString → 拿整句英文查 res/i18n/zh-cn.xml
 
 | 口径 | 数量 |
 |---|---|
-| 抽取到的源串 / `zh-cn.xml` 整句条目 | 1449 |
+| 抽取到的源串 / `zh-cn.xml` 整句条目 | 1805 |
 | `[TOKEN]` 词条（`ci/i18n/tokens.json`，en/zh-cn 各一份） | 233，**全部有中文** |
-| 整句中真正换成中文（值 ≠ 键） | **1222（84.3%）** |
-| 保持英文的整句 | 227 |
+| 整句中真正换成中文（值 ≠ 键） | **1527（84.6%）** |
+| 保持英文的整句 | 278 |
 
-整句 + token 合计：**1455 / 1682（86.5%）**。227 条整句保持英文，全部逐条审过、理由见 `ci/i18n/not-translated.txt`（协议字段名、运行时拼接片段、加载器日志诊断、RML 模板抽取碎片、英文专名）。
+整句 + token 合计：**1760 / 2038（86.4%）**。278 条整句保持英文，逐条审过、理由见 `ci/i18n/not-translated.txt`（协议字段名、运行时拼接片段、加载器日志诊断、RML 模板抽取碎片、英文专名）；按文本节点复核，真实界面文案已全部有中文。
 
 ## 三、改动清单（相对 v1.1.1-cn）
 
@@ -58,7 +58,7 @@ RmlUi 渲染文本 → TranslateString → 拿整句英文查 res/i18n/zh-cn.xml
 | 上游同步 | 合并 `v1.1.2` + `v1.1.3`（23 个文件，含 `self_update`、`settings.cpp` 等；冲突 3 处已按"保留汉化 token 化、其余取上游"解决） |
 | token 词表（新增） | `ci/i18n/tokens.json`（233 条，从 v1.1.1-cn 重构前的 token 词典回收） |
 | 词表生成 | `tools/build-i18n.py`（并入 `tokens.json`）、`tools/extract-ui-strings.py`（`\xNN` 按 UTF-8 还原） |
-| 词表 | `res/i18n/zh-cn.xml`、`res/i18n/en.xml`（重建：1449 整句 + 233 token） |
+| 词表 | `res/i18n/zh-cn.xml`、`res/i18n/en.xml`（重建：1805 整句 + 233 token） |
 | 词表源数据 | `ci/i18n/zh-cn.json`（+6 条）、`ci/i18n/source-strings.json`（重新抽取）、`ci/i18n/not-translated.txt`（+29 条已审不译项） |
 | 版本号 | `.github/workflows/build-switch.yml`（`-DDUSK_APP_VERSION_OVERRIDE=v1.1.3-cn`、产物与 artifact 名） |
 | 文档 | 本摘要、`docs/dev/i18n-zh.md`（token 词条机制与新版数字）、README 中文版说明 |
@@ -86,14 +86,14 @@ Release 的 Assets 里除了 NRO，还单独提供 `randomizer.dusk`（6,483,388
 - 卡上若还留着 beta 期的旧 `randomizer.dusk`，先删掉；旧包会挡住新包。
 - 若模组显示 refused / 未激活，进设置 → 诊断 → **Native Mods (H37)** 把模式设为 **Execute**（全新安装默认即为 Execute）。
 
-产物校验：菜单串 `v1.1.3-cn`、NACP `1.1.3-cn`、数字版本 `1.1.3.0`；RomFS 内含 `//res/mods/randomizer.dusk`（6,483,388）、`//res/mods/dev.aleks2.cross_save.dusk`（2,574,119）、四份 i18n 词表（en/zh-cn 各 1682 条目）、三款 HarmonyOS 字体与中文词条。
+产物校验：菜单串 `v1.1.3-cn`、NACP `1.1.3-cn`、NRO0 魔数；RomFS 内含 `//res/mods/randomizer.dusk`（6,483,388）、`//res/mods/dev.aleks2.cross_save.dusk`（2,574,119）、i18n 词表（en/zh-cn 各 2038 条目）、三款 HarmonyOS 字体与中文词条。主包本体 107,806,665 字节，SHA256 见顶部表格与同名 `.sha256` 资产。
 
 ## 五、已知限制
 
 - **只汉化移植层 UI，不含游戏本体文本。** 剧情对话、道具名、游戏内菜单文字来自原版资源。
 - **首次启动要自己编译着色器。** 上游 Release 打包了两份预编译着色器缓存，本分支**故意不打**（它们必须在真机上为确切的驱动采集；本分支用 Mesa 26.2.4 Horizon）。首次预热数分钟，界面有进度和 Skip。
 - **未在真机全面验证。** 编译期与包内容已校验，中文断行、字体渲染、首次预热的实际表现待测。
-- 227 条整句保持英文，全部逐条审过、有意为之，原因见 `ci/i18n/not-translated.txt`。
+- 278 条整句保持英文，全部逐条审过、有意为之，原因见 `ci/i18n/not-translated.txt`。
 - 词表与英文原文强耦合：上游改写某句提示时，那句会静默回落英文。每次同步上游后跑一次 `tools/extract-ui-strings.py` 重新比对，并跑 `tools/check_i18n_tokens.py` 核对 token 词条。
 - 仅面向 Switch；PC 版（AppImage）是另一条线。
 
@@ -115,7 +115,7 @@ python tools/check_i18n_tokens.py           # 核对 [TOKEN] 词条
 
 ## 七、为什么比上游 Release 的 NRO 小
 
-上游 v1.1.3 的 `dusklight.nro` 是 170.7 MiB（178,989,461 字节），本分支 103.0 MiB。**不是编译裁剪，也不是压缩差异**，而是上游在发布时额外传入了四个不在 git 里的二进制：
+上游 v1.1.3 的 `dusklight.nro` 是 170.7 MiB（178,989,461 字节），本分支 102.8 MiB。**不是编译裁剪，也不是压缩差异**，而是上游在发布时额外传入了四个不在 git 里的二进制：
 
 | 文件 | 大小 | 本分支 |
 |---|---:|---|
@@ -132,7 +132,10 @@ python tools/check_i18n_tokens.py           # 核对 [TOKEN] 词条
 |---|---|
 | `652af97` | 合并上游 v1.1.3（含 v1.1.2） |
 | `6ad63b2` | token 词条回收（`ci/i18n/tokens.json`）、build-i18n 并入 token、抽取工具 `\xNN` 修复、6 条新译文、词表重建、版本号 `v1.1.3-cn` |
-| 文档提交 | 本摘要回填最终产物数字（run `42860215054`，42 分钟构建完成） |
+| `75104ef6` | `fix/i18n-text-content`：程序化 UI 文本改走 `i18n::tr()` |
+| `5f0a3b7e` | 合并 `fix/i18n-text-content` 进 `main`（2026-11-20） |
+| 本机构建 | 三批补齐遗漏译文、修正抽取工具过滤规则后重新编译，替换正式主包（2026-11-20） |
+| 文档提交 | 本摘要回填最终产物数字（原主包 run `42860215054`，42 分钟构建完成） |
 
 ---
 

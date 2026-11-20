@@ -43,6 +43,15 @@
   <entry key=", not ELF64">, not ELF64</entry>
   <entry key=", not a shared object (ET_DYN)">, not a shared object (ET_DYN)</entry>
   <entry key=", which it did not open here; refused (EBADF), the game keeps it">, which it did not open here; refused (EBADF), the game keeps it</entry>
+  <entry key="/&gt;
+    &lt;/window&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML">/&gt;
+    &lt;/window&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML</entry>
   <entry key="0: libstdc++ always uses atomics">0: libstdc++ always uses atomics</entry>
   <entry key="20 Hearts">20 Hearts</entry>
   <entry key="3 Hearts">3 Hearts</entry>
@@ -56,9 +65,37 @@
   <entry key=": the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT and RELATIVE">: the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT and RELATIVE</entry>
   <entry key=": the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT, RELATIVE, TLSDESC, TLS_DTPMOD64 and TLS_DTPREL64">: the loader applies only NONE, ABS64, GLOB_DAT, JUMP_SLOT, RELATIVE, TLSDESC, TLS_DTPMOD64 and TLS_DTPREL64</entry>
   <entry key="; the entry there did not match and was replaced">; the entry there did not match and was replaced</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;&lt;b&gt;&lt;span id=&quot;shader-prep-counter&quot;&gt;0 / 0&lt;/span&gt;&lt;/b&gt; - &lt;span id=&quot;shader-prep-eta&quot;&gt;&lt;/span&gt;&lt;br/&gt;&lt;progress id=&quot;shader-prep-bar&quot; class=&quot;info&quot; value=&quot;0&quot; /&gt;&lt;br/&gt;Skipping is safe: preparation continues in the background, but the game may stutter now and then until it finishes. What is already done is kept if you close the game.">&lt;br/&gt;&lt;br/&gt;&lt;b&gt;&lt;span id=&quot;shader-prep-counter&quot;&gt;0 / 0&lt;/span&gt;&lt;/b&gt; - &lt;span id=&quot;shader-prep-eta&quot;&gt;&lt;/span&gt;&lt;br/&gt;&lt;progress id=&quot;shader-prep-bar&quot; class=&quot;info&quot; value=&quot;0&quot; /&gt;&lt;br/&gt;Skipping is safe: preparation continues in the background, but the game may stutter now and then until it finishes. What is already done is kept if you close the game.</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Last result&lt;/b&gt;&lt;br/&gt;">&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Last result&lt;/b&gt;&lt;br/&gt;</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Press Start&lt;/b&gt; to stop. Nothing is written to your save, achievements are paused, and you are returned to where you were.">&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Press Start&lt;/b&gt; to stop. Nothing is written to your save, achievements are paused, and you are returned to where you were.</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;Controls are locked; &lt;b&gt;press Start&lt;/b&gt; to cancel. Nothing is written to your save, achievements are paused, and you are returned to where you were.">&lt;br/&gt;&lt;br/&gt;Controls are locked; &lt;b&gt;press Start&lt;/b&gt; to cancel. Nothing is written to your save, achievements are paused, and you are returned to where you were.</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;Disabled after a crash or a failure while playing:">&lt;br/&gt;&lt;br/&gt;Disabled after a crash or a failure while playing:</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;Rest the controllers still, as you hold them to play, then press this: it re-estimates the resting pose and holds gestures for a moment.">&lt;br/&gt;&lt;br/&gt;Rest the controllers still, as you hold them to play, then press this: it re-estimates the resting pose and holds gestures for a moment.</entry>
+  <entry key="&lt;br/&gt;&lt;br/&gt;You may proceed at your own risk.">&lt;br/&gt;&lt;br/&gt;You may proceed at your own risk.</entry>
+  <entry key="&lt;br/&gt;Allows the Great Spin attack without requiring full health.">&lt;br/&gt;Allows the Great Spin attack without requiring full health.</entry>
+  <entry key="&lt;br/&gt;Changes how the Collection and File Select menus scale to your aspect ratio.">&lt;br/&gt;Changes how the Collection and File Select menus scale to your aspect ratio.</entry>
+  <entry key="&lt;br/&gt;Changes require a restart.">&lt;br/&gt;Changes require a restart.</entry>
+  <entry key="&lt;br/&gt;Choose which notifications can be displayed.">&lt;br/&gt;Choose which notifications can be displayed.</entry>
+  <entry key="&lt;br/&gt;Control the behavior of the Magic Armor.">&lt;br/&gt;Control the behavior of the Magic Armor.</entry>
+  <entry key="&lt;br/&gt;Disable the top and bottom black bars during L-targeting, aiming, cutscenes, dialogue, etc.">&lt;br/&gt;Disable the top and bottom black bars during L-targeting, aiming, cutscenes, dialogue, etc.</entry>
+  <entry key="&lt;br/&gt;Display the current framerate in a corner of the screen while playing.">&lt;br/&gt;Display the current framerate in a corner of the screen while playing.</entry>
+  <entry key="&lt;br/&gt;Fast leaves particles, rain, snow, clouds, material effects and model deformation out of interpolation, so they only change on game ticks.&lt;br/&gt;&lt;br/&gt;Fancy interpolates them too: smoother, and more CPU.">&lt;br/&gt;Fast leaves particles, rain, snow, clouds, material effects and model deformation out of interpolation, so they only change on game ticks.&lt;br/&gt;&lt;br/&gt;Fancy interpolates them too: smoother, and more CPU.</entry>
+  <entry key="&lt;br/&gt;Uses inter-frame interpolation to enable higher frame rates.&lt;br/&gt;&lt;br/&gt;May introduce minor visual artifacts or animation glitches.">&lt;br/&gt;Uses inter-frame interpolation to enable higher frame rates.&lt;br/&gt;&lt;br/&gt;May introduce minor visual artifacts or animation glitches.</entry>
+  <entry key="&lt;br/&gt;Which detached Joy-Con swings the sword; the other one is the Nunchuk (spin attack and shield bash). It only chooses the sensor: Link and the world are not mirrored. With a single controller this does nothing.">&lt;br/&gt;Which detached Joy-Con swings the sword; the other one is the Nunchuk (spin attack and shield bash). It only chooses the sensor: Link and the world are not mirrored. With a single controller this does nothing.</entry>
+  <entry key="&lt;br/&gt;deko3d: the console's own graphics API. Mods that draw with the gfx service need Vulkan: with such a mod enabled, Vulkan is used and a message says why. If deko3d fails to start twice, Vulkan is used from then on.">&lt;br/&gt;deko3d: the console's own graphics API. Mods that draw with the gfx service need Vulkan: with such a mod enabled, Vulkan is used and a message says why. If deko3d fails to start twice, Vulkan is used from then on.</entry>
   <entry key="&gt;
                     &lt;update-download-label id=">&gt;
                     &lt;update-download-label id=</entry>
+  <entry key="&gt;
+                &lt;eyebrow&gt;&lt;studio-name&gt;Twilit Realm&lt;/studio-name&gt; presents&lt;/eyebrow&gt;
+                &lt;img src=">&gt;
+                &lt;eyebrow&gt;&lt;studio-name&gt;Twilit Realm&lt;/studio-name&gt; presents&lt;/eyebrow&gt;
+                &lt;img src=</entry>
+  <entry key="&gt;
+                &lt;icon /&gt;
+                &lt;disc-status-label id=">&gt;
+                &lt;icon /&gt;
+                &lt;disc-status-label id=</entry>
   <entry key="&gt;
                 &lt;update-message id=">&gt;
                 &lt;update-message id=</entry>
@@ -94,11 +131,99 @@
         &lt;speedrun-rta id=">&gt;
         &lt;speedrun-rta id=</entry>
   <entry key="&gt;
+        &lt;status&gt;
+            &lt;icon /&gt;
+            &lt;status-label id=">&gt;
+        &lt;status&gt;
+            &lt;icon /&gt;
+            &lt;status-label id=</entry>
+  <entry key="&gt;
+        &lt;stick-ring /&gt;
+        &lt;stick-knob id=">&gt;
+        &lt;stick-ring /&gt;
+        &lt;stick-knob id=</entry>
+  <entry key="&gt;
+    &lt;/mods-display&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML">&gt;
+    &lt;/mods-display&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML</entry>
+  <entry key="&gt;
     &lt;touch-stick id=">&gt;
     &lt;touch-stick id=</entry>
+  <entry key="&gt;&lt;/count&gt;&lt;span&gt;X&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=">&gt;&lt;/count&gt;&lt;span&gt;X&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=</entry>
+  <entry key="&gt;&lt;/count&gt;&lt;span&gt;Y&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=">&gt;&lt;/count&gt;&lt;span&gt;Y&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=</entry>
+  <entry key="&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=">&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=</entry>
+  <entry key="&gt;&lt;/output&gt;
+        &lt;input id=">&gt;&lt;/output&gt;
+        &lt;input id=</entry>
+  <entry key="&gt;&lt;/update-download-label&gt;
+                    &amp;nbsp;&lt;icon /&gt;
+                &lt;/button&gt;
+            &lt;/update-status&gt;
+        &lt;/version-info&gt;
+    &lt;/content&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML">&gt;&lt;/update-download-label&gt;
+                    &amp;nbsp;&lt;icon /&gt;
+                &lt;/button&gt;
+            &lt;/update-status&gt;
+        &lt;/version-info&gt;
+    &lt;/content&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML</entry>
+  <entry key="&gt;&lt;/update-message&gt;
+                &lt;button id=">&gt;&lt;/update-message&gt;
+                &lt;button id=</entry>
+  <entry key="&gt;&lt;/version-number&gt;&lt;/version-label&gt;
+            &lt;update-status id=">&gt;&lt;/version-number&gt;&lt;/version-label&gt;
+            &lt;update-status id=</entry>
   <entry key="&gt;&lt;div id=">&gt;&lt;div id=</entry>
   <entry key="&gt;&lt;img id=">&gt;&lt;img id=</entry>
   <entry key="&gt;&lt;oil-fill id=">&gt;&lt;oil-fill id=</entry>
+  <entry key="&gt;&lt;span&gt;Cancel&lt;/span&gt;&lt;/button&gt;
+    &lt;/editor-toolbar&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML">&gt;&lt;span&gt;Cancel&lt;/span&gt;&lt;/button&gt;
+    &lt;/editor-toolbar&gt;
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML</entry>
+  <entry key="&gt;&lt;span&gt;L&lt;/span&gt;&lt;/button&gt;
+    &lt;action-bar id=">&gt;&lt;span&gt;L&lt;/span&gt;&lt;/button&gt;
+    &lt;action-bar id=</entry>
+  <entry key="&gt;&lt;span&gt;R&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=">&gt;&lt;span&gt;R&lt;/span&gt;&lt;/button&gt;
+    &lt;button id=</entry>
+  <entry key="&gt;&lt;span&gt;Reset&lt;/span&gt;&lt;/button&gt;
+        &lt;button id=">&gt;&lt;span&gt;Reset&lt;/span&gt;&lt;/button&gt;
+        &lt;button id=</entry>
+  <entry key="&gt;&lt;span&gt;Save&lt;/span&gt;&lt;/button&gt;
+        &lt;button id=">&gt;&lt;span&gt;Save&lt;/span&gt;&lt;/button&gt;
+        &lt;button id=</entry>
+  <entry key="&gt;Alek's Ultimate NX Edition&lt;/span&gt;
+        &lt;span id=">&gt;Alek's Ultimate NX Edition&lt;/span&gt;
+        &lt;span id=</entry>
+  <entry key="&gt;Starting&lt;/span&gt;
+        &lt;div id=">&gt;Starting&lt;/span&gt;
+        &lt;div id=</entry>
+  <entry key="&gt;by Alexgg1014&lt;/span&gt;
+        &lt;span id=">&gt;by Alexgg1014&lt;/span&gt;
+        &lt;span id=</entry>
   <entry key="A button bound to any action here will REPLACE the default control for that action. Only bind buttons here that aren't used anywhere else. The glyphs shown for in game actions will not change. This is not recommended for  regular Gamecube controllers.">A button bound to any action here will REPLACE the default control for that action. Only bind buttons here that aren't used anywhere else. The glyphs shown for in game actions will not change. This is not recommended for  regular Gamecube controllers.</entry>
   <entry key="A development directory cannot be replaced">A development directory cannot be replaced</entry>
   <entry key="A key bound to any action here will REPLACE the default control for that action. Only bind buttons here that aren't used anywhere else.">A key bound to any action here will REPLACE the default control for that action. Only bind buttons here that aren't used anywhere else.</entry>
@@ -106,25 +231,41 @@
   <entry key="A mod with native code is reloaded by restarting the game">A mod with native code is reloaded by restarting the game</entry>
   <entry key="A newer version is already installed">A newer version is already installed</entry>
   <entry key="A required provider is unavailable">A required provider is unavailable</entry>
+  <entry key="A restart is required to apply selected options.">A restart is required to apply selected options.</entry>
+  <entry key="A restart is required to apply selected options.&lt;br/&gt;&lt;br/&gt;Close and reopen Dusklight to apply them.">A restart is required to apply selected options.&lt;br/&gt;&lt;br/&gt;Close and reopen Dusklight to apply them.</entry>
+  <entry key="A restart is required to apply selected options.&lt;br/&gt;&lt;br/&gt;Restart now to apply them immediately?">A restart is required to apply selected options.&lt;br/&gt;&lt;br/&gt;Restart now to apply them immediately?</entry>
   <entry key="Abilities">Abilities</entry>
   <entry key="Accept">Accept</entry>
   <entry key="Accept-Encoding">Accept-Encoding</entry>
   <entry key="Achievements">Achievements</entry>
   <entry key="Action">Action</entry>
   <entry key="Actions">Actions</entry>
+  <entry key="Activating…">Activating…</entry>
+  <entry key="Activation failed">Activation failed</entry>
+  <entry key="Active">Active</entry>
   <entry key="Actor profile could not be removed during mod deactivation">Actor profile could not be removed during mod deactivation</entry>
+  <entry key="Adjusts horizontal free camera sensitivity.">Adjusts horizontal free camera sensitivity.</entry>
+  <entry key="Adjusts horizontal free camera sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">Adjusts horizontal free camera sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.</entry>
   <entry key="Adjusts the volume of all music in the game.">Adjusts the volume of all music in the game.</entry>
   <entry key="Adjusts the volume of all sounds in the game.">Adjusts the volume of all sounds in the game.</entry>
+  <entry key="Adjusts touch camera horizontal sensitivity.">Adjusts touch camera horizontal sensitivity.</entry>
+  <entry key="Adjusts touch camera horizontal sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to touch input only.">Adjusts touch camera horizontal sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to touch input only.</entry>
+  <entry key="Adjusts touch camera vertical sensitivity.">Adjusts touch camera vertical sensitivity.</entry>
+  <entry key="Adjusts touch camera vertical sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to touch input only.">Adjusts touch camera vertical sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to touch input only.</entry>
+  <entry key="Adjusts vertical free camera sensitivity.">Adjusts vertical free camera sensitivity.</entry>
+  <entry key="Adjusts vertical free camera sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">Adjusts vertical free camera sensitivity.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.</entry>
   <entry key="After Learning Skill">After Learning Skill</entry>
   <entry key="Aiming Reticle">Aiming Reticle</entry>
   <entry key="Aleks">Aleks</entry>
   <entry key="All">All</entry>
   <entry key="All 60">All 60</entry>
   <entry key="All Files">All Files</entry>
+  <entry key="All mods">All mods</entry>
   <entry key="Allow Background Inputs">Allow Background Inputs</entry>
   <entry key="Allow fishing with the Fishing Rod using the button the item is assigned to.">Allow fishing with the Fishing Rod using the button the item is assigned to.</entry>
   <entry key="Allow inputs even when the game window is not focused.">Allow inputs even when the game window is not focused.</entry>
   <entry key="Allows Wolf Link to howl and change the time of day.">Allows Wolf Link to howl and change the time of day.</entry>
+  <entry key="Allows the Great Spin attack without requiring full health.">Allows the Great Spin attack without requiring full health.</entry>
   <entry key="Allows transforming even if NPCs are looking.">Allows transforming even if NPCs are looking.</entry>
   <entry key="Already in the install queue">Already in the install queue</entry>
   <entry key="Also offer versions GitHub marks as pre-releases (betas and release candidates).">Also offer versions GitHub marks as pre-releases (betas and release candidates).</entry>
@@ -133,6 +274,7 @@
   <entry key="Always collect Rupees even if your Wallet is too full.">Always collect Rupees even if your Wallet is too full.</entry>
   <entry key="Amounts">Amounts</entry>
   <entry key="An in-place native library cannot be reloaded">An in-place native library cannot be reloaded</entry>
+  <entry key="Analog">Analog</entry>
   <entry key="Ancient Sky Book">Ancient Sky Book</entry>
   <entry key="Ancient Sky Book (Filled)">Ancient Sky Book (Filled)</entry>
   <entry key="Ancient Sky Book (Partial)">Ancient Sky Book (Partial)</entry>
@@ -140,9 +282,15 @@
   <entry key="Ant (F)">Ant (F)</entry>
   <entry key="Ant (M)">Ant (M)</entry>
   <entry key="Any hit will instantly kill you.">Any hit will instantly kill you.</entry>
+  <entry key="Applies to handheld mode, Joy-Con and the Pro Controller. A GameCube controller adapter keeps its classic rumble.">Applies to handheld mode, Joy-Con and the Pro Controller. A GameCube controller adapter keeps its classic rumble.</entry>
+  <entry key="Applies to the control stick only.">Applies to the control stick only.</entry>
+  <entry key="Applies to touch input only.">Applies to touch input only.</entry>
   <entry key="Apply Options">Apply Options</entry>
+  <entry key="Apply configured dead zones to the sticks and analog triggers.">Apply configured dead zones to the sticks and analog triggers.</entry>
+  <entry key="Applying package">Applying package</entry>
   <entry key="Archive is not a valid mod package">Archive is not a valid mod package</entry>
   <entry key="Are you sure?">Are you sure?</entry>
+  <entry key="Area">Area</entry>
   <entry key="Arrows (1)">Arrows (1)</entry>
   <entry key="Arrows (10)">Arrows (10)</entry>
   <entry key="Arrows (20)">Arrows (20)</entry>
@@ -158,11 +306,17 @@
   <entry key="Automatic update checks are off.">Automatic update checks are off.</entry>
   <entry key="Autosave">Autosave</entry>
   <entry key="Autosaves the game when going to a new area or opening a dungeon door.">Autosaves the game when going to a new area or opening a dungeon door.</entry>
+  <entry key="Available">Available</entry>
+  <entry key="Back">Back</entry>
   <entry key="Back Slice">Back Slice</entry>
+  <entry key="Backup successfully created.">Backup successfully created.</entry>
+  <entry key="Backups">Backups</entry>
   <entry key="Ball and Chain">Ball and Chain</entry>
   <entry key="Barnes 1">Barnes 1</entry>
   <entry key="Barnes 2">Barnes 2</entry>
   <entry key="Barnes Bombs">Barnes Bombs</entry>
+  <entry key="Based on Dusklight by Twilit Realm &amp;#183; Powered by Aurora">Based on Dusklight by Twilit Realm &amp;#183; Powered by Aurora</entry>
+  <entry key="Based on Dusklight by Twilit Realm · Powered by Aurora">Based on Dusklight by Twilit Realm · Powered by Aurora</entry>
   <entry key="Bedroom Key">Bedroom Key</entry>
   <entry key="Bee Larva">Bee Larva</entry>
   <entry key="Bee Larve (Shop)">Bee Larve (Shop)</entry>
@@ -175,6 +329,7 @@
   <entry key="Big Wallet">Big Wallet</entry>
   <entry key="Bigger Wallets">Bigger Wallets</entry>
   <entry key="Biggest">Biggest</entry>
+  <entry key="Bilinear">Bilinear</entry>
   <entry key="Black Chu Jelly">Black Chu Jelly</entry>
   <entry key="Bloom">Bloom</entry>
   <entry key="Bloom Brightness">Bloom Brightness</entry>
@@ -197,15 +352,19 @@
   <entry key="Boss Key">Boss Key</entry>
   <entry key="Bottom Left">Bottom Left</entry>
   <entry key="Bottom Right">Bottom Right</entry>
+  <entry key="Browse Mods">Browse Mods</entry>
   <entry key="Browse online mods">Browse online mods</entry>
   <entry key="Bulblin Camp Key">Bulblin Camp Key</entry>
   <entry key="Butterfly">Butterfly</entry>
   <entry key="Butterfly (F)">Butterfly (F)</entry>
   <entry key="Butterfly (M)">Butterfly (M)</entry>
   <entry key="Button Fishing">Button Fishing</entry>
+  <entry key="Buttons">Buttons</entry>
+  <entry key="C Stick">C Stick</entry>
   <entry key="CARD backing storage is unavailable for mod save sidecars">CARD backing storage is unavailable for mod save sidecars</entry>
   <entry key="Camera">Camera</entry>
   <entry key="Can Transform Anywhere">Can Transform Anywhere</entry>
+  <entry key="Cancel">Cancel</entry>
   <entry key="Canceled">Canceled</entry>
   <entry key="Canceling...">Canceling...</entry>
   <entry key="Cancelling...">Cancelling...</entry>
@@ -213,9 +372,13 @@
   <entry key="Capacities">Capacities</entry>
   <entry key="Capped">Capped</entry>
   <entry key="Card Image">Card Image</entry>
+  <entry key="Catalog unavailable">Catalog unavailable</entry>
+  <entry key="Category">Category</entry>
   <entry key="Caught">Caught</entry>
   <entry key="Challenge">Challenge</entry>
   <entry key="Change Data Folder">Change Data Folder</entry>
+  <entry key="Changes how the Collection and File Select menus scale to your aspect ratio.">Changes how the Collection and File Select menus scale to your aspect ratio.</entry>
+  <entry key="Changes require a restart.">Changes require a restart.</entry>
   <entry key="Cheats">Cheats</entry>
   <entry key="Check for Dusklight Updates">Check for Dusklight Updates</entry>
   <entry key="Check for Updates">Check for Updates</entry>
@@ -227,8 +390,18 @@
   <entry key="Check tour not started">Check tour not started</entry>
   <entry key="Checking for mod updates…">Checking for mod updates…</entry>
   <entry key="Checking for updates...">Checking for updates...</entry>
+  <entry key="Checking package integrity">Checking package integrity</entry>
+  <entry key="Checking…">Checking…</entry>
+  <entry key="Checks GitHub releases for a new Dusklight version on startup.">Checks GitHub releases for a new Dusklight version on startup.</entry>
+  <entry key="Checks GitHub releases for a new Dusklight version on startup.&lt;br/&gt;&lt;br/&gt;No personal information is transmitted or collected.">Checks GitHub releases for a new Dusklight version on startup.&lt;br/&gt;&lt;br/&gt;No personal information is transmitted or collected.</entry>
+  <entry key="Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day, and says so if there is one. Nothing is downloaded until you choose to.">Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day, and says so if there is one. Nothing is downloaded until you choose to.</entry>
+  <entry key="Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day, and says so if there is one. Nothing is downloaded until you choose to.&lt;br/&gt;&lt;br/&gt;No personal information is transmitted or collected.">Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day, and says so if there is one. Nothing is downloaded until you choose to.&lt;br/&gt;&lt;br/&gt;No personal information is transmitted or collected.</entry>
+  <entry key="Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day. Nothing is downloaded until you choose to.">Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day. Nothing is downloaded until you choose to.</entry>
+  <entry key="Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day. Nothing is downloaded until you choose to.&lt;br/&gt;&lt;br/&gt;No personal information is transmitted or collected.">Checks this port's GitHub releases for a new version when Dusklight starts, at most once a day. Nothing is downloaded until you choose to.&lt;br/&gt;&lt;br/&gt;No personal information is transmitted or collected.</entry>
   <entry key="Choose a preset to get started. You can change any setting later from the Settings menu.">Choose a preset to get started. You can change any setting later from the Settings menu.</entry>
   <entry key="Choose disc image">Choose disc image</entry>
+  <entry key="Choose the saves to import. Existing saves will be backed up first.">Choose the saves to import. Existing saves will be backed up first.</entry>
+  <entry key="Choose which notifications can be displayed.">Choose which notifications can be displayed.</entry>
   <entry key="Circle">Circle</entry>
   <entry key="City in the Sky">City in the Sky</entry>
   <entry key="Classic">Classic</entry>
@@ -239,6 +412,7 @@
   <entry key="Clear None">Clear None</entry>
   <entry key="Clear?">Clear?</entry>
   <entry key="Close">Close</entry>
+  <entry key="Close and reopen Dusklight to apply them.">Close and reopen Dusklight to apply them.</entry>
   <entry key="Close and reopen Dusklight to play from it.">Close and reopen Dusklight to play from it.</entry>
   <entry key="Clothes">Clothes</entry>
   <entry key="Clothing">Clothing</entry>
@@ -254,6 +428,7 @@
   <entry key="Companion Resolution">Companion Resolution</entry>
   <entry key="Companion Screen">Companion Screen</entry>
   <entry key="Compass">Compass</entry>
+  <entry key="Compatible only">Compatible only</entry>
   <entry key="Completed">Completed</entry>
   <entry key="Config">Config</entry>
   <entry key="Configure Inputs">Configure Inputs</entry>
@@ -263,16 +438,23 @@
   <entry key="Configure the resolution used for rendering the game. Higher values are more demanding on your graphics hardware.">Configure the resolution used for rendering the game. Higher values are more demanding on your graphics hardware.</entry>
   <entry key="Configure the sampling method used when scaling the internal resolution for final presentation.">Configure the sampling method used when scaling the internal resolution for final presentation.</entry>
   <entry key="Configure the shadow-map resolution. Higher values improve shadow quality but increase GPU and memory usage.">Configure the shadow-map resolution. Higher values improve shadow quality but increase GPU and memory usage.</entry>
+  <entry key="Configure your desired rumble intensities, then run a test to check how they feel.">Configure your desired rumble intensities, then run a test to check how they feel.</entry>
   <entry key="Connect to LiveSplit server on localhost:16834. For this to work you must right click LiveSplit, and turn on Control -&gt; Start TCP Server. To see IGT in LiveSplit you must change your comparison to Game Time.">Connect to LiveSplit server on localhost:16834. For this to work you must right click LiveSplit, and turn on Control -&gt; Start TCP Server. To see IGT in LiveSplit you must change your comparison to Game Time.</entry>
   <entry key="Connection">Connection</entry>
+  <entry key="Contains native code; requires bundling.">Contains native code; requires bundling.</entry>
   <entry key="Content-Length">Content-Length</entry>
   <entry key="Content-Type">Content-Type</entry>
+  <entry key="Continue anyway">Continue anyway</entry>
+  <entry key="Control Stick">Control Stick</entry>
+  <entry key="Control the behavior of the Magic Armor.">Control the behavior of the Magic Armor.</entry>
+  <entry key="Controls are locked;">Controls are locked;</entry>
   <entry key="Controls horizontal gyro aiming sensitivity.">Controls horizontal gyro aiming sensitivity.</entry>
   <entry key="Controls how strongly gyro input tilts the Rollgoal table.">Controls how strongly gyro input tilts the Rollgoal table.</entry>
   <entry key="Controls mouse aim sensitivity.">Controls mouse aim sensitivity.</entry>
   <entry key="Controls mouse camera sensitivity.">Controls mouse camera sensitivity.</entry>
   <entry key="Controls vertical gyro aiming sensitivity.">Controls vertical gyro aiming sensitivity.</entry>
   <entry key="Copied to clipboard">Copied to clipboard</entry>
+  <entry key="Copy">Copy</entry>
   <entry key="Copy Failed">Copy Failed</entry>
   <entry key="Copy color">Copy color</entry>
   <entry key="Copy to Profile">Copy to Profile</entry>
@@ -283,16 +465,26 @@
   <entry key="Could not copy the local package">Could not copy the local package</entry>
   <entry key="Could not enqueue this update.">Could not enqueue this update.</entry>
   <entry key="Could not inspect packages">Could not inspect packages</entry>
+  <entry key="Could not load mods">Could not load mods</entry>
+  <entry key="Could not open folder">Could not open folder</entry>
   <entry key="Could not open the downloaded package">Could not open the downloaded package</entry>
   <entry key="Could not queue update">Could not queue update</entry>
   <entry key="Could not read the downloaded package">Could not read the downloaded package</entry>
   <entry key="Could not stage the local package">Could not stage the local package</entry>
+  <entry key="Could not start download">Could not start download</entry>
   <entry key="Crash Reporting">Crash Reporting</entry>
   <entry key="Create">Create</entry>
+  <entry key="Create Backup">Create Backup</entry>
   <entry key="Cross">Cross</entry>
   <entry key="Current data folder:">Current data folder:</entry>
   <entry key="Custom">Custom</entry>
+  <entry key="Custom Action Bindings">Custom Action Bindings</entry>
   <entry key="Customize Layout">Customize Layout</entry>
+  <entry key="D-Pad">D-Pad</entry>
+  <entry key="D-pad down">D-pad down</entry>
+  <entry key="D-pad left">D-pad left</entry>
+  <entry key="D-pad right">D-pad right</entry>
+  <entry key="D-pad up">D-pad up</entry>
   <entry key="DRS stress not started">DRS stress not started</entry>
   <entry key="DT_GNU_HASH buckets outside the image">DT_GNU_HASH buckets outside the image</entry>
   <entry key="DT_GNU_HASH chain does not terminate">DT_GNU_HASH chain does not terminate</entry>
@@ -305,25 +497,40 @@
   <entry key="DT_NEEDED name outside DT_STRTAB">DT_NEEDED name outside DT_STRTAB</entry>
   <entry key="DT_PLTREL is not DT_RELA">DT_PLTREL is not DT_RELA</entry>
   <entry key="DT_SONAME outside DT_STRTAB">DT_SONAME outside DT_STRTAB</entry>
+  <entry key="DT_STRTAB/DT_STRSZ is not inside the file-backed image">DT_STRTAB/DT_STRSZ is not inside the file-backed image</entry>
+  <entry key="DT_SYMENT/DT_RELAENT are not ELF64's">DT_SYMENT/DT_RELAENT are not ELF64's</entry>
   <entry key="DT_SYMTAB is not inside the file-backed image">DT_SYMTAB is not inside the file-backed image</entry>
   <entry key="DT_VERSYM is not inside the file-backed image">DT_VERSYM is not inside the file-backed image</entry>
   <entry key="Damage Multiplier">Damage Multiplier</entry>
+  <entry key="Danger Zone">Danger Zone</entry>
   <entry key="Data Folder">Data Folder</entry>
   <entry key="Data Folder Not Changed">Data Folder Not Changed</entry>
   <entry key="Data will be migrated automatically on restart.">Data will be migrated automatically on restart.</entry>
   <entry key="Day">Day</entry>
   <entry key="Dayfly">Dayfly</entry>
   <entry key="Deadzone">Deadzone</entry>
+  <entry key="Debug">Debug</entry>
   <entry key="Default">Default</entry>
   <entry key="Default All">Default All</entry>
+  <entry key="Delete">Delete</entry>
+  <entry key="Delete Backup">Delete Backup</entry>
+  <entry key="Delete Failed">Delete Failed</entry>
+  <entry key="Delete Mod Data">Delete Mod Data</entry>
+  <entry key="Delete Save">Delete Save</entry>
+  <entry key="Delete Save...">Delete Save...</entry>
+  <entry key="Delete This Backup...">Delete This Backup...</entry>
+  <entry key="Dependencies">Dependencies</entry>
   <entry key="Depth of Field">Depth of Field</entry>
   <entry key="Destination">Destination</entry>
   <entry key="Development directories cannot be updated in-game.">Development directories cannot be updated in-game.</entry>
   <entry key="Device">Device</entry>
   <entry key="Device Connected">Device Connected</entry>
   <entry key="Device Disconnected">Device Disconnected</entry>
+  <entry key="Diagnostic. Replays the pipeline a draw resolved before instead of looking it up again.">Diagnostic. Replays the pipeline a draw resolved before instead of looking it up again.</entry>
+  <entry key="Diagnostic. Replays the pipeline a draw resolved before instead of looking it up again. &lt;b&gt;Off is exactly H30.&lt;/b&gt; Output is identical; only CPU time changes. Safe to flip while playing; the benchmark report records which one it ran with.">Diagnostic. Replays the pipeline a draw resolved before instead of looking it up again. &lt;b&gt;Off is exactly H30.&lt;/b&gt; Output is identical; only CPU time changes. Safe to flip while playing; the benchmark report records which one it ran with.</entry>
   <entry key="Diagnostics (Aleks, developer mode)">Diagnostics (Aleks, developer mode)</entry>
   <entry key="Difficulty">Difficulty</entry>
+  <entry key="Digital">Digital</entry>
   <entry key="Disable">Disable</entry>
   <entry key="Disable Cutscene Pillarboxing">Disable Cutscene Pillarboxing</entry>
   <entry key="Disable Letterboxing">Disable Letterboxing</entry>
@@ -331,6 +538,13 @@
   <entry key="Disable Water Refraction">Disable Water Refraction</entry>
   <entry key="Disable black bars on the left and right sides of the screen during some cutscenes, particularly on ultra-wide displays. Visuals beyond the original intended framing may appear buggy.">Disable black bars on the left and right sides of the screen during some cutscenes, particularly on ultra-wide displays. Visuals beyond the original intended framing may appear buggy.</entry>
   <entry key="Disable the beeping sound when having low health.">Disable the beeping sound when having low health.</entry>
+  <entry key="Disable the top and bottom black bars during L-targeting, aiming, cutscenes, dialogue, etc.">Disable the top and bottom black bars during L-targeting, aiming, cutscenes, dialogue, etc.</entry>
+  <entry key="Disabled">Disabled</entry>
+  <entry key="Disabled after a crash or a failure while playing:">Disabled after a crash or a failure while playing:</entry>
+  <entry key="Disables the elements of the main HUD of the game.">Disables the elements of the main HUD of the game.</entry>
+  <entry key="Disables the elements of the main HUD of the game.&lt;br/&gt;Useful for a more immersive experience.">Disables the elements of the main HUD of the game.&lt;br/&gt;Useful for a more immersive experience.</entry>
+  <entry key="Disables the game HUD, all background music and the FPS counter.">Disables the game HUD, all background music and the FPS counter.</entry>
+  <entry key="Disables the game HUD, all background music and the FPS counter.&lt;br/&gt;&lt;br/&gt;Useful for recording footage.">Disables the game HUD, all background music and the FPS counter.&lt;br/&gt;&lt;br/&gt;Useful for recording footage.</entry>
   <entry key="Disc Image">Disc Image</entry>
   <entry key="Disc hash mismatch.">Disc hash mismatch.</entry>
   <entry key="Disc image changed">Disc image changed</entry>
@@ -346,12 +560,15 @@
   <entry key="Display">Display</entry>
   <entry key="Display a controller input overlay while playing.">Display a controller input overlay while playing.</entry>
   <entry key="Display the RTA timer. IGT is always visible.">Display the RTA timer. IGT is always visible.</entry>
+  <entry key="Display the current framerate in a corner of the screen while playing.">Display the current framerate in a corner of the screen while playing.</entry>
+  <entry key="Displays collected/total number of Poe Souls for a region on the map.">Displays collected/total number of Poe Souls for a region on the map.</entry>
   <entry key="Do not send crash reports. This may make it more difficult to resolve issues you encounter.">Do not send crash reports. This may make it more difficult to resolve issues you encounter.</entry>
   <entry key="Dominion Rod">Dominion Rod</entry>
   <entry key="Dominion Rod (Uncharged)">Dominion Rod (Uncharged)</entry>
   <entry key="Double Clawshots">Double Clawshots</entry>
   <entry key="Double Defense">Double Defense</entry>
   <entry key="Download and install">Download and install</entry>
+  <entry key="Download community mods and check for updates.">Download community mods and check for updates.</entry>
   <entry key="Downloading">Downloading</entry>
   <entry key="Downloads &amp; installs">Downloads &amp; installs</entry>
   <entry key="Dragonfly">Dragonfly</entry>
@@ -365,8 +582,12 @@
   <entry key="Dusklight Menu Sounds">Dusklight Menu Sounds</entry>
   <entry key="Dusklight Update">Dusklight Update</entry>
   <entry key="Dusklight can automatically send crash reports to the developers. Crash reports contain the following:">Dusklight can automatically send crash reports to the developers. Crash reports contain the following:</entry>
+  <entry key="Dusklight can automatically send crash reports to the developers. Crash reports contain the following:&lt;br/&gt;• Operating system version&lt;br/&gt;• CPU architecture&lt;br/&gt;• GPU model &amp; driver version&lt;br/&gt;• File paths (may include account username)&lt;br/&gt;• Stack trace">Dusklight can automatically send crash reports to the developers. Crash reports contain the following:&lt;br/&gt;• Operating system version&lt;br/&gt;• CPU architecture&lt;br/&gt;• GPU model &amp; driver version&lt;br/&gt;• File paths (may include account username)&lt;br/&gt;• Stack trace</entry>
   <entry key="Dusklight could not open the folder picker.">Dusklight could not open the folder picker.</entry>
   <entry key="Dusklight does not currently support the Wii's Korean version.">Dusklight does not currently support the Wii's Korean version.</entry>
+  <entry key="Dusklight is optimizing the graphics for this console. This should only be needed once, or after a major graphics update.">Dusklight is optimizing the graphics for this console. This should only be needed once, or after a major graphics update.</entry>
+  <entry key="Dusklight is optimizing the graphics for this console. This should only be needed once, or after a major graphics update.&lt;br/&gt;&lt;br/&gt;">Dusklight is optimizing the graphics for this console. This should only be needed once, or after a major graphics update.&lt;br/&gt;&lt;br/&gt;</entry>
+  <entry key="Dusklight services">Dusklight services</entry>
   <entry key="Dynamic Resolution">Dynamic Resolution</entry>
   <entry key="ELF version is not 1">ELF version is not 1</entry>
   <entry key="Easy Quick Spin (R+B)">Easy Quick Spin (R+B)</entry>
@@ -376,6 +597,7 @@
   <entry key="Empty Bomb Bag">Empty Bomb Bag</entry>
   <entry key="Empty Bottle">Empty Bottle</entry>
   <entry key="Emulate Triggers">Emulate Triggers</entry>
+  <entry key="Emulated Trigger Thresholds">Emulated Trigger Thresholds</entry>
   <entry key="Enable">Enable</entry>
   <entry key="Enable Advanced Settings">Enable Advanced Settings</entry>
   <entry key="Enable Dead Zones">Enable Dead Zones</entry>
@@ -390,10 +612,16 @@
   <entry key="Enable Vibration">Enable Vibration</entry>
   <entry key="Enable installed texture replacements.">Enable installed texture replacements.</entry>
   <entry key="Enables Speedrun game mode option in the Dusklight launch menu.">Enables Speedrun game mode option in the Dusklight launch menu.</entry>
+  <entry key="Enables controls overlay for touch screens.">Enables controls overlay for touch screens.</entry>
+  <entry key="Enables controls overlay for touch screens.&lt;br/&gt;&lt;br/&gt;Press and drag on the left side of the screen to move, and on the right side of the screen to control the camera.">Enables controls overlay for touch screens.&lt;br/&gt;&lt;br/&gt;Press and drag on the left side of the screen to move, and on the right side of the screen to control the camera.</entry>
   <entry key="Enables free camera control, letting you control the camera fully with the C-Stick.">Enables free camera control, letting you control the camera fully with the C-Stick.</entry>
   <entry key="Enables gyro controls for Rollgoal in Hena's Cabin.">Enables gyro controls for Rollgoal in Hena's Cabin.</entry>
+  <entry key="Enables gyro controls while in look mode, aiming a hawk, and aiming supported items.">Enables gyro controls while in look mode, aiming a hawk, and aiming supported items.</entry>
+  <entry key="Enables gyro controls while in look mode, aiming a hawk, and aiming supported items.&lt;br/&gt;&lt;br/&gt;Supported items include the Slingshot, Gale Boomerang, Hero's Bow, Clawshot(s), Ball and Chain, and Dominion Rod.">Enables gyro controls while in look mode, aiming a hawk, and aiming supported items.&lt;br/&gt;&lt;br/&gt;Supported items include the Slingshot, Gale Boomerang, Hero's Bow, Clawshot(s), Ball and Chain, and Dominion Rod.</entry>
   <entry key="Enables mouse and touch input for supported in-game menus.">Enables mouse and touch input for supported in-game menus.</entry>
   <entry key="Enables mouse input for controlling the third-person camera.">Enables mouse input for controlling the third-person camera.</entry>
+  <entry key="Enables mouse input while in look mode, aiming a hawk, and aiming supported items.">Enables mouse input while in look mode, aiming a hawk, and aiming supported items.</entry>
+  <entry key="Enables mouse input while in look mode, aiming a hawk, and aiming supported items.&lt;br/&gt;&lt;br/&gt;Supported items include the Slingshot, Gale Boomerang, Hero's Bow, Clawshot(s), Ball and Chain, and Dominion Rod.">Enables mouse input while in look mode, aiming a hawk, and aiming supported items.&lt;br/&gt;&lt;br/&gt;Supported items include the Slingshot, Gale Boomerang, Hero's Bow, Clawshot(s), Ball and Chain, and Dominion Rod.</entry>
   <entry key="Enables rotating Link in the collection menu with the C-Stick.">Enables rotating Link in the collection menu with the C-Stick.</entry>
   <entry key="Enables the L+R+Y button combo to toggle freely repositioning Link.">Enables the L+R+Y button combo to toggle freely repositioning Link.</entry>
   <entry key="Enables the reverb effect in game audio.">Enables the reverb effect in game audio.</entry>
@@ -403,20 +631,30 @@
   <entry key="Equip X">Equip X</entry>
   <entry key="Equip Y">Equip Y</entry>
   <entry key="Equipment">Equipment</entry>
+  <entry key="Error">Error</entry>
   <entry key="Executable Memory">Executable Memory</entry>
+  <entry key="Export Failed">Export Failed</entry>
+  <entry key="Export Full Card Image (.raw)">Export Full Card Image (.raw)</entry>
+  <entry key="Export Save...">Export Save...</entry>
+  <entry key="Export a portable Dusklight archive with mod data, or a standard GCI for other tools.">Export a portable Dusklight archive with mod data, or a standard GCI for other tools.</entry>
   <entry key="Extends Clawshot behavior beyond the normal game rules.">Extends Clawshot behavior beyond the normal game rules.</entry>
   <entry key="Failed">Failed</entry>
   <entry key="Failed to check for updates">Failed to check for updates</entry>
   <entry key="Failed to publish download">Failed to publish download</entry>
   <entry key="Fairy">Fairy</entry>
   <entry key="Fancy">Fancy</entry>
+  <entry key="Fancy interpolates them too: smoother, and more CPU.">Fancy interpolates them too: smoother, and more CPU.</entry>
   <entry key="Fast">Fast</entry>
   <entry key="Fast Iron Boots">Fast Iron Boots</entry>
   <entry key="Fast Roll">Fast Roll</entry>
   <entry key="Fast Spinner">Fast Spinner</entry>
+  <entry key="Fast leaves particles, rain, snow, clouds, material effects and model deformation out of interpolation, so they only change on game ticks.">Fast leaves particles, rain, snow, clouds, material effects and model deformation out of interpolation, so they only change on game ticks.</entry>
   <entry key="Faster Climbing">Faster Climbing</entry>
   <entry key="Faster Scene Transitions">Faster Scene Transitions</entry>
   <entry key="Faster Tears of Light">Faster Tears of Light</entry>
+  <entry key="Featured">Featured</entry>
+  <entry key="Fetching mod details and images...">Fetching mod details and images...</entry>
+  <entry key="Fetching published mods...">Fetching published mods...</entry>
   <entry key="Fishing Log">Fishing Log</entry>
   <entry key="Fishing Rod">Fishing Rod</entry>
   <entry key="Fishing Rod (Bee Larva)">Fishing Rod (Bee Larva)</entry>
@@ -430,9 +668,11 @@
   <entry key="Forest Temple">Forest Temple</entry>
   <entry key="Form">Form</entry>
   <entry key="Framerate Cap">Framerate Cap</entry>
+  <entry key="Free &amp;#8212; if you paid for this, you got scammed">Free &amp;#8212; if you paid for this, you got scammed</entry>
   <entry key="Free Camera">Free Camera</entry>
   <entry key="Free Camera X Sensitivity">Free Camera X Sensitivity</entry>
   <entry key="Free Camera Y Sensitivity">Free Camera Y Sensitivity</entry>
+  <entry key="Free — if you paid for this, you got scammed">Free — if you paid for this, you got scammed</entry>
   <entry key="From Jr.">From Jr.</entry>
   <entry key="Fruit-Pop-Flight Score">Fruit-Pop-Flight Score</entry>
   <entry key="Fused Shadows">Fused Shadows</entry>
@@ -526,6 +766,10 @@
   <entry key="Hotspring Water">Hotspring Water</entry>
   <entry key="Hotspring Water (Shop)">Hotspring Water (Shop)</entry>
   <entry key="Hour">Hour</entry>
+  <entry key="How large the second screen is rendered, in pixels on its longest side.">How large the second screen is rendered, in pixels on its longest side.</entry>
+  <entry key="How large the second screen is rendered, in pixels on its longest side. &lt;b&gt;720&lt;/b&gt; matches the panel exactly; &lt;b&gt;640&lt;/b&gt; is the default.&lt;br/&gt;&lt;br/&gt;The shape never changes -- only how finely it is drawn, and the final blit smooths the difference. Lower this before lowering the game's own resolution: the companion is flat 2D and text.">How large the second screen is rendered, in pixels on its longest side. &lt;b&gt;720&lt;/b&gt; matches the panel exactly; &lt;b&gt;640&lt;/b&gt; is the default.&lt;br/&gt;&lt;br/&gt;The shape never changes -- only how finely it is drawn, and the final blit smooths the difference. Lower this before lowering the game's own resolution: the companion is flat 2D and text.</entry>
+  <entry key="How often the field minimap is redrawn, in game frames.">How often the field minimap is redrawn, in game frames.</entry>
+  <entry key="How often the field minimap is redrawn, in game frames. &lt;b&gt;1&lt;/b&gt; is every frame, as the game does.&lt;br/&gt;&lt;br/&gt;With the full HUD the minimap redraws its whole picture every frame, about 800 draws in Hyrule Field and Castle Town: the main cost there. &lt;b&gt;2&lt;/b&gt; halves it. Experimental: if the map flickers or goes blank, set it back to 1. Minimal HUD hides the map and has no such cost.">How often the field minimap is redrawn, in game frames. &lt;b&gt;1&lt;/b&gt; is every frame, as the game does.&lt;br/&gt;&lt;br/&gt;With the full HUD the minimap redraws its whole picture every frame, about 800 draws in Hyrule Field and Castle Town: the main cost there. &lt;b&gt;2&lt;/b&gt; halves it. Experimental: if the map flickers or goes blank, set it back to 1. Minimal HUD hides the map and has no such cost.</entry>
   <entry key="How strong every vibration is, HD Rumble and the classic one alike. 0 % turns it off.">How strong every vibration is, HD Rumble and the classic one alike. 0 % turns it off.</entry>
   <entry key="Human">Human</entry>
   <entry key="Hybrid">Hybrid</entry>
@@ -538,7 +782,15 @@
   <entry key="If-Range">If-Range</entry>
   <entry key="Ignores small gyro movement to reduce drift and jitter.">Ignores small gyro movement to reduce drift and jitter.</entry>
   <entry key="Ilia's Charm">Ilia's Charm</entry>
+  <entry key="Import">Import</entry>
+  <entry key="Import Anyway">Import Anyway</entry>
+  <entry key="Import Failed">Import Failed</entry>
+  <entry key="Import Save">Import Save</entry>
+  <entry key="Import a save or start this mode to create one.">Import a save or start this mode to create one.</entry>
+  <entry key="Import, export, back up, and remove saves for the configured disc.">Import, export, back up, and remove saves for the configured disc.</entry>
   <entry key="Include Beta Versions">Include Beta Versions</entry>
+  <entry key="Included mod data:">Included mod data:</entry>
+  <entry key="Incompatible with this build">Incompatible with this build</entry>
   <entry key="Incomplete update response">Incomplete update response</entry>
   <entry key="Infinite Arrows">Infinite Arrows</entry>
   <entry key="Infinite Bombs">Infinite Bombs</entry>
@@ -547,15 +799,19 @@
   <entry key="Infinite Oxygen">Infinite Oxygen</entry>
   <entry key="Infinite Rupees">Infinite Rupees</entry>
   <entry key="Infinite Seeds">Infinite Seeds</entry>
+  <entry key="Info">Info</entry>
   <entry key="Input">Input</entry>
   <entry key="Inputs">Inputs</entry>
+  <entry key="Install">Install</entry>
   <entry key="Install mods?">Install mods?</entry>
   <entry key="Installed">Installed</entry>
+  <entry key="Installed mod will be removed. Settings and saved data are kept.">Installed mod will be removed. Settings and saved data are kept.</entry>
   <entry key="Installed mod will be reverted back to the bundled version. Settings and saved data are kept.">Installed mod will be reverted back to the bundled version. Settings and saved data are kept.</entry>
   <entry key="Installed mods changed. Check again.">Installed mods changed. Check again.</entry>
   <entry key="Installed mods changed. Checking again…">Installed mods changed. Checking again…</entry>
   <entry key="Installed, disabled by config">Installed, disabled by config</entry>
   <entry key="Installing">Installing</entry>
+  <entry key="Installing…">Installing…</entry>
   <entry key="Instant Death">Instant Death</entry>
   <entry key="Instant Saves">Instant Saves</entry>
   <entry key="Interface">Interface</entry>
@@ -569,6 +825,8 @@
   <entry key="Invalid service import descriptor">Invalid service import descriptor</entry>
   <entry key="Invalid update download">Invalid update download</entry>
   <entry key="Inventory">Inventory</entry>
+  <entry key="Invert Air/Swim X Axis">Invert Air/Swim X Axis</entry>
+  <entry key="Invert Air/Swim Y Axis">Invert Air/Swim Y Axis</entry>
   <entry key="Invert Camera X Axis">Invert Camera X Axis</entry>
   <entry key="Invert Camera Y Axis">Invert Camera Y Axis</entry>
   <entry key="Invert First Person X Axis">Invert First Person X Axis</entry>
@@ -576,10 +834,18 @@
   <entry key="Invert Gyro Pitch">Invert Gyro Pitch</entry>
   <entry key="Invert Gyro Yaw">Invert Gyro Yaw</entry>
   <entry key="Invert Mouse Y">Invert Mouse Y</entry>
+  <entry key="Invert horizontal camera movement.">Invert horizontal camera movement.</entry>
+  <entry key="Invert horizontal camera movement.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">Invert horizontal camera movement.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.</entry>
   <entry key="Invert horizontal gyro aiming.">Invert horizontal gyro aiming.</entry>
+  <entry key="Invert horizontal movement while aiming with items or first person camera.">Invert horizontal movement while aiming with items or first person camera.</entry>
+  <entry key="Invert horizontal movement while aiming with items or first person camera.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">Invert horizontal movement while aiming with items or first person camera.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.</entry>
   <entry key="Invert horizontal movement while flying or swimming.">Invert horizontal movement while flying or swimming.</entry>
+  <entry key="Invert vertical camera movement.">Invert vertical camera movement.</entry>
+  <entry key="Invert vertical camera movement.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">Invert vertical camera movement.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.</entry>
   <entry key="Invert vertical gyro aiming.">Invert vertical gyro aiming.</entry>
   <entry key="Invert vertical mouse control for both aiming and camera.">Invert vertical mouse control for both aiming and camera.</entry>
+  <entry key="Invert vertical movement while aiming with items or first person camera.">Invert vertical movement while aiming with items or first person camera.</entry>
+  <entry key="Invert vertical movement while aiming with items or first person camera.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.">Invert vertical movement while aiming with items or first person camera.&lt;br/&gt;&lt;br/&gt;Applies to the control stick only.</entry>
   <entry key="Invert vertical movement while flying or swimming.">Invert vertical movement while flying or swimming.</entry>
   <entry key="Invincible">Invincible</entry>
   <entry key="Invincible Enemies">Invincible Enemies</entry>
@@ -603,6 +869,7 @@
   <entry key="Key Shard (1)">Key Shard (1)</entry>
   <entry key="Key Shard (2)">Key Shard (2)</entry>
   <entry key="Key Shard (3)">Key Shard (3)</entry>
+  <entry key="Keyboard">Keyboard</entry>
   <entry key="L Threshold">L Threshold</entry>
   <entry key="L stays held only while your finger is on the button.">L stays held only while your finger is on the button.</entry>
   <entry key="Ladybug">Ladybug</entry>
@@ -611,6 +878,7 @@
   <entry key="Lakebed Temple">Lakebed Temple</entry>
   <entry key="Lanayru Tourism">Lanayru Tourism</entry>
   <entry key="Language">Language</entry>
+  <entry key="Language unavailable">Language unavailable</entry>
   <entry key="Lantern">Lantern</entry>
   <entry key="Lantern (Reclaimed)">Lantern (Reclaimed)</entry>
   <entry key="Lantern Oil">Lantern Oil</entry>
@@ -620,9 +888,13 @@
   <entry key="Lantern Refill (Shop)">Lantern Refill (Shop)</entry>
   <entry key="Lantern Refill (Yellow Chu)">Lantern Refill (Yellow Chu)</entry>
   <entry key="Large Magic">Large Magic</entry>
+  <entry key="Last result">Last result</entry>
+  <entry key="Last updated">Last updated</entry>
   <entry key="Layer">Layer</entry>
   <entry key="Left Joy-Con">Left Joy-Con</entry>
+  <entry key="Left Stick">Left Stick</entry>
   <entry key="Left Trigger">Left Trigger</entry>
+  <entry key="License">License</entry>
   <entry key="Light Arrow">Light Arrow</entry>
   <entry key="Light Sword">Light Sword</entry>
   <entry key="Limit the framerate to the specified value.">Limit the framerate to the specified value.</entry>
@@ -632,6 +904,7 @@
   <entry key="LiveSplit Connection">LiveSplit Connection</entry>
   <entry key="LiveSplit connected">LiveSplit connected</entry>
   <entry key="LiveSplit disconnected">LiveSplit disconnected</entry>
+  <entry key="Loading catalog">Loading catalog</entry>
   <entry key="Location">Location</entry>
   <entry key="Lock 4:3 Aspect Ratio">Lock 4:3 Aspect Ratio</entry>
   <entry key="Lock the game's aspect ratio to the original. Flip Grip forces 4:3 while it is in effect whatever this says; this setting is untouched and applies again when you leave it.">Lock the game's aspect ratio to the original. Flip Grip forces 4:3 while it is in effect whatever this says; this setting is untouched and applies again when you leave it.</entry>
@@ -657,6 +930,7 @@
   <entry key="Max Health">Max Health</entry>
   <entry key="Max Life">Max Life</entry>
   <entry key="Max Oil">Max Oil</entry>
+  <entry key="May introduce minor visual artifacts or animation glitches.">May introduce minor visual artifacts or animation glitches.</entry>
   <entry key="Mayfly (F)">Mayfly (F)</entry>
   <entry key="Mayfly (M)">Mayfly (M)</entry>
   <entry key="Medicine Scent">Medicine Scent</entry>
@@ -708,22 +982,36 @@
   <entry key="Mono">Mono</entry>
   <entry key="Moon Jump (R+A)">Moon Jump (R+A)</entry>
   <entry key="Mortal Draw">Mortal Draw</entry>
+  <entry key="Most downloaded">Most downloaded</entry>
   <entry key="Motion Sword Hand">Motion Sword Hand</entry>
   <entry key="Mouse">Mouse</entry>
   <entry key="Mouse Aim">Mouse Aim</entry>
   <entry key="Mouse Aim Sensitivity">Mouse Aim Sensitivity</entry>
   <entry key="Mouse Camera">Mouse Camera</entry>
   <entry key="Mouse Camera Sensitivity">Mouse Camera Sensitivity</entry>
+  <entry key="Mouse Left">Mouse Left</entry>
+  <entry key="Mouse Middle">Mouse Middle</entry>
+  <entry key="Mouse Right">Mouse Right</entry>
+  <entry key="Mouse X1">Mouse X1</entry>
+  <entry key="Mouse X2">Mouse X2</entry>
+  <entry key="Mouse/Touch in Menus">Mouse/Touch in Menus</entry>
   <entry key="Move Axis or press a Key or Button...">Move Axis or press a Key or Button...</entry>
   <entry key="Move Link (L+R+Y)">Move Link (L+R+Y)</entry>
   <entry key="Multiplies incoming damage.">Multiplies incoming damage.</entry>
+  <entry key="Name">Name</entry>
   <entry key="Nasty Soup">Nasty Soup</entry>
   <entry key="Native Mods">Native Mods</entry>
   <entry key="Native Mods: Loader Mode">Native Mods: Loader Mode</entry>
   <entry key="Native mod updates are not supported on this device.">Native mod updates are not supported on this device.</entry>
   <entry key="Native mods cannot be installed on this platform">Native mods cannot be installed on this platform</entry>
+  <entry key="Network">Network</entry>
+  <entry key="Network error · keeps retrying itself">Network error · keeps retrying itself</entry>
   <entry key="New">New</entry>
+  <entry key="Newest">Newest</entry>
+  <entry key="Next">Next</entry>
   <entry key="Next Start Without Mods">Next Start Without Mods</entry>
+  <entry key="Next · view downloads">Next · view downloads</entry>
+  <entry key="No .iso, .gcm, .rvz, .wia or .gcz file was found.">No .iso, .gcm, .rvz, .wia or .gcz file was found.</entry>
   <entry key="No 2nd Fish for Cat">No 2nd Fish for Cat</entry>
   <entry key="No Climbing Miss Animation">No Climbing Miss Animation</entry>
   <entry key="No Device Assigned">No Device Assigned</entry>
@@ -734,26 +1022,41 @@
   <entry key="No Low HP Sound">No Low HP Sound</entry>
   <entry key="No Rupee Returns">No Rupee Returns</entry>
   <entry key="No Sword Recoil">No Sword Recoil</entry>
+  <entry key="No backups yet">No backups yet</entry>
+  <entry key="No changelog was provided.">No changelog was provided.</entry>
+  <entry key="No description provided.">No description provided.</entry>
   <entry key="No disc image found.">No disc image found.</entry>
   <entry key="No installed package to remove">No installed package to remove</entry>
   <entry key="No items">No items</entry>
+  <entry key="No mods found">No mods found</entry>
+  <entry key="No mods installed.">No mods installed.</entry>
   <entry key="No other updates available.">No other updates available.</entry>
+  <entry key="No personal information is transmitted or collected.">No personal information is transmitted or collected.</entry>
+  <entry key="No registered game mode uses these saves.">No registered game mode uses these saves.</entry>
+  <entry key="No save file">No save file</entry>
   <entry key="No updates ready to install.">No updates ready to install.</entry>
   <entry key="No writable mods directory is configured">No writable mods directory is configured</entry>
   <entry key="Non-Stop Midna's Lament">Non-Stop Midna's Lament</entry>
+  <entry key="None">None</entry>
   <entry key="None of them can be used.">None of them can be used.</entry>
   <entry key="Normal">Normal</entry>
   <entry key="Normal Bombs Max">Normal Bombs Max</entry>
   <entry key="Not Bound">Not Bound</entry>
+  <entry key="Not Supported">Not Supported</entry>
   <entry key="Not available">Not available</entry>
+  <entry key="Not installed">Not installed</entry>
+  <entry key="Note: If any mods register game modes, this option will be ignored.">Note: If any mods register game modes, this option will be ignored.</entry>
   <entry key="Notifications">Notifications</entry>
   <entry key="Null">Null</entry>
   <entry key="Obtained Items">Obtained Items</entry>
   <entry key="Off">Off</entry>
+  <entry key="Off is exactly H30.">Off is exactly H30.</entry>
+  <entry key="Official">Official</entry>
   <entry key="Oil">Oil</entry>
   <entry key="On">On</entry>
   <entry key="On Damage">On Damage</entry>
   <entry key="Online mod updates are unavailable.">Online mod updates are unavailable.</entry>
+  <entry key="Online mods">Online mods</entry>
   <entry key="Only During Cutscenes">Only During Cutscenes</entry>
   <entry key="Only During Gameplay">Only During Gameplay</entry>
   <entry key="Only install mods from trusted authors.">Only install mods from trusted authors.</entry>
@@ -765,6 +1068,10 @@
   <entry key="Ooccoo Sr. (First Time)">Ooccoo Sr. (First Time)</entry>
   <entry key="Ooccoo's Note">Ooccoo's Note</entry>
   <entry key="Open Data Folder">Open Data Folder</entry>
+  <entry key="Open Save Folder">Open Save Folder</entry>
+  <entry key="Open Save Manager">Open Save Manager</entry>
+  <entry key="Open folder">Open folder</entry>
+  <entry key="Open in browser">Open in browser</entry>
   <entry key="Open input binding configuration.">Open input binding configuration.</entry>
   <entry key="Open the folder where Dusklight stores settings, saves, logs, texture replacements, and other app data.">Open the folder where Dusklight stores settings, saves, logs, texture replacements, and other app data.</entry>
   <entry key="Open the touch controls layout editor.">Open the touch controls layout editor.</entry>
@@ -783,12 +1090,14 @@
   <entry key="Output">Output</entry>
   <entry key="Output Mode">Output Mode</entry>
   <entry key="Output Resampling">Output Resampling</entry>
+  <entry key="Output is identical; only CPU time changes. Safe to flip while playing; the benchmark report records which one it ran with.">Output is identical; only CPU time changes. Safe to flip while playing; the benchmark report records which one it ran with.</entry>
   <entry key="Overlay received focus">Overlay received focus</entry>
   <entry key="Owned">Owned</entry>
   <entry key="PT_DYNAMIC has too many entries">PT_DYNAMIC has too many entries</entry>
   <entry key="PT_DYNAMIC is not inside the file">PT_DYNAMIC is not inside the file</entry>
   <entry key="Package ID does not match the catalog entry">Package ID does not match the catalog entry</entry>
   <entry key="Package checksum mismatch">Package checksum mismatch</entry>
+  <entry key="Package preparation failed">Package preparation failed</entry>
   <entry key="Package size mismatch">Package size mismatch</entry>
   <entry key="Package verification failed">Package verification failed</entry>
   <entry key="Package version does not match the catalog entry">Package version does not match the catalog entry</entry>
@@ -833,11 +1142,14 @@
   <entry key="Prepare Shaders">Prepare Shaders</entry>
   <entry key="Preparing shaders">Preparing shaders</entry>
   <entry key="Presets">Presets</entry>
+  <entry key="Press Start">Press Start</entry>
   <entry key="Press a Key or Button...">Press a Key or Button...</entry>
   <entry key="Press a Key or Mouse Button...">Press a Key or Mouse Button...</entry>
+  <entry key="Press and drag on the left side of the screen to move, and on the right side of the screen to control the camera.">Press and drag on the left side of the screen to move, and on the right side of the screen to control the camera.</entry>
   <entry key="Prevents Link from playing a struggle animation when grabbing ledges or climbing on vines.">Prevents Link from playing a struggle animation when grabbing ledges or climbing on vines.</entry>
   <entry key="Prevents enemies from taking damage.">Prevents enemies from taking damage.</entry>
   <entry key="Prevents enemy music while Midna's Lament is playing.">Prevents enemy music while Midna's Lament is playing.</entry>
+  <entry key="Previous">Previous</entry>
   <entry key="Princess Agitha">Princess Agitha</entry>
   <entry key="Profile matrix not started">Profile matrix not started</entry>
   <entry key="Pumpkin Scent">Pumpkin Scent</entry>
@@ -858,12 +1170,22 @@
   <entry key="Quiver">Quiver</entry>
   <entry key="R + Start">R + Start</entry>
   <entry key="R Threshold">R Threshold</entry>
+  <entry key="R+D-pad Down teleports Link back to it.">R+D-pad Down teleports Link back to it.</entry>
+  <entry key="R+D-pad Up stores Link's current position.">R+D-pad Up stores Link's current position.</entry>
+  <entry key="R+D-pad Up stores Link's current position.&lt;br/&gt;R+D-pad Down teleports Link back to it.">R+D-pad Up stores Link's current position.&lt;br/&gt;R+D-pad Down teleports Link back to it.</entry>
   <entry key="RML(
     &lt;button id=">RML(
     &lt;button id=</entry>
   <entry key="RML(
     &lt;selection-frame id=">RML(
     &lt;selection-frame id=</entry>
+  <entry key="RML(
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML">RML(
+&lt;/body&gt;
+&lt;/rml&gt;
+)RML</entry>
   <entry key="RML(
 &lt;rml&gt;
 &lt;head&gt;
@@ -875,11 +1197,15 @@
   <entry key="R_AARCH64_TLS_TPREL64 x">R_AARCH64_TLS_TPREL64 x</entry>
   <entry key="R_AARCH64_unknown">R_AARCH64_unknown</entry>
   <entry key="Rainbow">Rainbow</entry>
+  <entry key="Randomizer 1.0.6 from 1.0.0-beta.1/beta.2">Randomizer 1.0.6 from 1.0.0-beta.1/beta.2</entry>
   <entry key="Range">Range</entry>
   <entry key="Rare Chu Jelly">Rare Chu Jelly</entry>
+  <entry key="Raw memory card">Raw memory card</entry>
   <entry key="Ready.">Ready.</entry>
+  <entry key="Reason">Reason</entry>
   <entry key="Recent">Recent</entry>
   <entry key="Recenter Motion Sensors">Recenter Motion Sensors</entry>
+  <entry key="Recently updated">Recently updated</entry>
   <entry key="Recording Mode">Recording Mode</entry>
   <entry key="Records">Records</entry>
   <entry key="Red Chu Jelly">Red Chu Jelly</entry>
@@ -890,14 +1216,18 @@
   <entry key="Reekfish">Reekfish</entry>
   <entry key="Reekfish Scent">Reekfish Scent</entry>
   <entry key="Region">Region</entry>
+  <entry key="Reload">Reload</entry>
   <entry key="Remember Window Size">Remember Window Size</entry>
+  <entry key="Remove update">Remove update</entry>
   <entry key="Removes completed Owl Statue markers from the map and Minimap.">Removes completed Owl Statue markers from the map and Minimap.</entry>
   <entry key="Renado">Renado</entry>
   <entry key="Renado's Letter">Renado's Letter</entry>
   <entry key="Render a thick shadow around the mini-map. May impact performance.">Render a thick shadow around the mini-map. May impact performance.</entry>
   <entry key="Rendering">Rendering</entry>
   <entry key="Replace">Replace</entry>
+  <entry key="Replace the current save and mod data with this backup?">Replace the current save and mod data with this backup?</entry>
   <entry key="Replace the entire memory card image? All saves on the current card will be replaced. Existing saves for the configured disc will be backed up first.">Replace the entire memory card image? All saves on the current card will be replaced. Existing saves for the configured disc will be backed up first.</entry>
+  <entry key="Requires bundling">Requires bundling</entry>
   <entry key="Rescan">Rescan</entry>
   <entry key="Reserved">Reserved</entry>
   <entry key="Reset">Reset</entry>
@@ -909,23 +1239,38 @@
   <entry key="Reset to Default">Reset to Default</entry>
   <entry key="Reset to default">Reset to default</entry>
   <entry key="Reset to the main menu before copying saves.">Reset to the main menu before copying saves.</entry>
+  <entry key="Reset to the main menu before importing saves.">Reset to the main menu before importing saves.</entry>
   <entry key="Resolution">Resolution</entry>
   <entry key="Resources">Resources</entry>
+  <entry key="Rest the controllers still, as you hold them to play, then press this: it re-estimates the resting pose and holds gestures for a moment.">Rest the controllers still, as you hold them to play, then press this: it re-estimates the resting pose and holds gestures for a moment.</entry>
   <entry key="Restart Dusklight to the pre-launch menu to change settings, game modes, or mods.">Restart Dusklight to the pre-launch menu to change settings, game modes, or mods.</entry>
   <entry key="Restart by hand">Restart by hand</entry>
   <entry key="Restart later">Restart later</entry>
   <entry key="Restart now">Restart now</entry>
+  <entry key="Restart now to apply them immediately?">Restart now to apply them immediately?</entry>
   <entry key="Restart required">Restart required</entry>
   <entry key="Restart to Main Menu">Restart to Main Menu</entry>
   <entry key="Restart to Update">Restart to Update</entry>
+  <entry key="Restart to finish">Restart to finish</entry>
+  <entry key="Restore">Restore</entry>
+  <entry key="Restore Backup">Restore Backup</entry>
+  <entry key="Restore Default Controls">Restore Default Controls</entry>
   <entry key="Restore Default Window Size">Restore Default Window Size</entry>
+  <entry key="Restore This Backup...">Restore This Backup...</entry>
   <entry key="Restore Wii 1.0 Glitches">Restore Wii 1.0 Glitches</entry>
+  <entry key="Restore a backup or import this save to use it again.">Restore a backup or import this save to use it again.</entry>
+  <entry key="Restores all binding configurations for the currently selected device to their defaults.">Restores all binding configurations for the currently selected device to their defaults.</entry>
   <entry key="Restores patched glitches from Wii USA 1.0, the first released version.">Restores patched glitches from Wii USA 1.0, the first released version.</entry>
   <entry key="Resume">Resume</entry>
   <entry key="Resume all">Resume all</entry>
   <entry key="Retry">Retry</entry>
+  <entry key="Retry activation">Retry activation</entry>
+  <entry key="Retry download">Retry download</entry>
+  <entry key="Retry package">Retry package</entry>
   <entry key="Retry-After">Retry-After</entry>
+  <entry key="Retrying mod activation">Retrying mod activation</entry>
   <entry key="Right Joy-Con">Right Joy-Con</entry>
+  <entry key="Right Stick">Right Stick</entry>
   <entry key="Right Trigger">Right Trigger</entry>
   <entry key="Rollgoal Sensitivity">Rollgoal Sensitivity</entry>
   <entry key="Room">Room</entry>
@@ -940,28 +1285,40 @@
   <entry key="Rupees">Rupees</entry>
   <entry key="Rupees will not play cutscenes after you have collected them the first time.">Rupees will not play cutscenes after you have collected them the first time.</entry>
   <entry key="STAR Game Time (ms)">STAR Game Time (ms)</entry>
+  <entry key="Save">Save</entry>
+  <entry key="Save + mod data (.dusksave)">Save + mod data (.dusksave)</entry>
   <entry key="Save Exported">Save Exported</entry>
   <entry key="Save File Type">Save File Type</entry>
+  <entry key="Save Files">Save Files</entry>
+  <entry key="Save Import">Save Import</entry>
   <entry key="Save Location">Save Location</entry>
   <entry key="Save and restore the previous session's window size when opening Dusklight.">Save and restore the previous session's window size when opening Dusklight.</entry>
   <entry key="Save file">Save file</entry>
   <entry key="Save files">Save files</entry>
+  <entry key="Save only (.gci)">Save only (.gci)</entry>
+  <entry key="Save present">Save present</entry>
   <entry key="Scales the Dusklight interface relative to the display's DPI scale. Has no effect on the game's UI and HUD.">Scales the Dusklight interface relative to the display's DPI scale. Has no effect on the game's UI and HUD.</entry>
   <entry key="Scales the size of the gameplay HUD (hearts, buttons, mini-map, etc.). Does not affect dialog boxes or menus.">Scales the size of the gameplay HUD (hearts, buttons, mini-map, etc.). Does not affect dialog boxes or menus.</entry>
   <entry key="Scent">Scent</entry>
   <entry key="Scent of Ilia">Scent of Ilia</entry>
   <entry key="Screen Layout">Screen Layout</entry>
+  <entry key="Screenshots">Screenshots</entry>
+  <entry key="Search">Search</entry>
   <entry key="Sec-WebSocket-Extensions">Sec-WebSocket-Extensions</entry>
   <entry key="Sec-WebSocket-Key">Sec-WebSocket-Key</entry>
   <entry key="Sec-WebSocket-Protocol">Sec-WebSocket-Protocol</entry>
   <entry key="Sec-WebSocket-Version">Sec-WebSocket-Version</entry>
   <entry key="Select">Select</entry>
   <entry key="Select All">Select All</entry>
+  <entry key="Select Disc Image">Select Disc Image</entry>
   <entry key="Select None">Select None</entry>
   <entry key="Send Crash Reports">Send Crash Reports</entry>
   <entry key="Send crash reports to Dusklight developers. Reports will include the information described above.">Send crash reports to Dusklight developers. Reports will include the information described above.</entry>
   <entry key="Sensor">Sensor</entry>
   <entry key="Service export registration failed">Service export registration failed</entry>
+  <entry key="Set the disc image that Dusklight uses to launch the game.">Set the disc image that Dusklight uses to launch the game.</entry>
+  <entry key="Set the disc image that Dusklight uses to launch the game.&lt;br/&gt;&lt;br/&gt;Changes require a restart.">Set the disc image that Dusklight uses to launch the game.&lt;br/&gt;&lt;br/&gt;Changes require a restart.</entry>
+  <entry key="Sets the controller's lighting color based on the game's state.">Sets the controller's lighting color based on the game's state.</entry>
   <entry key="Settings">Settings</entry>
   <entry key="Shad">Shad</entry>
   <entry key="Shader preparation not started">Shader preparation not started</entry>
@@ -979,6 +1336,8 @@
   <entry key="Show Profiler Overlay">Show Profiler Overlay</entry>
   <entry key="Show RTA">Show RTA</entry>
   <entry key="Show Shader Compilation">Show Shader Compilation</entry>
+  <entry key="Show advanced settings and debugging tools with Shift+F1.">Show advanced settings and debugging tools with Shift+F1.</entry>
+  <entry key="Show advanced settings and debugging tools with Shift+F1.&lt;br/&gt;&lt;br/&gt;&lt;icon class=&quot;warning&quot;/&gt; WARNING: Debugging tools can easily break your game. Do not use on a regular save!">Show advanced settings and debugging tools with Shift+F1.&lt;br/&gt;&lt;br/&gt;&lt;icon class=&quot;warning&quot;/&gt; WARNING: Debugging tools can easily break your game. Do not use on a regular save!</entry>
   <entry key="Show an overlay when shaders are being compiled for your hardware.">Show an overlay when shaders are being compiled for your hardware.</entry>
   <entry key="Show changelog">Show changelog</entry>
   <entry key="Show gyro sensor values in the input viewer.">Show gyro sensor values in the input viewer.</entry>
@@ -993,6 +1352,7 @@
   <entry key="Skip Dusklight Main Menu">Skip Dusklight Main Menu</entry>
   <entry key="Skip TV Settings Screen">Skip TV Settings Screen</entry>
   <entry key="Skip needing to catch a second fish for Sera's cat.">Skip needing to catch a second fish for Sera's cat.</entry>
+  <entry key="Skipping is safe: preparation continues in the background, but the game may stutter now and then until it finishes. What is already done is kept if you close the game.">Skipping is safe: preparation continues in the background, but the game may stutter now and then until it finishes. What is already done is kept if you close the game.</entry>
   <entry key="Skips the TV calibration screen shown when loading a save.">Skips the TV calibration screen shown when loading a save.</entry>
   <entry key="Skips the delay when writing to the Memory Card.">Skips the delay when writing to the Memory Card.</entry>
   <entry key="Slingshot">Slingshot</entry>
@@ -1009,6 +1369,7 @@
   <entry key="Snowpeak Ruins">Snowpeak Ruins</entry>
   <entry key="Some">Some</entry>
   <entry key="Some updates could not be queued">Some updates could not be queued</entry>
+  <entry key="Sort by">Sort by</entry>
   <entry key="Sound">Sound</entry>
   <entry key="South Faron Gate Key">South Faron Gate Key</entry>
   <entry key="Spawn ID">Spawn ID</entry>
@@ -1022,24 +1383,32 @@
   <entry key="Stag Beetle (F)">Stag Beetle (F)</entry>
   <entry key="Stag Beetle (M)">Stag Beetle (M)</entry>
   <entry key="Stage">Stage</entry>
+  <entry key="Start">Start</entry>
+  <entry key="Starting">Starting</entry>
   <entry key="Starting the game">Starting the game</entry>
   <entry key="Static service export has null service pointer">Static service export has null service pointer</entry>
   <entry key="Status">Status</entry>
   <entry key="Stereo">Stereo</entry>
   <entry key="Stereo (Headphones)">Stereo (Headphones)</entry>
   <entry key="Stereo (Speakers)">Stereo (Speakers)</entry>
+  <entry key="Sticks">Sticks</entry>
+  <entry key="Stop">Stop</entry>
+  <entry key="Storage and Recovery">Storage and Recovery</entry>
   <entry key="Sun's Song (R+X)">Sun's Song (R+X)</entry>
   <entry key="Super Clawshot">Super Clawshot</entry>
   <entry key="Superb Soup">Superb Soup</entry>
   <entry key="Superseded by a newer lifecycle request">Superseded by a newer lifecycle request</entry>
+  <entry key="Supported items include the Slingshot, Gale Boomerang, Hero's Bow, Clawshot(s), Ball and Chain, and Dominion Rod.">Supported items include the Slingshot, Gale Boomerang, Hero's Bow, Clawshot(s), Ball and Chain, and Dominion Rod.</entry>
   <entry key="Surf Leaf">Surf Leaf</entry>
   <entry key="Surround">Surround</entry>
+  <entry key="Suspended">Suspended</entry>
   <entry key="Swap Direct Select Input">Swap Direct Select Input</entry>
   <entry key="Swap Swing Sides">Swap Swing Sides</entry>
   <entry key="Swap the controls for using Direct Select on the item wheel, making Direct Select the default and holding L to scroll the wheel.">Swap the controls for using Direct Select on the item wheel, making Direct Select the default and holding L to scroll the wheel.</entry>
   <entry key="Swaps which slash a left-to-right swing plays, in case it looks reversed. Works together with Mirror Mode (turning on both cancels out).">Swaps which slash a left-to-right swing plays, in case it looks reversed. Works together with Mirror Mode (turning on both cancels out).</entry>
   <entry key="Swing Direction Animations">Swing Direction Animations</entry>
   <entry key="Switch">Switch</entry>
+  <entry key="Switch build included">Switch build included</entry>
   <entry key="Sword">Sword</entry>
   <entry key="Swords">Swords</entry>
   <entry key="Synchronizes the frame rate to your monitor's refresh rate.">Synchronizes the frame rate to your monitor's refresh rate.</entry>
@@ -1049,11 +1418,15 @@
   <entry key="Target Type">Target Type</entry>
   <entry key="Tear of Light">Tear of Light</entry>
   <entry key="Tears of Light dropped by Shadow Insects pop out faster like the HD version.">Tears of Light dropped by Shadow Insects pop out faster like the HD version.</entry>
+  <entry key="Teleport (R+D-pad Up/Down)">Teleport (R+D-pad Up/Down)</entry>
   <entry key="Telma">Telma</entry>
   <entry key="Temple of Time">Temple of Time</entry>
   <entry key="Test Rumble">Test Rumble</entry>
   <entry key="That image changed since it was listed and can no longer be used.">That image changed since it was listed and can no longer be used.</entry>
   <entry key="The Postman">The Postman</entry>
+  <entry key="The backup was restored.">The backup was restored.</entry>
+  <entry key="The card image does not contain saves for the configured disc.">The card image does not contain saves for the configured disc.</entry>
+  <entry key="The catalog download descriptor is invalid.">The catalog download descriptor is invalid.</entry>
   <entry key="The catalog request failed.">The catalog request failed.</entry>
   <entry key="The catalog response was invalid.">The catalog response was invalid.</entry>
   <entry key="The console went to sleep; the connection was lost">The console went to sleep; the connection was lost</entry>
@@ -1067,14 +1440,19 @@
   <entry key="The install source is not a URL">The install source is not a URL</entry>
   <entry key="The install source is not a local file">The install source is not a local file</entry>
   <entry key="The installed mod inventory exceeds the catalog limit.">The installed mod inventory exceeds the catalog limit.</entry>
+  <entry key="The installed version cannot be compared.">The installed version cannot be compared.</entry>
   <entry key="The installed version changed.">The installed version changed.</entry>
   <entry key="The installed version changed. Check for updates again.">The installed version changed. Check for updates again.</entry>
   <entry key="The loader rejected the package">The loader rejected the package</entry>
   <entry key="The local package changed after confirmation">The local package changed after confirmation</entry>
   <entry key="The local save changed since it was last checked.">The local save changed since it was last checked.</entry>
+  <entry key="The memory card image was imported.">The memory card image was imported.</entry>
+  <entry key="The menu still shows when the disc image cannot be used or that game mode is no longer available.">The menu still shows when the disc image cannot be used or that game mode is no longer available.</entry>
   <entry key="The mod could not be loaded">The mod could not be loaded</entry>
+  <entry key="The mod data was deleted.">The mod data was deleted.</entry>
   <entry key="The mod depends on a library this build does not provide.">The mod depends on a library this build does not provide.</entry>
   <entry key="The mod failed to activate">The mod failed to activate</entry>
+  <entry key="The mod folder could not be opened in the file browser.">The mod folder could not be opened in the file browser.</entry>
   <entry key="The mod is no longer installed">The mod is no longer installed</entry>
   <entry key="The mod is no longer installed.">The mod is no longer installed.</entry>
   <entry key="The mod needs a game function another enabled mod already replaces.">The mod needs a game function another enabled mod already replaces.</entry>
@@ -1090,12 +1468,17 @@
   <entry key="The package is not in the mod staging directory">The package is not in the mod staging directory</entry>
   <entry key="The package version is invalid">The package version is invalid</entry>
   <entry key="The package was not found">The package was not found</entry>
+  <entry key="The save contains an unsupported filename.">The save contains an unsupported filename.</entry>
+  <entry key="The save file could not be exported.">The save file could not be exported.</entry>
+  <entry key="The save file picker could not be opened.">The save file picker could not be opened.</entry>
+  <entry key="The save folder could not be opened in the file browser.">The save folder could not be opened in the file browser.</entry>
   <entry key="The save name is invalid.">The save name is invalid.</entry>
   <entry key="The selected disc image could not be validated.">The selected disc image could not be validated.</entry>
   <entry key="The selected disc image did not pass hash verification. It may be corrupt or modified.">The selected disc image did not pass hash verification. It may be corrupt or modified.</entry>
   <entry key="The selected disc image is valid.">The selected disc image is valid.</entry>
   <entry key="The selected file is not a valid disc image.">The selected file is not a valid disc image.</entry>
   <entry key="The selected game is not supported by Dusklight.">The selected game is not supported by Dusklight.</entry>
+  <entry key="The shape never changes -- only how finely it is drawn, and the final blit smooths the difference. Lower this before lowering the game's own resolution: the companion is flat 2D and text.">The shape never changes -- only how finely it is drawn, and the final blit smooths the difference. Lower this before lowering the game's own resolution: the companion is flat 2D and text.</entry>
   <entry key="The snapshot comes from another region or platform.">The snapshot comes from another region or platform.</entry>
   <entry key="The snapshot is not an individual save.">The snapshot is not an individual save.</entry>
   <entry key="The sword follows the way you swing: a downward chop is the vertical cut and a sideways swing is the left or right slash. Ordinary cuts only: finishers and special attacks keep their own animation. Off plays whichever cut the game picks.">The sword follows the way you swing: a downward chop is the vertical cut and a sideways swing is the left or right slash. Ordinary cuts only: finishers and special attacks keep their own animation. Off plays whichever cut the game picks.</entry>
@@ -1105,12 +1488,15 @@
   <entry key="There is no other game mode to copy this save to.">There is no other game mode to copy this save to.</entry>
   <entry key="There is no save file.">There is no save file.</entry>
   <entry key="There is no save to copy.">There is no save to copy.</entry>
+  <entry key="This build has no HTTP backend.">This build has no HTTP backend.</entry>
   <entry key="This can be changed in the Settings menu at any time.">This can be changed in the Settings menu at any time.</entry>
   <entry key="This mod already has an active install">This mod already has an active install</entry>
   <entry key="This release does not support this device.">This release does not support this device.</entry>
   <entry key="This release introduces a required dependency cycle.">This release introduces a required dependency cycle.</entry>
   <entry key="This release requires a different Dusklight ABI.">This release requires a different Dusklight ABI.</entry>
+  <entry key="This save does not match the configured disc.">This save does not match the configured disc.</entry>
   <entry key="This version is already installed or older.">This version is already installed or older.</entry>
+  <entry key="Tip: You can also reset by holding Start+X+B">Tip: You can also reset by holding Start+X+B</entry>
   <entry key="Toggle Fullscreen">Toggle Fullscreen</entry>
   <entry key="Tools">Tools</entry>
   <entry key="Top Left">Top Left</entry>
@@ -1120,15 +1506,21 @@
   <entry key="Touch Camera Y Sensitivity">Touch Camera Y Sensitivity</entry>
   <entry key="Touch Controls">Touch Controls</entry>
   <entry key="Touch Targeting">Touch Targeting</entry>
+  <entry key="Trace">Trace</entry>
   <entry key="Trailer takes not started">Trailer takes not started</entry>
+  <entry key="Transfer">Transfer</entry>
   <entry key="Transform Level">Transform Level</entry>
   <entry key="Transform instantly by pressing R and Y simultaneously.">Transform instantly by pressing R and Y simultaneously.</entry>
+  <entry key="Treat analog trigger movement as digital L and R button input.">Treat analog trigger movement as digital L and R button input.</entry>
   <entry key="Triangle">Triangle</entry>
+  <entry key="Triggers">Triggers</entry>
   <entry key="Triple Hearts">Triple Hearts</entry>
+  <entry key="Try changing the search or category.">Try changing the search or category.</entry>
   <entry key="Turbo Key">Turbo Key</entry>
   <entry key="Turns off the effect that bends what you see through water, such as Link's legs when he stands in it. Saves some GPU time.">Turns off the effect that bends what you see through water, such as Link's legs when he stands in it. Saves some GPU time.</entry>
   <entry key="Tweaks">Tweaks</entry>
   <entry key="Twilight Clear Level">Twilight Clear Level</entry>
+  <entry key="Twilit Essentials 2.5.0 from 1.0.0-beta.1/beta.2">Twilit Essentials 2.5.0 from 1.0.0-beta.1/beta.2</entry>
   <entry key="Types">Types</entry>
   <entry key="UI Scale">UI Scale</entry>
   <entry key="UiService v1 dialog_add_action is no longer supported">UiService v1 dialog_add_action is no longer supported</entry>
@@ -1137,7 +1529,9 @@
   <entry key="Unable to read the selected file.">Unable to read the selected file.</entry>
   <entry key="Unavailable">Unavailable</entry>
   <entry key="Unavailable updates">Unavailable updates</entry>
+  <entry key="Uncategorized">Uncategorized</entry>
   <entry key="Uniform Reuse (H35)">Uniform Reuse (H35)</entry>
+  <entry key="Uninstall">Uninstall</entry>
   <entry key="Unknown">Unknown</entry>
   <entry key="Unknown bundle validation error">Unknown bundle validation error</entry>
   <entry key="Unknown exception in config change callback">Unknown exception in config change callback</entry>
@@ -1151,9 +1545,11 @@
   <entry key="Unlock Framerate">Unlock Framerate</entry>
   <entry key="Unlocked">Unlocked</entry>
   <entry key="Unsaved progress will be lost.">Unsaved progress will be lost.</entry>
+  <entry key="Unsaved progress will be lost.&lt;br/&gt;&lt;modal-tip&gt;Tip: You can also reset by holding Start+X+B&lt;/modal-tip&gt;">Unsaved progress will be lost.&lt;br/&gt;&lt;modal-tip&gt;Tip: You can also reset by holding Start+X+B&lt;/modal-tip&gt;</entry>
   <entry key="Up to Date">Up to Date</entry>
   <entry key="Update">Update</entry>
   <entry key="Update all">Update all</entry>
+  <entry key="Update available">Update available</entry>
   <entry key="Update available!">Update available!</entry>
   <entry key="Update is available, but the release did not include a download URL">Update is available, but the release did not include a download URL</entry>
   <entry key="Update ready!">Update ready!</entry>
@@ -1163,29 +1559,44 @@
   <entry key="Upper limit for anisotropic texture filtering. Lower values cost less GPU time; textures seen at an angle look softer.">Upper limit for anisotropic texture filtering. Lower values cost less GPU time; textures seen at an angle look softer.</entry>
   <entry key="Use Device Haptics">Use Device Haptics</entry>
   <entry key="Use native device haptics instead of controller rumble. Useful for devices with built-in gamepads.">Use native device haptics instead of controller rumble. Useful for devices with built-in gamepads.</entry>
+  <entry key="Useful for a more immersive experience.">Useful for a more immersive experience.</entry>
+  <entry key="Useful for recording footage.">Useful for recording footage.</entry>
   <entry key="User update removed">User update removed</entry>
   <entry key="User-Agent">User-Agent</entry>
+  <entry key="Uses inter-frame interpolation to enable higher frame rates.">Uses inter-frame interpolation to enable higher frame rates.</entry>
+  <entry key="Uses the Switch controllers' HD Rumble: sharp hits, heavy thuds, rolling quakes and Epona's gallop from side to side, instead of the original on/off motor.">Uses the Switch controllers' HD Rumble: sharp hits, heavy thuds, rolling quakes and Epona's gallop from side to side, instead of the original on/off motor.</entry>
+  <entry key="Uses the Switch controllers' HD Rumble: sharp hits, heavy thuds, rolling quakes and Epona's gallop from side to side, instead of the original on/off motor.&lt;br/&gt;&lt;br/&gt;Applies to handheld mode, Joy-Con and the Pro Controller. A GameCube controller adapter keeps its classic rumble.">Uses the Switch controllers' HD Rumble: sharp hits, heavy thuds, rolling quakes and Epona's gallop from side to side, instead of the original on/off motor.&lt;br/&gt;&lt;br/&gt;Applies to handheld mode, Joy-Con and the Pro Controller. A GameCube controller adapter keeps its classic rumble.</entry>
   <entry key="Value">Value</entry>
   <entry key="Verify">Verify</entry>
   <entry key="Verifying">Verifying</entry>
   <entry key="Verifying disc image">Verifying disc image</entry>
+  <entry key="Verifying…">Verifying…</entry>
+  <entry key="Version">Version</entry>
   <entry key="Vessel of Light (Eldin)">Vessel of Light (Eldin)</entry>
   <entry key="Vessel of Light (Faron)">Vessel of Light (Faron)</entry>
   <entry key="Vessel of Light (Filled)">Vessel of Light (Filled)</entry>
   <entry key="Vessel of Light (Lanayru)">Vessel of Light (Lanayru)</entry>
   <entry key="Video">Video</entry>
   <entry key="View">View</entry>
+  <entry key="View Backups">View Backups</entry>
+  <entry key="View compatible update">View compatible update</entry>
+  <entry key="View download">View download</entry>
+  <entry key="View downloads &amp; installs">View downloads &amp; installs</entry>
   <entry key="Volume">Volume</entry>
   <entry key="Vulkan">Vulkan</entry>
   <entry key="Vulkan — best mod compatibility">Vulkan — best mod compatibility</entry>
+  <entry key="WARNING: Debugging tools can easily break your game. Do not use on a regular save!">WARNING: Debugging tools can easily break your game. Do not use on a regular save!</entry>
   <entry key="WIA (experimental)">WIA (experimental)</entry>
   <entry key="Waiting for mods to initialize.">Waiting for mods to initialize.</entry>
+  <entry key="Waiting on">Waiting on</entry>
+  <entry key="Waiting...">Waiting...</entry>
   <entry key="Waits for the display before showing each frame (60 Hz on the Switch), so frames never tear.">Waits for the display before showing each frame (60 Hz on the Switch), so frames never tear.</entry>
   <entry key="Wallet">Wallet</entry>
   <entry key="Wallet Size">Wallet Size</entry>
   <entry key="Wallet sizes are like in the HD version. (500, 1000, 2000)">Wallet sizes are like in the HD version. (500, 1000, 2000)</entry>
   <entry key="Warm All Shaders">Warm All Shaders</entry>
   <entry key="Warming every shader">Warming every shader</entry>
+  <entry key="Warn">Warn</entry>
   <entry key="Warp">Warp</entry>
   <entry key="Warp to the selected destination.">Warp to the selected destination.</entry>
   <entry key="Water Bombs">Water Bombs</entry>
@@ -1199,10 +1610,17 @@
   <entry key="WebGPU, run with deko3d when it renders">WebGPU, run with deko3d when it renders</entry>
   <entry key="Welcome to Dusklight">Welcome to Dusklight</entry>
   <entry key="What teh fuck?">What teh fuck?</entry>
+  <entry key="When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available, in the game mode you chose last (Play or Randomizer).">When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available, in the game mode you chose last (Play or Randomizer).</entry>
+  <entry key="When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available, in the game mode you chose last (Play or Randomizer).&lt;br/&gt;&lt;br/&gt;The menu still shows when the disc image cannot be used or that game mode is no longer available.">When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available, in the game mode you chose last (Play or Randomizer).&lt;br/&gt;&lt;br/&gt;The menu still shows when the disc image cannot be used or that game mode is no longer available.</entry>
+  <entry key="When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available.">When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available.</entry>
+  <entry key="When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available.&lt;br/&gt;&lt;br/&gt;Note: If any mods register game modes, this option will be ignored.">When starting Dusklight, skip the main menu and boot straight into the game if a disc image is available.&lt;br/&gt;&lt;br/&gt;Note: If any mods register game modes, this option will be ignored.</entry>
+  <entry key="Which detached Joy-Con swings the sword; the other one is the Nunchuk (spin attack and shield bash). It only chooses the sensor: Link and the world are not mirrored. With a single controller this does nothing.">Which detached Joy-Con swings the sword; the other one is the Nunchuk (spin attack and shield bash). It only chooses the sensor: Link and the world are not mirrored. With a single controller this does nothing.</entry>
   <entry key="Wii">Wii</entry>
   <entry key="Wii U Style">Wii U Style</entry>
   <entry key="Wii-style Motion">Wii-style Motion</entry>
   <entry key="Wii-style Motion Controls (Experimental)">Wii-style Motion Controls (Experimental)</entry>
+  <entry key="With Unlock Framerate on, skip an interpolated frame that would not finish before the next game tick, so heavy places give a clean 30 instead of 33/50 ms judder. Costs nothing where 60 already fits.">With Unlock Framerate on, skip an interpolated frame that would not finish before the next game tick, so heavy places give a clean 30 instead of 33/50 ms judder. Costs nothing where 60 already fits.</entry>
+  <entry key="With the full HUD the minimap redraws its whole picture every frame, about 800 draws in Hyrule Field and Castle Town: the main cost there.">With the full HUD the minimap redraws its whole picture every frame, about 800 draws in Hyrule Field and Castle Town: the main cost there.</entry>
   <entry key="Wolf">Wolf</entry>
   <entry key="Wooden Shield">Wooden Shield</entry>
   <entry key="Wooden Statue">Wooden Statue</entry>
@@ -1213,6 +1631,7 @@
   <entry key="Yellow Chu Jelly">Yellow Chu Jelly</entry>
   <entry key="Yellow Rupee">Yellow Rupee</entry>
   <entry key="Yeta">Yeta</entry>
+  <entry key="You may proceed at your own risk.">You may proceed at your own risk.</entry>
   <entry key="Your mods are up to date.">Your mods are up to date.</entry>
   <entry key="Your mods changed; checking again.">Your mods changed; checking again.</entry>
   <entry key="Youth's Scent">Youth's Scent</entry>
@@ -1254,8 +1673,10 @@
   <entry key="cannot check file equivalence">cannot check file equivalence</entry>
   <entry key="cannot determine the running image's build id; ignoring symbol manifest">cannot determine the running image's build id; ignoring symbol manifest</entry>
   <entry key="catalog response is for a different game">catalog response is for a different game</entry>
+  <entry key="changed its service imports/exports; rebuilding mod dependency graph">changed its service imports/exports; rebuilding mod dependency graph</entry>
   <entry key="closedir, releasing the glibc-layout entry">closedir, releasing the glibc-layout entry</entry>
   <entry key="compiled into this build; loading">compiled into this build; loading</entry>
+  <entry key="compiled without the glibc-layout &lt;fstream&gt; copy (cmake/LinuxStreams.cmake)">compiled without the glibc-layout &lt;fstream&gt; copy (cmake/LinuxStreams.cmake)</entry>
   <entry key="context menu">context menu</entry>
   <entry key="context menu action">context menu action</entry>
   <entry key="control getter">control getter</entry>
@@ -1272,12 +1693,15 @@
   <entry key="decompressed symbol manifest is malformed">decompressed symbol manifest is malformed</entry>
   <entry key="deko3d (Experimental)">deko3d (Experimental)</entry>
   <entry key="deko3d (recommended)">deko3d (recommended)</entry>
+  <entry key="deko3d: the console's own graphics API. Mods that draw with the gfx service need Vulkan: with such a mod enabled, Vulkan is used and a message says why. If deko3d fails to start twice, Vulkan is used from then on.">deko3d: the console's own graphics API. Mods that draw with the gfx service need Vulkan: with such a mod enabled, Vulkan is used and a message says why. If deko3d fails to start twice, Vulkan is used from then on.</entry>
   <entry key="dialog action callback">dialog action callback</entry>
   <entry key="dialog action is_disabled callback">dialog action is_disabled callback</entry>
   <entry key="dialog on_dismiss callback">dialog on_dismiss callback</entry>
   <entry key="disabled by config">disabled by config</entry>
   <entry key="disabled; its code stops in the main menu or after a restart">disabled; its code stops in the main menu or after a restart</entry>
   <entry key="dusk-libcache 1">dusk-libcache 1</entry>
+  <entry key="e_ehsize/e_phentsize are not ELF64's">e_ehsize/e_phentsize are not ELF64's</entry>
+  <entry key="emulated over loopback sockets (DM3: there is no pipe/eventfd/epoll here)">emulated over loopback sockets (DM3: there is no pipe/eventfd/epoll here)</entry>
   <entry key="enabled; its code starts in the main menu or after a restart">enabled; its code starts in the main menu or after a restart</entry>
   <entry key="errno of the calling thread (newlib's errno)">errno of the calling thread (newlib's errno)</entry>
   <entry key="exit from a mod: logged, then a crash report">exit from a mod: logged, then a crash report</entry>
@@ -1285,6 +1709,7 @@
   <entry key="facet in a new stream's locale">facet in a new stream's locale</entry>
   <entry key="facet in classic() for Linux modules">facet in classic() for Linux modules</entry>
   <entry key="facet in the global locale">facet in the global locale</entry>
+  <entry key="facet toupper/tolower">facet toupper/tolower</entry>
   <entry key="failed to load">failed to load</entry>
   <entry key="failed to register service exports">failed to register service exports</entry>
   <entry key="failed to resolve service imports">failed to resolve service imports</entry>
@@ -1305,10 +1730,13 @@
   <entry key="gfx stage callback returned with its offscreen pass still open">gfx stage callback returned with its offscreen pass still open</entry>
   <entry key="glibc 1024-bit fd_set, on poll (DM3)">glibc 1024-bit fd_set, on poll (DM3)</entry>
   <entry key="glibc AF_* values (DM3)">glibc AF_* values (DM3)</entry>
+  <entry key="glibc AF_*/SOCK_* values, glibc errno (DM3)">glibc AF_*/SOCK_* values, glibc errno (DM3)</entry>
   <entry key="glibc EAI_* values (DM3)">glibc EAI_* values (DM3)</entry>
+  <entry key="glibc FIONBIO/FIONREAD (DM3)">glibc FIONBIO/FIONREAD (DM3)</entry>
   <entry key="glibc F_* commands and O_* flags; glibc errno (DM2-d)">glibc F_* commands and O_* flags; glibc errno (DM2-d)</entry>
   <entry key="glibc O_* flags; glibc errno (DM2-d)">glibc O_* flags; glibc errno (DM2-d)</entry>
   <entry key="glibc POLL* bits (DM3)">glibc POLL* bits (DM3)</entry>
+  <entry key="glibc SOL_*/SO_*/IP_*/TCP_* values (DM3)">glibc SOL_*/SO_*/IP_*/TCP_* values (DM3)</entry>
   <entry key="glibc addrinfo list (DM3)">glibc addrinfo list (DM3)</entry>
   <entry key="glibc addrinfo list, IPv4 (DM3)">glibc addrinfo list, IPv4 (DM3)</entry>
   <entry key="glibc assert: logged, then a crash report">glibc assert: logged, then a crash report</entry>
@@ -1324,6 +1752,7 @@
   <entry key="glibc msghdr, no ancillary data (DM3)">glibc msghdr, no ancillary data (DM3)</entry>
   <entry key="glibc sockaddr and NI_* flags (DM3)">glibc sockaddr and NI_* flags (DM3)</entry>
   <entry key="glibc sockaddr and flags, glibc errno (DM3 sockets layer)">glibc sockaddr and flags, glibc errno (DM3 sockets layer)</entry>
+  <entry key="glibc struct tm with tm_gmtoff/tm_zone (DM2-d)">glibc struct tm with tm_gmtoff/tm_zone (DM2-d)</entry>
   <entry key="glibc table = C ctype for 256 bytes">glibc table = C ctype for 256 bytes</entry>
   <entry key="glibc utsname describing Horizon (DM3)">glibc utsname describing Horizon (DM3)</entry>
   <entry key="glibc's FILE internals">glibc's FILE internals</entry>
@@ -1331,17 +1760,22 @@
   <entry key="glibc-built pthread object on newlib: zero-initialised mutexes and condition variables match; static recursive-mutex initialisers act as normal mutexes">glibc-built pthread object on newlib: zero-initialised mutexes and condition variables match; static recursive-mutex initialisers act as normal mutexes</entry>
   <entry key="glibc-built sem_t on newlib: layouts differ unless sem_init is called">glibc-built sem_t on newlib: layouts differ unless sem_init is called</entry>
   <entry key="graphics deko3d cannot draw">graphics deko3d cannot draw</entry>
+  <entry key="halves it. Experimental: if the map flickers or goes blank, set it back to 1. Minimal HUD hides the map and has no such cost.">halves it. Experimental: if the map flickers or goes blank, set it back to 1. Minimal HUD hides the map and has no such cost.</entry>
   <entry key="has PT_INTERP: an executable, not a library">has PT_INTERP: an executable, not a library</entry>
   <entry key="has text relocations (DT_TEXTREL)">has text relocations (DT_TEXTREL)</entry>
+  <entry key="has thread-local storage (PT_TLS / TLS symbols), which the loader does not provide">has thread-local storage (PT_TLS / TLS symbols), which the loader does not provide</entry>
   <entry key="id does not match the file name">id does not match the file name</entry>
   <entry key="image dimensions are too large">image dimensions are too large</entry>
   <entry key="image has no sources">image has no sources</entry>
   <entry key="image source width is too large">image source width is too large</entry>
   <entry key="indirect function '">indirect function '</entry>
+  <entry key="init/fini array is malformed or outside the image">init/fini array is malformed or outside the image</entry>
   <entry key="installed at runtime">installed at runtime</entry>
   <entry key="installed disabled by config">installed disabled by config</entry>
   <entry key="invalid image">invalid image</entry>
   <entry key="is disabled">is disabled</entry>
+  <entry key="is every frame, as the game does.">is every frame, as the game does.</entry>
+  <entry key="is the default.">is the default.</entry>
   <entry key="it did not load">it did not load</entry>
   <entry key="it is tried again after a restart">it is tried again after a restart</entry>
   <entry key="lib cache: cannot read the package to hash it; extracting as before">lib cache: cannot read the package to hash it; extracting as before</entry>
@@ -1362,6 +1796,7 @@
   <entry key="malformed section header table">malformed section header table</entry>
   <entry key="malformed section name table">malformed section name table</entry>
   <entry key="malloc, without devkitPro's memalign(32) when malloc_direct is on">malloc, without devkitPro's memalign(32) when malloc_direct is on</entry>
+  <entry key="matches the panel exactly;">matches the panel exactly;</entry>
   <entry key="memory card">memory card</entry>
   <entry key="menu tab">menu tab</entry>
   <entry key="menu tab on_selected callback">menu tab on_selected callback</entry>
@@ -1398,6 +1833,7 @@
   <entry key="no mod search directories configured; mod loading skipped">no mod search directories configured; mod loading skipped</entry>
   <entry key="no mods found">no mods found</entry>
   <entry key="no result">no result</entry>
+  <entry key="no romfs:/dusklight.symdb in this NRO (built with ALEKS2_SYMBOL_MANIFEST=OFF?); native mods cannot hook by name">no romfs:/dusklight.symdb in this NRO (built with ALEKS2_SYMBOL_MANIFEST=OFF?); native mods cannot hook by name</entry>
   <entry key="no symbol manifest embedded; by-name resolution unavailable">no symbol manifest embedded; by-name resolution unavailable</entry>
   <entry key="no symbol manifest for this build">no symbol manifest for this build</entry>
   <entry key="no thread-local key left for module TLS (pthread_key_create failed; libnx has a fixed number of slots): the module is not loaded">no thread-local key left for module TLS (pthread_key_create failed; libnx has a fixed number of slots): the module is not loaded</entry>
@@ -1411,11 +1847,14 @@
   <entry key="nothing yet">nothing yet</entry>
   <entry key="null link-time target">null link-time target</entry>
   <entry key="null pointer-to-member target">null pointer-to-member target</entry>
+  <entry key="only the Linux C/C++ runtime libraries are stood in for by the game image">only the Linux C/C++ runtime libraries are stood in for by the game image</entry>
   <entry key="open failed">open failed</entry>
   <entry key="out of memory for a module's TLS block">out of memory for a module's TLS block</entry>
   <entry key="out of memory for a thread's TLS state (first module TLS access in this thread)">out of memory for a thread's TLS state (first module TLS access in this thread)</entry>
   <entry key="out of memory for a thread's TLS table">out of memory for a thread's TLS table</entry>
   <entry key="prepatch support is not available in this build">prepatch support is not available in this build</entry>
+  <entry key="presents">presents</entry>
+  <entry key="press Start">press Start</entry>
   <entry key="program header table is not inside the file">program header table is not inside the file</entry>
   <entry key="pthread_create, the thread counted while it runs">pthread_create, the thread counted while it runs</entry>
   <entry key="pthread_setspecific failed for a thread's TLS state (first module TLS access in this thread)">pthread_setspecific failed for a thread's TLS state (first module TLS access in this thread)</entry>
@@ -1440,7 +1879,9 @@
   <entry key="suspended: a required provider is disabled">suspended: a required provider is disabled</entry>
   <entry key="symbol '">symbol '</entry>
   <entry key="symbol manifest descriptor is corrupt">symbol manifest descriptor is corrupt</entry>
+  <entry key="symbol manifest has wrong magic/version">symbol manifest has wrong magic/version</entry>
   <entry key="symbol manifest is malformed">symbol manifest is malformed</entry>
+  <entry key="symbol manifest: romfs:/dusklight.symdb, read when a native mod first needs it">symbol manifest: romfs:/dusklight.symdb, read when a native mod first needs it</entry>
   <entry key="symbol version tables are malformed">symbol version tables are malformed</entry>
   <entry key="target has no valid gateway">target has no valid gateway</entry>
   <entry key="the C library's stderr stream">the C library's stderr stream</entry>
@@ -1470,9 +1911,12 @@
   <entry key="thread-local storage is not provided">thread-local storage is not provided</entry>
   <entry key="thread-local symbol '">thread-local symbol '</entry>
   <entry key="thread_local destructors, run at thread exit before the thread's TLS blocks are freed (TLS-lab)">thread_local destructors, run at thread exit before the thread's TLS blocks are freed (TLS-lab)</entry>
+  <entry key="to cancel. Nothing is written to your save, achievements are paused, and you are returned to where you were.">to cancel. Nothing is written to your save, achievements are paused, and you are returned to where you were.</entry>
   <entry key="to open menu">to open menu</entry>
+  <entry key="to stop. Nothing is written to your save, achievements are paused, and you are returned to where you were.">to stop. Nothing is written to your save, achievements are paused, and you are returned to where you were.</entry>
   <entry key="too many DT_NEEDED entries">too many DT_NEEDED entries</entry>
   <entry key="trailing bytes">trailing bytes</entry>
+  <entry key="tried to hook undeclared target {:p}; hook targets must be declared with DEFINE_HOOK/DEFINE_HOOK_SYMBOL">tried to hook undeclared target {:p}; hook targets must be declared with DEFINE_HOOK/DEFINE_HOOK_SYMBOL</entry>
   <entry key="truncated export record">truncated export record</entry>
   <entry key="truncated extended hook record">truncated extended hook record</entry>
   <entry key="truncated header record">truncated header record</entry>
