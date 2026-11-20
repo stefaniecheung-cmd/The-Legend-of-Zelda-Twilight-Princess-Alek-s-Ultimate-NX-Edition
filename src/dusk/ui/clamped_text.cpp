@@ -1,5 +1,7 @@
 #include "clamped_text.hpp"
 
+#include "i18n.hpp"
+
 #include <RmlUi/Core/ElementText.h>
 #include <RmlUi/Core/ElementUtilities.h>
 #include <RmlUi/Core/StringUtilities.h>
@@ -10,7 +12,13 @@
 namespace dusk::ui {
 
 ClampedText::ClampedText(Rml::Element* root, Rml::String text, int maxLines)
-    : Component{root}, mSource{std::move(text)},
+    // dusk-i18n: translate the source once here. update() clamps and re-sets
+    // the text from mSource on every layout change, so translating only the
+    // node (via append_text) would be overwritten back to English; keeping
+    // mSource translated also makes the line-clamping measure the Chinese
+    // text that is actually displayed. append_text below translates again,
+    // which is harmless: tr() is idempotent for already-translated text.
+    : Component{root}, mSource{i18n::tr(std::move(text))},
       mText{static_cast<Rml::ElementText*>(append_text(root, mSource))},
       mMaxLines{std::max(maxLines, 1)} {
     mRoot->SetProperty("white-space", "pre-line");

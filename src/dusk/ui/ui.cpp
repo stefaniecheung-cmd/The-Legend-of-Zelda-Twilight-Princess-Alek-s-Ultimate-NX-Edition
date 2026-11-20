@@ -599,7 +599,12 @@ Rml::Element* append_text(Rml::Element* parent, const Rml::String& text) noexcep
     if (doc == nullptr) {
         return nullptr;
     }
-    return parent->AppendChild(doc->CreateTextNode(text));
+    // dusk-i18n: RmlUi only routes RML-parsed text (Factory::InstanceElementText)
+    // through SystemInterface::TranslateString; CreateTextNode bypasses it, so
+    // programmatically set text never hit the dictionary and stayed English.
+    // tr() falls back to the input for anything not in the dictionary, so
+    // dynamic values (version numbers, paths, mod names) pass through as-is.
+    return parent->AppendChild(doc->CreateTextNode(i18n::tr(text)));
 }
 
 Rml::Element* append_text_element(
@@ -624,8 +629,11 @@ void set_text_content(Rml::Element* parent, const Rml::String& text) noexcept {
     }
     if (!text.empty() && parent->GetNumChildren() == 1) {
         if (auto* element = dynamic_cast<Rml::ElementText*>(parent->GetFirstChild())) {
-            // RmlUi only dirties layout when the node's text changes.
-            element->SetText(text);
+            // RmlUi only dirties layout when the node's text changes. Translate
+            // here too: ElementText::SetText bypasses TranslateString the same
+            // way CreateTextNode does, so re-set values (e.g. "On"/"Off") would
+            // otherwise revert to English after the first update.
+            element->SetText(i18n::tr(text));
             return;
         }
     }

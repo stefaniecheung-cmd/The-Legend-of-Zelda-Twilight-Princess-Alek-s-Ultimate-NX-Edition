@@ -153,6 +153,7 @@
   <entry key="Attempted to register a game mode with no ID">尝试注册未带ID的游戏模式</entry>
   <entry key="Audio">音频</entry>
   <entry key="Auru's Memo">拉夫雷尔的备忘录</entry>
+  <entry key="Auto">Auto</entry>
   <entry key="Auto (only when the GPU is tight)">自动（仅在 GPU 吃紧时）</entry>
   <entry key="Automatic update checks are off.">自动检查更新已关闭。</entry>
   <entry key="Autosave">自动存档</entry>
@@ -290,6 +291,7 @@
   <entry key="Create">创建</entry>
   <entry key="Cross">叉键</entry>
   <entry key="Current data folder:">当前数据文件夹：</entry>
+  <entry key="Custom">Custom</entry>
   <entry key="Customize Layout">自定义布局</entry>
   <entry key="DRS stress not started">动态分辨率压测未开始</entry>
   <entry key="DT_GNU_HASH buckets outside the image">DT_GNU_HASH buckets outside the image</entry>
@@ -747,7 +749,9 @@
   <entry key="Notifications">通知</entry>
   <entry key="Null">空</entry>
   <entry key="Obtained Items">已获得物品</entry>
+  <entry key="Off">Off</entry>
   <entry key="Oil">灯油</entry>
+  <entry key="On">On</entry>
   <entry key="On Damage">受伤时消耗</entry>
   <entry key="Online mod updates are unavailable.">在线模组更新不可用。</entry>
   <entry key="Only During Cutscenes">仅在过场动画中</entry>
